@@ -6,19 +6,17 @@ import './style.scss';
 export default function Home({ users }) {
   return (
     <div className="main">
-    <h2>
-      Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
-      Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
-      Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
-    </h2>
+      <h2>
+        Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+        Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+        Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+      </h2>
       <a href="#">Rejoindre la communauté</a>
       {
      users.map((user) => (
-      <li className="users">{user.firstname}</li>
+       <li className="users">{user.firstname}</li>
      ))
-     } 
+     }
     </div>
   );
 }
-
-
