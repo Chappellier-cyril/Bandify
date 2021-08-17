@@ -1,1 +1,0 @@
-const DataMapper = require('../dataMapper/dataMapper');

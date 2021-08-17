@@ -1,0 +1,27 @@
+{
+  "name": "projet-09-orchestra",
+  "version": "1.0.0",
+  "description": "## Mise en place de la structure git:",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node-dev index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/O-clock-Tardis/projet-09-orchestra.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/O-clock-Tardis/projet-09-orchestra/issues"
+  },
+  "homepage": "https://github.com/O-clock-Tardis/projet-09-orchestra#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "pg": "^8.7.1",
+    "sequelize": "^6.6.5"
+  }
+}
