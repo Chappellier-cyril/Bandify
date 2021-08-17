@@ -7,6 +7,7 @@ import levelsData from 'src/data/levels';
 Avec Redux :
  Prévoir les appels à la BDD pour vérifiez si l'email existe déjà
  Vérifiez si l'utilisateur à plus de 15 ans
+ Voir la solution la plus adapté pour l'envoi de la photo en BDD ( multer ou file-loader )
 
 */
 
@@ -38,22 +39,12 @@ const Signup = () => {
     setInstruments(copyInstrument);
     console.log(copyInstrument);
   };
-  const onSelectLevel = (e, index) => {
-    const copyInstrument = [...instruments];
-    if (copyInstrument[index].instrument) {
-      copyInstrument[index] = {
-        ...copyInstrument[index],
-        level: e.target.value,
-      };
-      setInstruments(copyInstrument);
-      console.log(copyInstrument);
-    }
-  };
+
   const addNewInputInstrument = () => {
     setInstruments([...instruments, {}]);
   };
   const removeInputInstrument = (index) => {
-    const copyInstruments = instruments.filter((inst, i) => i !== index);
+    const copyInstruments = instruments.filter((_, i) => i !== index);
     setInstruments(copyInstruments);
   };
   return (
@@ -133,7 +124,12 @@ const Signup = () => {
           </div>
         ))
       }
-
+      {
+        /*
+          TODO => select music style et ville code postal => voir pour de l'autocomplétion
+          avec appel API code postaux la poste ou API / Gouv
+        */
+      }
     </form>
   );
 };
