@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import './style.scss';
+
 import instrumentsData from 'src/data/instruments';
 import levelsData from 'src/data/levels';
 

@@ -4,11 +4,14 @@ import { Route, Switch } from 'react-router-dom';
 
 import Header from 'src/components/Header';
 import Home from 'src/components/Home';
+import Contact from 'src/components/Contact';
+import About from 'src/components/About';
 import Footer from 'src/components/Footer';
 import Signup from 'src/components/Signup';
+import Login from 'src/components/Login';
 
 // == Import
-import './styles.css';
+import './style.scss';
 
 // == Import fake datas
 import cities from 'src/data/cities';
@@ -33,16 +36,16 @@ export default function App() {
           <Home users={usersData} />
         </Route>
         <Route exact path="/login">
-          <p>Connexion</p>
+          <Login />
         </Route>
         <Route exact path="/signup">
           <Signup />
         </Route>
         <Route exact path="/contact">
-          <p>Contact</p>
+          <Contact />
         </Route>
         <Route exact path="/about">
-          <p>A propos</p>
+          <About />
         </Route>
         <Route exact path="/profile">
           <p>Mon profil</p>
