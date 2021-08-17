@@ -8,7 +8,7 @@ class Member extends CoreModel {
     user_password;
     user_description;
     profil_image;
-   
+    city_id;
 
     constructor(member) {
         super(member.id);
@@ -19,6 +19,7 @@ class Member extends CoreModel {
         this.user_password = member.user_password;
         this.user_description = member.user_description;
         this.profil_image = member.profil_image;
+        this.city_id = member.city_id;
     }
 }
 
