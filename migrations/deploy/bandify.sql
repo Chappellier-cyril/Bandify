@@ -1,3 +1,5 @@
+-- Deploy bandify:bandify to pg
+
 BEGIN;
 
 CREATE TABLE member (
@@ -71,8 +73,7 @@ CREATE TABLE message (
 
 CREATE TABLE invitation (
 	id int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-	response BOOLEAN NOT NULL,
-    pending BOOLEAN NOT NULL,
+	statut INT NOT NULL,
     created_at Timestamptz,
 	updated_at Timestamptz,
     request_user_id INT REFERENCES member(id),
@@ -94,3 +95,5 @@ CREATE TABLE appreciate_music_style (
 
 COMMIT;
 
+
+COMMIT;
