@@ -11,8 +11,8 @@ CREATE TABLE member (
     email text NOT NULL UNIQUE,
     birthdate DATE,
     user_password text NOT NULL,
-    user_description text NOT NULL,
-    profil_image text NOT NULL,
+    user_description text,
+    profil_image text,
     "createdAt" Timestamptz NOT NULL default now(),
     "updatedAt" Timestamptz
 );

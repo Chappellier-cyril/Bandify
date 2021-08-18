@@ -56,11 +56,6 @@ Member.init({
           key: 'id'
       }
  },
-  createdAt : {
-  type: DataTypes.INTEGER,
-  allowNull: false,
-    
-}, 
 }, 
 {
   sequelize: database,
