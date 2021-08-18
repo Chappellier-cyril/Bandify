@@ -37,7 +37,9 @@ const memberController = {
     // Create a member
     create: async (req, res, next) => {
         try {
-            
+            // req.body contient les informations nécessaires pour créer 
+            // un nouveau membre
+
             const newMember = await Member.create(req.body);
 
             res.json(newMember);
@@ -50,17 +52,16 @@ const memberController = {
 
     updateOne: async (req, res, next) => {
         try {
-            // 2 infos :
-            // - l'id de la cible, dans les params d'url
-            // - les nouvelles valeurs des props, dans le body
+            // On utilise l'id de la cible, dans les params d'url
             const targetId = req.params.id;
             
-            /** première version : passer par une instance */
+            // on passe par une instance
             const memberToUpdate = await Member.findByPk(targetId);
             if (!memberToUpdate) {
                 return next(); // <= pas de liste, 404
             }
 
+            // Et les nouvelles valeurs des props, dans le body
             await memberToUpdate.update(req.body);
             // l'objet est à jour, on le renvoie
             res.json(memberToUpdate);
