@@ -82,6 +82,14 @@ Level.belongsToMany(Member, {
 });
 
 // N,N
+Level.belongsToMany(Instrument, {
+    through: 'user_has_instrument_level',
+    otherKey: 'instrument_id',
+    foreignKey: 'level_id',
+    as: 'level_instrument',
+});
+
+// N,N
 Instrument.belongsToMany(Level, {
     through: 'user_has_instrument_level',
     otherKey: 'level_id',
@@ -89,13 +97,7 @@ Instrument.belongsToMany(Level, {
     as: 'instrument_level',
 });
 
-// N,N
-Level.belongsToMany(Instrument, {
-    through: 'user_has_instrument_level',
-    otherKey: 'instrument_id',
-    foreignKey: 'level_id',
-    as: 'level_instrument',
-});
+
 
 //N,N
 MusicStyle.belongsToMany(Member, {

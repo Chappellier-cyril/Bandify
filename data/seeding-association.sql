@@ -1,6 +1,6 @@
 BEGIN;
 
-INSERT INTO message ("content", "statut", "sender_id", "reicever_id") VALUES
+INSERT INTO message ("content", "status", "sender_id", "reicever_id") VALUES
 ('Hello', false, 1, 2),
 ('Good', true, 2, 3),
 ('Comment ça va la famille', false, 3, 2),
@@ -8,8 +8,7 @@ INSERT INTO message ("content", "statut", "sender_id", "reicever_id") VALUES
 ('Whatsup', false, 4, 2),
 ('Sampler un son', true, 3, 2);
 
-
-INSERT INTO invitation ("statut", "request_user_id", "response_user_id") VALUES
+INSERT INTO invitation ("status", "request_user_id", "response_user_id") VALUES
 (2, 3, 2),
 (1, 1, 2),
 (0, 4, 1);

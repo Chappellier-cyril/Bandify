@@ -12,11 +12,8 @@ Message.init({
       }
   },
   status: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.BOOL,
     allowNull: false,
-    validate: {
-      isInt: true,
-  }
   },
   sender_id : {
     type: DataTypes.INTEGER,

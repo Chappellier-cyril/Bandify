@@ -42,8 +42,6 @@ CREATE TABLE city (
     department_id int references department(id)
 );
 
-
-
 CREATE TABLE music_style (
 	id int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
 	music_name text NOT NULL UNIQUE,
@@ -68,7 +66,7 @@ CREATE TABLE level (
 CREATE TABLE message (
 	id int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
 	content text NOT NULL,
-    status INT NOT NULL,
+    status BOOLEAN NOT NULL,
     created_at Timestamptz default now(),
     updated_at Timestamptz,
     sender_id INT REFERENCES member(id),
@@ -100,5 +98,8 @@ CREATE TABLE appreciate_music_style (
 	created_at Timestamptz default now(),
     updated_at Timestamptz
 );
+
+ALTER TABLE "member"
+add COLUMN "city_id" INT REFERENCES city(id);
 
 COMMIT;

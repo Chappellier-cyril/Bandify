@@ -1,5 +1,5 @@
-const express = require('express');
-
+const express = require('express')
+const memberController = require('../controllers/memberController')
 const router = express.Router();
 
 router.get('/', (req, res, next) => {
