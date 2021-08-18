@@ -9,6 +9,7 @@ import About from 'src/components/About';
 import Footer from 'src/components/Footer';
 import Signup from 'src/components/Signup';
 import Login from 'src/components/Login';
+import Profile from 'src/components/Profile';
 
 // == Import
 import './style.scss';
@@ -53,9 +54,7 @@ export default function App() {
         <Route exact path="/search">
           <p>Recherche</p>
         </Route>
-        <Route exact path="/member/:profileId">
-          <p>Profil membre</p>
-        </Route>
+        <Route exact path="/member/:profileId" component={Profile} />
       </Switch>
       <Footer />
     </div>

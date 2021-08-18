@@ -4,11 +4,11 @@ import './style.scss';
 
 import instrumentsData from 'src/data/instruments';
 import levelsData from 'src/data/levels';
+import musicStylesData from 'src/data/music_styles';
 
 /*
 Avec Redux :
- Prévoir les appels à la BDD pour vérifiez si l'email existe déjà
- Vérifiez si l'utilisateur à plus de 15 ans
+ Vérifiez si l'utilisateur à plus de 18 ans
  Voir la solution la plus adapté pour l'envoi de la photo en BDD ( multer ou file-loader )
 
 */
@@ -21,9 +21,9 @@ const Signup = () => {
   const [description, setDescription] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  // le state instrument sera un tableau qui récupère l'instrument et le niveau dans un objet
+  // le state instrument sera un tableau qui récupère l'instrument et le level dans un objet
   const [instruments, setInstruments] = useState([{}]);
-
+  const [styles, setStyles] = useState(['']);
   /* fonction générique pour changer les inputs afin d'avoir des composants contrôlées
     @params setState => fonction du useState de l'input contrôlé
     @params event => récupère la valeur de l'input
@@ -31,15 +31,23 @@ const Signup = () => {
   const onChangeInput = (setState, event) => {
     setState(event.target.value);
   };
-  // fonction pour copié l'instrument séléctionné
+  /* fonction pour copié l'instrument ou le level séléctionné dans l'objet associé
+    @params e => pour récuperer la target value de l'event;
+    @params => pour récupérer la ligne de l'instrument séléctionné
+    @key => pour choisir l'input instrument ou level
+  */
   const onSelectInput = (e, index, key) => {
-    const copyInstrument = [...instruments];
-    copyInstrument[index] = {
-      ...copyInstrument[index],
-      [key]: e.target.value,
-    };
-    setInstruments(copyInstrument);
-    console.log(copyInstrument);
+    const copyInstruments = [...instruments];
+    const instrumentAlreadyChoose = copyInstruments.find(
+      ({ instrument }) => instrument === e.target.value,
+    );
+    if (!instrumentAlreadyChoose) {
+      copyInstruments[index] = {
+        ...copyInstruments[index],
+        [key]: e.target.value,
+      };
+      setInstruments(copyInstruments);
+    }
   };
 
   const addNewInputInstrument = () => {
@@ -48,6 +56,21 @@ const Signup = () => {
   const removeInputInstrument = (index) => {
     const copyInstruments = instruments.filter((_, i) => i !== index);
     setInstruments(copyInstruments);
+  };
+  const onStyleInput = (e, index) => {
+    const styleAlreadyChoose = styles.find((styleState) => styleState === e.target.value);
+    if (!styleAlreadyChoose) {
+      const stylesCopy = [...styles];
+      stylesCopy[index] = Number(e.target.value);
+      setStyles(stylesCopy);
+    }
+  };
+  const addNewStyle = () => {
+    setStyles([...styles, '']);
+  };
+  const removeStyle = (index) => {
+    const copyStyles = styles.filter((_, i) => i !== index);
+    setInstruments(copyStyles);
   };
   return (
     <form>
@@ -117,7 +140,7 @@ const Signup = () => {
               // On ajoute un bouton  - à la ligne précédente si ajoute une ligne
               // On limite le nombre de choix max du membre (ici 3 est le maximum)
               // A voir combien d'instruments maximum on pourrais choisir
-              index < 3
+              index < 3 // maximum de ligne d'instrument
                 && (index === instruments.length - 1
                   ? <button type="button" onClick={addNewInputInstrument} disabled={!instrument.instrument}>+</button>
                   : <button type="button" onClick={() => removeInputInstrument(index)}>-</button>
@@ -128,9 +151,31 @@ const Signup = () => {
       }
       {
         /*
-          TODO => select music style et ville code postal => voir pour de l'autocomplétion
+          TODO => ville code postal => voir pour de l'autocomplétion
           avec appel API code postaux la poste ou API / Gouv
         */
+        styles.map((_, index) => (
+          // prévoir de générer un id proprement
+          // eslint-disable-next-line react/no-array-index-key
+          <div key={index}>
+            <select name={`musicStyle${index}`} id={`musicStyle${index}`} onChange={(e) => onStyleInput(e, index)}>
+              <option value="">Choisir un style de musique</option>
+              {
+                musicStylesData.map((style) => (
+                  <option value={style.id} key={style.id}>{style.name}</option>
+                ))
+              }
+            </select>
+            {
+              index < 2 // 4 choix de style max (à définir)
+                && (index === styles.length - 1
+                  ? <button type="button" disabled={!styles[index]} onClick={addNewStyle}>+</button>
+                  : <button type="button" onClick={() => removeStyle(index)}>-</button>
+                )
+            }
+          </div>
+        ))
+
       }
     </form>
   );

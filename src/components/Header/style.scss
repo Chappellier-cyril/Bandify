@@ -1,4 +1,10 @@
 // Just for the example
+.header {
+  width: 100%;
+  padding: 1rem 3rem;
+  border-bottom: 1px solid black;
+}
+
 ul {
   display: flex;
   justify-content: flex-end

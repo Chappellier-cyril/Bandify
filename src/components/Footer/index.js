@@ -5,14 +5,16 @@ import './style.scss';
 
 export default function Footer() {
   return (
-    <ul>
-      <Link to="/about">
-        <li>A propos</li>
-      </Link>
+    <footer className="footer">
+      <ul>
+        <Link to="/about">
+          <li>A propos</li>
+        </Link>
 
-      <Link to="/contact">
-        <li>Contact</li>
-      </Link>
-    </ul>
+        <Link to="/contact">
+          <li>Contact</li>
+        </Link>
+      </ul>
+    </footer>
   );
 }

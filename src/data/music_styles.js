@@ -1,15 +1,14 @@
 export default [
   {
     id: 1,
-    genre: 'Jazz',
+    name: 'Jazz',
   },
   {
     id: 2,
-    genre: 'Rock',
+    name: 'Rock',
   },
   {
     id: 3,
-    genre: 'Pop',
+    name: 'Pop',
   },
 ];
- 
