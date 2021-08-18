@@ -48,6 +48,52 @@ const memberController = {
         }
     },
 
+    updateOne: async (req, res, next) => {
+        try {
+            // 2 infos :
+            // - l'id de la cible, dans les params d'url
+            // - les nouvelles valeurs des props, dans le body
+            const targetId = req.params.id;
+            
+            /** première version : passer par une instance */
+            const memberToUpdate = await Member.findByPk(targetId);
+            if (!memberToUpdate) {
+                return next(); // <= pas de liste, 404
+            }
+
+            await memberToUpdate.update(req.body);
+            // l'objet est à jour, on le renvoie
+            res.json(memberToUpdate);
+            
+        } catch (error) {
+            console.trace(error);
+            res.status(500).json(error); 
+        }
+    },
+
+    deleteOne: async (req, res, next) => {
+        try {
+            const targetId = req.params.id;
+
+            const nbDeletedMember = await Member.destroy({
+                where: {
+                    id: targetId
+                }
+            });
+
+            // Si y'a au moins 1 membre de supprimer alors :
+            if (nbDeletedMember > 0) {
+                res.json({message: "ok, membre supprimé"});
+            } else {
+                next(); // On envoie une 404
+            }
+
+        } catch (error) {
+            console.trace(error);
+            res.status(500).json(error);
+        }
+    }
+
 };
 
 module.exports = memberController;
