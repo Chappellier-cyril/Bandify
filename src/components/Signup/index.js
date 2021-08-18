@@ -33,8 +33,8 @@ const Signup = () => {
   const onSelectInput = (e, index, key) => {
     const copyInstrument = [...instruments];
     copyInstrument[index] = {
-      ...copyInstrument[index][key],
-      instrument: e.target.value,
+      ...copyInstrument[index],
+      [key]: e.target.value,
     };
     setInstruments(copyInstrument);
     console.log(copyInstrument);
@@ -113,7 +113,7 @@ const Signup = () => {
             {
               // Ici on disabled le bouton + si pas d'instrument choisi
               // On ajoute un bouton  - à la ligne précédente si ajoute une ligne
-              // On limite le nombre de choix max du membre
+              // On limite le nombre de choix max du membre (ici 3 est le maximum)
               // A voir combien d'instruments maximum on pourrais choisir
               index < 3
                 && (index === instruments.length - 1
