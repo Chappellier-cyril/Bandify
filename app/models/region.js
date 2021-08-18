@@ -23,4 +23,4 @@ Region.init({
   tableName: "region"
 });
 
-module.exports = City;
+module.exports = Region;

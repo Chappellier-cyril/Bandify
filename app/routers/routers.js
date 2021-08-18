@@ -1,9 +1,9 @@
 const express = require('express')
-const memberController = require('../controllers/memberController')
+const memberController = require('../controllers/memberController');
+
 const router = express.Router();
 
-router.get('/', (req, res, next) => {
-    res.send('Hello World!');
-});
+router.route('/members')
+    .get(memberController.getAll);
 
 module.exports = router;

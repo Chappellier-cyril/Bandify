@@ -48,14 +48,19 @@ Member.init({
     type : DataTypes.TEXT,
     allowNull: true,
   },
-city_id : {
+  city_id : {
   type: DataTypes.INTEGER,
   allowNull: false,
       references: {
           model: 'City',
           key: 'id'
       }
-},
+ },
+  createdAt : {
+  type: DataTypes.INTEGER,
+  allowNull: false,
+    
+}, 
 }, 
 {
   sequelize: database,

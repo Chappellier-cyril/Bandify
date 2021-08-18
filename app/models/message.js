@@ -11,8 +11,8 @@ Message.init({
           notEmpty: true,
       }
   },
-  status: {
-    type: DataTypes.BOOL,
+    status: {
+    type: DataTypes.BOOLEAN,
     allowNull: false,
   },
   sender_id : {

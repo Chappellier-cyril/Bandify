@@ -1,12 +1,10 @@
-const { Sequelize} = require('sequelize');
+const { Sequelize } = require('sequelize');
 
 // 2. Créer une instance de sequelize
-const sequelize = new Sequelize({
-    dialect: 'postgres',
+const sequelize = new Sequelize(process.env.PG_URL, {
     define: {
-        timestamps: true
-    },
-});
+        timestamps: false
+      }
+    })
 
-// 3. Exporter l'instance de sequelize
 module.exports = sequelize;
