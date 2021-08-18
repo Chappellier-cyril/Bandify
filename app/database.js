@@ -1,4 +1,4 @@
-const { Sequelize } = require('sequelize');
+const { Sequelize} = require('sequelize');
 
 // 2. Créer une instance de sequelize
 const sequelize = new Sequelize({

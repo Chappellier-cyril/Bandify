@@ -1,35 +1,65 @@
-const CoreModel = require('./CoreModel');
+const database = require('../database');
+const { DataTypes, Model } = require('sequelize');
 
-class Member extends CoreModel {
-    lastname;
-    firstname;
-    birthdate;
-    email;
-    user_password;
-    user_description;
-    profil_image;
-    city_id;
+class Member extends Model {};
 
-    constructor(member) {
-        super(member.id);
-        this.lastname = member.lastname;
-        this.firstname = member.firstname;
-        this.birthdate = member.birthdate;
-        this.email = member.email;
-        this.user_password = member.user_password;
-        this.user_description = member.user_description;
-        this.profil_image = member.profil_image;
-        this.city_id = member.city_id;
+Member.init({
+  firstname: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+      validate: {
+          notEmpty: true
+      }
+  },
+  lastname: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+      validate: {
+          notEmpty: true
+      }
+  },
+  email: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+      unique: true,
+      validate: {
+          notEmpty: true
+      }
+  },
+  birthdate : {
+      type : DataTypes.DATE,
+      allowNull: false,
+      validate: {
+        notEmpty: true
     }
-}
-
-// const user1 = new User({
-//     id: 1,
-//     lastName: 'Constructor',
-//     firstName: 'Jean-Michel',
-//     email: 'jeanmichel_constructor@gmail.com',
-//     password: 'zhbgvzhkbvhkzbh'
-// });
+  },
+  user_password : {
+    type : DataTypes.TEXT,
+    allowNull: false,
+    validate: {
+        notEmpty: true
+    }
+  },
+  user_description: {
+    type : DataTypes.TEXT,
+    allowNull: true,
+  },
+  profil_image : {
+    type : DataTypes.TEXT,
+    allowNull: true,
+  },
+city_id : {
+  type: DataTypes.INTEGER,
+  allowNull: false,
+      references: {
+          model: 'City',
+          key: 'id'
+      }
+},
+}, 
+{
+  sequelize: database,
+  tableName: "member"
+});
 
 module.exports = Member;
-// module.exports = user1;

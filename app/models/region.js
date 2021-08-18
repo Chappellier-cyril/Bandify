@@ -1,17 +1,26 @@
-const CoreModel = require('./CoreModel');
+const database = require('../database');
+const { DataTypes, Model } = require('sequelize');
 
-class Region extends CoreModel {
-  region_name;
-  department_id;
-  code;
- 
-  constructor(region) {
-      super(region.id);
-      this.region_name = region.region_name;
-      this.code = region.code;
-      this.department_id = region.department_id;
-    
-  }
-};
+class Region extends Model {};
 
-module.exports = Region;
+Region.init({
+  region_name: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+      validate: {
+          notEmpty: true
+      }
+  },
+  code: {
+      type: DataTypes.INTEGER,
+      validate: {
+          isInt: true,
+      }
+  },
+  }, 
+  {
+  sequelize: database,
+  tableName: "region"
+});
+
+module.exports = City;

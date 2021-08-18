@@ -7,10 +7,10 @@ CREATE TABLE member (
 	firstname text NOT NULL,
     lastname text NOT NULL,
     email text NOT NULL UNIQUE,
-    birthdate DATE,
+    birthdate DATE NOT NULL,
     user_password text NOT NULL,
-    user_description text NOT NULL,
-    profil_image text NOT NULL,
+    user_description text,
+    profil_image text,
     created_at Timestamptz default now(),
     updated_at Timestamptz
 );
@@ -68,7 +68,7 @@ CREATE TABLE level (
 CREATE TABLE message (
 	id int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
 	content text NOT NULL,
-    statut BOOLEAN NOT NULL,
+    status INT NOT NULL,
     created_at Timestamptz default now(),
     updated_at Timestamptz,
     sender_id INT REFERENCES member(id),
@@ -77,7 +77,7 @@ CREATE TABLE message (
 
 CREATE TABLE invitation (
 	id int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-	statut INT NOT NULL,
+	status INT NOT NULL,
     created_at Timestamptz default now(),
     updated_at Timestamptz,
     request_user_id INT REFERENCES member(id),

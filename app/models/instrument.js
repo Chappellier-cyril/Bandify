@@ -1,12 +1,20 @@
-const CoreModel = require('./CoreModel');
+const database = require('../database');
+const { DataTypes, Model } = require('sequelize');
 
-class Instrument extends CoreModel {
-  instrument_name;
- 
-  constructor(instrument) {
-      super(instrument.id);
-      this.instrument_name = instrument.instrument_name;
-  }
-};
+class Instrument extends Model {};
+
+Instrument.init({
+  instrument_name: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+      validate: {
+          notEmpty: true
+      }
+  },
+}, 
+{
+  sequelize: database,
+  tableName: "instrument"
+});
 
 module.exports = Instrument;

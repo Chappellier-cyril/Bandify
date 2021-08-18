@@ -1,12 +1,17 @@
-const CoreModel = require('./CoreModel');
+const database = require('../database');
+const { DataTypes, Model } = require('sequelize');
 
-class MusicStyle extends CoreModel {
-  music_name;
+class MusicStyle extends Model {};
  
-  constructor(music_style) {
-      super(music_style.id);
-      this.music_name = music_style.music_name;
-  }
-};
+MusicStyle.init({
+  music_name: {
+    type: DataTypes.TEXT,
+    allowNull: false,
+  },
+},
+{
+  sequelize: database,
+  tableName: "music_style",
+});
 
 module.exports = MusicStyle;
