@@ -6,6 +6,10 @@ const musicStyleController = require('../controllers/musicStyleController');
 
 const router = express.Router();
 
+// login Route
+router.route('/login')
+    .post(memberController.loginMember)
+
 // SIGNUP Route
 router.route('/signup')
     .post(memberController.createMember);

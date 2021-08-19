@@ -90,8 +90,33 @@ const memberController = {
             console.trace(error);
             res.status(500).json(error);
         }
-    }
+    },
 
+    loginMember : async (req, res) => {
+
+      try { 
+          
+        const { email, password } = req.body;
+        console.log(req.body)
+
+        const members = await Member.findAll();
+        console.log(members)
+      
+        // authentication
+        const member = members.find(member => member.email === email && member.user_password === password)
+
+        if (member) {
+        res.json({ 
+          logged: true, 
+          pseudo: member.firstname,
+        });
+      }}
+       catch (error) {
+        console.log('<< 401 UNAUTHORIZED');
+        res.sendStatus(401);
+       }
+        }
+    
 };
 
 module.exports = memberController;
