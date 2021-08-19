@@ -47,7 +47,8 @@ const reducer = (state = initialState, action = {}) => {
         },
       };
 
-    case 'ON_LOGIN_SUCCESS':
+    case 'ON_LOGIN_SUCCESS': {
+      console.log('je passe bien dans le reducer au LOGIN_SUCCESS');
       return {
         ...state,
         user: {
@@ -63,13 +64,30 @@ const reducer = (state = initialState, action = {}) => {
           profil_image: action.data.profil_image,
         },
       };
-
+    }
     case 'ON_LOGIN_ERROR':
       return {
         ...state,
         user: {
           ...state.user,
           isError: true,
+        },
+      };
+    case 'ON_LOGOUT':
+      return {
+        ...state,
+        users: usersData,
+        user: {
+          ...state.user,
+          isLogged: false,
+          id: null,
+          firstname: '',
+          lastname: '',
+          email: '',
+          age: null,
+          password: '',
+          description: '',
+          profil_image: '',
         },
       };
 

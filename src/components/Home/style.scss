@@ -1,31 +1,36 @@
-.main {
-  text-align: center;
-  height: 70%;
-}
-
-.home__signup-btn {
-  background-color: lightgrey;
-  padding: 1rem 1.5rem;
-}
-
-.home__desc {
-  padding: 2rem 3rem;
-  margin: 0 auto;
-  width: 50%;
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-.home__cards {
-  display: flex;
-  width: 70%;
-  justify-content: space-between;
-  margin: 0 auto;
-
-  &-users {
-    width: 250px;
-    height: 300px;
-    margin: 3rem 1.5rem;
+@media screen and (max-width: 700px) {
+  .main {
+    text-align: center;
+    height: 80%;
+    margin-top: 100px;
+  }
+  
+  .home__signup-btn {
     background-color: lightgrey;
+    padding: 1rem 1.5rem;
+  }
+  
+  .home__desc {
+    padding: 2rem 3rem;
+    margin: 0 auto;
+    width: 100%;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .home__cards {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    justify-content: space-between;
+    margin: 0 auto;
+  
+    &-users {
+      width: 250px;
+      height: 300px;
+      margin: 3rem 1.5rem;
+      background-color: lightgrey;
+    }
   }
 }
+

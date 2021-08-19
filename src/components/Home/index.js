@@ -75,6 +75,7 @@ Home.propTypes = {
   onSearchChange: PropTypes.func.isRequired,
   onSearchSubmit: PropTypes.func.isRequired,
   searchValue: PropTypes.string.isRequired,
+  getMembers: PropTypes.func.isRequired,
 };
 Home.defaultProps = {
   users: [{
