@@ -47,6 +47,32 @@ const reducer = (state = initialState, action = {}) => {
         },
       };
 
+    case 'ON_LOGIN_SUCCESS':
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          isLogged: true,
+          id: action.data.id,
+          firstname: action.data.firstname,
+          lastname: action.data.lastname,
+          email: action.data.email,
+          age: action.data.birthdate,
+          password: action.data.user_password,
+          description: action.data.user_description,
+          profil_image: action.data.profil_image,
+        },
+      };
+
+    case 'ON_LOGIN_ERROR':
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          isError: true,
+        },
+      };
+
     default:
       return state;
   }
