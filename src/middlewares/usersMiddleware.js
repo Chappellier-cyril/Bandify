@@ -6,14 +6,13 @@ const usersMiddleware = (store) => (next) => (action) => {
   //   console.log('logged !');
   //   store.dispatch({ type: 'ON_LOGIN_SUCCESS' });
   // }
-  const options = {
-    method: 'GET',
-    url: 'http://localhost:3000/members',
-  };
+  if (action.type === 'GET_MEMBERS') {
+    axios.get('http://localhost:3000/members')
+      .then((response) => {
+        store.dispatch({ type: 'GET_MEMBERS_SUCCESS', users: response.data });
+      });
+  }
 
-  axios(options).then((response) => {
-    console.log(response.data);
-  });
   next(action);
 };
 

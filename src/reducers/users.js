@@ -47,6 +47,12 @@ const reducer = (state = initialState, action = {}) => {
         },
       };
 
+    case 'GET_MEMBERS_SUCCESS':
+      return {
+        ...state,
+        users: action.users,
+      };
+
     default:
       return state;
   }
