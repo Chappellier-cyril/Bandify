@@ -61,14 +61,14 @@ CREATE TABLE "instrument" (
     "updatedAt" Timestamptz
 );
 
-CREATE TABLE level (
+CREATE TABLE "level" (
 	"id" int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
 	"level_name" text NOT NULL,
 	"createdAt" Timestamptz NOT NULL default now(),
     "updatedAt" Timestamptz
 );
 
-CREATE TABLE message (
+CREATE TABLE "message" (
 	"id" int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
 	"content" text NOT NULL,
     "status" BOOLEAN NOT NULL,
