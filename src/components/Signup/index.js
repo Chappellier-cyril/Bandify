@@ -17,13 +17,13 @@ Avec Redux :
 
 const Signup = ({
   firstName, lastName, dateOfBirth, description, email, password, city, zipcode,
-  instruments, styles,
+  instruments, styles, departement, region,
   onChangeInput, onSelectInput, addNewInputInstrument, removeInputInstrument,
-  onStyleInput, addNewStyle, removeStyle,
+  onStyleInput, addNewStyle, removeStyle, handleSubmitSignup,
 }) => (
 // création des champs contrôlés pour les inputs du formulaire d'inscription grâce aux useState
 // le state instrument sera un tableau qui récupère l'instrument et le level dans un objet
-  <form type="submit">
+  <form type="submit" onSubmit={handleSubmitSignup} autoComplete="off">
     <div>
       <label htmlFor="firstName">
         Prénom
@@ -73,7 +73,7 @@ const Signup = ({
         // Prévoir de générer un id pour un code plus propre
         // eslint-disable-next-line react/no-array-index-key
         <div key={index}>
-          <select name={`instrument${index}`} id={`instrument${index}`} onChange={(e) => onSelectInput(e, index, 'instrument')} required disabled={instrument.instrument && index < instruments.length - 1}>
+          <select name={`instrument${index}`} id={`instrument${index}`} onChange={(e) => onSelectInput(e, index, 'instrument')} required={index === 0} disabled={instrument.instrument && index < instruments.length - 1}>
             <option value="">Choisir un instrument</option>
             {
               instrumentsData.map(({ name, id }) => <option value={id} key={id}>{name}</option>)
@@ -126,7 +126,13 @@ const Signup = ({
         </div>
       ))
     }
-    <Localisation city={city} zipcode={zipcode} onChangeInput={onChangeInput} />
+    <Localisation
+      city={city}
+      zipcode={zipcode}
+      departement={departement}
+      region={region}
+      onChangeInput={onChangeInput}
+    />
     <button type="submit">SUBMIT</button>
   </form>
 );
@@ -139,14 +145,15 @@ Signup.propTypes = {
   email: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
   city: PropTypes.string.isRequired,
-  // a voir pour le type du zipcode
-  zipcode: PropTypes.string,
+  departement: PropTypes.shape().isRequired,
+  region: PropTypes.shape().isRequired,
+  zipcode: PropTypes.string.isRequired,
   instruments: PropTypes.arrayOf(
     PropTypes.shape().isRequired,
   ).isRequired,
   styles: PropTypes.arrayOf(
     PropTypes.number,
-  ),
+  ).isRequired,
   onChangeInput: PropTypes.func.isRequired,
   onSelectInput: PropTypes.func.isRequired,
   addNewInputInstrument: PropTypes.func.isRequired,
@@ -154,10 +161,7 @@ Signup.propTypes = {
   onStyleInput: PropTypes.func.isRequired,
   addNewStyle: PropTypes.func.isRequired,
   removeStyle: PropTypes.func.isRequired,
-};
-Signup.defaultProps = {
-  styles: [0],
-  zipcode: '',
+  handleSubmitSignup: PropTypes.func.isRequired,
 };
 
 export default Signup;
