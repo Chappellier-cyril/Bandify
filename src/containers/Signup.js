@@ -21,11 +21,11 @@ const mapDispatchToProps = (dispatch) => ({
     @params setState => fonction du useState de l'input contrôlé
     @params event => récupère la valeur de l'input
   */
-  onChangeInput: (key, e) => {
+  onChangeInput: (key, value) => {
     dispatch({
       type: 'CHANGE_INPUT_SIGNUP',
       key,
-      value: e.target.value,
+      value,
     });
   },
   /* fonction pour copié l'instrument ou le level séléctionné dans l'objet associé

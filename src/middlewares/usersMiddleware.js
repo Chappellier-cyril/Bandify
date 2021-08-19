@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const authMiddleware = (store) => (next) => (action) => {
+const usersMiddleware = (store) => (next) => (action) => {
   // if (action.type === 'ON_LOGIN_SUBMIT') {
   //   const state = store.getState();
   //   console.log('logged !');
@@ -17,4 +17,4 @@ const authMiddleware = (store) => (next) => (action) => {
   next(action);
 };
 
-export default authMiddleware;
+export default usersMiddleware;
