@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import './Localisation.scss';
 
 const Localisation = ({
-  city, zipcode, onChangeInput,
+  city, onChangeInput,
 }) => {
   const [cities, setCities] = useState([]);
   const getCitiesFromAPI = () => {
@@ -35,8 +35,8 @@ const Localisation = ({
   };
   const getCityInfo = (e) => {
     console.log(e.target.innerHTML);
-    const foundCity = cities.find((cityState) => cityState.nom === e.target.innerHTML);
-    onChangeInput('city', foundCity.nom);
+    const foundCity = cities.find((cityState) => (`${cityState.departement.code} - ${cityState.nom.toUpperCase()}`) === e.target.innerHTML);
+    onChangeInput('city', foundCity.nom.toUpperCase());
     onChangeInput('zipcode', foundCity.codesPostaux[0]);
     onChangeInput('departement', foundCity.departement);
     onChangeInput('region', foundCity.region);
@@ -46,16 +46,20 @@ const Localisation = ({
   return (
     <div className="signup__localisation">
       <div className="autocompletion-city">
-        <input type="text" onChange={onChangeCity} onKeyUp={getCitiesFromAPI} placeholder="ville" value={city} autoComplete="off" />
+        <label htmlFor="city">
+          Ville
+          <input name="city" id="city" type="text" onChange={onChangeCity} onKeyUp={getCitiesFromAPI} placeholder="ville" value={city} autoComplete="off" />
+        </label>
+
         <ul className="autocompletion-city__ul">
           {
-                  cities.map((citySearch) => (
-                    <li className="autocompletion-city__ul__li" key={citySearch.code} onClick={getCityInfo}>{citySearch.nom}</li>
-                  ))
-                }
+            cities.map((citySearch) => (
+              <li className="autocompletion-city__ul__li" key={citySearch.code} onClick={getCityInfo}>{citySearch.departement.code} - {citySearch.nom.toUpperCase()}</li>
+            ))
+          }
         </ul>
       </div>
-      <input type="text" onChange={(e) => onChangeInput('zipcode', e.target.value)} placeholder="zipcode" value={zipcode} disabled />
+
     </div>
   );
 };
