@@ -42,7 +42,7 @@ const Login = ({
       {isLogged && <Redirect to="/" />}
       {/* Si la connexion échoue on affiche un message */}
       {isError && <p>E-mail ou Mot de passe incorrect</p>}
-      <form onSubmit={onFormSubmit} method="post">
+      <form onSubmit={onFormSubmit} method="post" className="login__form">
         <div>
           <input
             name="email"

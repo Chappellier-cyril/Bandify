@@ -12,7 +12,7 @@ const authMiddleware = (store) => (next) => (action) => {
       data: {
         // on vient chercher dans le state ce qui nous intéresse
         email: state.users.user.email,
-        user_password: state.users.user.password,
+        password: state.users.user.password,
       },
     };
 

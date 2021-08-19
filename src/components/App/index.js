@@ -5,8 +5,8 @@ import { Route, Switch } from 'react-router-dom';
 import Home from 'src/containers/Home';
 import Profile from 'src/containers/Profile';
 import Login from 'src/containers/Login';
+import Header from 'src/containers/Header';
 
-import Header from 'src/components/Header';
 import Contact from 'src/components/Contact';
 import About from 'src/components/About';
 import Footer from 'src/components/Footer';
