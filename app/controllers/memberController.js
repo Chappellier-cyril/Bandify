@@ -106,13 +106,13 @@ const memberController = {
         const member = members.find(member => member.email === email && member.user_password === password)
 
         if (member) {
-        res.json({ 
-          logged: true, 
-          pseudo: member.firstname,
+        res.json({  
+          email: member.email,
+          password: member.user_password
         });
       }}
        catch (error) {
-        console.log('<< 401 UNAUTHORIZED');
+        console.log('<< 401');
         res.sendStatus(401);
        }
         }
