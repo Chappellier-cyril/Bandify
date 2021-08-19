@@ -3,10 +3,11 @@ const memberController = require('../controllers/memberController');
 const instrumentController = require('../controllers/instrumentController');
 const levelController = require('../controllers/levelController');
 const musicStyleController = require('../controllers/musicStyleController');
+const associationController = require('../controllers/associationController');
 
 const router = express.Router();
 
-// login Route
+// LOGIN Route
 router.route('/login')
     .post(memberController.loginMember)
 
@@ -43,5 +44,11 @@ router.route('/musicstyles')
 
 router.route('/musicstyles/:id')
     .get(musicStyleController.getOneMusicStyle)
+
+
+// MEMBER HAS INSTRUMENT
+
+router.route('/members/:member_id/instruments/:instrument_id')
+    .post(associationController.MemberhasInstrument)
 
 module.exports = router;

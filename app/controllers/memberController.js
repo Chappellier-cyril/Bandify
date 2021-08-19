@@ -106,9 +106,14 @@ const memberController = {
         const member = members.find(member => member.email === email && member.user_password === password)
 
         if (member) {
-        res.json({  
+        res.json({
+          id: member.id,
           email: member.email,
-          password: member.user_password
+          password: member.user_password,
+          firstname: member.firstname,
+          lastname: member.lastname,
+          birthdate: member.birthdate,
+          profil_image: member.profil_image,
         });
       }}
        catch (error) {
