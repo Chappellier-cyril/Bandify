@@ -8,18 +8,23 @@ const authMiddleware = (store) => (next) => (action) => {
     const options = {
       method: 'POST',
       url: 'http://localhost:3000/login',
+      headers: {
+        'Content-Type': 'application/json',
+      },
       data: {
         // on vient chercher dans le state ce qui nous intéresse
         email: state.users.user.email,
         password: state.users.user.password,
       },
     };
-    axios(options).then((response) => {
-      console.log(response.data);
-      store.dispatch({ type: 'ON_LOGIN_SUCCESS', data: response.data });
-    }).catch(() => {
-      store.dispatch({ type: 'ON_LOGIN_ERROR' });
-    });
+
+    axios(options)
+      .then((response) => {
+        store.dispatch({ type: 'ON_LOGIN_SUCCESS', data: response.data });
+      })
+      .catch(() => {
+        store.dispatch({ type: 'ON_LOGIN_ERROR' });
+      });
   }
   else {
     next(action);

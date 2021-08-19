@@ -58,8 +58,8 @@ const reducer = (state = initialState, action = {}) => {
           lastname: action.data.lastname,
           email: action.data.email,
           age: action.data.birthdate,
-          password: action.data.user_password,
-          description: action.data.user_description,
+          password: action.data.password,
+          description: action.data.description,
           profil_image: action.data.profil_image,
         },
       };
