@@ -1,0 +1,18 @@
+.autocompletion-city{
+    cursor: pointer;
+    position: relative;
+    &__ul{
+        width: 100%;
+        background-color: #fff;
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        &__li{
+            border-bottom: solid 1px #ccc;
+        }
+    }
+}
+.signup__localisation{
+    display: flex;
+}

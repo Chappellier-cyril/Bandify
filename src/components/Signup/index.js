@@ -6,6 +6,7 @@ import './style.scss';
 import instrumentsData from 'src/data/instruments';
 import levelsData from 'src/data/levels';
 import musicStylesData from 'src/data/music_styles';
+import Localisation from './Localisation';
 
 /*
 Avec Redux :
@@ -26,37 +27,37 @@ const Signup = ({
     <div>
       <label htmlFor="firstName">
         Prénom
-        <input name="firstName" id="firstName" type="text" value={firstName} onChange={(e) => onChangeInput('firstName', e)} placeholder="Prénom" required />
+        <input name="firstName" id="firstName" type="text" value={firstName} onChange={(e) => onChangeInput('firstName', e.target.value)} placeholder="Prénom" required />
       </label>
     </div>
     <div>
       <label htmlFor="lastName">
         Nom
-        <input name="lastName" id="lastName" type="text" value={lastName} onChange={(e) => onChangeInput('lastName', e)} placeholder="Nom" required />
+        <input name="lastName" id="lastName" type="text" value={lastName} onChange={(e) => onChangeInput('lastName', e.target.value)} placeholder="Nom" required />
       </label>
     </div>
     <div>
       <label htmlFor="dateOfBirth">
         Date de naissance
-        <input name="dateOfBirth" id="dateOfBirth" type="date" value={dateOfBirth} onChange={(e) => onChangeInput('dateOfBirth', e)} required />
+        <input name="dateOfBirth" id="dateOfBirth" type="date" value={dateOfBirth} onChange={(e) => onChangeInput('dateOfBirth', e.target.value)} required />
       </label>
     </div>
     <div>
       <label htmlFor="email">
         Adresse email
-        <input name="email" id="email" type="email" value={email} onChange={(e) => onChangeInput('email', e)} placeholder="Email" required />
+        <input name="email" id="email" type="email" value={email} onChange={(e) => onChangeInput('email', e.target.value)} placeholder="Email" required />
       </label>
     </div>
     <div>
       <label htmlFor="password">
         Mot de passe
-        <input name="password" id="password" type="password" value={password} onChange={(e) => onChangeInput('password', e)} placeholder="Mot de passe" required />
+        <input name="password" id="password" type="password" value={password} onChange={(e) => onChangeInput('password', e.target.value)} placeholder="Mot de passe" required />
       </label>
     </div>
     <div>
       <label htmlFor="description">
         Description
-        <textarea name="description" id="description" type="text" value={description} onChange={(e) => onChangeInput('description', e)} placeholder="Faire une courte description de vous" />
+        <textarea name="description" id="description" type="text" value={description} onChange={(e) => onChangeInput('description', e.target.value)} placeholder="Faire une courte description de vous" />
       </label>
     </div>
     <div>
@@ -125,21 +126,7 @@ const Signup = ({
         </div>
       ))
     }
-    <div>
-      {
-        // TODO autocompletion des villes
-      }
-      <label htmlFor="city">
-        City
-        <input name="city" id="city" type="text" value={city} onChange={(e) => onChangeInput('city', e)} placeholder="Ville" required />
-      </label>
-    </div>
-    <div>
-      <label htmlFor="zipcode">
-        Code Postal
-        <input name="zipcode" id="zipcode" type="text" value={zipcode} onChange={(e) => onChangeInput('zipcode', e)} placeholder="Code Postal" required />
-      </label>
-    </div>
+    <Localisation city={city} zipcode={zipcode} onChangeInput={onChangeInput} />
     <button type="submit">SUBMIT</button>
   </form>
 );
