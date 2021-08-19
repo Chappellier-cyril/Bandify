@@ -112,7 +112,7 @@ const memberController = {
           password: member.user_password,
           firstname: member.firstname,
           lastname: member.lastname,
-          description: member.description,
+          description: member.user_description,
           birthdate: member.birthdate,
           profil_image: member.profil_image,
         });
