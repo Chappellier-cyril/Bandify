@@ -56,10 +56,17 @@ Member.init({
           key: 'id'
       }
  },
-}, 
-{
+}, {
+  defaultScope: {
+    include: [{
+      association: 'instruments',
+      include: 'instrument_level'
+    }],
+     
+  },
   sequelize: database,
   tableName: "member"
+  
 });
 
 module.exports = Member;

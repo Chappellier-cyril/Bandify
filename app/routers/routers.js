@@ -48,7 +48,7 @@ router.route('/musicstyles/:id')
 
 // MEMBER HAS INSTRUMENT
 
-router.route('/members/:member_id/instruments/:instrument_id')
+router.route('/members/member_instrument')
     .post(associationController.MemberhasInstrument)
 
 module.exports = router;

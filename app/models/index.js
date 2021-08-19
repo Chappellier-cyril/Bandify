@@ -9,6 +9,7 @@ const Message = require('./message');
 const Invitation = require('./invitation');
 
 // 1,N
+// A checker plus tard invitation / messages
 Member.hasMany(Message, {
     foreignKey: 'receiver_id',
     otherKey: 'sender_id',
@@ -35,49 +36,49 @@ Invitation.belongsTo(Member, {
 });
 // 1,1
 Member.belongsTo(City, {
-    foreignKey: 'city_id',
+    foreignKey: 'member_id',
     as: 'member_city'
 });
 // 1,1
 City.belongsTo(Department, {
-    foreignKey: 'department_id',
+    foreignKey: 'city_id',
     as: 'department'
 });
 // 1,1
 Department.belongsTo(Region, {
-    foreignKey: 'region_id',
+    foreignKey: 'department_id',
     as: 'region'
 });
 
 // N,N
 Member.belongsToMany(Instrument, {
     through: 'user_has_instrument_level',
-    foreignKey: 'instrument_id',
-    otherKey: 'member_id',
+    foreignKey: 'member_id',
+    otherKey: 'instrument_id',
     as: 'instruments',
 });
 
 // N,N
 Instrument.belongsToMany(Member, {
     through: 'user_has_instrument_level',
-    otherKey: 'instrument_id',
-    foreignKey: 'member_id',
+    otherKey: 'member_id',
+    foreignKey: 'instrument_id',
     as: 'instruments_member',
 });
 
 // N,N
 Member.belongsToMany(Level, {
     through: 'user_has_instrument_level',
-    otherKey: 'member_id',
-    foreignKey: 'user_id',
+    otherKey: 'level_id',
+    foreignKey: 'member_id',
     as: 'member_level',
 });
 
 // N,N
 Level.belongsToMany(Member, {
     through: 'user_has_instrument_level',
-    otherKey: 'level_id',
-    foreignKey: 'member_id',
+    otherKey: 'member_id',
+    foreignKey: 'level_id',
     as: 'level_member',
 });
 

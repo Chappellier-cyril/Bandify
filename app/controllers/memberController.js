@@ -93,8 +93,6 @@ const memberController = {
     },
 
     loginMember : async (req, res) => {
-
-      try { 
           
         const { email, password } = req.body;
         console.log(req.body)
@@ -116,12 +114,13 @@ const memberController = {
           birthdate: member.birthdate,
           profil_image: member.profil_image,
         });
-      }}
-       catch (error) {
-        console.log('<< 401');
-        res.sendStatus(401);
-       }
-        }
+      } else {
+            console.log('<< 401');
+            res.sendStatus(401);
+           }
+      }
+       
+        
     
 };
 

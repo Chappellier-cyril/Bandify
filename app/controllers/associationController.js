@@ -7,12 +7,15 @@ const associationController = {
     MemberhasInstrument: async (req, res, next) => {
         try {
             
-            const { member_id, instrument_id } = req.params;
-
-            const member = await Member.findByPk(member_id);
+            const { member_id, instrument_id } = req.body;
+            console.log(req.body)
+            console.log(Number(member_id))
+            console.log(instrument_id)
+            
+            const member = await Member.findByPk(Number(member_id));
             // console.log(member);
-            const instrument = await Instrument.findByPk(instrument_id);
-            console.log(instrument.dataValues);
+            const instrument = await Instrument.findByPk(Number(instrument_id));
+            // console.log(instrument.dataValues);
 
             if (!member || !instrument) {
                 return next();
