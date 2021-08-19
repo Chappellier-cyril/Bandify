@@ -15,6 +15,9 @@ const mapDispatchToProps = (dispatch) => ({
     evt.preventDefault();
     dispatch({ type: 'ON_SEARCH_SUBMIT' });
   },
+  getMembers: () => {
+    dispatch({ type: 'GET_MEMBERS' });
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

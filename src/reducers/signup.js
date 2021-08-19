@@ -7,6 +7,8 @@ export const initialState = {
   password: '',
   city: '',
   zipcode: '',
+  departement: {},
+  region: {},
   instruments: [{}],
   styles: [0],
 };

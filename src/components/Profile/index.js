@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 const Profile = ({
   match, params, users, user, isLogged,
