@@ -2,7 +2,7 @@ const { Member } = require('../models');
 
 const memberController = {
     // Get all members
-    getAll: async (req, res, next) => {
+    getAllMembers: async (req, res, next) => {
         try {
             const members = await Member.findAll();
             res.json(members);
@@ -13,7 +13,7 @@ const memberController = {
     },
 
     // Get one member
-    getOne: async (req, res, next) => {
+    getOneMember: async (req, res, next) => {
         try {
             const targetId = req.params.id;
 
@@ -32,7 +32,7 @@ const memberController = {
     },
 
     // Create a member
-    create: async (req, res, next) => {
+    createMember: async (req, res, next) => {
         try {
             // req.body contient les informations nécessaires pour créer 
             // un nouveau membre
@@ -47,7 +47,7 @@ const memberController = {
         }
     },
 
-    updateOne: async (req, res, next) => {
+    updateOneMember: async (req, res, next) => {
         try {
             // On utilise l'id de la cible, dans les params d'url
             const targetId = req.params.id;
@@ -69,7 +69,7 @@ const memberController = {
         }
     },
 
-    deleteOne: async (req, res, next) => {
+    deleteOneMember: async (req, res, next) => {
         try {
             const targetId = req.params.id;
 

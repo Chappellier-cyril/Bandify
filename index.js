@@ -7,7 +7,8 @@ const router = require('./app/routers/routers');
 const app = express();
 app.use(express.json());
 
-app.use( cors('*') );
+// A Modifier pour la sécurité a voir pour la suite
+//app.use( cors('*') );
    
 app.use(express.urlencoded({extended: true})); 
 
