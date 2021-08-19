@@ -4,11 +4,8 @@ const memberController = {
     // Get all members
     getAll: async (req, res, next) => {
         try {
-
             const members = await Member.findAll();
-            
             res.json(members);
-
         } catch (error) {
             console.trace(error);
             res.status(500).json(error);
