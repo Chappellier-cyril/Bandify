@@ -47,9 +47,11 @@ const memberController = {
         try {
             // req.body contient les informations nécessaires pour créer 
             // un nouveau membre
+            // On lui hash le password
              const passwordHashed = await bcrypt.hash(req.body.user_password, 10);
             //  console.log(request.body.user_password);
-            console.log(passwordHashed);
+           
+            // On crée un user avec un passwordHashed
             const newMember = await Member.create({
                firstname: req.body.firstname,
                lastname: req.body.lastname,
@@ -59,12 +61,9 @@ const memberController = {
                city_id: req.body.city_id,
                
             });
-            
-            //  const newMember = await Member.create(req.body);
-            
-            
 
-           res.json(newMember);
+            // On lui renvoie
+              res.json(newMember);
 
         } catch (error) {
             console.trace(error);
@@ -130,22 +129,21 @@ const memberController = {
           
         // const { email, password } = req.body;
 
+        // On filtre l'email avec ce qu'on reçoit du body
         const member = await Member.findOne({
             where: {
                 email: req.body.email
             }
         });
-        
-        // console.log(req.body)
+    
         // authentication
+        // On compare avec bcrypt les mot de passes
         const passwordIsValid = await bcrypt.compare(
                 req.body.user_password,
                 member.user_password
              ); 
              
-            
         if(!passwordIsValid || !member) {
-            console.log(passwordIsValid);
 
             return res.json({
                 error: true,
@@ -154,16 +152,17 @@ const memberController = {
              
         // const member = members.find(member => member.email === email && member.user_password === password)
 
+        // JWT Config
         if (member) {
         const jwtContent = { memberId: member.id };
         const jwtOptions = { 
         algorithm: 'HS256', 
         expiresIn: '3h' 
     };
+        // Envoie au front 
         res.json({
           id: member.id,
           email: member.email,
-          password: member.user_password,
           firstname: member.firstname,
           lastname: member.lastname,
           description: member.user_description,
