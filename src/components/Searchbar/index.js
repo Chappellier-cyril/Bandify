@@ -92,7 +92,11 @@ const Searchbar = ({
     </div>
   );
 };
-
+Searchbar.defaultProps = {
+  instruments: [{ instrument_name: '' }],
+  levels: [{ level_name: '' }],
+  musicstyles: [{ music_name: '' }],
+};
 Searchbar.propTypes = {
   onSearchChange: PropTypes.func.isRequired,
   onSearchSubmit: PropTypes.func.isRequired,
@@ -104,14 +108,14 @@ Searchbar.propTypes = {
   getLevels: PropTypes.func.isRequired,
   getMusicStyles: PropTypes.func.isRequired,
   instruments: PropTypes.arrayOf(shape({
-    instrument_name: PropTypes.string.isRequired,
-  }).isRequired).isRequired,
+    instrument_name: PropTypes.string,
+  })),
   levels: PropTypes.arrayOf(shape({
-    level_name: PropTypes.string.isRequired,
-  }).isRequired).isRequired,
+    level_name: PropTypes.string,
+  })),
   musicstyles: PropTypes.arrayOf(shape({
-    music_name: PropTypes.string.isRequired,
-  }).isRequired).isRequired,
+    music_name: PropTypes.string,
+  })),
 
 };
 
