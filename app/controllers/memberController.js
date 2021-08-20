@@ -1,10 +1,14 @@
-const { Member } = require('../models');
+const { Member, Play, Instrument, Level } = require('../models');
 
 const memberController = {
     // Get all members
     getAllMembers: async (req, res, next) => {
         try {
-            const members = await Member.findAll();
+            const members = await Member.findAll({
+                include: ['member_city', {
+                    association: 'plays',
+                    include: ['instrument', 'level']
+            }]});
             res.json(members);
         } catch (error) {
             console.trace(error);

@@ -1,4 +1,9 @@
 BEGIN;
+INSERT INTO member ("firstname", "lastname", "email", "birthdate" , "user_password", "user_description", "profil_image", "city_id") VALUES
+('Cyril', 'Chappellier', 'cyril-c@gmail.com','1990-01-09' , 'azerty123', 'Je recherche un groupe de metal pour faire de la guitare éléctrique', './upload/images/cyril.jpeg', 1),
+('Jeremy', 'Marques', 'jeremy-m@gmail.com','1989-12-12' , 'azerty123', 'Guitariste confirmé, je recherche un batteur et un bassiste, pour monter un groupe de musique alternative', './upload/images/cyril-c.jpeg', 3),
+('Arnaud', 'Ferreira', 'arnaud-m@gmail.com','1991-08-31' , 'azerty123', 'Pianiste amateur, je cherche un groupe de salsa', './upload/images/arnaud-f.jpeg', 1),
+('Baptiste', 'Champbenoit', 'baptiste-c@gmail.com','1988-02-10' , 'azerty123', 'Dj, je cherche des samples pour composition de musique electro', './upload/images/baptiste-c.jpeg',2);
 
 INSERT INTO message ("content", "status", "sender_id", "reicever_id") VALUES
 ('Hello', false, 1, 2),

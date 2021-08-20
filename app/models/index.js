@@ -7,98 +7,124 @@ const Instrument = require('./instrument');
 const Level = require('./level');
 const Message = require('./message');
 const Invitation = require('./invitation');
+const Play = require('./play');
 
-// 1,N
-// A checker plus tard invitation / messages
+// 1,N entre member et message
+Member.hasMany(Message, {
+    foreignKey: 'sender_id',
+    as: 'OutgoingMessage'
+});
+
 Member.hasMany(Message, {
     foreignKey: 'receiver_id',
-    otherKey: 'sender_id',
-    as: 'messages'
+    as: 'IncomingMessage'
 });
 
-// 1,N
-Member.hasMany(Invitation, {
-    foreignKey: 'user_id',
-    as: 'invitations'
-});
-
-// 1,1
+// 1,1 entre message et member
 Message.belongsTo(Member, {
     foreignKey: 'sender_id',
-    otherKey: 'receiver_id',
-    as: 'member_message'
+    as: 'Sender'
 });
 
-// 1,1
-Invitation.belongsTo(Member, {
-    foreignKey: 'user_id',
-    as: 'member_invitation'
+Message.belongsTo(Member, {
+    foreignKey: 'receiver_id',
+    as: 'Receiver'
 });
-// 1,1
+
+// 1,N entre member et invitation
+Member.hasMany(Invitation, {
+    foreignKey: 'sender_id',
+    as: 'OutgoingInvitation'
+});
+
+Member.hasMany(Invitation, {
+    foreignKey: 'receiver_id',
+    as: 'IncomingInvitation'
+});
+
+// 1,1 entre invitation et member
+Invitation.belongsTo(Member, {
+    foreignKey: 'sender_id',
+    as: 'InvitationSender'
+});
+
+Invitation.belongsTo(Member, {
+    foreignKey: 'receiver_id',
+    as: 'InvitationReceiver'
+});
+
+// 1,N entre member et city
+
+City.hasMany(Member, {
+    foreignKey: 'city_id',
+    as: 'members'
+})
+
+// 1,1 entre member et city
 Member.belongsTo(City, {
-    foreignKey: 'member_id',
+    foreignKey: 'city_id',
     as: 'member_city'
 });
-// 1,1
+
+// 1,1 entre city et département
+
 City.belongsTo(Department, {
-    foreignKey: 'city_id',
-    as: 'department'
-});
-// 1,1
-Department.belongsTo(Region, {
     foreignKey: 'department_id',
+    as: 'department'
+})
+
+// 1,N entre département et city
+Department.hasMany(City, {
+    foreignKey: 'department_id',
+    as: 'department_city'
+});
+
+// 1,1 entre département et région
+
+Department.belongsTo(Region, {
+    foreignKey: 'region_id',
     as: 'region'
+})
+
+// 1,N entre région et département
+Region.hasMany(Department, {
+    foreignKey: 'region_id',
+    as: 'region_department'
 });
 
 // N,N
-Member.belongsToMany(Instrument, {
-    through: 'user_has_instrument_level',
+
+Member.hasMany(Play, {
     foreignKey: 'member_id',
-    otherKey: 'instrument_id',
-    as: 'instruments',
+    otherKey: 'play_id',
+    as : 'plays'
 });
-
-// N,N
-Instrument.belongsToMany(Member, {
-    through: 'user_has_instrument_level',
-    otherKey: 'member_id',
-    foreignKey: 'instrument_id',
-    as: 'instruments_member',
-});
-
-// N,N
-Member.belongsToMany(Level, {
-    through: 'user_has_instrument_level',
-    otherKey: 'level_id',
+Play.belongsTo(Member, {
+    targetKey: 'id',
     foreignKey: 'member_id',
-    as: 'member_level',
+    as: 'member'
 });
 
-// N,N
-Level.belongsToMany(Member, {
-    through: 'user_has_instrument_level',
-    otherKey: 'member_id',
-    foreignKey: 'level_id',
-    as: 'level_member',
-});
-
-// N,N
-Level.belongsToMany(Instrument, {
-    through: 'user_has_instrument_level',
-    otherKey: 'instrument_id',
-    foreignKey: 'level_id',
-    as: 'level_instrument',
-});
-
-// N,N
-Instrument.belongsToMany(Level, {
-    through: 'user_has_instrument_level',
-    otherKey: 'level_id',
+Instrument.hasMany(Play, {
     foreignKey: 'instrument_id',
-    as: 'instrument_level',
+    otherKey: 'play_id',
+    as : 'plays'
 });
-
-
+Play.belongsTo(Instrument, {
+    targetKey: 'id',
+    foreignKey: 'instrument_id',
+    as: 'instrument'
+});
+Level.hasMany(Play, {
+    foreignKey: 'level_id',
+    otherKey: 'play_id',
+    as : 'plays'
+});
+Play.belongsTo(Level, {
+    targetKey: 'id',
+    foreignKey: 'level_id',
+    as: 'level'
+});
 
 //N,N
 MusicStyle.belongsToMany(Member, {
@@ -125,5 +151,6 @@ module.exports = {
     Instrument, 
     Level, 
     Message, 
-    Invitation
+    Invitation,
+    Play
 };

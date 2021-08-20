@@ -90,20 +90,21 @@ CREATE TABLE "invitation" (
 );
 
 CREATE TABLE "user_has_instrument_level" (
+    "id" int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "member_id" INT NOT NULL REFERENCES "member"("id"),
     "instrument_id" INT NOT NULL REFERENCES "instrument"("id"),
     "level_id" INT REFERENCES "level"("id"),
 	"createdAt" Timestamptz NOT NULL default now(),
-    "updatedAt" Timestamptz,
-    PRIMARY KEY ("member_id", "instrument_id", "level_id")
+    "updatedAt" Timestamptz
+
 );
 
 CREATE TABLE "appreciate_music_style" (
     "member_id" INT NOT NULL REFERENCES "member"("id"),
     "music_style_id" INT NOT NULL REFERENCES "music_style"("id"),
 	"createdAt" Timestamptz NOT NULL default now(),
-    "updatedAt" Timestamptz,
-    PRIMARY KEY ("member_id", "music_style_id")
+    "updatedAt" Timestamptz
+
 );
 
 COMMIT;

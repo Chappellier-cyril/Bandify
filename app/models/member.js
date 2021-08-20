@@ -57,13 +57,6 @@ Member.init({
       }
  },
 }, {
-  defaultScope: {
-    include: [{
-      association: 'instruments',
-      include: 'instrument_level'
-    }],
-     
-  },
   sequelize: database,
   tableName: "member"
   
