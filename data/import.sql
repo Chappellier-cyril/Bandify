@@ -4,19 +4,6 @@ BEGIN;
 
 DROP TABLE IF EXISTS "member", "region", "department", "city", "music_style", "instrument", "level", "message", "invitation", "user_has_instrument_level", "appreciate_music_style";
 
-CREATE TABLE "member" (
-	"id" int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-	"firstname" text NOT NULL,
-    "lastname" text NOT NULL,
-    "email" text NOT NULL UNIQUE,
-    "birthdate" DATE,
-    "user_password" text NOT NULL,
-    "user_description" text,
-    "profil_image" text,
-    "createdAt" Timestamptz NOT NULL default now(),
-    "updatedAt" Timestamptz NOT NULL default now()
-);
-
 CREATE TABLE "region" (
 	"id" int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
 	"region_name" text NOT NULL UNIQUE,
@@ -34,7 +21,6 @@ CREATE TABLE "department" (
     "updatedAt" Timestamptz NOT NULL default now()
 );
 
-
 CREATE TABLE "city" (
 	"id" int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
 	"city_name" text NOT NULL UNIQUE,
@@ -45,7 +31,19 @@ CREATE TABLE "city" (
     
 );
 
-
+CREATE TABLE "member" (
+	"id" int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+	"firstname" text NOT NULL,
+    "lastname" text NOT NULL,
+    "email" text NOT NULL UNIQUE,
+    "birthdate" DATE,
+    "user_password" text NOT NULL,
+    "user_description" text,
+    "profil_image" text,
+    "city_id" INT REFERENCES city(id),
+    "createdAt" Timestamptz NOT NULL default now(),
+    "updatedAt" Timestamptz NOT NULL default now()
+);
 
 CREATE TABLE "music_style" (
 	"id" int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,

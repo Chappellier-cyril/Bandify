@@ -8,7 +8,7 @@ const app = express();
 app.use(express.json());
 
 // A Modifier pour la sécurité a voir pour la suite
-//app.use( cors('*') );
+app.use( cors('*') );
    
 app.use(express.urlencoded({extended: true})); 
 
