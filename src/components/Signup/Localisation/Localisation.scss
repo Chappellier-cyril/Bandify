@@ -1,6 +1,10 @@
 .autocompletion-city{
     cursor: pointer;
     position: relative;
+    &__hidden-parts{
+        display: none;
+        visibility: hidden;
+    }
     &__ul{
         width: 100%;
         background-color: #fff;
@@ -10,6 +14,7 @@
         justify-content: flex-start;
         &__li{
             border-bottom: solid 1px #ccc;
+
         }
     }
 }

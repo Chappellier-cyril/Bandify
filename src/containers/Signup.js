@@ -13,6 +13,9 @@ const mapStateToProps = (state) => ({
   zipcode: state.signup.zipcode,
   instruments: state.signup.instruments,
   styles: state.signup.styles,
+  departement: state.signup.departement,
+  region: state.signup.region,
+  image: state.signup.image,
 
 });
 
@@ -70,6 +73,11 @@ const mapDispatchToProps = (dispatch) => ({
       type: 'REMOVE_MUSIC_STYLE_INPUT_SIGNUP',
       index,
     });
+  },
+  handleSubmitSignup: (e) => {
+    e.preventDefault();
+    console.log(e.target[6].files[0]);
+    dispatch({ type: 'SUBMIT_SIGNUP', image: e.target[6].files[0] });
   },
 });
 

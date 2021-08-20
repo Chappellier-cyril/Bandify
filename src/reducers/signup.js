@@ -7,8 +7,14 @@ export const initialState = {
   password: '',
   city: '',
   zipcode: '',
-  departement: {},
-  region: {},
+  departement: {
+    code: '',
+    nom: '',
+  },
+  region: {
+    code: '',
+    nom: '',
+  },
   instruments: [{}],
   styles: [0],
 };
@@ -72,6 +78,7 @@ const reducer = (state = initialState, action = {}) => {
         styles: copyStyles,
       };
     }
+    case 'SUBMIT_SIGNUP':
     default:
       return state;
   }
