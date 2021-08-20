@@ -1,4 +1,4 @@
-const express = require('express')
+const express = require('express');
 const memberController = require('../controllers/memberController');
 const instrumentController = require('../controllers/instrumentController');
 const levelController = require('../controllers/levelController');
@@ -7,13 +7,13 @@ const associationController = require('../controllers/associationController');
 
 const router = express.Router();
 
-// LOGIN Route
-router.route('/login')
-    .post(memberController.loginMember)
-
 // SIGNUP Route
 router.route('/signup')
     .post(memberController.createMember);
+
+// LOGIN Route
+router.route('/login')
+    .post(memberController.loginMember);
 
 // MEMBERS Routes
 router.route('/members')
@@ -26,29 +26,29 @@ router.route('/members/:id')
 
 // INSTRUMENTS Routes
 router.route('/instruments')
-    .get(instrumentController.getAllInstruments)
+    .get(instrumentController.getAllInstruments);
 
 router.route('/instruments/:id')
-    .get(instrumentController.getOneInstrument)
+    .get(instrumentController.getOneInstrument);
 
 // LEVELS Routes
 router.route('/levels')
-    .get(levelController.getAllLevel)
+    .get(levelController.getAllLevel);
 
 router.route('/levels/:id')
-    .get(levelController.getOneLevel)
+    .get(levelController.getOneLevel);
 
 // MUSIC_STYLES Routes
 router.route('/musicstyles')
-    .get(musicStyleController.getAllMusicStyles)
+    .get(musicStyleController.getAllMusicStyles);
 
 router.route('/musicstyles/:id')
-    .get(musicStyleController.getOneMusicStyle)
+    .get(musicStyleController.getOneMusicStyle);
 
 
 // MEMBER HAS INSTRUMENT
 
 router.route('/members/member_instrument')
-    .post(associationController.MemberhasInstrument)
+    .post(associationController.MemberhasInstrument);
 
 module.exports = router;
