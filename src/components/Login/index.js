@@ -47,7 +47,7 @@ const Login = ({
           <input
             name="email"
             type="text"
-            value={email}
+            value={email.trim()}
             onChange={(e) => onChangeInput('email', e.target.value)}
             placeholder="E-mail"
             required
@@ -58,7 +58,7 @@ const Login = ({
             name="password"
             // Si l'oeil est cliqué on affiche le mot de passe sinon on laisse en type password
             type={passwordShown ? 'text' : 'password'}
-            value={password}
+            value={password.trim()}
             onChange={(e) => onChangeInput('password', e.target.value)}
             placeholder="Mot de passe"
             required

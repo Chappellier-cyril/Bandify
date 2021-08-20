@@ -48,12 +48,12 @@ const reducer = (state = initialState, action = {}) => {
       };
 
     case 'ON_LOGIN_SUCCESS': {
-      console.log('je passe bien dans le reducer au LOGIN_SUCCESS');
       return {
         ...state,
         user: {
           ...state.user,
           isLogged: true,
+          isError: false,
           id: action.data.id,
           firstname: action.data.firstname,
           lastname: action.data.lastname,
@@ -71,6 +71,8 @@ const reducer = (state = initialState, action = {}) => {
         user: {
           ...state.user,
           isError: true,
+          isLogged: false,
+          password: '',
         },
       };
     case 'ON_LOGOUT':
@@ -80,6 +82,7 @@ const reducer = (state = initialState, action = {}) => {
         user: {
           ...state.user,
           isLogged: false,
+          isError: false,
           id: null,
           firstname: '',
           lastname: '',
