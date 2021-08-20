@@ -78,7 +78,7 @@ const reducer = (state = initialState, action = {}) => {
         styles: copyStyles,
       };
     }
-    case 'SUBMIT_SIGNUP':
+
     default:
       return state;
   }
