@@ -4,7 +4,7 @@ import Profile from 'src/components/Profile';
 const mapStateToProps = (state) => ({
   users: state.users.users,
   user: state.users.user,
-  isLogged: state.users.isLogged,
+  connectedUserId: state.login.id,
 });
 
 // const mapDispatchToProps = (dispatch) => ({

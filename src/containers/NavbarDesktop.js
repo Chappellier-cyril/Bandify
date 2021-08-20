@@ -2,7 +2,8 @@ import { connect } from 'react-redux';
 import NavbarDesktop from 'src/components/NavbarDesktop';
 
 const mapStateToProps = (state) => ({
-  user: state.users.user,
+  connectedUserId: state.login.id,
+  isLogged: state.login.isLogged,
 });
 
 const mapDispatchToProps = (dispatch) => ({

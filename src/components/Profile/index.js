@@ -1,8 +1,10 @@
 import React from 'react';
 import './style.scss';
 
+// TODO => PropTypes
+
 const Profile = ({
-  match, users, user,
+  match, users, user, connectedUserId,
 }) => {
 // on récupère l'id de la query via l'objet props et ses propriétées match, params
   const queryId = parseInt(match.params.profileId, 10);
@@ -14,7 +16,7 @@ const Profile = ({
 
   return (
     <div className="profile__page">
-      {foundMember.id !== user.id ? (
+      {foundMember.id !== connectedUserId ? (
         <div className="profile">
           <div className="profile__card">
             <h1>{memberFullName}</h1>
@@ -49,4 +51,9 @@ const Profile = ({
     </div>
   );
 };
+
+Profile.defaultProps = {
+  connectedUserId: 0,
+};
+
 export default Profile;

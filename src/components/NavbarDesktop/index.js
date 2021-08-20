@@ -5,16 +5,16 @@ import PropTypes from 'prop-types';
 import './style.scss';
 
 const NavbarDesktop = ({
-  user, onLogout,
+  connectedUserId, onLogout, isLogged,
 }) => (
 
   <nav className="desktop__nav">
     <Link to="/" className="desktop__nav-link">
       Accueil
     </Link>
-    {user.isLogged ? (
+    {isLogged ? (
       <>
-        <Link to={`/member/${user.id}`} className="desktop__nav-link">
+        <Link to={`/member/${connectedUserId}`} className="desktop__nav-link">
           Mon profil
         </Link>
         <Link to="/" onClick={onLogout} className="desktop__nav-link">
@@ -35,8 +35,13 @@ const NavbarDesktop = ({
 );
 
 NavbarDesktop.propTypes = {
-  user: PropTypes.object.isRequired,
+  connectedUserId: PropTypes.number,
+  isLogged: PropTypes.bool.isRequired,
   onLogout: PropTypes.func.isRequired,
+};
+
+NavbarDesktop.defaultProps = {
+  connectedUserId: 0,
 };
 
 export default NavbarDesktop;
