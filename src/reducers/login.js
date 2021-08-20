@@ -5,6 +5,7 @@ export const initialState = {
   isLogged: false,
   isError: false,
   passwordShown: false,
+  token: null,
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -28,6 +29,7 @@ const reducer = (state = initialState, action = {}) => {
         isLogged: true,
         isError: false,
         email: action.data.email,
+        token: action.data.token,
       };
     }
 

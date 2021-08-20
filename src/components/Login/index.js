@@ -14,26 +14,10 @@ const Login = ({
   handleSubmit,
   togglePasswordVisibility,
 }) => {
-  // Fonction qui se déclenche au clique sur l'oeil
-  // et qui permet de modifier la visibilité du mot de passe
-  // const togglePasswordVisibility = () => {
-  //   setPasswordShown(!passwordShown);
-  // };
 
-  // Fonction qui se déclenche au submit du formulaire
-  // Si l'utilisateur est trouvé isLogged passe à true dans le state
-  // Sinon isError passe à true et isLogged reste à false
   const onFormSubmit = (e) => {
     e.preventDefault();
     handleSubmit();
-    // const foundUser = usersData.find(
-    // (user) => user.password === password && user.mail === email);
-    // if (foundUser) {
-    //   setIsLogged(true);
-    // }
-    // if (!foundUser) {
-    //   setIsError(true);
-    // }
   };
 
   return (

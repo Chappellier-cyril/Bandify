@@ -5,6 +5,7 @@ const authMiddleware = (store) => (next) => (action) => {
     // on commence par récupérer un instantané du state
     // dans lequel nous viendrons piocher email et password
     const state = store.getState();
+    
     const options = {
       method: 'POST',
       url: 'http://localhost:3000/login',
@@ -14,7 +15,7 @@ const authMiddleware = (store) => (next) => (action) => {
       data: {
         // on vient chercher dans le state ce qui nous intéresse
         email: state.login.email,
-        password: state.login.password,
+        user_password: state.login.password,
       },
     };
 

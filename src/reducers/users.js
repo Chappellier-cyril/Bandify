@@ -10,11 +10,9 @@ export const initialState = {
     lastname: '',
     age: null,
     email: '',
-    password: '',
     description: '',
     profil_image: '',
     city_id: null,
-    token: null,
   },
   // Home's search input
   searchValue: '',
