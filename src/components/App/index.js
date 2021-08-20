@@ -2,16 +2,17 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
+// connected components
 import Home from 'src/containers/Home';
 import Profile from 'src/containers/Profile';
 import Login from 'src/containers/Login';
+import Signup from 'src/containers/Signup';
 import Navbar from 'src/containers/Navbar';
 import Header from 'src/containers/Header';
-
+// components
 import Contact from 'src/components/Contact';
 import About from 'src/components/About';
 import Footer from 'src/components/Footer';
-import Signup from 'src/containers/Signup';
 
 // == Import
 import './style.scss';

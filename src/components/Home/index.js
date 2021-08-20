@@ -46,14 +46,17 @@ const Home = ({
           {/* sinon, on affiche la page d'accueil avec uniquement un aperçu du site :
           la description de Bandify, un boutton redirigeant vers l'inscription
            et des cartes de membres statiques */}
-          <h2 className="home__desc">
-            Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
-            Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
-            Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
-          </h2>
+          <p className="home__desc">
+            Bienvenue sur Bandify ! <br /> Le réseau social permettant de rencontrer des musiciens
+            dans un périmètre géographique donné.
+            Pour cela, inscrivez-vous, renseignez vôtre/vosinstrument(s) de prédilection,
+            vôtre niveau (optionnel), le(s) style(s) de musique appréciés, les musiciens recherchés
+            (bassiste, batteur...) et le périmètre de recherche.
+          </p>
 
           <Link to="/signup" className="home__signup-btn">Rejoindre la communauté</Link>
 
+          <p className="home__desc-teasing">Ils ont déjà rejoint</p>
           <div className="home__cards">
             {users.map(({ id, firstname }) => (
               <li className="home__cards-users" key={id}>{firstname}</li>

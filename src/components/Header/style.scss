@@ -3,13 +3,13 @@
     position: sticky;
     top: 0;
     width: 100%;
-    height: 90px;
+    height: 10%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     align-items: center;
     background-color: white;
-    padding: 1rem 3rem;
+    padding: 0 3rem;
     border-bottom: 1px solid black;
 
     &__menu-btn {
@@ -24,8 +24,32 @@
 
   .bandify__logo {
     width: 100px;
+    margin-top: 1rem;
   }
 }
+
+@media screen and (min-width: 700px) {
+  .bandify__logo {
+    width: 200px;
+    margin-top: 2rem;
+  }
+  .header {
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 1rem 3rem;
+    border-bottom: 1px solid black;
+
+    &__menu-btn {
+      display: none;
+    }
+  }
+  
+}
+
 
 ul {
   display: flex;
