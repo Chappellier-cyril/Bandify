@@ -102,7 +102,8 @@ Member.hasMany(Play, {
 Play.belongsTo(Member, {
     targetKey: 'id',
     foreignKey: 'member_id',
-    as: 'member'
+    as: 'member',
+    onDelete: 'CASCADE'
 });
 
 Instrument.hasMany(Play, {
@@ -113,7 +114,8 @@ Instrument.hasMany(Play, {
 Play.belongsTo(Instrument, {
     targetKey: 'id',
     foreignKey: 'instrument_id',
-    as: 'instrument'
+    as: 'instrument',
+    onDelete: 'CASCADE'
 });
 Level.hasMany(Play, {
     foreignKey: 'level_id',
@@ -123,7 +125,8 @@ Level.hasMany(Play, {
 Play.belongsTo(Level, {
     targetKey: 'id',
     foreignKey: 'level_id',
-    as: 'level'
+    as: 'level',
+    onDelete: 'CASCADE'
 });
 
 //N,N

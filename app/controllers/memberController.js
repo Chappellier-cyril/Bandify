@@ -1,4 +1,5 @@
 const { Member, Play, Instrument, Level } = require('../models');
+const bcrypt = require('bcrypt');
 
 const memberController = {
     // Get all members
@@ -36,14 +37,28 @@ const memberController = {
     },
 
     // Create a member
-    createMember: async (req, res, next) => {
+    createMember: async (request, res, next) => {
         try {
             // req.body contient les informations nécessaires pour créer 
             // un nouveau membre
+             const passwordHashed = await bcrypt.hash(request.body.user_password, 10);
+            //  console.log(request.body.user_password);
+            console.log(passwordHashed);
+            const newMember = await Member.create({
+               firstname: request.body.firstname,
+               lastname: request.body.lastname,
+               email: request.body.email,
+               birthdate: request.body.birthdate,
+               user_password: passwordHashed,
+               city_id: request.body.city_id,
+               
+            });
+            
+            //  const newMember = await Member.create(req.body);
+            
+            
 
-            const newMember = await Member.create(req.body);
-
-            res.json(newMember);
+           res.json(newMember);
 
         } catch (error) {
             console.trace(error);
@@ -102,7 +117,7 @@ const memberController = {
         console.log(req.body)
 
         const members = await Member.findAll();
-        console.log(members)
+        
       
         // authentication
         const member = members.find(member => member.email === email && member.user_password === password)

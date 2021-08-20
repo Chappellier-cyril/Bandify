@@ -89,9 +89,9 @@ CREATE TABLE "invitation" (
 
 CREATE TABLE "user_has_instrument_level" (
     "id" int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    "member_id" INT NOT NULL REFERENCES "member"("id"),
-    "instrument_id" INT NOT NULL REFERENCES "instrument"("id"),
-    "level_id" INT REFERENCES "level"("id"),
+    "member_id" INT NOT NULL REFERENCES "member"("id") ON DELETE CASCADE,
+    "instrument_id" INT NOT NULL REFERENCES "instrument"("id") ON DELETE CASCADE,
+    "level_id" INT REFERENCES "level"("id") ON DELETE CASCADE,
 	"createdAt" Timestamptz NOT NULL default now(),
     "updatedAt" Timestamptz NOT NULL default now()
 
