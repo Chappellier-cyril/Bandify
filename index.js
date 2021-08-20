@@ -19,7 +19,7 @@ app.get('/jwt', (req, res) => {
    });
  });
 
- app.use(jwt({ secret: jwtSecret, algorithms: ['HS256'] }));
+app.use(jwt({ secret: jwtSecret, algorithms: ['HS256'] }));
    
 app.use(express.urlencoded({extended: true})); 
 
