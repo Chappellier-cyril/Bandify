@@ -43,20 +43,20 @@ const memberController = {
     },
 
     // Create a member
-    createMember: async (request, res, next) => {
+    createMember: async (req, res, next) => {
         try {
             // req.body contient les informations nécessaires pour créer 
             // un nouveau membre
-             const passwordHashed = await bcrypt.hash(request.body.user_password, 10);
+             const passwordHashed = await bcrypt.hash(req.body.user_password, 10);
             //  console.log(request.body.user_password);
             console.log(passwordHashed);
             const newMember = await Member.create({
-               firstname: request.body.firstname,
-               lastname: request.body.lastname,
-               email: request.body.email,
-               birthdate: request.body.birthdate,
+               firstname: req.body.firstname,
+               lastname: req.body.lastname,
+               email: req.body.email,
+               birthdate: req.body.birthdate,
                user_password: passwordHashed,
-               city_id: request.body.city_id,
+               city_id: req.body.city_id,
                
             });
             
@@ -122,13 +122,27 @@ const memberController = {
         const jwtSecret = process.env.TOKEN_SECRET;
           
         const { email, password } = req.body;
-        console.log(req.body)
 
-        const members = await Member.findAll();
+        const member = await Member.findOne({
+            where: {
+                email: req.body.email
+            }
+        });
         
       
         // authentication
-        const member = members.find(member => member.email === email && member.user_password === password)
+        const passwordIsValid = await bcrypt.compare(
+                req.body.user_password,
+                member.user_password
+             ); 
+
+        if(!passwordIsValid || !member) {
+            return res.json({
+                error,
+                message: "Identifiants incorrects"});
+        }
+             
+        // const member = members.find(member => member.email === email && member.user_password === password)
 
         if (member) {
         const jwtContent = { memberId: member.id };
@@ -153,6 +167,7 @@ const memberController = {
             res.sendStatus(401);
            }
       }
+
        
         
     
