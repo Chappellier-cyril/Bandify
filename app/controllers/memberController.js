@@ -125,57 +125,55 @@ const memberController = {
 
     loginMember : async (req, res) => {
 
-        const jwtSecret = process.env.TOKEN_SECRET;
+        try {
+  
+          // On vérifie qu'un membre correspond au mail entré par l'utilisateur
+          const member = await Member.findOne({
+              where: {
+                  email: req.body.email
+              }
+          });
+  
+          // Si on trouve pas on passe dans le catch
+          if(!member) {
+            throw(err);
+          }
+      
+          // On compare avec bcrypt les mot de passes
+          const passwordHashed = await bcrypt.hash(req.body.user_password, 10);
+          req.body.user_password = passwordHashed;
+          const passwordToCompare=member.user_password;
+  
+          const isPasswordValid = await bcrypt.compare(passwordToCompare, passwordHashed);
+  
+          // Si le mot de passe n'est pas valide on passe dans le catch
+          if(!isPasswordValid) {
+            throw(err);
+          }
+  
+          // JWT Config
+          const jwtSecret = process.env.TOKEN_SECRET;
+          const jwtContent = { memberId: member.id };
+          const jwtOptions = { 
+          algorithm: 'HS256', 
+          expiresIn: '3h' 
+        };
+          // Envoi de la réponse au front si tout est ok
           
-        // const { email, password } = req.body;
-
-        // On filtre l'email avec ce qu'on reçoit du body
-        const member = await Member.findOne({
-            where: {
-                email: req.body.email
-            }
-        });
-    
-        // authentication
-        // On compare avec bcrypt les mot de passes
-        const passwordIsValid = await bcrypt.compare(
-                req.body.user_password,
-                member.user_password
-             ); 
-             
-        if(!passwordIsValid || !member) {
-
-            return res.json({
-                error: true,
-                message: "Identifiants incorrects"});
-        }
-             
-        // const member = members.find(member => member.email === email && member.user_password === password)
-
-        // JWT Config
-        if (member) {
-        const jwtContent = { memberId: member.id };
-        const jwtOptions = { 
-        algorithm: 'HS256', 
-        expiresIn: '3h' 
-    };
-        // Envoie au front 
-        res.json({
+          res.json({
           id: member.id,
           email: member.email,
-          firstname: member.firstname,
-          lastname: member.lastname,
-          description: member.user_description,
-          birthdate: member.birthdate,
-          profil_image: member.profil_image,
-          city_id: member.city_id,
           token: jsonwebtoken.sign(jwtContent, jwtSecret, jwtOptions),
-        });
-      } else {
-            console.log('<< 401');
+          });
+  
+        } catch(err) {
+          // Envoi de l'erreur au front s'il y en a une
+            console.log(err);
             res.sendStatus(401);
-           }
-      }
+        }
+      
+            
+        }
 
        
         
