@@ -1,12 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import logoBandify from 'src/assets/logoBandify.svg';
 import './style.scss';
 
 const Header = ({ toggleIsMenuOpen }) => (
   <header className="header">
 
-    <Link to="/">Bandify</Link>
+    <Link to="/">
+      <img src={logoBandify} alt="bandify" className="bandify__logo" />
+    </Link>
 
     <button
       type="button"

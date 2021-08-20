@@ -5,6 +5,7 @@
     width: 100%;
     height: 90px;
     display: flex;
+    align-items: center;
     justify-content: space-between;
     align-items: center;
     background-color: white;
@@ -19,6 +20,10 @@
       appearance: none;
       color: black;
     }
+  }
+
+  .bandify__logo {
+    width: 100px;
   }
 }
 
