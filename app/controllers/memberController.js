@@ -79,6 +79,13 @@ const memberController = {
             
             // on passe par une instance
             const memberToUpdate = await Member.findByPk(targetId);
+            if(req.body.user_password) {
+                // Lors d'un update (modification de mot de passe par exemple)
+                // On hash à nouveau le mot de passe
+             const passwordHashed = await bcrypt.hash(req.body.user_password, 10);
+             req.body.user_password = passwordHashed;
+             
+            }
             if (!memberToUpdate) {
                 return next(); // <= pas de liste, 404
             }
@@ -121,7 +128,7 @@ const memberController = {
 
         const jwtSecret = process.env.TOKEN_SECRET;
           
-        const { email, password } = req.body;
+        // const { email, password } = req.body;
 
         const member = await Member.findOne({
             where: {
@@ -129,16 +136,19 @@ const memberController = {
             }
         });
         
-      
+        // console.log(req.body)
         // authentication
         const passwordIsValid = await bcrypt.compare(
                 req.body.user_password,
                 member.user_password
              ); 
-
+             
+            
         if(!passwordIsValid || !member) {
+            console.log(passwordIsValid);
+
             return res.json({
-                error,
+                error: true,
                 message: "Identifiants incorrects"});
         }
              
