@@ -5,16 +5,10 @@ const mapStateToProps = (state) => ({
   users: state.users.users,
   isLogged: state.login.isLogged,
   searchValue: state.users.searchValue,
+  user: state.users.user,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onSearchChange: (value) => {
-    dispatch({ type: 'SET_SEARCH_INPUT_VALUE', searchValue: value });
-  },
-  onSearchSubmit: (evt) => {
-    evt.preventDefault();
-    dispatch({ type: 'ON_SEARCH_SUBMIT' });
-  },
   getMembers: () => {
     dispatch({ type: 'GET_MEMBERS' });
   },

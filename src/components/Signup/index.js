@@ -6,7 +6,7 @@ import './style.scss';
 import instrumentsData from 'src/data/instruments';
 import levelsData from 'src/data/levels';
 import musicStylesData from 'src/data/music_styles';
-import Localisation from './Localisation';
+import Localisation from 'src/components/Localisation';
 
 /*
 Avec Redux :
