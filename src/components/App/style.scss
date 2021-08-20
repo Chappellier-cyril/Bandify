@@ -3,3 +3,12 @@
   min-height: 100vh;
 }
 
+// DESKTOP LAYOUT
+@media screen and (min-width: 700px) {
+  .app {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+}
+
