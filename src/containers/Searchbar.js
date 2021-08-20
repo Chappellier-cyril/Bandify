@@ -3,10 +3,10 @@ import Searchbar from 'src/components/Searchbar';
 
 const mapStateToProps = (state) => ({
   searchValue: state.users.searchValue,
-  instruments: state.global.instruments,
-  levels: state.global.levels,
-  musicstyles: state.global.musicstyles,
-  isFiltersOpen: state.global.isFiltersOpen,
+  instruments: state.settings.instruments,
+  levels: state.settings.levels,
+  musicstyles: state.settings.musicstyles,
+  isFiltersOpen: state.settings.isFiltersOpen,
   // TODO
   // city: state.signup.city,
   // zipcode: state.signup.zipcode,
