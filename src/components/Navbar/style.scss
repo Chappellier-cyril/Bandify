@@ -1,0 +1,45 @@
+@media screen and (max-width: 700px) {
+  .menu {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 99;
+    background-color: white;
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: transform 300ms ease-in-out;
+
+    &--open {
+      transform: translateX(0%);
+      opacity: 1;
+    }
+
+    &__nav {
+      display: flex;
+      flex-direction: column;
+      width: 300px;
+      height: auto;
+      margin: 50% auto;
+      text-transform: uppercase;
+  
+      &-link {
+        font-size: 1.3rem;
+        margin-bottom: 3rem;
+      }
+    }
+  }
+
+  .close-menu-btn {
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+    background: none;
+    appearance: none;
+    position: absolute;
+    top: 25px;
+    right: 33px;
+    color: black;
+  }
+  
+}

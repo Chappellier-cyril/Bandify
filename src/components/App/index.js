@@ -5,6 +5,7 @@ import { Route, Switch } from 'react-router-dom';
 import Home from 'src/containers/Home';
 import Profile from 'src/containers/Profile';
 import Login from 'src/containers/Login';
+import Navbar from 'src/containers/Navbar';
 import Header from 'src/containers/Header';
 
 import Contact from 'src/components/Contact';
@@ -20,6 +21,7 @@ export default function App() {
   return (
     <div className="app">
       <Header />
+      <Navbar />
       <Switch>
         <Route exact path="/">
           <Home />

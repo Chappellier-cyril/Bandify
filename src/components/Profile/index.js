@@ -15,19 +15,23 @@ const Profile = ({
   return (
     <div className="profile__page">
       {foundMember.id !== user.id ? (
-        <div className="profile__container">
-          <div className="profile__page-card">
+        <div className="profile">
+          <div className="profile__card">
             <h1>{memberFullName}</h1>
             <h2>Ville: </h2>
             <p>{foundMember.age}</p>
             <p>{foundMember.user_description}</p>
             <button type="button">Retirer de ma liste d'amis</button>
           </div>
-          <div className="profile__friends" />
+          <h2 className="profile__friends-title">Ses amis</h2>
+          <div className="profile__friends">
+            <p>Roger M</p>
+            <p>Poissy</p>
+          </div>
         </div>
 
       ) : (
-        <div className="profile__container">
+        <div className="profile">
           <div className="profile__card">
             <h1>{userFullName}</h1>
             <h2>Ville: </h2>
@@ -35,7 +39,11 @@ const Profile = ({
             <p>{user.user_description}</p>
             <button type="button">Supprimer mon profil</button>
           </div>
-          <div className="profile__friends" />
+          <h2 className="profile__friends-title">Mes amis</h2>
+          <div className="profile__friends">
+            <p>Roger M</p>
+            <p>Poissy</p>
+          </div>
         </div>
       )}
     </div>
