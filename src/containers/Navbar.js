@@ -3,7 +3,7 @@ import Navbar from 'src/components/Navbar';
 
 const mapStateToProps = (state) => ({
   user: state.users.user,
-  isMenuOpen: state.global.isMenuOpen,
+  isMenuOpen: state.settings.isMenuOpen,
 });
 
 const mapDispatchToProps = (dispatch) => ({

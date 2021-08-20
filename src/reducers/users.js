@@ -5,17 +5,19 @@ export const initialState = {
   users: usersData,
   // user = OBJECT
   user: {
-    isLogged: false,
-    isError: false,
     id: null,
     firstname: '',
     lastname: '',
     age: null,
     email: '',
     password: '',
-    passwordShown: false,
     description: '',
     profil_image: '',
+    city_id: null,
+    token: null,
+    isLogged: false,
+    isError: false,
+    passwordShown: false,
   },
   // Home's search input
   searchValue: '',
@@ -34,7 +36,7 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         user: {
           ...state.user,
-          [action.key]: action.value,
+          [action.key]: action.value.replace(/\s/g, ''),
         },
       };
 
@@ -62,6 +64,8 @@ const reducer = (state = initialState, action = {}) => {
           password: action.data.password,
           description: action.data.description,
           profil_image: action.data.profil_image,
+          city_id: action.data.city_id,
+          token: action.data.token,
         },
       };
     }
@@ -91,6 +95,8 @@ const reducer = (state = initialState, action = {}) => {
           password: '',
           description: '',
           profil_image: '',
+          city_id: null,
+          token: null,
         },
       };
 

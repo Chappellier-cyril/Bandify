@@ -2,12 +2,12 @@ import { combineReducers } from 'redux';
 
 import signupReducer from './signup';
 import usersReducer from './users';
-import globalReducer from './global';
+import settingsReducer from './settings';
 
 const rootReducer = combineReducers({
   signup: signupReducer,
   users: usersReducer,
-  global: globalReducer,
+  settings: settingsReducer,
 });
 
 export default rootReducer;
