@@ -1,4 +1,5 @@
 const { Member, Play, Instrument, Level } = require('../models');
+const jsonwebtoken = require('jsonwebtoken');
 
 const memberController = {
     // Get all members
@@ -97,6 +98,8 @@ const memberController = {
     },
 
     loginMember : async (req, res) => {
+
+        const jwtSecret = process.env.TOKEN_SECRET;
           
         const { email, password } = req.body;
         console.log(req.body)
@@ -108,6 +111,11 @@ const memberController = {
         const member = members.find(member => member.email === email && member.user_password === password)
 
         if (member) {
+        const jwtContent = { memberId: member.id };
+        const jwtOptions = { 
+        algorithm: 'HS256', 
+        expiresIn: '3h' 
+    };
         res.json({
           id: member.id,
           email: member.email,
@@ -117,6 +125,8 @@ const memberController = {
           description: member.user_description,
           birthdate: member.birthdate,
           profil_image: member.profil_image,
+          city_id: member.city_id,
+          token: jsonwebtoken.sign(jwtContent, jwtSecret, jwtOptions),
         });
       } else {
             console.log('<< 401');
