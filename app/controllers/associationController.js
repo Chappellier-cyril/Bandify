@@ -8,7 +8,7 @@ const associationController = {
         try {
             
             const { member_id, instrument_id, level_id } = req.body;
-            console.log(+member_id);
+            console.log(member_id);
             const member = await Member.findByPk(Number(member_id));
             const instrument = await Instrument.findByPk(Number(instrument_id));
             if (level_id) {
