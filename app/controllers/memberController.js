@@ -23,7 +23,12 @@ const memberController = {
         try {
             const targetId = req.params.id;
 
-            const member = await Member.findByPk(targetId);
+            const member = await Member.findByPk(targetId, {
+                include: ['member_city', {
+                    association: 'plays',
+                    include: ['instrument', 'level']
+            }]
+            });
 
             // Soit le membre existe : Soit il n'existe pas
             if (member) {
