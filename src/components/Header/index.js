@@ -1,11 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import './style.scss';
 
 const Header = ({ toggleIsMenuOpen }) => (
   <header className="header">
 
-    <h1>Bandify</h1>
+    <Link to="/">Bandify</Link>
 
     <button
       type="button"
