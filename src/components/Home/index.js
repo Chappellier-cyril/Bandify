@@ -2,13 +2,16 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+import Searchbar from 'src/containers/Searchbar';
 import './style.scss';
 
 const Home = ({
-  users, user, onSearchChange, onSearchSubmit, searchValue, getMembers,
+  users, user, getMembers,
 }) => {
   useEffect(() => {
     if (user.isLogged) {
+      // on est connecté, on récupère les membres de la bdd via la requête à l'api
+      // qui passe dans le userMiddleware
       getMembers();
     }
   }, []);
@@ -19,24 +22,12 @@ const Home = ({
       et les cartes des membres sont cliquablent */}
       {user.isLogged ? (
         <>
-          <div className="home__search">
-            <form onSubmit={onSearchSubmit}>
-              <input
-                type="search"
-                name="searchBar"
-                id="searchBar"
-                placeholder="Rechercher un membre..."
-                value={searchValue}
-                onChange={(evt) => onSearchChange(evt.target.value)}
-              />
-            </form>
-            <button type="button" onClick={() => console.log('clicked')}>Filtres</button>
-          </div>
+          <Searchbar />
 
           <div className="home__cards">
             {users.map(({ id, firstname }) => (
-              <Link to={`/member/${id}`} key={id}>
-                <li className="home__cards-users">{firstname}</li>
+              <Link to={`/member/${id}`} key={id} className="home__cards-users">
+                <p>{firstname}</p>
               </Link>
             ))}
           </div>
@@ -59,7 +50,7 @@ const Home = ({
           <p className="home__desc-teasing">Ils ont déjà rejoint</p>
           <div className="home__cards">
             {users.map(({ id, firstname }) => (
-              <li className="home__cards-users" key={id}>{firstname}</li>
+              <p className="home__cards-users" key={id}>{firstname}</p>
             ))}
           </div>
         </>
@@ -75,9 +66,6 @@ Home.propTypes = {
   user: PropTypes.shape({
     isLogged: PropTypes.bool.isRequired,
   }).isRequired,
-  onSearchChange: PropTypes.func.isRequired,
-  onSearchSubmit: PropTypes.func.isRequired,
-  searchValue: PropTypes.string.isRequired,
   getMembers: PropTypes.func.isRequired,
 };
 Home.defaultProps = {

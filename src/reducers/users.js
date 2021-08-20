@@ -5,7 +5,7 @@ export const initialState = {
   users: usersData,
   // user = OBJECT
   user: {
-    isLogged: false,
+    isLogged: true,
     isError: false,
     id: null,
     firstname: '',

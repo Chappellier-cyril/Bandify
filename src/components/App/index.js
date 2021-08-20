@@ -13,6 +13,7 @@ import Header from 'src/containers/Header';
 import Contact from 'src/components/Contact';
 import About from 'src/components/About';
 import Footer from 'src/components/Footer';
+import Localisation from 'src/components/Localisation';
 
 // == Import
 import './style.scss';
@@ -32,6 +33,7 @@ export default function App() {
         </Route>
         <Route exact path="/signup">
           <Signup />
+          <Localisation />
         </Route>
         <Route exact path="/contact">
           <Contact />
@@ -42,9 +44,8 @@ export default function App() {
         <Route exact path="/profile">
           <p>Mon profil</p>
         </Route>
-        <Route exact path="/search">
-          <p>Recherche</p>
-        </Route>
+
+        <Route exact path="/search" component={Home} />
         <Route exact path="/member/:profileId" component={Profile} />
       </Switch>
       <Footer />
