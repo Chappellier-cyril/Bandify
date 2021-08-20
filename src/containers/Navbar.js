@@ -2,8 +2,9 @@ import { connect } from 'react-redux';
 import Navbar from 'src/components/Navbar';
 
 const mapStateToProps = (state) => ({
-  user: state.users.user,
+  connectedUserId: state.login.id,
   isMenuOpen: state.settings.isMenuOpen,
+  isLogged: state.login.isLogged,
 });
 
 const mapDispatchToProps = (dispatch) => ({

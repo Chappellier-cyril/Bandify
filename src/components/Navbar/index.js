@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import './style.scss';
 
 const Navbar = ({
-  user, onLogout, hideMenu, isMenuOpen,
+  connectedUserId, onLogout, hideMenu, isMenuOpen, isLogged,
 }) => (
   <div className={isMenuOpen ? 'menu menu--open' : 'menu'}>
 
@@ -21,9 +21,9 @@ const Navbar = ({
       <Link to="/" className="menu__nav-link" onClick={hideMenu}>
         Accueil
       </Link>
-      {user.isLogged ? (
+      {isLogged ? (
         <>
-          <Link to={`/member/${user.id}`} className="menu__nav-link" onClick={hideMenu}>
+          <Link to={`/member/${connectedUserId}`} className="menu__nav-link" onClick={hideMenu}>
             Mon profil
           </Link>
           <Link to="/" onClick={onLogout} className="menu__nav-link">
@@ -42,14 +42,18 @@ const Navbar = ({
       )}
     </nav>
   </div>
-
 );
 
 Navbar.propTypes = {
-  user: PropTypes.object.isRequired,
+  connectedUserId: PropTypes.number,
+  isLogged: PropTypes.bool.isRequired,
   onLogout: PropTypes.func.isRequired,
   hideMenu: PropTypes.func.isRequired,
   isMenuOpen: PropTypes.bool.isRequired,
+};
+
+Navbar.defaultProps = {
+  connectedUserId: 0,
 };
 
 export default Navbar;

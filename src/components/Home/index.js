@@ -5,10 +5,10 @@ import PropTypes from 'prop-types';
 import './style.scss';
 
 const Home = ({
-  users, user, onSearchChange, onSearchSubmit, searchValue, getMembers,
+  users, isLogged, onSearchChange, onSearchSubmit, searchValue, getMembers,
 }) => {
   useEffect(() => {
-    if (user.isLogged) {
+    if (isLogged) {
       getMembers();
     }
   }, []);
@@ -17,7 +17,7 @@ const Home = ({
     <div className="main">
       {/* si on est connecté, on affiche la page d'accueil avec la recherche
       et les cartes des membres sont cliquablent */}
-      {user.isLogged ? (
+      {isLogged ? (
         <>
           <div className="home__search">
             <form onSubmit={onSearchSubmit}>
@@ -72,9 +72,7 @@ Home.propTypes = {
   users: PropTypes.arrayOf(
     PropTypes.object,
   ),
-  user: PropTypes.shape({
-    isLogged: PropTypes.bool.isRequired,
-  }).isRequired,
+  isLogged: PropTypes.bool.isRequired,
   onSearchChange: PropTypes.func.isRequired,
   onSearchSubmit: PropTypes.func.isRequired,
   searchValue: PropTypes.string.isRequired,

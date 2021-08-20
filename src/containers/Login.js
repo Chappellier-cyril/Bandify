@@ -2,11 +2,11 @@ import { connect } from 'react-redux';
 import Login from 'src/components/Login';
 
 const mapStateToProps = (state) => ({
-  email: state.users.user.email,
-  password: state.users.user.password,
-  isLogged: state.users.user.isLogged,
-  isError: state.users.user.isError,
-  passwordShown: state.users.user.passwordShown,
+  email: state.login.email,
+  password: state.login.password,
+  isLogged: state.login.isLogged,
+  isError: state.login.isError,
+  passwordShown: state.login.passwordShown,
 });
 
 const mapDispatchToProps = (dispatch) => ({
