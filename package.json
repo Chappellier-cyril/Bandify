@@ -28,5 +28,8 @@
     "jsonwebtoken": "^8.5.1",
     "pg": "^8.7.1",
     "sequelize": "^6.6.5"
+  },
+  "devDependencies": {
+    "axios": "^0.21.1"
   }
 }

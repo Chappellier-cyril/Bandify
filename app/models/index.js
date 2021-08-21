@@ -69,26 +69,26 @@ Member.belongsTo(City, {
 // 1,1 entre city et département
 
 City.belongsTo(Department, {
-    foreignKey: 'department_id',
+    foreignKey: 'department_code',
     as: 'department'
 })
 
 // 1,N entre département et city
 Department.hasMany(City, {
-    foreignKey: 'department_id',
+    foreignKey: 'department_code',
     as: 'department_city'
 });
 
 // 1,1 entre département et région
 
 Department.belongsTo(Region, {
-    foreignKey: 'region_id',
+    foreignKey: 'region_code',
     as: 'region'
 })
 
 // 1,N entre région et département
 Region.hasMany(Department, {
-    foreignKey: 'region_id',
+    foreignKey: 'region_code',
     as: 'region_department'
 });
 

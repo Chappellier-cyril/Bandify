@@ -12,17 +12,14 @@ City.init({
       }
   },
   zipcode: {
-      type: DataTypes.INTEGER,
-      validate: {
-          isInt: true,
-      }
+      type: DataTypes.TEXT,
   },
-  department_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
+  department_code: {
+      type: DataTypes.TEXT,
+      allowNull: true,
       references: {
           model: 'Department',
-          key: 'id'
+          key: 'code'
       }
   }
 }, {

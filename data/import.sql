@@ -5,27 +5,27 @@ BEGIN;
 DROP TABLE IF EXISTS "member", "region", "department", "city", "music_style", "instrument", "level", "message", "invitation", "user_has_instrument_level", "appreciate_music_style";
 
 CREATE TABLE "region" (
-	"id" int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+	"id" int GENERATED ALWAYS AS IDENTITY,
 	"region_name" text NOT NULL UNIQUE,
-    "code" int NOT NULL,
+    "code" int NOT NULL UNIQUE PRIMARY KEY,
 	"createdAt" Timestamptz NOT NULL default now(),
     "updatedAt" Timestamptz NOT NULL default now()
 );
 
 CREATE TABLE "department" (
-	"id" int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+	"id" int GENERATED ALWAYS AS IDENTITY,
 	"department_name" text NOT NULL UNIQUE,
-    "code" INT NOT NULL,
-    "region_id" int references "region"("id"),
+    "code" TEXT NOT NULL PRIMARY KEY,
+    "region_code" int references "region"("code"),
 	"createdAt" Timestamptz NOT NULL default now(),
     "updatedAt" Timestamptz NOT NULL default now()
 );
 
 CREATE TABLE "city" (
 	"id" int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-	"city_name" text NOT NULL UNIQUE,
-	"zipcode" INT NOT NULL,
-    "department_id" int references "department"("id"),
+	"city_name" text NOT NULL,
+	"zipcode" text,
+    "department_code" text references "department"("code"),
     "createdAt" Timestamptz NOT NULL default now(),
     "updatedAt" Timestamptz NOT NULL default now()
     

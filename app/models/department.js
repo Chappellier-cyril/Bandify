@@ -12,17 +12,14 @@ Department.init({
     }
   },
   code: {
-    type: DataTypes.INTEGER,
-      validate: {
-          isInt: true,
-      }
+    type: DataTypes.TEXT,
   },
-  region_id: {
+  region_code: {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
         model: 'Region',
-        key: 'id'
+        key: 'code'
     }
 }
 }, {
