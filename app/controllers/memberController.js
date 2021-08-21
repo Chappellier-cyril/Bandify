@@ -50,6 +50,7 @@ const memberController = {
             // On lui hash le password
              const passwordHashed = await bcrypt.hash(req.body.user_password, 10);
             //  console.log(request.body.user_password);
+           console.log(req.body);
            
             // On crée un user avec un passwordHashed
             const newMember = await Member.create({
@@ -58,7 +59,8 @@ const memberController = {
                email: req.body.email,
                birthdate: req.body.birthdate,
                user_password: passwordHashed,
-               city_id: req.body.city_id,
+               // A MODIFIER => pour test seulement
+               city_id: 1,
                
             });
 
@@ -126,29 +128,27 @@ const memberController = {
     loginMember : async (req, res) => {
 
         try {
-  
+            
           // On vérifie qu'un membre correspond au mail entré par l'utilisateur
           const member = await Member.findOne({
               where: {
                   email: req.body.email
               }
           });
-  
+
           // Si on trouve pas on passe dans le catch
           if(!member) {
-            throw(err);
+            throw({error : 'Identifiants incorrects'});
           }
       
           // On compare avec bcrypt les mot de passes
-          const passwordHashed = await bcrypt.hash(req.body.user_password, 10);
-          req.body.user_password = passwordHashed;
           const passwordToCompare=member.user_password;
   
-          const isPasswordValid = await bcrypt.compare(passwordToCompare, passwordHashed);
+          const isPasswordValid = await bcrypt.compare(req.body.user_password, passwordToCompare);
   
           // Si le mot de passe n'est pas valide on passe dans le catch
           if(!isPasswordValid) {
-            throw(err);
+            throw({error : 'Identifiants incorrects'});
           }
   
           // JWT Config
@@ -168,8 +168,8 @@ const memberController = {
   
         } catch(err) {
           // Envoi de l'erreur au front s'il y en a une
-            console.log(err);
-            res.sendStatus(401);
+          console.trace(err);
+            res.status(401).send(err);
         }
       
             
