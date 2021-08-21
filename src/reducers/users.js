@@ -4,16 +4,7 @@ export const initialState = {
   // users = ARRAY
   users: usersData,
   // user = OBJECT
-  user: {
-    id: null,
-    firstname: '',
-    lastname: '',
-    age: null,
-    email: '',
-    description: '',
-    profil_image: '',
-    city_id: null,
-  },
+  user: {},
   // Home's search input
   searchValue: '',
 };
@@ -30,6 +21,12 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         users: action.users,
+      };
+
+    case 'GET_ONE_MEMBER_SUCCESS':
+      return {
+        ...state,
+        user: action.user,
       };
 
     default:

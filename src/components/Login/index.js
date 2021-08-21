@@ -14,7 +14,6 @@ const Login = ({
   handleSubmit,
   togglePasswordVisibility,
 }) => {
-
   const onFormSubmit = (e) => {
     e.preventDefault();
     handleSubmit();

@@ -4,7 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 
 // connected components
 import Home from 'src/containers/Home';
-import Profile from 'src/containers/Profile';
+import Profiles from 'src/containers/Profiles';
 import Login from 'src/containers/Login';
 import Signup from 'src/containers/Signup';
 import Navbar from 'src/containers/Navbar';
@@ -44,7 +44,7 @@ export default function App() {
         </Route>
 
         <Route exact path="/search" component={Home} />
-        <Route exact path="/member/:profileId" component={Profile} />
+        <Route exact path="/member/:profileId" component={Profiles} />
       </Switch>
       <Footer />
     </div>
