@@ -43,28 +43,29 @@ const memberController = {
     },
 
     // Create a member
-    createMember: async (request, res, next) => {
+    createMember: async (req, res, next) => {
         try {
             // req.body contient les informations nécessaires pour créer 
             // un nouveau membre
-             const passwordHashed = await bcrypt.hash(request.body.user_password, 10);
+            // On lui hash le password
+             const passwordHashed = await bcrypt.hash(req.body.user_password, 10);
             //  console.log(request.body.user_password);
-            console.log(passwordHashed);
+           console.log(req.body);
+           
+            // On crée un user avec un passwordHashed
             const newMember = await Member.create({
-               firstname: request.body.firstname,
-               lastname: request.body.lastname,
-               email: request.body.email,
-               birthdate: request.body.birthdate,
+               firstname: req.body.firstname,
+               lastname: req.body.lastname,
+               email: req.body.email,
+               birthdate: req.body.birthdate,
                user_password: passwordHashed,
-               city_id: request.body.city_id,
+               // A MODIFIER => pour test seulement
+               city_id: 1,
                
             });
-            
-            //  const newMember = await Member.create(req.body);
-            
-            
 
-           res.json(newMember);
+            // On lui renvoie
+              res.json(newMember);
 
         } catch (error) {
             console.trace(error);
@@ -79,6 +80,13 @@ const memberController = {
             
             // on passe par une instance
             const memberToUpdate = await Member.findByPk(targetId);
+            if(req.body.user_password) {
+                // Lors d'un update (modification de mot de passe par exemple)
+                // On hash à nouveau le mot de passe
+             const passwordHashed = await bcrypt.hash(req.body.user_password, 10);
+             req.body.user_password = passwordHashed;
+             
+            }
             if (!memberToUpdate) {
                 return next(); // <= pas de liste, 404
             }
@@ -119,40 +127,54 @@ const memberController = {
 
     loginMember : async (req, res) => {
 
-        const jwtSecret = process.env.TOKEN_SECRET;
-          
-        const { email, password } = req.body;
-        console.log(req.body)
+        try {
+            
+          // On vérifie qu'un membre correspond au mail entré par l'utilisateur
+          const member = await Member.findOne({
+              where: {
+                  email: req.body.email
+              }
+          });
 
-        const members = await Member.findAll();
-        
+          // Si on trouve pas on passe dans le catch
+          if(!member) {
+            throw({error : 'Identifiants incorrects'});
+          }
       
-        // authentication
-        const member = members.find(member => member.email === email && member.user_password === password)
-
-        if (member) {
-        const jwtContent = { memberId: member.id };
-        const jwtOptions = { 
-        algorithm: 'HS256', 
-        expiresIn: '3h' 
-    };
-        res.json({
+          // On compare avec bcrypt les mot de passes
+          const passwordToCompare=member.user_password;
+  
+          const isPasswordValid = await bcrypt.compare(req.body.user_password, passwordToCompare);
+  
+          // Si le mot de passe n'est pas valide on passe dans le catch
+          if(!isPasswordValid) {
+            throw({error : 'Identifiants incorrects'});
+          }
+  
+          // JWT Config
+          const jwtSecret = process.env.TOKEN_SECRET;
+          const jwtContent = { memberId: member.id };
+          const jwtOptions = { 
+          algorithm: 'HS256', 
+          expiresIn: '3h' 
+        };
+          // Envoi de la réponse au front si tout est ok
+          
+          res.json({
           id: member.id,
           email: member.email,
-          password: member.user_password,
-          firstname: member.firstname,
-          lastname: member.lastname,
-          description: member.user_description,
-          birthdate: member.birthdate,
-          profil_image: member.profil_image,
-          city_id: member.city_id,
           token: jsonwebtoken.sign(jwtContent, jwtSecret, jwtOptions),
-        });
-      } else {
-            console.log('<< 401');
-            res.sendStatus(401);
-           }
-      }
+          });
+  
+        } catch(err) {
+          // Envoi de l'erreur au front s'il y en a une
+          console.trace(err);
+            res.status(401).send(err);
+        }
+      
+            
+        }
+
        
         
     
