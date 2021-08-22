@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import Searchbar from 'src/components/Searchbar';
 
 const mapStateToProps = (state) => ({
-  searchValue: state.users.searchValue,
+  searchValue: state.settings.searchValue,
   instruments: state.settings.instruments,
   levels: state.settings.levels,
   musicstyles: state.settings.musicstyles,

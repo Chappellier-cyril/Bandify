@@ -7,6 +7,8 @@ export const initialState = {
   instrument: '',
   level: '',
   musicstyle: '',
+  // Home's search input
+  searchValue: '',
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -41,7 +43,16 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         [action.key]: action.value,
       };
-
+    case 'SET_SEARCH_INPUT_VALUE':
+      return {
+        ...state,
+        searchValue: action.searchValue,
+      };
+    case 'ON_LOGOUT':
+      return {
+        ...state,
+        isMenuOpen: !state.isMenuOpen,
+      };
     default:
       return state;
   }

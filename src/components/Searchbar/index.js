@@ -23,10 +23,11 @@ const Searchbar = ({
           name="searchBar"
           id="searchBar"
           className="search__search-input"
-          placeholder="Rechercher un membre..."
+          placeholder="Rechercher un membre, une ville..."
           value={searchValue}
           onChange={(evt) => onSearchChange(evt.target.value)}
         />
+        <button type="submit">Chercher</button>
         {/* SI isFiltersOpen === true, on affiche la div search__filters */}
         {isFiltersOpen && (
           <div className="search__filters">
