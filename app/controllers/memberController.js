@@ -59,8 +59,7 @@ const memberController = {
                email: req.body.email,
                birthdate: req.body.birthdate,
                user_password: passwordHashed,
-               // A MODIFIER => pour test seulement
-               city_id: 1,
+               city_code: req.body.zipcode,
                
             });
 

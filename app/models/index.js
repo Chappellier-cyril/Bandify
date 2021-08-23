@@ -56,13 +56,13 @@ Invitation.belongsTo(Member, {
 // 1,N entre member et city
 
 City.hasMany(Member, {
-    foreignKey: 'city_id',
+    foreignKey: 'city_code',
     as: 'members'
-})
+});
 
 // 1,1 entre member et city
 Member.belongsTo(City, {
-    foreignKey: 'city_id',
+    foreignKey: 'city_code',
     as: 'member_city'
 });
 
@@ -71,7 +71,7 @@ Member.belongsTo(City, {
 City.belongsTo(Department, {
     foreignKey: 'department_code',
     as: 'department'
-})
+});
 
 // 1,N entre département et city
 Department.hasMany(City, {
@@ -84,7 +84,7 @@ Department.hasMany(City, {
 Department.belongsTo(Region, {
     foreignKey: 'region_code',
     as: 'region'
-})
+});
 
 // 1,N entre région et département
 Region.hasMany(Department, {

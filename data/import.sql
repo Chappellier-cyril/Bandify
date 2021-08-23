@@ -22,9 +22,9 @@ CREATE TABLE "department" (
 );
 
 CREATE TABLE "city" (
-	"id" int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+	"id" int GENERATED ALWAYS AS IDENTITY,
 	"city_name" text NOT NULL,
-	"zipcode" text,
+	"zipcode" text PRIMARY KEY,
     "department_code" text references "department"("code"),
     "createdAt" Timestamptz NOT NULL default now(),
     "updatedAt" Timestamptz NOT NULL default now()
@@ -40,7 +40,7 @@ CREATE TABLE "member" (
     "user_password" text NOT NULL,
     "user_description" text,
     "profil_image" text,
-    "city_id" INT REFERENCES city(id),
+    "city_code" text REFERENCES city(zipcode),
     "createdAt" Timestamptz NOT NULL default now(),
     "updatedAt" Timestamptz NOT NULL default now()
 );
