@@ -49,7 +49,7 @@ Member.init({
     allowNull: true,
   },
   city_code : {
-    type: DataTypes.INTEGER,
+    type: DataTypes.TEXT,
     allowNull: false,
       references: {
           model: 'City',

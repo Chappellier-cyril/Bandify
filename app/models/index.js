@@ -142,7 +142,7 @@ MusicStyle.belongsToMany(Member, {
     through : 'appreciate_music_style',
     otherKey: 'member_id',
     foreignKey: 'music_style_id',
-    as: 'music_style_member',
+    as: 'members'
 });
 
 //N,N
@@ -150,7 +150,7 @@ Member.belongsToMany(MusicStyle, {
     through : 'appreciate_music_style',
     otherKey: 'music_style_id',
     foreignKey: 'member_id',
-    as: 'member_music_style',
+    as: 'styles',
     onDelete: 'CASCADE'
 });
 
