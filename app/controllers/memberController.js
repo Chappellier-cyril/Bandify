@@ -1,4 +1,4 @@
-const { Member, Play, Instrument, Level } = require('../models');
+const { Member, Play, Instrument, Level, MusicStyle } = require('../models');
 const bcrypt = require('bcrypt');
 const jsonwebtoken = require('jsonwebtoken');
 
@@ -16,6 +16,8 @@ const memberController = {
                 },{
                     association: 'plays',
                     include: ['instrument', 'level']
+            },{
+                association: 'member_music_style'
             }]});
             res.json(members);
         } catch (error) {
