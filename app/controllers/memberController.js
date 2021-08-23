@@ -1,4 +1,4 @@
-const { Member, Play, Instrument, Level } = require('../models');
+const { Member, Play, Instrument, Level, MusicStyle } = require('../models');
 const bcrypt = require('bcrypt');
 const jsonwebtoken = require('jsonwebtoken');
 const multer = require('multer');
