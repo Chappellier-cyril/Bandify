@@ -12,7 +12,7 @@ const signupMiddleware = (store) => (next) => (action) => {
       email: state.signup.email,
       password: state.signup.password,
       city: state.signup.city,
-      zipcode: state.signup.zipcode,
+      code: state.signup.code,
       departement: state.signup.departement,
       region: state.signup.region,
       instruments: state.signup.instruments,

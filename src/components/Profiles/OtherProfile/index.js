@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes, { shape } from 'prop-types';
+import { getAge } from 'src/selectors/user';
 
 // == Import : local
 import 'src/components/Profiles/style.scss';
@@ -16,8 +17,8 @@ const OtherProfile = ({ user }) => {
           <div className="profile__card">
             {/* //TODO => ajouter une photo */}
             <p>{user.firstname}, {user.lastname}</p>
-            <h2>Ville: {city.city_name} ({city.zipcode})</h2>
-            {/* //TODO => afficher l'age */}
+            <h2>Ville: {city.city_name} ({city.code})</h2>
+            <h2>{getAge(user.birthdate)} ans</h2>
             <p>{user.birthdate}</p>
             <button type="button">Ajouter à mes amis</button>
             {/* //TODO => la route invitation + vue conditionnelle pour afficher profil ami */}
@@ -51,7 +52,7 @@ OtherProfile.propTypes = {
     user_description: PropTypes.string,
     city: PropTypes.shape({
       city_name: PropTypes.string,
-      zipcode: PropTypes.string,
+      code: PropTypes.string,
     }),
     plays: PropTypes.arrayOf(shape({
       instrument: PropTypes.shape({
@@ -70,9 +71,9 @@ OtherProfile.defaultProps = {
     lastname: '',
     birthdate: '',
     user_description: '',
-    member_city: {
+    city: {
       city_name: '',
-      zipcode: '',
+      code: '',
     },
     plays: [
       {

@@ -10,7 +10,7 @@ const mapStateToProps = (state) => ({
   email: state.signup.email,
   password: state.signup.password,
   city: state.signup.city,
-  zipcode: state.signup.zipcode,
+  code: state.signup.code,
   instruments: state.signup.instruments,
   styles: state.signup.styles,
   departement: state.signup.departement,

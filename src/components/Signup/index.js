@@ -16,7 +16,7 @@ Avec Redux :
 */
 
 const Signup = ({
-  firstName, lastName, dateOfBirth, description, email, password, city, zipcode,
+  firstName, lastName, dateOfBirth, description, email, password, city, code,
   instruments, styles, departement, region,
   onChangeInput, onSelectInput, addNewInputInstrument, removeInputInstrument,
   onStyleInput, addNewStyle, removeStyle, handleSubmitSignup,
@@ -128,7 +128,7 @@ const Signup = ({
     }
     <Localisation
       city={city}
-      zipcode={zipcode}
+      code={code}
       departement={departement}
       region={region}
       onChangeInput={onChangeInput}
@@ -147,7 +147,7 @@ Signup.propTypes = {
   city: PropTypes.string.isRequired,
   departement: PropTypes.shape().isRequired,
   region: PropTypes.shape().isRequired,
-  zipcode: PropTypes.string.isRequired,
+  code: PropTypes.string.isRequired,
   instruments: PropTypes.arrayOf(
     PropTypes.shape().isRequired,
   ).isRequired,
