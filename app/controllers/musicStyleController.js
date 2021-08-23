@@ -5,7 +5,9 @@ const musicStylesController = {
     // Get all music styles
     getAllMusicStyles: async (req, res, next) => {
         try {
-            const musicStyles = await MusicStyle.findAll();
+            const musicStyles = await MusicStyle.findAll({
+                include: ['member_music_style']
+            });
             res.json(musicStyles);
         } catch (error) {
             console.trace(error);
