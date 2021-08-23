@@ -6,7 +6,7 @@ import Searchbar from 'src/containers/Searchbar';
 import './style.scss';
 
 const Home = ({
-  users, isLogged, getMembers, searchedUsers, searchSuccessMessage,
+  users, isLogged, getMembers, searchedUsers, searchMessage,
 }) => {
   useEffect(() => {
     if (isLogged) {
@@ -25,6 +25,10 @@ const Home = ({
           <Searchbar />
 
           <div className="home__cards">
+            {/* si on a effectué une recherche, on affiche le message contenant le résultat. */}
+            {searchedUsers && (
+              <p>{searchMessage}</p>
+            )}
             {users.map(({ id, firstname }) => (
               <Link to={`/member/${id}`} key={id} className="home__cards-users">
                 <p>{firstname}</p>
@@ -55,17 +59,6 @@ const Home = ({
           </div>
         </>
       )}
-
-      {searchedUsers.length !== 0 && (
-        <div className="home__cards">
-          <p>{searchSuccessMessage}</p>
-          {searchedUsers.map(({ id, firstname }) => (
-            <Link to={`/member/${id}`} key={id} className="home__cards-users">
-              <p>{firstname}</p>
-            </Link>
-          ))}
-        </div>
-      )}
     </div>
   );
 };
@@ -76,11 +69,15 @@ Home.propTypes = {
   ),
   isLogged: PropTypes.bool.isRequired,
   getMembers: PropTypes.func.isRequired,
+  searchedUsers: PropTypes.array,
+  searchMessage: PropTypes.string,
 };
 Home.defaultProps = {
   users: [{
     id: null,
     firstname: '',
   }],
+  searchedUsers: [],
+  searchMessage: '',
 };
 export default Home;

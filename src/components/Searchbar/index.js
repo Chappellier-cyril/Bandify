@@ -4,7 +4,7 @@ import PropTypes, { shape } from 'prop-types';
 import './style.scss';
 
 const Searchbar = ({
-  onSearchChange, onSearchSubmit, searchValue, onSelectChange,
+  onResetFilters, onSearchChange, onSearchSubmit, searchValue, onSelectChange,
   isFiltersOpen, toggleIsFiltersOpen, getInstruments, getLevels, getMusicStyles,
   instruments, levels, musicstyles, city, zipcode, departement, region,
 }) => {
@@ -17,6 +17,8 @@ const Searchbar = ({
   return (
     <div className="search">
       <form onSubmit={onSearchSubmit} method="GET" action="/search">
+        {/* vide la recherche et réinitialise => nouvelle requete getMembers */}
+        <button type="button" onClick={onResetFilters}>Réinitialiser</button>
         {/* barre de recherche */}
         <input
           type="search"
@@ -117,7 +119,7 @@ Searchbar.propTypes = {
   musicstyles: PropTypes.arrayOf(shape({
     music_name: PropTypes.string,
   })),
-
+  onResetFilters: PropTypes.func.isRequired,
 };
 
 export default Searchbar;

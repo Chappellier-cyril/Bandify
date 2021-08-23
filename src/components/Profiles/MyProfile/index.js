@@ -6,16 +6,16 @@ import 'src/components/Profiles/style.scss';
 // TODO => PropTypes
 
 const MyProfile = ({ user }) => {
-  const { plays, member_city } = user;
+  const { plays, city } = user;
 
   return (
     <div className="profile__page">
-      {plays && member_city ? (
+      {plays && city ? (
         <div className="profile">
           <div className="profile__card">
             {/* //TODO => ajouter une photo */}
             <p>{user.firstname}, {user.lastname}</p>
-            <h2>Ville: {member_city.city_name} ({member_city.zipcode})</h2>
+            <h2>Ville: {city.city_name} ({city.zipcode})</h2>
             {/* //TODO => afficher l'age */}
             <p>{user.birthdate}</p>
             <button type="button">Supprimer mon profil</button>

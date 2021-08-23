@@ -11,7 +11,7 @@ export const initialState = {
   searchValue: '',
   // users searched from searchbar
   searchedUsers: [],
-  searchSuccessMessage: '',
+  searchMessage: '',
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -56,13 +56,19 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         isMenuOpen: !state.isMenuOpen,
       };
-
     case 'ON_SEARCH_SUBMIT_SUCCESS':
       return {
         ...state,
         searchedUsers: action.searchedUsers,
-        searchSuccessMessage: action.searchSuccessMessage,
+        searchMessage: action.searchMessage,
         searchValue: '',
+      };
+    case 'GET_MEMBERS_SUCCESS':
+      // Lors d'une action ON_RESET_FILTERS, on remet tout à vide
+      return {
+        ...state,
+        searchMessage: '',
+        searchedUsers: [],
       };
     default:
       return state;

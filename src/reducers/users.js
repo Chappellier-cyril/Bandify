@@ -19,6 +19,13 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         user: action.user,
       };
+    case 'ON_SEARCH_SUBMIT_SUCCESS':
+      return {
+        ...state,
+        // pas le choix, faut passer par le reducer Users
+        // les users deviennent filtrés en fonction de la query de searchBar
+        users: action.searchedUsers,
+      };
     default:
       return state;
   }

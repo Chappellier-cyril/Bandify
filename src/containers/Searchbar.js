@@ -37,6 +37,9 @@ const mapDispatchToProps = (dispatch) => ({
   getMusicStyles: () => {
     dispatch({ type: 'GET_MUSIC_STYLES' });
   },
+  onResetFilters: () => {
+    dispatch({ type: 'ON_RESET_FILTERS' });
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Searchbar);

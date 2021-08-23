@@ -7,7 +7,7 @@ const mapStateToProps = (state) => ({
   searchValue: state.users.searchValue,
   user: state.users.user,
   searchedUsers: state.settings.searchedUsers,
-  searchSuccessMessage: state.settings.searchSuccessMessage,
+  searchMessage: state.settings.searchMessage,
 });
 
 const mapDispatchToProps = (dispatch) => ({
