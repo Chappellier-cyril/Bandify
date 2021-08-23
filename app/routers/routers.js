@@ -22,36 +22,89 @@ router.route('/login')
     .post(memberController.loginMember);
 
 // MEMBERS Routes
+
+/**
+ * Récuperer tout les membres
+ * @route GET /members
+ * @returns {object} 200 - An array of user info
+ */
+
 router.route('/members')
     .get(memberController.getAllMembers);
-    
+
+/**
+ * Récuperer un membre par l' id
+ * @route GET /members/1
+ * @returns {object} 200 - An array of user info
+ */
+
 router.route('/members/:id')
     .get(memberController.getOneMember)
     .patch(memberController.updateOneMember)
     .delete(memberController.deleteOneMember);
-// CITIES Route
-router.route('/cities')
-    .get(cityController.getAllCities);
-// INSTRUMENTS Routes
+
+
+/**
+ * Récuperer toute la liste des instruments
+ * @route GET /instruments
+ * @returns {object} 200 - An array of user info
+ */
+
 router.route('/instruments')
     .get(instrumentController.getAllInstruments);
 
+/**
+ * Récuperer un instrument par l' id
+ * @route GET /instruments/:id
+ * @returns {object} 200 - An array of user info
+ */    
 router.route('/instruments/:id')
     .get(instrumentController.getOneInstrument);
 
-// LEVELS Routes
+/**
+ * Récuperer la liste des levels
+ * @route GET /levels
+ * @returns {object} 200 - An array of user info
+ */
+
 router.route('/levels')
     .get(levelController.getAllLevel);
+
+/**
+ * Récuperer un level par l' id
+ * @route GET /levels/:id
+ * @returns {object} 200 - An array of user info
+ */    
 
 router.route('/levels/:id')
     .get(levelController.getOneLevel);
 
-// MUSIC_STYLES Routes
+/**
+ * Récuperer la liste des styles de musiques
+ * @route GET /musicstyles
+ * @returns {object} 200 - An array of user info
+ */        
+
 router.route('/musicstyles')
     .get(musicStyleController.getAllMusicStyles);
+    
+/**
+ * Récuperer un style de musique par son id
+ * @route GET /musicstyles/:id
+ * @returns {object} 200 - An array of user info
+ */   
 
 router.route('/musicstyles/:id')
     .get(musicStyleController.getOneMusicStyle);
+
+/**
+ * Récuperer la liste de toutes les villes
+ * @route GET /cities
+ * @returns {object} 200 - An array of user info
+ */   
+
+router.route('/cities')
+.get(cityController.getAllCities);
 
 
 // MEMBER HAS INSTRUMENT

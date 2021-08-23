@@ -26,6 +26,7 @@
     "express": "^4.17.1",
     "express-jwt": "^6.1.0",
     "express-session": "^1.17.2",
+    "express-swagger-generator": "^1.1.17",
     "jsonwebtoken": "^8.5.1",
     "node-dev": "^7.0.0",
     "pg": "^8.7.1",

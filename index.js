@@ -5,6 +5,28 @@ const cors = require('cors');
 const router = require('./app/routers/routers');
 
 const app = express();
+const expressSwagger = require('express-swagger-generator')(app);
+
+let options = {
+   swaggerDefinition: {
+       info: {
+           description: 'This is Bandify API',
+           title: 'Bandify API',
+           version: '1.0.0',
+       },
+       host: 'localhost:3000',
+       basePath: '/',
+       produces: [
+           "application/json"
+       ],
+       schemes: ['http'],
+   },
+
+   basedir: __dirname,
+   files: ['./app/routers/routers.js']
+};
+expressSwagger(options)
+
 app.use(express.json());
 
 // A Modifier pour la sécurité a voir pour la suite
