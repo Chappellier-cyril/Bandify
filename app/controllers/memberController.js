@@ -41,8 +41,9 @@ const memberController = {
                 }, {
                     association: 'plays',
                     include: ['instrument', 'level']
-            }]
-            });
+            },{
+                association: 'member_music_style'
+            }]});
 
             // Soit le membre existe : Soit il n'existe pas
             if (member) {
