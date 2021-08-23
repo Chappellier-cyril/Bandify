@@ -59,7 +59,6 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         isMenuOpen: !state.isMenuOpen,
       };
-<<<<<<< HEAD
     case 'DELETE_PROFILE_WISH':
       return {
         ...state,
@@ -69,16 +68,15 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         isProfileDeleted: true,
+        isDeleteModalClosed: true,
         deleteProfileMessage: 'Votre profil a bien été supprimé',
-=======
-
+      };
     case 'ON_SEARCH_SUBMIT_SUCCESS':
       return {
         ...state,
         searchedUsers: action.searchedUsers,
         searchSuccessMessage: action.searchSuccessMessage,
         searchValue: '',
->>>>>>> 19c37d52dcd4a254e5d2d805ebe87c7b964ee08d
       };
     default:
       return state;
