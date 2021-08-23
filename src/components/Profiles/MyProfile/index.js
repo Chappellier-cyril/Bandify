@@ -33,7 +33,7 @@ const MyProfile = ({
               onClick={onWishToDeleteProfile}
             >Supprimer mon profil
             </button>
-            {/* //TODO => désinscription */}
+            
             <p>{user.user_description}</p>
             <p>Mes instruments:</p>
             <div className="home__cards">

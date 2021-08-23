@@ -6,17 +6,17 @@ import 'src/components/Profiles/style.scss';
 
 const OtherProfile = ({ user }) => {
   // eslint-disable-next-line camelcase
-  const { plays, member_city } = user;
+  const { plays, city } = user;
 
   return (
     <div className="profile__page">
       {/* eslint-disable-next-line camelcase  */}
-      {plays && member_city ? (
+      {plays && city ? (
         <div className="profile">
           <div className="profile__card">
             {/* //TODO => ajouter une photo */}
             <p>{user.firstname}, {user.lastname}</p>
-            <h2>Ville: {member_city.city_name} ({member_city.zipcode})</h2>
+            <h2>Ville: {city.city_name} ({city.zipcode})</h2>
             {/* //TODO => afficher l'age */}
             <p>{user.birthdate}</p>
             <button type="button">Ajouter à mes amis</button>
@@ -49,7 +49,7 @@ OtherProfile.propTypes = {
     lastname: PropTypes.string,
     birthdate: PropTypes.string,
     user_description: PropTypes.string,
-    member_city: PropTypes.shape({
+    city: PropTypes.shape({
       city_name: PropTypes.string,
       zipcode: PropTypes.string,
     }),
