@@ -6,7 +6,7 @@ export const initialState = {
   email: '',
   password: '',
   city: '',
-  zipcode: '',
+  code: '',
   departement: {
     code: '',
     nom: '',

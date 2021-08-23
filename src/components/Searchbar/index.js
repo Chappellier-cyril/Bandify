@@ -6,7 +6,7 @@ import './style.scss';
 const Searchbar = ({
   onResetFilters, onSearchChange, onSearchSubmit, searchValue, onSelectChange,
   isFiltersOpen, toggleIsFiltersOpen, getInstruments, getLevels, getMusicStyles,
-  instruments, levels, musicstyles, city, zipcode, departement, region,
+  instruments, levels, musicstyles, city, code, departement, region,
 }) => {
   useEffect(() => {
     getInstruments();

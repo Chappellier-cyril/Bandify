@@ -9,7 +9,7 @@ const mapStateToProps = (state) => ({
   isFiltersOpen: state.settings.isFiltersOpen,
   // TODO
   // city: state.signup.city,
-  // zipcode: state.signup.zipcode,
+  // code: state.signup.code,
   // departement: state.signup.departement,
   // region: state.signup.region,
 });

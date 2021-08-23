@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes, { shape } from 'prop-types';
+import { getAge } from 'src/selectors/user';
 
 // == Import : local
 import 'src/components/Profiles/style.scss';
@@ -14,19 +15,18 @@ const MyProfile = ({
   deleteProfileMessage,
 }) => {
   // eslint-disable-next-line camelcase
-  const { plays, city } = user;
+  const { plays, city, member_music_style } = user;
 
   return (
     <div className="profile__page">
       {/* eslint-disable-next-line camelcase  */}
-      {console.log(plays)}
-      {plays && city && isDeleteModalClosed ? (
+      {plays && city && member_music_style && isDeleteModalClosed ? (
         <div className="profile">
           <div className="profile__card">
             {/* //TODO => ajouter une photo */}
             <p>{user.firstname}, {user.lastname}</p>
-            <h2>Ville: {city.city_name} ({city.zipcode})</h2>
-            {/* //TODO => afficher l'age */}
+            <h2>Ville: {city.city_name} ({city.code})</h2>
+            <h2>{getAge(user.birthdate)} ans</h2>
             <p>{user.birthdate}</p>
             <button
               type="button"
@@ -48,7 +48,16 @@ const MyProfile = ({
               </ul>
             </div>
             <p>Mes goûts musicaux:</p>
-            {/* //TODO => la route back pour récupérer les goûts d'un membre */}
+            <div className="home__cards">
+              <ul>
+                {member_music_style.map((musicStyle) => (
+                  <li key={musicStyle.id}>
+                    {musicStyle.music_name}
+                  </li>
+
+                ))}
+              </ul>
+            </div>
             <h2 className="profile__friends-title">Mes amis</h2>
           </div>
         </div>
@@ -66,7 +75,9 @@ const MyProfile = ({
           >Non
           </button>
         </>
-      )} {isProfileDeleted && (
+      )}
+      {/* //TODO => Bug à corriger: le message ne s'affiche pas */}
+      {isProfileDeleted && (
         <>
           <p>{deleteProfileMessage}</p>
           <Link to="/">Revenir à la page d'accueil</Link>
@@ -84,7 +95,7 @@ MyProfile.propTypes = {
     user_description: PropTypes.string,
     city: PropTypes.shape({
       city_name: PropTypes.string,
-      zipcode: PropTypes.string,
+      code: PropTypes.string,
     }),
     plays: PropTypes.arrayOf(shape({
       instrument: PropTypes.shape({
@@ -93,6 +104,9 @@ MyProfile.propTypes = {
       level: PropTypes.shape({
         level_name: PropTypes.string,
       }),
+    })),
+    member_music_style: PropTypes.arrayOf(shape({
+      music_name: PropTypes.string,
     })),
   }),
   onWishToDeleteProfile: PropTypes.func.isRequired,
@@ -108,9 +122,9 @@ MyProfile.defaultProps = {
     lastname: '',
     birthdate: '',
     user_description: '',
-    member_city: {
+    city: {
       city_name: '',
-      zipcode: '',
+      code: '',
     },
     plays: [
       {
@@ -120,6 +134,11 @@ MyProfile.defaultProps = {
         level: {
           level_name: '',
         },
+      },
+    ],
+    member_music_style: [
+      {
+        music_name: '',
       },
     ],
   },
