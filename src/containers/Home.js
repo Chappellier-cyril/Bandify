@@ -6,6 +6,8 @@ const mapStateToProps = (state) => ({
   isLogged: state.login.isLogged,
   searchValue: state.users.searchValue,
   user: state.users.user,
+  searchedUsers: state.settings.searchedUsers,
+  searchSuccessMessage: state.settings.searchSuccessMessage,
 });
 
 const mapDispatchToProps = (dispatch) => ({

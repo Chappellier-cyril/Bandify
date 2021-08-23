@@ -22,6 +22,18 @@ const searchMiddleware = (store) => (next) => (action) => {
       });
   }
 
+  if (action.type === 'ON_SEARCH_SUBMIT') {
+    const state = store.getState();
+    const { searchValue } = state.settings;
+    const searchSuccessMessage = `Résultats pour ${searchValue}`;
+
+    axios.get(`http://localhost:3000/search?q=${searchValue}`)
+      .then((response) => {
+        console.log(response.data);
+        store.dispatch({ type: 'ON_SEARCH_SUBMIT_SUCCESS', searchedUsers: response.data, searchSuccessMessage });
+      });
+  }
+
   next(action);
 };
 
