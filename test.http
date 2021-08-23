@@ -1,0 +1,27 @@
+### Test de 404
+GET http://localhost:3000/sqdsqd
+
+### Récupération de la liste des membres
+GET http://localhost:3000/members
+
+### Récupération de la liste des instruments
+GET http://localhost:3000/instruments
+
+### Récupération de la liste des levels
+GET http://localhost:3000/levels
+
+### Récupération de la liste des styles de musique
+GET http://localhost:3000/musicstyles
+
+### Récupération d'un membre en fonction de son id
+GET http://localhost:3000/members/1
+
+### Récupération d'un instrument en fonction de son id
+GET http://localhost:3000/instruments/1
+
+### Récupération d'un post en fonction de son id
+GET http://localhost:3000/levels/1
+
+### Récupération d'un style de musiquer en fonction de son id
+GET http://localhost:3000/musicstyles/1
+
