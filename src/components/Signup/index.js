@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-
+import axios from 'axios';
 import './style.scss';
 
 import instrumentsData from 'src/data/instruments';
@@ -20,122 +20,156 @@ const Signup = ({
   instruments, styles, departement, region,
   onChangeInput, onSelectInput, addNewInputInstrument, removeInputInstrument,
   onStyleInput, addNewStyle, removeStyle, handleSubmitSignup,
-}) => (
-// création des champs contrôlés pour les inputs du formulaire d'inscription grâce aux useState
-// le state instrument sera un tableau qui récupère l'instrument et le level dans un objet
-  <form type="submit" onSubmit={handleSubmitSignup} autoComplete="off">
-    <div>
-      <label htmlFor="firstName">
-        Prénom
-        <input name="firstName" id="firstName" type="text" value={firstName} onChange={(e) => onChangeInput('firstName', e.target.value)} placeholder="Prénom" required />
-      </label>
-    </div>
-    <div>
-      <label htmlFor="lastName">
-        Nom
-        <input name="lastName" id="lastName" type="text" value={lastName} onChange={(e) => onChangeInput('lastName', e.target.value)} placeholder="Nom" required />
-      </label>
-    </div>
-    <div>
-      <label htmlFor="dateOfBirth">
-        Date de naissance
-        <input name="dateOfBirth" id="dateOfBirth" type="date" value={dateOfBirth} onChange={(e) => onChangeInput('dateOfBirth', e.target.value)} required />
-      </label>
-    </div>
-    <div>
-      <label htmlFor="email">
-        Adresse email
-        <input name="email" id="email" type="email" value={email} onChange={(e) => onChangeInput('email', e.target.value)} placeholder="Email" required />
-      </label>
-    </div>
-    <div>
-      <label htmlFor="password">
-        Mot de passe
-        <input name="password" id="password" type="password" value={password} onChange={(e) => onChangeInput('password', e.target.value)} placeholder="Mot de passe" required />
-      </label>
-    </div>
-    <div>
-      <label htmlFor="description">
-        Description
-        <textarea name="description" id="description" type="text" value={description} onChange={(e) => onChangeInput('description', e.target.value)} placeholder="Faire une courte description de vous" />
-      </label>
-    </div>
-    <div>
-      <label htmlFor="avatar">
-        Image de profil
-        <input name="avatar" id="avatar" type="file" placeholder="Choisir une photo" />
-      </label>
-    </div>
+}) => {
+  const [avatar, setAvatar] = useState();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = new FormData();
+    form.append('firstname', firstName);
+    form.append('lastname', lastName);
+    form.append('birthdate', dateOfBirth);
+    form.append('description', description);
+    form.append('email', email);
+    form.append('user_password', password);
+    form.append('city_code', zipcode);
+    form.append('instruments', instruments);
+    form.append('styles', styles);
+    form.append('file', avatar, avatar.name);
+    const options = {
+      method: 'POST',
+      url: 'http://localhost:3000/signup',
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        Accept: 'application/json',
+      },
+      data: form,
+    };
+    axios(options)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
-    {
-      // on boucle sur le tableau d'instruments
-      instruments.map((instrument, index) => (
-        // Prévoir de générer un id pour un code plus propre
-        // eslint-disable-next-line react/no-array-index-key
-        <div key={index}>
-          <select name={`instrument${index}`} id={`instrument${index}`} onChange={(e) => onSelectInput(e, index, 'instrument')} required={index === 0} disabled={instrument.instrument && index < instruments.length - 1}>
-            <option value="">Choisir un instrument</option>
+  return (
+  // création des champs contrôlés pour les inputs du formulaire d'inscription grâce aux useState
+  // le state instrument sera un tableau qui récupère l'instrument et le level dans un objet
+    <form type="submit" onSubmit={handleSubmit} autoComplete="off">
+      <div>
+        <label htmlFor="firstName">
+          Prénom
+          <input name="firstName" id="firstName" type="text" value={firstName} onChange={(e) => onChangeInput('firstName', e.target.value)} placeholder="Prénom" required />
+        </label>
+      </div>
+      <div>
+        <label htmlFor="lastName">
+          Nom
+          <input name="lastName" id="lastName" type="text" value={lastName} onChange={(e) => onChangeInput('lastName', e.target.value)} placeholder="Nom" required />
+        </label>
+      </div>
+      <div>
+        <label htmlFor="dateOfBirth">
+          Date de naissance
+          <input name="dateOfBirth" id="dateOfBirth" type="date" value={dateOfBirth} onChange={(e) => onChangeInput('dateOfBirth', e.target.value)} required />
+        </label>
+      </div>
+      <div>
+        <label htmlFor="email">
+          Adresse email
+          <input name="email" id="email" type="email" value={email} onChange={(e) => onChangeInput('email', e.target.value)} placeholder="Email" required />
+        </label>
+      </div>
+      <div>
+        <label htmlFor="password">
+          Mot de passe
+          <input name="password" id="password" type="password" value={password} onChange={(e) => onChangeInput('password', e.target.value)} placeholder="Mot de passe" required />
+        </label>
+      </div>
+      <div>
+        <label htmlFor="description">
+          Description
+          <textarea name="description" id="description" type="text" value={description} onChange={(e) => onChangeInput('description', e.target.value)} placeholder="Faire une courte description de vous" />
+        </label>
+      </div>
+      <div>
+        <label htmlFor="avatar">
+          Image de profil
+          <input name="avatar" id="avatar" type="file" placeholder="Choisir une photo" onChange={(e) => setAvatar(e.target.files[0])} />
+        </label>
+      </div>
+
+      {
+        // on boucle sur le tableau d'instruments
+        instruments.map((instrument, index) => (
+          // Prévoir de générer un id pour un code plus propre
+          // eslint-disable-next-line react/no-array-index-key
+          <div key={index}>
+            <select name={`instrument${index}`} id={`instrument${index}`} onChange={(e) => onSelectInput(e, index, 'instrument')} required={index === 0} disabled={instrument.instrument && index < instruments.length - 1}>
+              <option value="">Choisir un instrument</option>
+              {
+                instrumentsData.map(({ name, id }) => <option value={id} key={id}>{name}</option>)
+              }
+            </select>
+            <select name={`level${index}`} id={`level${index}`} onChange={(e) => onSelectInput(e, index, 'level')} disabled={!instrument.instrument}>
+              <option value="">Choisir un niveau de pratique</option>
+              {
+                levelsData.map(({ name, id }) => <option value={id} key={id}>{name}</option>)
+              }
+            </select>
             {
-              instrumentsData.map(({ name, id }) => <option value={id} key={id}>{name}</option>)
+              // Ici on disabled le bouton + si pas d'instrument choisi
+              // On ajoute un bouton  - à la ligne précédente si ajoute une ligne
+              // On limite le nombre de choix max du membre (ici 3 est le maximum)
+              // A voir combien d'instruments maximum on pourrais choisir
+              index < 3 // maximum de ligne d'instrument
+                && (index === instruments.length - 1
+                  ? <button type="button" onClick={addNewInputInstrument} disabled={!instrument.instrument}>+</button>
+                  : <button type="button" onClick={() => removeInputInstrument(index)}>-</button>
+                )
             }
-          </select>
-          <select name={`level${index}`} id={`level${index}`} onChange={(e) => onSelectInput(e, index, 'level')} disabled={!instrument.instrument}>
-            <option value="">Choisir un niveau de pratique</option>
+          </div>
+        ))
+      }
+      {
+        /*
+          TODO => ville code postal => voir pour de l'autocomplétion
+          avec appel API code postaux la poste ou API / Gouv
+        */
+        styles.map((_, index) => (
+          // prévoir de générer un id proprement
+          // eslint-disable-next-line react/no-array-index-key
+          <div key={index}>
+            <select name={`musicStyle${index}`} id={`musicStyle${index}`} onChange={(e) => onStyleInput(e, index)}>
+              <option value="">Choisir un style de musique</option>
+              {
+                musicStylesData.map((style) => (
+                  <option value={style.id} key={style.id}>{style.name}</option>
+                ))
+              }
+            </select>
             {
-              levelsData.map(({ name, id }) => <option value={id} key={id}>{name}</option>)
+              index < 2 // 4 choix de style max (à définir)
+                && (index === styles.length - 1
+                  ? <button type="button" disabled={!styles[index]} onClick={addNewStyle}>+</button>
+                  : <button type="button" onClick={() => removeStyle(index)}>-</button>
+                )
             }
-          </select>
-          {
-            // Ici on disabled le bouton + si pas d'instrument choisi
-            // On ajoute un bouton  - à la ligne précédente si ajoute une ligne
-            // On limite le nombre de choix max du membre (ici 3 est le maximum)
-            // A voir combien d'instruments maximum on pourrais choisir
-            index < 3 // maximum de ligne d'instrument
-              && (index === instruments.length - 1
-                ? <button type="button" onClick={addNewInputInstrument} disabled={!instrument.instrument}>+</button>
-                : <button type="button" onClick={() => removeInputInstrument(index)}>-</button>
-              )
-          }
-        </div>
-      ))
-    }
-    {
-      /*
-        TODO => ville code postal => voir pour de l'autocomplétion
-        avec appel API code postaux la poste ou API / Gouv
-      */
-      styles.map((_, index) => (
-        // prévoir de générer un id proprement
-        // eslint-disable-next-line react/no-array-index-key
-        <div key={index}>
-          <select name={`musicStyle${index}`} id={`musicStyle${index}`} onChange={(e) => onStyleInput(e, index)}>
-            <option value="">Choisir un style de musique</option>
-            {
-              musicStylesData.map((style) => (
-                <option value={style.id} key={style.id}>{style.name}</option>
-              ))
-            }
-          </select>
-          {
-            index < 2 // 4 choix de style max (à définir)
-              && (index === styles.length - 1
-                ? <button type="button" disabled={!styles[index]} onClick={addNewStyle}>+</button>
-                : <button type="button" onClick={() => removeStyle(index)}>-</button>
-              )
-          }
-        </div>
-      ))
-    }
-    <Localisation
-      city={city}
-      zipcode={zipcode}
-      departement={departement}
-      region={region}
-      onChangeInput={onChangeInput}
-    />
-    <button type="submit">SUBMIT</button>
-  </form>
-);
+          </div>
+        ))
+      }
+      <Localisation
+        city={city}
+        zipcode={zipcode}
+        departement={departement}
+        region={region}
+        onChangeInput={onChangeInput}
+      />
+      <button type="submit">SUBMIT</button>
+    </form>
+  );
+};
 
 Signup.propTypes = {
   firstName: PropTypes.string.isRequired,

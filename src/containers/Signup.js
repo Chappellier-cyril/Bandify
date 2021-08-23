@@ -74,10 +74,9 @@ const mapDispatchToProps = (dispatch) => ({
       index,
     });
   },
-  handleSubmitSignup: (e) => {
+  handleSubmitSignup: (e, image) => {
     e.preventDefault();
-    console.log(e.target[6].files[0]);
-    dispatch({ type: 'SUBMIT_SIGNUP', image: e.target[6].files[0] });
+    dispatch({ type: 'SUBMIT_SIGNUP', image });
   },
 });
 

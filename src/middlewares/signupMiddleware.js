@@ -3,8 +3,22 @@ import axios from 'axios';
 const signupMiddleware = (store) => (next) => (action) => {
   if (action.type === 'SUBMIT_SIGNUP') {
     console.log('je suis dans le middleware du signup');
+    console.log(action.image.file);
     const state = store.getState();
-    const createUser = {
+    // const createUser = {
+    //   firstName: state.signup.firstName,
+    //   lastName: state.signup.firstName,
+    //   dateOfBirth: state.signup.dateOfBirth,
+    //   description: state.signup.description,
+    //   email: state.signup.email,
+    //   password: state.signup.password,
+    //   city: state.signup.city,
+    //   city_code: state.signup.zipcode,
+    //   instruments: state.signup.instruments,
+    //   styles: state.signup.styles,
+    // };
+    const form = new FormData();
+    form.set('user', {
       firstName: state.signup.firstName,
       lastName: state.signup.firstName,
       dateOfBirth: state.signup.dateOfBirth,
@@ -12,20 +26,20 @@ const signupMiddleware = (store) => (next) => (action) => {
       email: state.signup.email,
       password: state.signup.password,
       city: state.signup.city,
-      zipcode: state.signup.zipcode,
-      departement: state.signup.departement,
-      region: state.signup.region,
+      city_code: state.signup.zipcode,
       instruments: state.signup.instruments,
       styles: state.signup.styles,
-      image: action.image,
-    };
+    });
+    form.append('file', action.image);
+
     const options = {
       method: 'POST',
       url: 'http://localhost:3000/signup',
       headers: {
-        'Content-type': 'application/json',
+        'Content-Type': 'multipart/form-data',
+        Accept: 'application/json',
       },
-      data: createUser,
+      data: form,
     };
     axios(options)
       .then((response) => {

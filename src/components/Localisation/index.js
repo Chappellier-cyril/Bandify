@@ -37,7 +37,7 @@ const Localisation = ({
     console.log(e.target.innerHTML);
     const foundCity = cities.find((cityState) => (`${cityState.departement.code} - ${cityState.nom.toUpperCase()}`) === e.target.innerHTML);
     onChangeInput('city', foundCity.nom.toUpperCase());
-    onChangeInput('zipcode', foundCity.codesPostaux[0]);
+    onChangeInput('zipcode', foundCity.code);
     onChangeInput('departement', foundCity.departement);
     onChangeInput('region', foundCity.region);
     setCities([]);
