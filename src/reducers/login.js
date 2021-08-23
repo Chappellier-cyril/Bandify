@@ -50,6 +50,18 @@ const reducer = (state = initialState, action = {}) => {
         password: '',
       };
 
+    case 'ON_DELETE_PROFILE_SUCCESS':
+      return {
+        ...state,
+        id: null,
+        email: '',
+        password: '',
+        isLogged: false,
+        isError: false,
+        passwordShown: false,
+        token: null,
+      };
+
     default:
       return state;
   }

@@ -1,16 +1,25 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import PropTypes, { shape } from 'prop-types';
 
 // == Import : local
 import 'src/components/Profiles/style.scss';
 
-// TODO => PropTypes
-
-const MyProfile = ({ user }) => {
+const MyProfile = ({
+  user,
+  onWishToDeleteProfile,
+  onDeleteProfile,
+  isDeleteModalClosed,
+  isProfileDeleted,
+  deleteProfileMessage,
+}) => {
+  // eslint-disable-next-line camelcase
   const { plays, member_city } = user;
 
   return (
     <div className="profile__page">
-      {plays && member_city ? (
+      {/* eslint-disable-next-line camelcase  */}
+      {plays && member_city && isDeleteModalClosed ? (
         <div className="profile">
           <div className="profile__card">
             {/* //TODO => ajouter une photo */}
@@ -18,7 +27,11 @@ const MyProfile = ({ user }) => {
             <h2>Ville: {member_city.city_name} ({member_city.zipcode})</h2>
             {/* //TODO => afficher l'age */}
             <p>{user.birthdate}</p>
-            <button type="button">Supprimer mon profil</button>
+            <button
+              type="button"
+              onClick={onWishToDeleteProfile}
+            >Supprimer mon profil
+            </button>
             {/* //TODO => désinscription */}
             <p>{user.user_description}</p>
             <p>Mes instruments:</p>
@@ -38,9 +51,77 @@ const MyProfile = ({ user }) => {
             <h2 className="profile__friends-title">Mes amis</h2>
           </div>
         </div>
-      ) : (null) }
+      ) : (
+        <>
+          <p>Êtes-vous sûr(e) de vouloir supprimer votre profil?</p>
+          <button
+            type="button"
+            onClick={onDeleteProfile}
+          >Oui
+          </button>
+          <button
+            type="button"
+            onClick={onWishToDeleteProfile}
+          >Non
+          </button>
+        </>
+      )} {isProfileDeleted && (
+        <>
+          <p>{deleteProfileMessage}</p>
+          <Link to="/">Revenir à la page d'accueil</Link>
+        </>
+      )}
     </div>
   );
+};
+
+MyProfile.propTypes = {
+  user: PropTypes.shape({
+    firstname: PropTypes.string,
+    lastname: PropTypes.string,
+    birthdate: PropTypes.string,
+    user_description: PropTypes.string,
+    member_city: PropTypes.shape({
+      city_name: PropTypes.string,
+      zipcode: PropTypes.string,
+    }),
+    plays: PropTypes.arrayOf(shape({
+      instrument: PropTypes.shape({
+        instrument_name: PropTypes.string,
+      }),
+      level: PropTypes.shape({
+        level_name: PropTypes.string,
+      }),
+    })),
+  }),
+  onWishToDeleteProfile: PropTypes.func.isRequired,
+  onDeleteProfile: PropTypes.func.isRequired,
+  isDeleteModalClosed: PropTypes.bool.isRequired,
+  isProfileDeleted: PropTypes.bool.isRequired,
+  deleteProfileMessage: PropTypes.string.isRequired,
+};
+
+MyProfile.defaultProps = {
+  user: {
+    firstname: '',
+    lastname: '',
+    birthdate: '',
+    user_description: '',
+    member_city: {
+      city_name: '',
+      zipcode: '',
+    },
+    plays: [
+      {
+        instrument: {
+          instrument_name: '',
+        },
+        level: {
+          level_name: '',
+        },
+      },
+    ],
+  },
 };
 
 export default MyProfile;

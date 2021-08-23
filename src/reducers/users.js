@@ -19,6 +19,12 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         user: action.user,
       };
+    case 'ON_DELETE_PROFILE_SUCCESS':
+      return {
+        ...state,
+        users: usersData,
+        user: {},
+      };
     default:
       return state;
   }

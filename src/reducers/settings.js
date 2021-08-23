@@ -1,6 +1,7 @@
 export const initialState = {
   isMenuOpen: false,
   isFiltersOpen: false,
+  isDeleteModalClosed: true,
   instruments: [{}],
   levels: [{}],
   musicstyles: [{}],
@@ -9,6 +10,8 @@ export const initialState = {
   musicstyle: '',
   // Home's search input
   searchValue: '',
+  deleteProfileMessage: '',
+  isProfileDeleted: false,
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -52,6 +55,17 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         isMenuOpen: !state.isMenuOpen,
+      };
+    case 'DELETE_PROFILE_WISH':
+      return {
+        ...state,
+        isDeleteModalClosed: !state.isDeleteModalClosed,
+      };
+    case 'ON_DELETE_PROFILE_SUCCESS':
+      return {
+        ...state,
+        isProfileDeleted: true,
+        deleteProfileMessage: 'Votre profil a bien été supprimé',
       };
     default:
       return state;
