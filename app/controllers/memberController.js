@@ -7,7 +7,13 @@ const memberController = {
     getAllMembers: async (req, res, next) => {
         try {
             const members = await Member.findAll({
-                include: ['city',{
+                include: [{
+                    association: 'city',
+                    include: {
+                        association: 'department',
+                        include: 'region',
+                    },
+                },{
                     association: 'plays',
                     include: ['instrument', 'level']
             }]});
@@ -24,7 +30,13 @@ const memberController = {
             const targetId = req.params.id;
 
             const member = await Member.findByPk(targetId, {
-                include: ['city', {
+                include: [{
+                    association: 'city',
+                    include: {
+                        association: 'department',
+                        include: 'region',
+                    },
+                }, {
                     association: 'plays',
                     include: ['instrument', 'level']
             }]
