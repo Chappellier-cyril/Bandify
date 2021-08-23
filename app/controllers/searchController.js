@@ -6,11 +6,17 @@ const searchController = {
     console.log('searchQuery dans searchController :', searchQuery);
     try {
         const members = await Member.findAll({
-            include: ['member_city', {
+            include: [{
+                association: 'city',
+                include: {
+                    association: 'department',
+                    include: 'region',
+                },
+            },{
                 association: 'plays',
                 include: ['instrument', 'level']
         }]});
-
+        
         const filteredMembers = members.filter((member) => member.firstname.includes(searchQuery));
 
         console.log('filteredMembers : ', filteredMembers);
