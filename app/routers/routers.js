@@ -5,6 +5,7 @@ const levelController = require('../controllers/levelController');
 const musicStyleController = require('../controllers/musicStyleController');
 const associationController = require('../controllers/associationController');
 const searchController = require('../controllers/searchController');
+const messageController = require('../controllers/messageController');
 
 const cityController = require('../controllers/cityController');
 const router = express.Router();
@@ -102,6 +103,10 @@ router.route('/musicstyles/:id')
  * @route GET /cities
  * @returns {object} 200 - An array of user info
  */   
+
+router.route('/messages')
+    .get(messageController.getAllMessages)
+    .post(messageController.createMessage)
 
 router.route('/cities')
 .get(cityController.getAllCities);

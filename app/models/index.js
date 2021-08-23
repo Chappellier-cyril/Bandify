@@ -17,7 +17,7 @@ Member.hasMany(Message, {
 });
 
 Member.hasMany(Message, {
-    foreignKey: 'receiver_id',
+    foreignKey: 'reicever_id',
     as: 'IncomingMessage',
     onDelete: 'CASCADE'
 });
@@ -30,7 +30,7 @@ Message.belongsTo(Member, {
 });
 
 Message.belongsTo(Member, {
-    foreignKey: 'receiver_id',
+    foreignKey: 'reicever_id',
     as: 'Receiver',
     onDelete: 'CASCADE'
 });
@@ -43,7 +43,7 @@ Member.hasMany(Invitation, {
 });
 
 Member.hasMany(Invitation, {
-    foreignKey: 'receiver_id',
+    foreignKey: 'reicever_id',
     as: 'IncomingInvitation',
     onDelete: 'CASCADE'
 });
@@ -56,7 +56,7 @@ Invitation.belongsTo(Member, {
 });
 
 Invitation.belongsTo(Member, {
-    foreignKey: 'receiver_id',
+    foreignKey: 'reicever_id',
     as: 'InvitationReceiver',
     onDelete: 'CASCADE'
 });
