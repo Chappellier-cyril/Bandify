@@ -7,12 +7,12 @@ import 'src/components/Profiles/style.scss';
 
 const OtherProfile = ({ user }) => {
   // eslint-disable-next-line camelcase
-  const { plays, city } = user;
+  const { plays, city, member_music_style } = user;
 
   return (
     <div className="profile__page">
       {/* eslint-disable-next-line camelcase  */}
-      {plays && city ? (
+      {plays && city && member_music_style ? (
         <div className="profile">
           <div className="profile__card">
             {/* //TODO => ajouter une photo */}
@@ -36,7 +36,16 @@ const OtherProfile = ({ user }) => {
               </ul>
             </div>
             <p>Ses goûts musicaux:</p>
-            {/* //TODO => la route back pour récupérer les goûts d'un membre */}
+            <div className="home__cards">
+              <ul>
+                {member_music_style.map((musicStyle) => (
+                  <li key={musicStyle.id}>
+                    {musicStyle.music_name}
+                  </li>
+
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       ) : (null) }
@@ -62,6 +71,9 @@ OtherProfile.propTypes = {
         level_name: PropTypes.string,
       }),
     })),
+    member_music_style: PropTypes.arrayOf(shape({
+      music_name: PropTypes.string,
+    })),
   }),
 };
 
@@ -83,6 +95,11 @@ OtherProfile.defaultProps = {
         level: {
           level_name: '',
         },
+      },
+    ],
+    member_music_style: [
+      {
+        music_name: '',
       },
     ],
   },

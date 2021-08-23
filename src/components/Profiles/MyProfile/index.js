@@ -17,8 +17,6 @@ const MyProfile = ({
   // eslint-disable-next-line camelcase
   const { plays, city, member_music_style } = user;
 
-  console.log(user);
-
   return (
     <div className="profile__page">
       {/* eslint-disable-next-line camelcase  */}
@@ -107,6 +105,9 @@ MyProfile.propTypes = {
         level_name: PropTypes.string,
       }),
     })),
+    member_music_style: PropTypes.arrayOf(shape({
+      music_name: PropTypes.string,
+    })),
   }),
   onWishToDeleteProfile: PropTypes.func.isRequired,
   onDeleteProfile: PropTypes.func.isRequired,
@@ -133,6 +134,11 @@ MyProfile.defaultProps = {
         level: {
           level_name: '',
         },
+      },
+    ],
+    member_music_style: [
+      {
+        music_name: '',
       },
     ],
   },
