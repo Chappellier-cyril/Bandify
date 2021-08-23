@@ -30,7 +30,7 @@ const optionsDepartments = {
 const createCity = async (name, code, department) => {
   await City.create({
     city_name: name,
-    zipcode: code,
+    code: code,
     department_code: department
   })
 }

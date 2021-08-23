@@ -11,8 +11,9 @@ City.init({
           notEmpty: true
       }
   },
-  zipcode: {
+  code: {
       type: DataTypes.TEXT,
+      primaryKey: true,
   },
   department_code: {
       type: DataTypes.TEXT,

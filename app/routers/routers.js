@@ -4,7 +4,7 @@ const instrumentController = require('../controllers/instrumentController');
 const levelController = require('../controllers/levelController');
 const musicStyleController = require('../controllers/musicStyleController');
 const associationController = require('../controllers/associationController');
-
+const cityController = require('../controllers/cityController');
 const router = express.Router();
 
 // SIGNUP Route
@@ -23,7 +23,9 @@ router.route('/members/:id')
     .get(memberController.getOneMember)
     .patch(memberController.updateOneMember)
     .delete(memberController.deleteOneMember);
-
+// CITIES Route
+router.route('/cities')
+    .get(cityController.getAllCities);
 // INSTRUMENTS Routes
 router.route('/instruments')
     .get(instrumentController.getAllInstruments);

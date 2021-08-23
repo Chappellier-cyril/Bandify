@@ -63,7 +63,7 @@ City.hasMany(Member, {
 // 1,1 entre member et city
 Member.belongsTo(City, {
     foreignKey: 'city_code',
-    as: 'member_city'
+    as: 'city'
 });
 
 // 1,1 entre city et département

@@ -15,7 +15,7 @@ CREATE TABLE "region" (
 CREATE TABLE "department" (
 	"id" int GENERATED ALWAYS AS IDENTITY,
 	"department_name" text NOT NULL UNIQUE,
-    "code" TEXT NOT NULL PRIMARY KEY,
+    "code" TEXT PRIMARY KEY,
     "region_code" int references "region"("code"),
 	"createdAt" Timestamptz NOT NULL default now(),
     "updatedAt" Timestamptz NOT NULL default now()
@@ -24,7 +24,7 @@ CREATE TABLE "department" (
 CREATE TABLE "city" (
 	"id" int GENERATED ALWAYS AS IDENTITY,
 	"city_name" text NOT NULL,
-	"zipcode" text PRIMARY KEY,
+	"code" text PRIMARY KEY,
     "department_code" text references "department"("code"),
     "createdAt" Timestamptz NOT NULL default now(),
     "updatedAt" Timestamptz NOT NULL default now()
@@ -40,7 +40,7 @@ CREATE TABLE "member" (
     "user_password" text NOT NULL,
     "user_description" text,
     "profil_image" text,
-    "city_code" text REFERENCES city(zipcode),
+    "city_code" text REFERENCES city(code),
     "createdAt" Timestamptz NOT NULL default now(),
     "updatedAt" Timestamptz NOT NULL default now()
 );

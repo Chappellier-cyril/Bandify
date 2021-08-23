@@ -13,6 +13,7 @@ Region.init({
   },
   code: {
       type: DataTypes.INTEGER,
+      primaryKey: true,
       validate: {
           isInt: true,
       }
