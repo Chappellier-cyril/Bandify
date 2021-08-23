@@ -26,7 +26,7 @@ const Profiles = ({
       // qui passe dans le userMiddleware
       getOneMember();
     }
-  }, []);
+  }, [lastSegmentUrl]);
 
   return (
     (foundMember.id === connectedUserId)
