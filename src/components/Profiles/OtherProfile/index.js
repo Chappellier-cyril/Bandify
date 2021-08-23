@@ -1,15 +1,16 @@
 import React from 'react';
+import PropTypes, { shape } from 'prop-types';
 
 // == Import : local
 import 'src/components/Profiles/style.scss';
 
-// TODO => PropTypes
-
 const OtherProfile = ({ user }) => {
+  // eslint-disable-next-line camelcase
   const { plays, city } = user;
 
   return (
     <div className="profile__page">
+      {/* eslint-disable-next-line camelcase  */}
       {plays && city ? (
         <div className="profile">
           <div className="profile__card">
@@ -40,6 +41,50 @@ const OtherProfile = ({ user }) => {
       ) : (null) }
     </div>
   );
+};
+
+OtherProfile.propTypes = {
+  user: PropTypes.shape({
+    firstname: PropTypes.string,
+    lastname: PropTypes.string,
+    birthdate: PropTypes.string,
+    user_description: PropTypes.string,
+    city: PropTypes.shape({
+      city_name: PropTypes.string,
+      zipcode: PropTypes.string,
+    }),
+    plays: PropTypes.arrayOf(shape({
+      instrument: PropTypes.shape({
+        instrument_name: PropTypes.string,
+      }),
+      level: PropTypes.shape({
+        level_name: PropTypes.string,
+      }),
+    })),
+  }),
+};
+
+OtherProfile.defaultProps = {
+  user: {
+    firstname: '',
+    lastname: '',
+    birthdate: '',
+    user_description: '',
+    member_city: {
+      city_name: '',
+      zipcode: '',
+    },
+    plays: [
+      {
+        instrument: {
+          instrument_name: '',
+        },
+        level: {
+          level_name: '',
+        },
+      },
+    ],
+  },
 };
 
 export default OtherProfile;

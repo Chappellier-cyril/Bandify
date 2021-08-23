@@ -26,6 +26,12 @@ const reducer = (state = initialState, action = {}) => {
         // les users deviennent filtrés en fonction de la query de searchBar
         users: action.searchedUsers,
       };
+    case 'ON_DELETE_PROFILE_SUCCESS':
+      return {
+        ...state,
+        users: usersData,
+        user: {},
+      };
     default:
       return state;
   }
