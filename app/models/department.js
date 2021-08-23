@@ -13,6 +13,7 @@ Department.init({
   },
   code: {
     type: DataTypes.TEXT,
+    primaryKey: true,
   },
   region_code: {
     type: DataTypes.INTEGER,

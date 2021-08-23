@@ -48,12 +48,11 @@ Member.init({
     type : DataTypes.TEXT,
     allowNull: true,
   },
-  city_id : {
-  type: DataTypes.INTEGER,
-  allowNull: false,
+  city_code : {
+  type: DataTypes.TEXT,
       references: {
           model: 'City',
-          key: 'id'
+          key: 'code'
       }
  },
 }, {

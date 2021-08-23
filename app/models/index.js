@@ -12,45 +12,53 @@ const Play = require('./play');
 // 1,N entre member et message
 Member.hasMany(Message, {
     foreignKey: 'sender_id',
-    as: 'OutgoingMessage'
+    as: 'OutgoingMessage',
+    onDelete: 'CASCADE'
 });
 
 Member.hasMany(Message, {
     foreignKey: 'receiver_id',
-    as: 'IncomingMessage'
+    as: 'IncomingMessage',
+    onDelete: 'CASCADE'
 });
 
 // 1,1 entre message et member
 Message.belongsTo(Member, {
     foreignKey: 'sender_id',
-    as: 'Sender'
+    as: 'Sender',
+    onDelete: 'CASCADE'
 });
 
 Message.belongsTo(Member, {
     foreignKey: 'receiver_id',
-    as: 'Receiver'
+    as: 'Receiver',
+    onDelete: 'CASCADE'
 });
 
 // 1,N entre member et invitation
 Member.hasMany(Invitation, {
     foreignKey: 'sender_id',
-    as: 'OutgoingInvitation'
+    as: 'OutgoingInvitation',
+    onDelete: 'CASCADE'
 });
 
 Member.hasMany(Invitation, {
     foreignKey: 'receiver_id',
-    as: 'IncomingInvitation'
+    as: 'IncomingInvitation',
+    onDelete: 'CASCADE'
 });
 
 // 1,1 entre invitation et member
 Invitation.belongsTo(Member, {
     foreignKey: 'sender_id',
-    as: 'InvitationSender'
+    as: 'InvitationSender',
+    onDelete: 'CASCADE'
 });
 
 Invitation.belongsTo(Member, {
     foreignKey: 'receiver_id',
-    as: 'InvitationReceiver'
+    as: 'InvitationReceiver',
+    onDelete: 'CASCADE'
 });
 
 // 1,N entre member et city
@@ -63,7 +71,7 @@ City.hasMany(Member, {
 // 1,1 entre member et city
 Member.belongsTo(City, {
     foreignKey: 'city_code',
-    as: 'member_city'
+    as: 'city'
 });
 
 // 1,1 entre city et département
@@ -143,6 +151,7 @@ Member.belongsToMany(MusicStyle, {
     otherKey: 'music_style_id',
     foreignKey: 'member_id',
     as: 'member_music_style',
+    onDelete: 'CASCADE'
 });
 
 module.exports = { 
