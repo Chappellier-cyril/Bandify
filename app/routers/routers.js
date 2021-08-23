@@ -4,8 +4,14 @@ const instrumentController = require('../controllers/instrumentController');
 const levelController = require('../controllers/levelController');
 const musicStyleController = require('../controllers/musicStyleController');
 const associationController = require('../controllers/associationController');
+const searchController = require('../controllers/searchController');
+
 const cityController = require('../controllers/cityController');
 const router = express.Router();
+
+// SEARCH Route
+router.route('/search')
+    .get(searchController.getFilteredMembers);
 
 // SIGNUP Route
 router.route('/signup')
