@@ -1,4 +1,4 @@
-const { Member, Instrument, Level, Play } = require('../models');
+const { Member, Instrument, Level, Play, MusicStyle } = require('../models');
 
 // Member has instrument
 
@@ -43,6 +43,33 @@ const associationController = {
             res.status(500).json(error);
         }
     },
+
+    MemberhasMusicStyle: async (req, res, next) => {
+      try {
+          
+          const { member_id, music_style_id } = req.body;
+          const member = await Member.findByPk(Number(member_id));
+          const music_style = await MusicStyle.findByPk(Number(music_style_id));
+
+        
+          if (!member || !music_style) {
+              return next();
+          }
+
+        const association =  await Play.findOrCreate({
+                 where : {
+                  member_id : Number(member_id),
+                  instrument_id: Number(music_style_id)
+                }
+        });
+          res.send({MemberhasMusicStyle: association});
+
+
+      } catch (error) {   
+          console.trace(error);
+          res.status(500).json(error);
+      }
+  },
 
 };
 
