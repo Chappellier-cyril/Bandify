@@ -16,7 +16,7 @@ const Searchbar = ({
 
   return (
     <div className="search">
-      <form onSubmit={onSearchSubmit} method="GET">
+      <form onSubmit={onSearchSubmit} method="GET" action="/search">
         {/* barre de recherche */}
         <input
           type="search"

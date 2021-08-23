@@ -39,9 +39,8 @@ export default function App() {
         <Route exact path="/about">
           <About />
         </Route>
-        <Route exact path="/profile">
-          <p>Mon profil</p>
-        </Route>
+        <Route exact path="/profile" />
+        <Route exact path="/search" component={Home} />
 
         <Route exact path="/search" component={Home} />
         <Route exact path="/member/:profileId" component={Profiles} />

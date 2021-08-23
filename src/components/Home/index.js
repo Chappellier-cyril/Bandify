@@ -6,7 +6,7 @@ import Searchbar from 'src/containers/Searchbar';
 import './style.scss';
 
 const Home = ({
-  users, isLogged, getMembers,
+  users, isLogged, getMembers, searchedUsers, searchSuccessMessage,
 }) => {
   useEffect(() => {
     if (isLogged) {
@@ -54,6 +54,17 @@ const Home = ({
             ))}
           </div>
         </>
+      )}
+
+      {searchedUsers.length !== 0 && (
+        <div className="home__cards">
+          <p>{searchSuccessMessage}</p>
+          {searchedUsers.map(({ id, firstname }) => (
+            <Link to={`/member/${id}`} key={id} className="home__cards-users">
+              <p>{firstname}</p>
+            </Link>
+          ))}
+        </div>
       )}
     </div>
   );

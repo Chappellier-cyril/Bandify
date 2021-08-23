@@ -9,6 +9,9 @@ export const initialState = {
   musicstyle: '',
   // Home's search input
   searchValue: '',
+  // users searched from searchbar
+  searchedUsers: [],
+  searchSuccessMessage: '',
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -52,6 +55,14 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         isMenuOpen: !state.isMenuOpen,
+      };
+
+    case 'ON_SEARCH_SUBMIT_SUCCESS':
+      return {
+        ...state,
+        searchedUsers: action.searchedUsers,
+        searchSuccessMessage: action.searchSuccessMessage,
+        searchValue: '',
       };
     default:
       return state;

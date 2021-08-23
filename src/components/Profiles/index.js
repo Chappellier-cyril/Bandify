@@ -14,7 +14,6 @@ const Profiles = ({
   const url = window.location.href;
   // pour avoir le dernier segment de l'url
   const lastSegmentUrl = url.split('/').pop();
-  console.log('lastSegmentUrl dans composant Profiles: ', lastSegmentUrl);
   // on récupère l'id de la query via l'objet props et ses propriétées match, params
   const queryId = parseInt(lastSegmentUrl, 10);
   // on cherche si l'id de la query existe dans la table user
