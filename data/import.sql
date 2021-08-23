@@ -70,8 +70,8 @@ CREATE TABLE "message" (
 	"id" int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
 	"content" text NOT NULL,
     "status" BOOLEAN NOT NULL,
-    "sender_id" INT REFERENCES "member"("id"),
-    "reicever_id" INT REFERENCES "member"("id"),
+    "sender_id" INT REFERENCES "member"("id") ON DELETE CASCADE,
+    "reicever_id" INT REFERENCES "member"("id") ON DELETE CASCADE,
     "createdAt" Timestamptz NOT NULL default now(),
     "updatedAt" Timestamptz NOT NULL default now()
      
@@ -80,8 +80,8 @@ CREATE TABLE "message" (
 CREATE TABLE "invitation" (
 	"id" int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
 	status INT NOT NULL,
-    "request_user_id" INT REFERENCES "member"("id"),
-    "response_user_id" INT REFERENCES "member"("id"),
+    "request_user_id" INT REFERENCES "member"("id") ON DELETE CASCADE,
+    "response_user_id" INT REFERENCES "member"("id") ON DELETE CASCADE,
     "createdAt" Timestamptz NOT NULL default now(),
     "updatedAt" Timestamptz NOT NULL default now()
  
@@ -98,8 +98,8 @@ CREATE TABLE "user_has_instrument_level" (
 );
 
 CREATE TABLE "appreciate_music_style" (
-    "member_id" INT NOT NULL REFERENCES "member"("id"),
-    "music_style_id" INT NOT NULL REFERENCES "music_style"("id"),
+    "member_id" INT NOT NULL REFERENCES "member"("id") ON DELETE CASCADE,
+    "music_style_id" INT NOT NULL REFERENCES "music_style"("id") ON DELETE CASCADE,
 	"createdAt" Timestamptz NOT NULL default now(),
     "updatedAt" Timestamptz NOT NULL default now()
 
