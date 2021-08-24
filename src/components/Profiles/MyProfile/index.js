@@ -5,6 +5,7 @@ import { getAge } from 'src/selectors/user';
 
 // == Import : local
 import 'src/components/Profiles/style.scss';
+import axios from 'axios';
 
 const MyProfile = ({
   user,
@@ -15,8 +16,9 @@ const MyProfile = ({
   deleteProfileMessage,
 }) => {
   // eslint-disable-next-line camelcase
-  const { plays, city, styles } = user;
-
+  const {
+    plays, city, styles, profil_image,
+  } = user;
   return (
     <div className="profile__page">
       {/* eslint-disable-next-line camelcase  */}
@@ -24,6 +26,7 @@ const MyProfile = ({
         <div className="profile">
           <div className="profile__card">
             {/* //TODO => ajouter une photo */}
+            <img src={`http://localhost:3000/images/${profil_image}`} alt="avatar du membre" />
             <p>{user.firstname}, {user.lastname}</p>
             <h2>Ville: {city.city_name} ({city.code})</h2>
             <h2>{getAge(user.birthdate)} ans</h2>
@@ -41,7 +44,7 @@ const MyProfile = ({
                 {plays.map((play) => (
                   <li key={play.id}>
                     {play.instrument.instrument_name}
-                    {play.level.level_name}
+                    {play.level && play.level.level_name}
                   </li>
 
                 ))}

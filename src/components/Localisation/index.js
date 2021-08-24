@@ -17,7 +17,6 @@ const Localisation = ({
       },
     })
       .then((response) => {
-        console.log('responsedata', response.data);
         setCities(response.data);
       })
       .catch((error) => {
