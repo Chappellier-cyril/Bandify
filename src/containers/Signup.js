@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Signup from 'src/components/Signup';
 
 const mapStateToProps = (state) => ({
-  isLogged: state.login.isLogged,
+  success: state.signup.success,
   firstName: state.signup.firstName,
   lastName: state.signup.lastName,
   dateOfBirth: state.signup.dateOfBirth,
@@ -17,7 +17,7 @@ const mapStateToProps = (state) => ({
   departement: state.signup.departement,
   region: state.signup.region,
   image: state.signup.image,
-
+  error: state.signup.error,
 });
 
 const mapDispatchToProps = (dispatch) => ({
