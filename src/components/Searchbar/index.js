@@ -1,6 +1,8 @@
 /* eslint-disable camelcase */
 import React, { useEffect } from 'react';
 import PropTypes, { shape } from 'prop-types';
+
+import Localisation from 'src/components/Localisation';
 import './style.scss';
 
 const Searchbar = ({
@@ -87,11 +89,19 @@ const Searchbar = ({
               ))
             }
             </select>
+
+            <Localisation
+              city={city}
+              zipcode={code}
+              departement={departement}
+              region={region}
+              onChangeInput={onSelectChange}
+            />
           </div>
         )}
       </form>
       {/* ouvre les filtres */}
-      <button type="button" onClick={toggleIsFiltersOpen}>Filtrer</button>
+      {/* <button type="button" onClick={toggleIsFiltersOpen}>Filtrer</button> */}
     </div>
   );
 };

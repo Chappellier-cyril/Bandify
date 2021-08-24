@@ -7,7 +7,7 @@ const mapStateToProps = (state) => ({
   levels: state.settings.levels,
   musicstyles: state.settings.musicstyles,
   isFiltersOpen: state.settings.isFiltersOpen,
-  // TODO
+  city: state.settings.city,
   // city: state.signup.city,
   // code: state.signup.code,
   // departement: state.signup.departement,

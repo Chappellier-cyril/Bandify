@@ -1,6 +1,6 @@
 export const initialState = {
   isMenuOpen: false,
-  isFiltersOpen: false,
+  isFiltersOpen: true,
   isDeleteModalClosed: true,
   deleteProfileMessage: '',
   isProfileDeleted: false,
@@ -13,6 +13,7 @@ export const initialState = {
   instrument: '',
   level: '',
   musicstyle: '',
+  city: '',
 };
 
 const reducer = (state = initialState, action = {}) => {
