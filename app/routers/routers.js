@@ -8,6 +8,7 @@ const searchController = require('../controllers/searchController');
 const messageController = require('../controllers/messageController');
 
 const cityController = require('../controllers/cityController');
+const imageController = require('../controllers/imageController');
 const router = express.Router();
 
 // SEARCH Route
@@ -121,5 +122,6 @@ router.route('/members/member_instrument')
 
 router.route('/members/member_musicstyle')
     .post(associationController.MemberhasMusicStyle);
+
 
 module.exports = router;
