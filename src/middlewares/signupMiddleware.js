@@ -14,7 +14,7 @@ const signupMiddleware = (store) => (next) => (action) => {
     form.append('city_code', state.signup.code);
     form.append('instruments', JSON.stringify(state.signup.instruments));
     form.append('styles', JSON.stringify(state.signup.styles));
-    form.append('file', action.image, action.image.name);
+    form.append('file', action.image);
 
     const options = {
       method: 'POST',
