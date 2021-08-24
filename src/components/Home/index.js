@@ -43,10 +43,10 @@ const Home = ({
            et des cartes de membres statiques */}
           <p className="home__desc">
             Bienvenue sur Bandify ! <br /> Le réseau social permettant de rencontrer des musiciens
-            dans un périmètre géographique donné.
-            Pour cela, inscrivez-vous, renseignez vôtre/vosinstrument(s) de prédilection,
-            vôtre niveau (optionnel), le(s) style(s) de musique appréciés, les musiciens recherchés
-            (bassiste, batteur...) et le périmètre de recherche.
+            autour de chez toi.
+            Il te suffit de t'inscrire, de renseigner ton/tes instrument(s) de prédilection,
+            les musiciens que tu recherches (bassiste, batteur...) et Bandify
+            se charge de te proposer des profils adaptés à des besoins !
           </p>
 
           <Link to="/signup" className="home__signup-btn">Rejoindre la communauté</Link>

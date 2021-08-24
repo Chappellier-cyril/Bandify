@@ -10,8 +10,6 @@ export const initialState = {
   musicstyle: '',
   // Home's search input
   searchValue: '',
-  deleteProfileMessage: '',
-  isProfileDeleted: false,
   // users searched from searchbar
   searchedUsers: [],
   searchMessage: '',
@@ -67,9 +65,20 @@ const reducer = (state = initialState, action = {}) => {
     case 'ON_DELETE_PROFILE_SUCCESS':
       return {
         ...state,
-        isProfileDeleted: true,
+        isMenuOpen: false,
+        isFiltersOpen: false,
         isDeleteModalClosed: true,
-        deleteProfileMessage: 'Votre profil a bien été supprimé',
+        instruments: [{}],
+        levels: [{}],
+        musicstyles: [{}],
+        instrument: '',
+        level: '',
+        musicstyle: '',
+        // Home's search input
+        searchValue: '',
+        // users searched from searchbar
+        searchedUsers: [],
+        searchMessage: '',
       };
     case 'ON_SEARCH_SUBMIT_SUCCESS':
       return {

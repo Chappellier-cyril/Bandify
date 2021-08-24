@@ -25,7 +25,6 @@ const usersMiddleware = (store) => (next) => (action) => {
         store.dispatch({ type: 'ON_DELETE_PROFILE_SUCCESS' });
       });
   }
-
   next(action);
 };
 

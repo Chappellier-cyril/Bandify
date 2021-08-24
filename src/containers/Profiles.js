@@ -7,8 +7,23 @@ const mapStateToProps = (state) => ({
   connectedUserId: state.login.id,
   isLogged: state.login.isLogged,
   isDeleteModalClosed: state.settings.isDeleteModalClosed,
-  deleteProfileMessage: state.settings.deleteProfileMessage,
-  isProfileDeleted: state.settings.isProfileDeleted,
+  editPhoto: state.users.editPhoto,
+  editName: state.users.editName,
+  editCity: state.users.editCity,
+  editBirthdate: state.users.editBirthdate,
+  editInstruments: state.users.editInstruments,
+  editStyles: state.users.editStyles,
+  editEmail: state.users.editEmail,
+  editPassword: state.users.editPassword,
+  editDescription: state.users.editDescription,
+  firstName: state.signup.firstName,
+  lastName: state.signup.lastName,
+  dateOfBirth: state.signup.dateOfBirth,
+  email: state.signup.email,
+  password: state.signup.password,
+  description: state.signup.description,
+  passwordShown: state.login.passwordShown,
+
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -20,6 +35,22 @@ const mapDispatchToProps = (dispatch) => ({
   },
   onDeleteProfile: () => {
     dispatch({ type: 'SAID_YES_TO_DELETE_PROFILE' });
+  },
+  editFormToggle: (key) => {
+    dispatch({
+      type: 'EDIT_FORM_TOGGLE',
+      key,
+    });
+  },
+  togglePasswordVisibility: () => {
+    dispatch({ type: 'ON_PASSWORD_TOGGLE' });
+  },
+  onChangeInput: (key, value) => {
+    dispatch({
+      type: 'CHANGE_INPUT_MODIFY_PROFILE',
+      key,
+      value,
+    });
   },
 });
 
