@@ -5,6 +5,15 @@ export const initialState = {
   users: usersData,
   // user = OBJECT
   user: {},
+  editPhoto: false,
+  editName: false,
+  editCity: false,
+  editBirthdate: false,
+  editInstruments: false,
+  editStyles: false,
+  editEmail: false,
+  editPassword: false,
+  editDescription: false,
   searchedUsers: [],
 };
 
@@ -34,6 +43,12 @@ const reducer = (state = initialState, action = {}) => {
         users: usersData,
         user: {},
       };
+    case 'EDIT_FORM_TOGGLE':
+      return {
+        ...state,
+        [action.key]: !state[action.key],
+      };
+
     default:
       return state;
   }

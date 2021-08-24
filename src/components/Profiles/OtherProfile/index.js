@@ -19,7 +19,6 @@ const OtherProfile = ({ user }) => {
             <p>{user.firstname}, {user.lastname}</p>
             <h2>Ville: {city.city_name} ({city.code})</h2>
             <h2>{getAge(user.birthdate)} ans</h2>
-            <p>{user.birthdate}</p>
             <button type="button">Ajouter à mes amis</button>
             {/* //TODO => la route invitation + vue conditionnelle pour afficher profil ami */}
             <p>{user.user_description}</p>

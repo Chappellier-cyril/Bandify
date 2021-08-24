@@ -13,8 +13,25 @@ const Profiles = ({
   onWishToDeleteProfile,
   onDeleteProfile,
   isDeleteModalClosed,
-  isProfileDeleted,
-  deleteProfileMessage,
+  editFormToggle,
+  editPhoto,
+  editName,
+  editCity,
+  editBirthdate,
+  editInstruments,
+  editStyles,
+  editEmail,
+  editPassword,
+  editDescription,
+  firstName,
+  lastName,
+  dateOfBirth,
+  email,
+  password,
+  description,
+  passwordShown,
+  togglePasswordVisibility,
+  onChangeInput,
 }) => {
   const url = window.location.href;
   // pour avoir le dernier segment de l'url
@@ -40,8 +57,26 @@ const Profiles = ({
           onWishToDeleteProfile={onWishToDeleteProfile}
           isDeleteModalClosed={isDeleteModalClosed}
           onDeleteProfile={onDeleteProfile}
-          isProfileDeleted={isProfileDeleted}
-          deleteProfileMessage={deleteProfileMessage}
+          isLogged={isLogged}
+          editFormToggle={editFormToggle}
+          editPhoto={editPhoto}
+          editName={editName}
+          editCity={editCity}
+          editBirthdate={editBirthdate}
+          editInstruments={editInstruments}
+          editStyles={editStyles}
+          editEmail={editEmail}
+          editPassword={editPassword}
+          editDescription={editDescription}
+          firstName={firstName}
+          lastName={lastName}
+          dateOfBirth={dateOfBirth}
+          email={email}
+          password={password}
+          description={description}
+          passwordShown={passwordShown}
+          togglePasswordVisibility={togglePasswordVisibility}
+          onChangeInput={onChangeInput}
         />
       ) : <OtherProfile user={user} />
   );
@@ -56,14 +91,34 @@ Profiles.propTypes = {
   onWishToDeleteProfile: PropTypes.func,
   onDeleteProfile: PropTypes.func,
   isDeleteModalClosed: PropTypes.bool.isRequired,
-  isProfileDeleted: PropTypes.bool.isRequired,
-  deleteProfileMessage: PropTypes.string.isRequired,
+  editFormToggle: PropTypes.func,
+  editPhoto: PropTypes.bool.isRequired,
+  editName: PropTypes.bool.isRequired,
+  editCity: PropTypes.bool.isRequired,
+  editBirthdate: PropTypes.bool.isRequired,
+  editInstruments: PropTypes.bool.isRequired,
+  editStyles: PropTypes.bool.isRequired,
+  editEmail: PropTypes.bool.isRequired,
+  editPassword: PropTypes.bool.isRequired,
+  editDescription: PropTypes.bool.isRequired,
+  firstName: PropTypes.string.isRequired,
+  lastName: PropTypes.string.isRequired,
+  dateOfBirth: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  passwordShown: PropTypes.bool.isRequired,
+  togglePasswordVisibility: PropTypes.func,
+  onChangeInput: PropTypes.func,
 };
 
 Profiles.defaultProps = {
   connectedUserId: 0,
   onWishToDeleteProfile: null,
   onDeleteProfile: null,
+  editFormToggle: null,
+  togglePasswordVisibility: null,
+  onChangeInput: null,
 };
 
 export default Profiles;

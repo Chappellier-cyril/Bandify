@@ -28,6 +28,11 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         [action.key]: action.value,
       };
+    case 'CHANGE_INPUT_MODIFY_PROFILE':
+      return {
+        ...state,
+        [action.key]: action.value,
+      };
     case 'CHANGE_INSTRUMENT_LEVEL': {
       const copyInstruments = [...state.instruments];
       const instrumentAlreadyChoose = copyInstruments.find(
@@ -80,6 +85,29 @@ const reducer = (state = initialState, action = {}) => {
         styles: copyStyles,
       };
     }
+    case 'ON_DELETE_PROFILE_SUCCESS':
+      return {
+        ...state,
+        firstName: '',
+        lastName: '',
+        dateOfBirth: '',
+        description: '',
+        email: '',
+        password: '',
+        city: '',
+        code: '',
+        departement: {
+          code: '',
+          nom: '',
+        },
+        region: {
+          code: '',
+          nom: '',
+        },
+        instruments: [{}],
+        styles: [0],
+      };
+
     case 'SUBMIT_SUCCESS':
       return {
         ...initialState,
