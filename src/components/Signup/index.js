@@ -47,6 +47,7 @@ const Signup = ({
           </label>
         </div>
         <div>
+          {/* //TODO => la date à l'inscription n'est pas en UTC: console.log(user) in myprofile */}
           <label htmlFor="dateOfBirth">
             Date de naissance
             <input name="dateOfBirth" id="dateOfBirth" type="date" value={dateOfBirth} onChange={(e) => onChangeInput('dateOfBirth', e.target.value)} required />
@@ -65,6 +66,7 @@ const Signup = ({
           </label>
         </div>
         <div>
+          {/* //TODO => la description vaut null quand on console.log(user) dans my profile */}
           <label htmlFor="description">
             Description
             <textarea name="description" id="description" type="text" value={description} onChange={(e) => onChangeInput('description', e.target.value)} placeholder="Faire une courte description de vous" />

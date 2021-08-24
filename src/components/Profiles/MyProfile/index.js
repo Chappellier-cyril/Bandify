@@ -32,6 +32,10 @@ const MyProfile = ({
   passwordShown,
   togglePasswordVisibility,
   onChangeInput,
+  handleSubmitPhoto,
+  handleSubmitName,
+  handleSubmitEmail,
+  handleSubmitBirthdate,
 
 }) => {
   const redirectToHome = () => {
@@ -46,7 +50,10 @@ const MyProfile = ({
     plays, city, styles, profil_image,
   } = user;
 
+  console.log(user);
   // const [citySearch, setCity] = useState('');
+
+  const [avatar, setAvatar] = useState();
 
   return (
     <div className="profile__page">
@@ -54,15 +61,16 @@ const MyProfile = ({
       {isDeleteModalClosed && (
         <div className="profile">
           <div className="profile__card">
-            {/* //TODO => éditer la photo */}
             {editPhoto ? (
-              <form type="submit">
+              // TODO => vérifier l'édition de la photo
+              <form type="submit" onSubmit={(e) => handleSubmitPhoto(e, avatar)}>
                 <div>
                   <label htmlFor="avatar">
                     Image de profil
                     <input name="avatar" id="avatar" type="file" placeholder="Choisir une photo" onChange={(e) => setAvatar(e.target.files[0])} />
                   </label>
                 </div>
+                <button type="submit">Envoyer</button>
                 <button
                   type="button"
                   onClick={() => editFormToggle('editPhoto')}
@@ -71,7 +79,7 @@ const MyProfile = ({
                 </button>
               </form>
             ) : (
-              <p>
+              <div>
                 <img src={`http://localhost:3000/images/${profil_image}`} alt="avatar du membre" />
                 <span>
                   <button
@@ -81,10 +89,10 @@ const MyProfile = ({
                     <i className="fas fa-pen" />
                   </button>
                 </span>
-              </p>
+              </div>
             )}
             {editName ? (
-              <form type="submit">
+              <form type="submit" onSubmit={handleSubmitName}>
                 <div>
                   <label htmlFor="firstName">
                     Prénom
@@ -97,6 +105,7 @@ const MyProfile = ({
                     <input name="lastName" id="lastName" type="text" value={lastName} onChange={(e) => onChangeInput('lastName', e.target.value)} placeholder="Nom" required />
                   </label>
                 </div>
+                <button type="submit">Envoyer</button>
                 <button
                   type="button"
                   onClick={() => editFormToggle('editName')}
@@ -149,13 +158,14 @@ const MyProfile = ({
               </h2>
             )}
             {editBirthdate ? (
-              <form type="submit">
+              <form type="submit" onSubmit={handleSubmitBirthdate}>
                 <div>
                   <label htmlFor="dateOfBirth">
                     Date de naissance
                     <input name="dateOfBirth" id="dateOfBirth" type="date" value={dateOfBirth} onChange={(e) => onChangeInput('dateOfBirth', e.target.value)} required />
                   </label>
                 </div>
+                <button type="submit">Envoyer</button>
                 <button
                   type="button"
                   onClick={() => editFormToggle('editBirthdate')}
@@ -177,7 +187,7 @@ const MyProfile = ({
               </h2>
             )}
             {editEmail ? (
-              <form type="submit">
+              <form type="submit" onSubmit={handleSubmitEmail}>
                 <div>
                   <input
                     name="email"
@@ -188,6 +198,7 @@ const MyProfile = ({
                     required
                   />
                 </div>
+                <button type="submit">Envoyer</button>
                 <button
                   type="button"
                   onClick={() => editFormToggle('editEmail')}
@@ -209,6 +220,7 @@ const MyProfile = ({
               </h2>
             )}
             {editPassword ? (
+              // TODO => edit password
               <form type="submit">
                 <div>
                   <input
@@ -250,6 +262,7 @@ const MyProfile = ({
               </h2>
             )}
             {editDescription ? (
+              // TODO => edit description
               <form type="submit">
                 <div>
                   <label htmlFor="description">
@@ -401,6 +414,10 @@ MyProfile.propTypes = {
   passwordShown: PropTypes.bool.isRequired,
   togglePasswordVisibility: PropTypes.func.isRequired,
   onChangeInput: PropTypes.func.isRequired,
+  handleSubmitPhoto: PropTypes.func.isRequired,
+  handleSubmitName: PropTypes.func.isRequired,
+  handleSubmitEmail: PropTypes.func.isRequired,
+  handleSubmitBirthdate: PropTypes.func.isRequired,
 };
 
 MyProfile.defaultProps = {
