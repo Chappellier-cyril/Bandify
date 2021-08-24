@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import axios from 'axios';
+import { Redirect } from 'react-router-dom';
 import './style.scss';
 
 import instrumentsData from 'src/data/instruments';
@@ -17,90 +17,66 @@ Avec Redux :
 
 const Signup = ({
   firstName, lastName, dateOfBirth, description, email, password, city, code,
-  instruments, styles, departement, region,
+  instruments, styles, departement, region, isLogged,
   onChangeInput, onSelectInput, addNewInputInstrument, removeInputInstrument,
   onStyleInput, addNewStyle, removeStyle, handleSubmitSignup,
 }) => {
+  // On utilise un useState pour stocker le fichier avatar reçu afin de le
+  // transmettre à l'action REDUX suivante via le handleSignUp
   const [avatar, setAvatar] = useState();
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const form = new FormData();
-    form.append('firstname', firstName);
-    form.append('lastname', lastName);
-    form.append('birthdate', dateOfBirth);
-    form.append('description', description);
-    form.append('email', email);
-    form.append('user_password', password);
-    form.append('city_code', code);
-    form.append('instruments', instruments);
-    form.append('styles', styles);
-    form.append('file', avatar, avatar.name);
-    const options = {
-      method: 'POST',
-      url: 'http://localhost:3000/signup',
-      headers: {
-        'Content-Type': 'multipart/form-data',
-        Accept: 'application/json',
-      },
-      data: form,
-    };
-    axios(options)
-      .then((response) => {
-        console.log(response.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
 
   return (
-  // création des champs contrôlés pour les inputs du formulaire d'inscription grâce aux useState
-  // le state instrument sera un tableau qui récupère l'instrument et le level dans un objet
-    <form type="submit" onSubmit={handleSubmit} autoComplete="off">
-      <div>
-        <label htmlFor="firstName">
-          Prénom
-          <input name="firstName" id="firstName" type="text" value={firstName} onChange={(e) => onChangeInput('firstName', e.target.value)} placeholder="Prénom" required />
-        </label>
-      </div>
-      <div>
-        <label htmlFor="lastName">
-          Nom
-          <input name="lastName" id="lastName" type="text" value={lastName} onChange={(e) => onChangeInput('lastName', e.target.value)} placeholder="Nom" required />
-        </label>
-      </div>
-      <div>
-        <label htmlFor="dateOfBirth">
-          Date de naissance
-          <input name="dateOfBirth" id="dateOfBirth" type="date" value={dateOfBirth} onChange={(e) => onChangeInput('dateOfBirth', e.target.value)} required />
-        </label>
-      </div>
-      <div>
-        <label htmlFor="email">
-          Adresse email
-          <input name="email" id="email" type="email" value={email} onChange={(e) => onChangeInput('email', e.target.value)} placeholder="Email" required />
-        </label>
-      </div>
-      <div>
-        <label htmlFor="password">
-          Mot de passe
-          <input name="password" id="password" type="password" value={password} onChange={(e) => onChangeInput('password', e.target.value)} placeholder="Mot de passe" required />
-        </label>
-      </div>
-      <div>
-        <label htmlFor="description">
-          Description
-          <textarea name="description" id="description" type="text" value={description} onChange={(e) => onChangeInput('description', e.target.value)} placeholder="Faire une courte description de vous" />
-        </label>
-      </div>
-      <div>
-        <label htmlFor="avatar">
-          Image de profil
-          <input name="avatar" id="avatar" type="file" placeholder="Choisir une photo" onChange={(e) => setAvatar(e.target.files[0])} />
-        </label>
-      </div>
+    <>
+      {/* Si l'utilisateur est connecté on redirige vers la page d'accueil */}
+      {isLogged && <Redirect to="/" />}
+      {/* création des champs contrôlés pour les inputs du formulaire d'inscription grâce aux
+      useState le state instrument sera un tableau qui récupère l'instrument et le level
+      dans un objet */}
+      <form type="submit" onSubmit={(e) => handleSubmitSignup(e, avatar)} autoComplete="off">
+        <div>
+          <label htmlFor="firstName">
+            Prénom
+            <input name="firstName" id="firstName" type="text" value={firstName} onChange={(e) => onChangeInput('firstName', e.target.value)} placeholder="Prénom" required />
+          </label>
+        </div>
+        <div>
+          <label htmlFor="lastName">
+            Nom
+            <input name="lastName" id="lastName" type="text" value={lastName} onChange={(e) => onChangeInput('lastName', e.target.value)} placeholder="Nom" required />
+          </label>
+        </div>
+        <div>
+          <label htmlFor="dateOfBirth">
+            Date de naissance
+            <input name="dateOfBirth" id="dateOfBirth" type="date" value={dateOfBirth} onChange={(e) => onChangeInput('dateOfBirth', e.target.value)} required />
+          </label>
+        </div>
+        <div>
+          <label htmlFor="email">
+            Adresse email
+            <input name="email" id="email" type="email" value={email} onChange={(e) => onChangeInput('email', e.target.value)} placeholder="Email" required />
+          </label>
+        </div>
+        <div>
+          <label htmlFor="password">
+            Mot de passe
+            <input name="password" id="password" type="password" value={password} onChange={(e) => onChangeInput('password', e.target.value)} placeholder="Mot de passe" required />
+          </label>
+        </div>
+        <div>
+          <label htmlFor="description">
+            Description
+            <textarea name="description" id="description" type="text" value={description} onChange={(e) => onChangeInput('description', e.target.value)} placeholder="Faire une courte description de vous" />
+          </label>
+        </div>
+        <div>
+          <label htmlFor="avatar">
+            Image de profil
+            <input name="avatar" id="avatar" type="file" placeholder="Choisir une photo" onChange={(e) => setAvatar(e.target.files[0])} />
+          </label>
+        </div>
 
-      {
+        {
         // on boucle sur le tableau d'instruments
         instruments.map((instrument, index) => (
           // Prévoir de générer un id pour un code plus propre
@@ -132,7 +108,7 @@ const Signup = ({
           </div>
         ))
       }
-      {
+        {
         /*
           TODO => ville code postal => voir pour de l'autocomplétion
           avec appel API code postaux la poste ou API / Gouv
@@ -159,19 +135,21 @@ const Signup = ({
           </div>
         ))
       }
-      <Localisation
-        city={city}
-        zipcode={code}
-        departement={departement}
-        region={region}
-        onChangeInput={onChangeInput}
-      />
-      <button type="submit">SUBMIT</button>
-    </form>
+        <Localisation
+          city={city}
+          zipcode={code}
+          departement={departement}
+          region={region}
+          onChangeInput={onChangeInput}
+        />
+        <button type="submit">SUBMIT</button>
+      </form>
+    </>
   );
 };
 
 Signup.propTypes = {
+  isLogged: PropTypes.bool.isRequired,
   firstName: PropTypes.string.isRequired,
   lastName: PropTypes.string.isRequired,
   dateOfBirth: PropTypes.string.isRequired,

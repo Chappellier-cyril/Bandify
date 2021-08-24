@@ -2,35 +2,19 @@ import axios from 'axios';
 
 const signupMiddleware = (store) => (next) => (action) => {
   if (action.type === 'SUBMIT_SIGNUP') {
-    console.log('je suis dans le middleware du signup');
-    console.log(action.image.file);
     const state = store.getState();
-    // const createUser = {
-    //   firstName: state.signup.firstName,
-    //   lastName: state.signup.firstName,
-    //   dateOfBirth: state.signup.dateOfBirth,
-    //   description: state.signup.description,
-    //   email: state.signup.email,
-    //   password: state.signup.password,
-    //   city: state.signup.city,
-    //   city_code: state.signup.zipcode,
-    //   instruments: state.signup.instruments,
-    //   styles: state.signup.styles,
-    // };
+
     const form = new FormData();
-    form.set('user', {
-      firstName: state.signup.firstName,
-      lastName: state.signup.firstName,
-      dateOfBirth: state.signup.dateOfBirth,
-      description: state.signup.description,
-      email: state.signup.email,
-      password: state.signup.password,
-      city: state.signup.city,
-      city_code: state.signup.zipcode,
-      instruments: state.signup.instruments,
-      styles: state.signup.styles,
-    });
-    form.append('file', action.image);
+    form.append('firstname', state.signup.firstName);
+    form.append('lastname', state.signup.lastName);
+    form.append('birthdate', state.signup.dateOfBirth);
+    form.append('description', state.signup.description);
+    form.append('email', state.signup.email);
+    form.append('user_password', state.signup.password);
+    form.append('city_code', state.signup.code);
+    form.append('instruments', JSON.stringify(state.signup.instruments));
+    form.append('styles', JSON.stringify(state.signup.styles));
+    form.append('file', action.image, action.image.name);
 
     const options = {
       method: 'POST',
@@ -44,9 +28,10 @@ const signupMiddleware = (store) => (next) => (action) => {
     axios(options)
       .then((response) => {
         console.log(response.data);
-        store.dispatch({ type: 'SUBMIT_SIGNUP_SUCCESS', data: response.data });
+        store.dispatch({ type: 'ON_LOGIN_SUCCESS', data: response.data });
       })
       .catch((e) => {
+        // TODO
         store.dispatch({ type: 'ON_SUBMIT_ERROR', error: e });
       });
     next(action);
