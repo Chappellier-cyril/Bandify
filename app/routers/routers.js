@@ -118,7 +118,7 @@ router.route('/invitations')
 router.route('/invitations/:id')
     .post(invitationController.sendInvitation)
     .post(invitationController.deleteInvitation)
-    .patch(invitationController.acceptInvitation);
+    .patch(invitationController.updateInvitation);
 
 // ROUTE DE LOCALISATION
 router.get('/cities', localisationController.getAllCities);

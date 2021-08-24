@@ -52,20 +52,22 @@ const invitationController = {
         }
     },
 
-    acceptInvitation : async (req, res, next) => {
+    updateInvitation : async (req, res, next) => {
         try {
             
             const targetId = req.params.id;
+            console.log(targetId)
             
-            const memberToUpdate = await Invitation.findByPk(targetId);
+            const invitationUpdate = await Invitation.findByPk(targetId);
+            console.log(invitationUpdate)
             
-            if (!memberToUpdate) {
+            if (!invitationUpdate) {
                 return next(); 
             }
             
-            await memberToUpdate.update(req.body);
+            await invitationUpdate.update(req.body);
             
-            res.json(memberToUpdate);
+            res.json(invitationUpdate);
             
         } catch (error) {
             console.trace(error);
