@@ -27,6 +27,7 @@ const signupMiddleware = (store) => (next) => (action) => {
     };
     axios(options)
       .then((response) => {
+        console.log(response);
         if (response.data.success) {
           store.dispatch({ type: 'SUBMIT_SUCCESS', success: response.data.success });
         }

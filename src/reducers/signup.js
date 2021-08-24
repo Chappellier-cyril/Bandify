@@ -28,6 +28,11 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         [action.key]: action.value,
       };
+    case 'ON_LOGIN_SUCCESS': {
+      return {
+        ...initialState,
+      };
+    }
     case 'CHANGE_INPUT_MODIFY_PROFILE':
       return {
         ...state,
