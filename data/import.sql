@@ -79,7 +79,7 @@ CREATE TABLE "message" (
 
 CREATE TABLE "invitation" (
 	"id" int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-	status INT NOT NULL,
+	"status" INT NOT NULL,
     "request_user_id" INT REFERENCES "member"("id") ON DELETE CASCADE,
     "response_user_id" INT REFERENCES "member"("id") ON DELETE CASCADE,
     "createdAt" Timestamptz NOT NULL default now(),

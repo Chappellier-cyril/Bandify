@@ -8,11 +8,12 @@ const multer = require('multer');
 */
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-    cb(null, 'upload/images')
-  },
-  filename: function (req, file, cb) {
-    cb(null, Date.now() + '-' + file.originalname )
-  }
+        cb(null, 'upload/images')
+    },
+    filename: function (req, file, cb) {
+        cb(null, Date.now() + '-' + file.originalname )
+    }
+
 });
 const upload = multer({ storage: storage }).single('file');
 
@@ -31,7 +32,9 @@ const memberController = {
                     association: 'plays',
                     include: ['instrument', 'level']
             }, 'styles']});
+
             res.json(members);
+            
         } catch (error) {
             console.trace(error);
             res.status(500).json(error);
@@ -83,9 +86,20 @@ const memberController = {
                 //erreur génréale
                 return res.status(500).json(err)
             }
+            
             // On lui hash le password => le 3ième argument de la fonction hash est un cazllback, qui nous donne accés à l'erreur si erreur ou au mdp hashé
             passwordHashed = bcrypt.hash(req.body.user_password, 10, async (err, hash) =>{
                 if(err) return err;
+                const foundMember = await Member.findOne({
+                    where : {
+                        email : req.body.email,
+                    }
+                });
+                if (foundMember) {
+                    return res.json({
+                        error: 'Un utilisateur à déjà utiliser cette adresse email pour s\'inscirire'
+                    });
+                }
                 // Les array passés dans le req.body via le formulaire doivent être décodé pour y avoir accés;
                 const instruments = JSON.parse(req.body.instruments);
                 const styles = JSON.parse(req.body.styles);
@@ -97,7 +111,7 @@ const memberController = {
                     birthdate: req.body.birthdate,
                     user_password: hash,
                     city_code: req.body.city_code,
-                    profil_image: `/image/${req.file.filename}`,
+                    profil_image: req.file ? `${req.file.filename}`: null,
                     })
                 // Si le membre à séléctionné des styles, on boucle dessus pour associer chaque style au member
                 if(styles) {
@@ -109,24 +123,18 @@ const memberController = {
                   member_id: member.id,
                   level_id: play.level
                 }));
-                // JWT Config
-                const jwtSecret = process.env.TOKEN_SECRET;
-                const jwtContent = { memberId: member.id };
-                const jwtOptions = { 
-                algorithm: 'HS256', 
-                expiresIn: '3h' 
-                };
+
                 // Envoi de la réponse au front si tout est ok
                 res.json({
-                id: member.id,
-                email: member.email,
-                token: jsonwebtoken.sign(jwtContent, jwtSecret, jwtOptions),
+                    success : 'New Member added'
                 });
             }) 
             })
         }catch(error) {
             console.trace(error);
-            res.status(500).json(error);
+            res.status(500).json({
+                error:-'Une erreur est survenue'
+            });
         }
     },
 
@@ -136,20 +144,48 @@ const memberController = {
             const targetId = req.params.id;
             // on passe par une instance
             const memberToUpdate = await Member.findByPk(targetId);
+            if (!memberToUpdate) {
+                return next(); // <= pas de liste, 404
+            }
             if(req.body.user_password) {
                 // Lors d'un update (modification de mot de passe par exemple)
                 // On hash à nouveau le mot de passe
              const passwordHashed = await bcrypt.hash(req.body.user_password, 10);
              req.body.user_password = passwordHashed;
-             
             }
-            if (!memberToUpdate) {
-                return next(); // <= pas de liste, 404
+            if(req.body.styles) {
+               return req.body.styles.map(async (style)=> await member.addStyle(Number(style))) 
             }
+            // On boucle sur chaque objet instruments pour créer l'association
+            if(req.body.instrument) {
+                req.body.instruments.map(async (play) => play.instrument && await Play.findOrCreate({
+                    instrument_id: play.instrument,
+                    member_id: member.id,
+                    level_id: play.level
+                  }));
+                return res.json({success : 'Member updated'});
+            }
+
+            upload(req, res, function (err) {
+                // Je commence par le traitement d'erreur de Multer, et/ou général
+                if (err instanceof multer.MulterError) {
+                    // erreur de l'instance multer
+                    return res.status(500).json(err)
+                } else if (err) {
+                    //erreur génréale
+                    return res.status(500).json(err)
+                }
+                if(req.file) {
+                    memberToUpdate.update({
+                        profil_image: `${req.file.filename}`
+                    });
+                    return res.json({success : 'Member updated'});
+                }
+            })
             // Et les nouvelles valeurs des props, dans le body
             await memberToUpdate.update(req.body);
             // l'objet est à jour, on le renvoie
-            res.json(memberToUpdate);
+            return res.json({success : 'Member updated'});;
             
         } catch (error) {
             console.trace(error);
@@ -230,7 +266,7 @@ const memberController = {
             
         }
 
-       
+        
         
     
 };

@@ -11,7 +11,6 @@ sequelize = new Sequelize(process.env.PG_URL, {
   pool: {
     acquire: 1000000,
   }
-
 });
 
 module.exports = sequelize;

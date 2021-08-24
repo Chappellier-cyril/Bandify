@@ -6,8 +6,9 @@ const musicStyleController = require('../controllers/musicStyleController');
 const associationController = require('../controllers/associationController');
 const searchController = require('../controllers/searchController');
 const messageController = require('../controllers/messageController');
+const invitationController = require('../controllers/invitationController');
 
-const cityController = require('../controllers/cityController');
+const localisationController = require('../controllers/localisationController');
 const router = express.Router();
 
 // SEARCH Route
@@ -108,10 +109,25 @@ router.route('/messages')
     .get(messageController.getAllMessages)
     .post(messageController.createMessage)
 
-router.route('/cities')
-.get(cityController.getAllCities);
+router.route('/messages/:id')
+    .post(messageController.createMessage);
 
+router.route('/invitations')
+    .get(invitationController.getAllInvitations);
 
+router.route('/invitations/:id')
+    .post(invitationController.sendInvitation)
+    .post(invitationController.deleteInvitation)
+    .patch(invitationController.updateInvitation);
+
+// ROUTE DE LOCALISATION
+router.get('/cities', localisationController.getAllCities);
+router.get('/cities/:id', localisationController.getOneCity);
+router.get('/departments', localisationController.getAllDepartments);
+router.get('/departments/:id', localisationController.getOneDepartment);
+
+router.get('/regions', localisationController.getAllRegions);
+router.get('/regions/:id', localisationController.getOneRegion);
 // MEMBER HAS INSTRUMENT
 
 router.route('/members/member_instrument')
@@ -121,5 +137,6 @@ router.route('/members/member_instrument')
 
 router.route('/members/member_musicstyle')
     .post(associationController.MemberhasMusicStyle);
+
 
 module.exports = router;

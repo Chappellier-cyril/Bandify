@@ -37,26 +37,26 @@ Message.belongsTo(Member, {
 
 // 1,N entre member et invitation
 Member.hasMany(Invitation, {
-    foreignKey: 'sender_id',
+    foreignKey: 'request_user_id',
     as: 'OutgoingInvitation',
     onDelete: 'CASCADE'
 });
 
 Member.hasMany(Invitation, {
-    foreignKey: 'reicever_id',
+    foreignKey: 'response_user_id',
     as: 'IncomingInvitation',
     onDelete: 'CASCADE'
 });
 
 // 1,1 entre invitation et member
 Invitation.belongsTo(Member, {
-    foreignKey: 'sender_id',
+    foreignKey: 'request_user_id',
     as: 'InvitationSender',
     onDelete: 'CASCADE'
 });
 
 Invitation.belongsTo(Member, {
-    foreignKey: 'reicever_id',
+    foreignKey: 'response_user_id',
     as: 'InvitationReceiver',
     onDelete: 'CASCADE'
 });
@@ -97,7 +97,7 @@ Department.belongsTo(Region, {
 // 1,N entre région et département
 Region.hasMany(Department, {
     foreignKey: 'region_code',
-    as: 'region_department'
+    as: 'departments'
 });
 
 // N,N

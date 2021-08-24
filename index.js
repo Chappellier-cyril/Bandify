@@ -28,7 +28,7 @@ let options = {
 expressSwagger(options)
 
 app.use(express.json());
-
+app.use(express.static('upload'));
 // A Modifier pour la sécurité a voir pour la suite
 app.use( cors('*') );
    
