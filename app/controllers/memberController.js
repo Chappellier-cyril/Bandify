@@ -109,6 +109,7 @@ const memberController = {
                     lastname: req.body.lastname,
                     email: req.body.email,
                     birthdate: req.body.birthdate,
+                    user_description: req.body.user_description,
                     user_password: hash,
                     city_code: req.body.city_code,
                     profil_image: req.file ? `${req.file.filename}`: null,
