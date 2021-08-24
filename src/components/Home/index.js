@@ -18,27 +18,38 @@ const Home = ({
 
   return (
     <div className="main">
-      {/* si on est connecté, on affiche la page d'accueil avec la recherche
+      {/* SI on est connecté, on affiche la page d'accueil avec la recherche
       et les cartes des membres sont cliquablent */}
       {isLogged ? (
         <>
           <Searchbar />
 
           <div className="home__cards">
-            {/* si on a effectué une recherche, on affiche le message contenant le résultat. */}
+            {/* Option 1: on est loggué et on a effectué une recherche, on affiche le message
+             contenant le résultat et on affiche les membres filtrés */}
             {searchedUsers && (
               <p>{searchMessage}</p>
             )}
-            {users.map(({ id, firstname }) => (
-              <Link to={`/member/${id}`} key={id} className="home__cards-users">
-                <p>{firstname}</p>
-              </Link>
-            ))}
+            {searchedUsers.length !== 0 ? (
+              searchedUsers.map(({ id, firstname }) => (
+                <Link to={`/member/${id}`} key={id} className="home__cards-users">
+                  <p>{firstname}</p>
+                </Link>
+              ))
+            ) : (
+              /* Option 2: on est loggué mais on a pas effectué de recherche,
+             on affiche tous les membres */
+              users.map(({ id, firstname }) => (
+                <Link to={`/member/${id}`} key={id} className="home__cards-users">
+                  <p>{firstname}</p>
+                </Link>
+              ))
+            )}
           </div>
         </>
       ) : (
         <>
-          {/* sinon, on affiche la page d'accueil avec uniquement un aperçu du site :
+          {/* SINON, on affiche la page d'accueil avec uniquement un aperçu du site :
           la description de Bandify, un boutton redirigeant vers l'inscription
            et des cartes de membres statiques */}
           <p className="home__desc">
@@ -53,6 +64,7 @@ const Home = ({
 
           <p className="home__desc-teasing">Ils ont déjà rejoint</p>
           <div className="home__cards">
+            {/* fakes members */}
             {users.map(({ id, firstname }) => (
               <p className="home__cards-users" key={id}>{firstname}</p>
             ))}

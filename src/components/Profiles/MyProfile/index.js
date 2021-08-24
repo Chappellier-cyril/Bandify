@@ -42,7 +42,9 @@ const MyProfile = ({
     redirectToHome();
   }, [isLogged]);
   // eslint-disable-next-line camelcase
-  const { plays, city, member_music_style } = user;
+  const {
+    plays, city, styles, profil_image,
+  } = user;
 
   const [citySearch, setCity] = useState('');
 
@@ -52,7 +54,7 @@ const MyProfile = ({
       {isDeleteModalClosed && (
         <div className="profile">
           <div className="profile__card">
-            {/* //TODO => ajouter une photo et éditer */}
+            {/* //TODO => éditer la photo */}
             {editPhoto ? (
               <form type="submit">
                 <div>
@@ -70,7 +72,7 @@ const MyProfile = ({
               </form>
             ) : (
               <p>
-                Photo
+                <img src={`http://localhost:3000/images/${profil_image}`} alt="avatar du membre" />
                 <span>
                   <button
                     type="button"
@@ -299,7 +301,7 @@ const MyProfile = ({
                 {plays.map((play) => (
                   <li key={play.id}>
                     {play.instrument.instrument_name}
-                    {play.level.level_name}
+                    {play.level && play.level.level_name}
                   </li>
 
                 ))}
@@ -318,10 +320,10 @@ const MyProfile = ({
                 </button>
               </span>
             </p>
-            {member_music_style && (
+            {styles && (
             <div className="home__cards">
               <ul>
-                {member_music_style.map((musicStyle) => (
+                {styles.map((musicStyle) => (
                   <li key={musicStyle.id}>
                     {musicStyle.music_name}
                   </li>
@@ -359,6 +361,7 @@ MyProfile.propTypes = {
     lastname: PropTypes.string,
     birthdate: PropTypes.string,
     user_description: PropTypes.string,
+    profil_image: PropTypes.string,
     city: PropTypes.shape({
       city_name: PropTypes.string,
       code: PropTypes.string,
@@ -371,7 +374,7 @@ MyProfile.propTypes = {
         level_name: PropTypes.string,
       }),
     })),
-    member_music_style: PropTypes.arrayOf(shape({
+    styles: PropTypes.arrayOf(shape({
       music_name: PropTypes.string,
     })),
   }),
@@ -406,6 +409,7 @@ MyProfile.defaultProps = {
     lastname: '',
     birthdate: '',
     user_description: '',
+    profil_image: '',
     city: {
       city_name: '',
       code: '',
@@ -420,7 +424,7 @@ MyProfile.defaultProps = {
         },
       },
     ],
-    member_music_style: [
+    styles: [
       {
         music_name: '',
       },

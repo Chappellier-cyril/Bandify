@@ -7,7 +7,9 @@ const mapStateToProps = (state) => ({
   levels: state.settings.levels,
   musicstyles: state.settings.musicstyles,
   isFiltersOpen: state.settings.isFiltersOpen,
-  // TODO
+  city: state.settings.city,
+  departments: state.settings.departments,
+  regions: state.settings.regions,
   // city: state.signup.city,
   // code: state.signup.code,
   // departement: state.signup.departement,
@@ -36,6 +38,12 @@ const mapDispatchToProps = (dispatch) => ({
   },
   getMusicStyles: () => {
     dispatch({ type: 'GET_MUSIC_STYLES' });
+  },
+  getDepartments: () => {
+    dispatch({ type: 'GET_DEPARTMENTS' });
+  },
+  getRegions: () => {
+    dispatch({ type: 'GET_REGIONS' });
   },
   onResetFilters: () => {
     dispatch({ type: 'ON_RESET_FILTERS' });

@@ -14,6 +14,7 @@ export const initialState = {
   editEmail: false,
   editPassword: false,
   editDescription: false,
+  searchedUsers: [],
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -22,6 +23,7 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         users: action.users,
+        searchedUsers: [],
       };
     case 'GET_ONE_MEMBER_SUCCESS':
       return {
@@ -33,7 +35,7 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         // pas le choix, faut passer par le reducer Users
         // les users deviennent filtrés en fonction de la query de searchBar
-        users: action.searchedUsers,
+        searchedUsers: action.searchedUsers,
       };
     case 'ON_DELETE_PROFILE_SUCCESS':
       return {

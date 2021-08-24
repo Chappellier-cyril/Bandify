@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Signup from 'src/components/Signup';
 
 const mapStateToProps = (state) => ({
+  success: state.signup.success,
   firstName: state.signup.firstName,
   lastName: state.signup.lastName,
   dateOfBirth: state.signup.dateOfBirth,
@@ -16,7 +17,7 @@ const mapStateToProps = (state) => ({
   departement: state.signup.departement,
   region: state.signup.region,
   image: state.signup.image,
-
+  error: state.signup.error,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -74,10 +75,9 @@ const mapDispatchToProps = (dispatch) => ({
       index,
     });
   },
-  handleSubmitSignup: (e) => {
+  handleSubmitSignup: (e, image) => {
     e.preventDefault();
-    console.log(e.target[6].files[0]);
-    dispatch({ type: 'SUBMIT_SIGNUP', image: e.target[6].files[0] });
+    dispatch({ type: 'SUBMIT_SIGNUP', image });
   },
 });
 

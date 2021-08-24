@@ -2,7 +2,7 @@ export const initialState = {
   id: null,
   email: '',
   password: '',
-  isLogged: false,
+  isLogged: true,
   isError: false,
   passwordShown: false,
   token: null,

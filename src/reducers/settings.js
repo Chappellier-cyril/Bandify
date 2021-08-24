@@ -1,18 +1,25 @@
 export const initialState = {
   isMenuOpen: false,
-  isFiltersOpen: false,
+  isFiltersOpen: true,
   isDeleteModalClosed: true,
+  deleteProfileMessage: '',
+  isProfileDeleted: false,
+  // SEARCH
+  searchValue: '',
+  searchMessage: '',
   instruments: [{}],
   levels: [{}],
   musicstyles: [{}],
   instrument: '',
   level: '',
   musicstyle: '',
-  // Home's search input
-  searchValue: '',
   // users searched from searchbar
   searchedUsers: [],
-  searchMessage: '',
+  city: '',
+  departments: [{}],
+  department: '',
+  regions: [{}],
+  region: '',
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -83,7 +90,6 @@ const reducer = (state = initialState, action = {}) => {
     case 'ON_SEARCH_SUBMIT_SUCCESS':
       return {
         ...state,
-        searchedUsers: action.searchedUsers,
         searchMessage: action.searchMessage,
         searchValue: '',
       };
@@ -92,7 +98,16 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         searchMessage: '',
-        searchedUsers: [],
+      };
+    case 'GET_DEPARTMENTS_SUCCESS':
+      return {
+        ...state,
+        departments: action.departments,
+      };
+    case 'GET_REGIONS_SUCCESS':
+      return {
+        ...state,
+        regions: action.regions,
       };
     default:
       return state;

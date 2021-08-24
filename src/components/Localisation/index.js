@@ -17,7 +17,6 @@ const Localisation = ({
       },
     })
       .then((response) => {
-        console.log('responsedata', response.data);
         setCities(response.data);
       })
       .catch((error) => {
@@ -37,7 +36,7 @@ const Localisation = ({
     console.log(e.target.innerHTML);
     const foundCity = cities.find((cityState) => (`${cityState.departement.code} - ${cityState.nom.toUpperCase()}`) === e.target.innerHTML);
     onChangeInput('city', foundCity.nom.toUpperCase());
-    onChangeInput('code', foundCity.codesPostaux[0]);
+    onChangeInput('code', foundCity.code);
     onChangeInput('departement', foundCity.departement);
     onChangeInput('region', foundCity.region);
     setCities([]);
@@ -48,7 +47,16 @@ const Localisation = ({
       <div className="autocompletion-city">
         <label htmlFor="city">
           Ville
-          <input name="city" id="city" type="text" onChange={onChangeCity} onKeyUp={getCitiesFromAPI} placeholder="ville" value={city} />
+          <input
+            name="city"
+            id="city"
+            type="text"
+            onChange={onChangeCity}
+            onKeyUp={getCitiesFromAPI}
+            placeholder="ville"
+            value={city}
+            className="search__form-filters__select"
+          />
         </label>
 
         <ul className="autocompletion-city__ul">

@@ -6,7 +6,7 @@ const mapStateToProps = (state) => ({
   isLogged: state.login.isLogged,
   searchValue: state.users.searchValue,
   user: state.users.user,
-  searchedUsers: state.settings.searchedUsers,
+  searchedUsers: state.users.searchedUsers,
   searchMessage: state.settings.searchMessage,
 });
 
