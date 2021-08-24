@@ -5,10 +5,14 @@ const { City, Department, Region } = require('./app/models');
 // CREATE ALL REGIONS
 
 const createRegion = async (name, code) => {
+  try {
   await Region.create({
     region_name: name,
     code,
   });
+} catch(error) {
+  console.trace(error);
+}
 }
 const optionsRegions = {
   method: 'GET',
@@ -16,11 +20,15 @@ const optionsRegions = {
   headers: {'Content-Type': 'application/x-www-form-urlencoded'},
 };
 const createDepartment = async (name, code, region_code) => {
+  try {
   await Department.create({
     department_name: name,
     code,
     region_code,
   });
+} catch(error) {
+  console.trace(error);
+}
 };
 const optionsDepartments = {
   method: 'GET',
@@ -28,11 +36,15 @@ const optionsDepartments = {
   headers: {'Content-Type': 'application/x-www-form-urlencoded'},
 };
 const createCity = async (name, code, department) => {
+  try {
   await City.create({
     city_name: name,
     code: code,
-    department_code: department
+    department_code: department,
   })
+} catch(error) {
+  console.trace(error);
+}
 }
 const optionsCities = {
   method: 'GET',
