@@ -2,19 +2,17 @@ export const initialState = {
   isMenuOpen: false,
   isFiltersOpen: false,
   isDeleteModalClosed: true,
+  deleteProfileMessage: '',
+  isProfileDeleted: false,
+  // SEARCH
+  searchValue: '',
+  searchMessage: '',
   instruments: [{}],
   levels: [{}],
   musicstyles: [{}],
   instrument: '',
   level: '',
   musicstyle: '',
-  // Home's search input
-  searchValue: '',
-  deleteProfileMessage: '',
-  isProfileDeleted: false,
-  // users searched from searchbar
-  searchedUsers: [],
-  searchMessage: '',
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -74,7 +72,6 @@ const reducer = (state = initialState, action = {}) => {
     case 'ON_SEARCH_SUBMIT_SUCCESS':
       return {
         ...state,
-        searchedUsers: action.searchedUsers,
         searchMessage: action.searchMessage,
         searchValue: '',
       };
@@ -83,7 +80,6 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         searchMessage: '',
-        searchedUsers: [],
       };
     default:
       return state;
