@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import './style.scss';
-
+import { getAge } from 'src/selectors/user';
 import instrumentsData from 'src/data/instruments';
 import levelsData from 'src/data/levels';
 import musicStylesData from 'src/data/music_styles';
@@ -23,17 +23,40 @@ const Signup = ({
 }) => {
   // On utilise un useState pour stocker le fichier avatar reçu afin de le
   // transmettre à l'action REDUX suivante via le handleSignUp
-  const [avatar, setAvatar] = useState();
 
+  // on vérifie l'âge et on affiche un message d'erreur si l'utilisateur à moins de 15 ans
+  const [errorAge, setErrorAge] = useState(false);
+  const [errorEmail, setErrorEmail] = useState(false);
+  useEffect(() => {
+    if (dateOfBirth !== '') {
+      const age = getAge(dateOfBirth);
+      if (age < 15) {
+        setErrorAge(true);
+      }
+      else {
+        setErrorAge(false);
+      }
+    }
+  }, [dateOfBirth]);
+  const [avatar, setAvatar] = useState();
+  const getEmailValidation = () => {
+    const regEx = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9-]{2,}[.][a-zA-Z]{2,3}$/;
+    if (!regEx.exec(email)) {
+      setErrorEmail(true);
+    }
+    else {
+      setErrorEmail(false);
+    }
+  };
   return (
     <>
       {/* Si l'utilisateur est connecté on redirige vers la page d'accueil */}
       {success && <Redirect to="/login" />}
-      {error !== '' && <p>{error}</p>}
+      { error !== '' && <p className="signup-submit__error">{error}</p> }
       {/* création des champs contrôlés pour les inputs du formulaire d'inscription grâce aux
       useState le state instrument sera un tableau qui récupère l'instrument et le level
       dans un objet */}
-      <form type="submit" onSubmit={(e) => handleSubmitSignup(e, avatar)} autoComplete="off">
+      <form type="submit" onSubmit={(e) => handleSubmitSignup(e, avatar)} autoComplete="off" className="signup-submit">
         <div>
           <label htmlFor="firstName">
             Prénom
@@ -51,12 +74,14 @@ const Signup = ({
           <label htmlFor="dateOfBirth">
             Date de naissance
             <input name="dateOfBirth" id="dateOfBirth" type="date" value={dateOfBirth} onChange={(e) => onChangeInput('dateOfBirth', e.target.value)} required />
+            {errorAge && <p className="signup-submit__error">Vous êtes trop jeune pour vous inscrire</p>}
           </label>
         </div>
         <div>
           <label htmlFor="email">
             Adresse email
-            <input name="email" id="email" type="email" value={email} onChange={(e) => onChangeInput('email', e.target.value)} placeholder="Email" required />
+            <input name="email" id="email" type="email" value={email} onChange={(e) => onChangeInput('email', e.target.value)} onBlur={getEmailValidation} placeholder="Email" required />
+            {errorEmail && <p className="signup-submit__error">L'adresse email entrée n'est pas valide</p>}
           </label>
         </div>
         <div>

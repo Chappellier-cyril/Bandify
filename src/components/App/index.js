@@ -1,7 +1,7 @@
 // == Import
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
-
+import { Redirect, Route, Switch } from 'react-router-dom';
+import PropTypes from 'prop-types';
 // connected components
 import Home from 'src/containers/Home';
 import Profiles from 'src/containers/Profiles';
@@ -18,7 +18,7 @@ import Footer from 'src/components/Footer';
 import './style.scss';
 
 // == Composant
-export default function App() {
+export default function App({ isLogged }) {
   return (
     <div className="app">
       <Header />
@@ -43,11 +43,17 @@ export default function App() {
         <Route exact path="/search" component={Home} />
 
         <Route exact path="/search" component={Home} />
-        <Route exact path="/member/:profileId" component={Profiles} />
+        {isLogged
+          ? <Route exact path="/member/:profileId" component={Profiles} />
+          : <Redirect exact to="/" />}
       </Switch>
       <Footer />
     </div>
   );
 }
+
+App.propTypes = {
+  isLogged: PropTypes.bool.isRequired,
+};
 
 // == Export

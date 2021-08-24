@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React, { useEffect, useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import PropTypes, { shape } from 'prop-types';
@@ -38,14 +39,6 @@ const MyProfile = ({
   handleSubmitBirthdate,
 
 }) => {
-  const redirectToHome = () => {
-    <Redirect to="/" />;
-  };
-  // TODO => Bug à corriger: rediriger sur la page d'accueil si suppression du profil
-  useEffect(() => {
-    redirectToHome();
-  }, [isLogged]);
-  // eslint-disable-next-line camelcase
   const {
     plays, city, styles, profil_image,
   } = user;
@@ -56,9 +49,9 @@ const MyProfile = ({
   const [avatar, setAvatar] = useState();
 
   return (
-    <div className="profile__page">
-      {/* eslint-disable-next-line camelcase  */}
-      {isDeleteModalClosed && (
+    <>
+      <div className="profile__page">
+        {isDeleteModalClosed && (
         <div className="profile">
           <div className="profile__card">
             {editPhoto ? (
@@ -80,7 +73,7 @@ const MyProfile = ({
               </form>
             ) : (
               <div>
-                <img src={`http://localhost:3000/images/${profil_image}`} alt="avatar du membre" />
+                {profil_image && <img src={`http://localhost:3000/images/${profil_image}`} alt="avatar du membre" />}
                 <span>
                   <button
                     type="button"
@@ -348,8 +341,8 @@ const MyProfile = ({
             <h2 className="profile__friends-title">Mes amis</h2>
           </div>
         </div>
-      )}
-      {!isDeleteModalClosed && (
+        )}
+        {!isDeleteModalClosed && (
         <div className="profile">
           <p>Êtes-vous sûr(e) de vouloir supprimer votre profil?</p>
           <button
@@ -363,8 +356,9 @@ const MyProfile = ({
           >Non
           </button>
         </div>
-      )}
-    </div>
+        )}
+      </div>
+    </>
   );
 };
 
