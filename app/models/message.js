@@ -23,7 +23,7 @@ Message.init({
             key: 'id'
         }
   },
-  receiver_id : {
+  reicever_id : {
     type: DataTypes.INTEGER,
     allowNull: false,
         references: {
@@ -34,7 +34,7 @@ Message.init({
 }, 
 {
   sequelize: database,
-  tableName: "message"
+  tableName: 'message'
 });
 
 module.exports = Message;

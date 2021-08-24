@@ -1,6 +1,17 @@
-const { Member, Play, Instrument, Level } = require('../models');
+const { Member, Play, Instrument, Level, MusicStyle } = require('../models');
 const bcrypt = require('bcrypt');
 const jsonwebtoken = require('jsonwebtoken');
+const multer = require('multer');
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+    cb(null, 'upload/images')
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + '-' + file.originalname )
+  }
+});
+const upload = multer({ storage: storage }).single('file');
 
 const memberController = {
     // Get all members
@@ -16,7 +27,7 @@ const memberController = {
                 },{
                     association: 'plays',
                     include: ['instrument', 'level']
-            }]});
+            }, 'styles']});
             res.json(members);
         } catch (error) {
             console.trace(error);
@@ -39,7 +50,7 @@ const memberController = {
                 }, {
                     association: 'plays',
                     include: ['instrument', 'level']
-            }]
+            }, 'styles']
             });
 
             // Soit le membre existe : Soit il n'existe pas
@@ -60,25 +71,75 @@ const memberController = {
             // req.body contient les informations nécessaires pour créer 
             // un nouveau membre
             // On lui hash le password
-             const passwordHashed = await bcrypt.hash(req.body.user_password, 10);
-            //  console.log(request.body.user_password);
-           console.log(req.body);
-           
+            console.log('body out', req.body);
+           upload(req, res, function (err) {
+            console.log('body', req.body);
+            console.log(req.file);
+            console.log(req.body.user_password);
+            if (err instanceof multer.MulterError) {
+                (console.log('error instance'));
+                return res.status(500).json(err)
+            } else if (err) {
+                (console.log('error géné'));
+                return res.status(500).json(err)
+            }
+            passwordHashed = bcrypt.hash(req.body.user_password, 10, async (err, hash) =>{
+                if(err) return err;
+                console.log(hash);
+                console.log(req.body);
+
             // On crée un user avec un passwordHashed
-            const newMember = await Member.create({
-               firstname: req.body.firstname,
-               lastname: req.body.lastname,
-               email: req.body.email,
-               birthdate: req.body.birthdate,
-               user_password: passwordHashed,
-               city_code: req.body.city_code,
-               
-            });
+                const newMember = await Member.create({
+                    firstname: req.body.firstname,
+                    lastname: req.body.lastname,
+                    email: req.body.email,
+                    birthdate: req.body.birthdate,
+                    user_password: hash,
+                    city_code: req.body.city_code,
+                    profil_image: `/image/${req.file.filename}`,
+                    })
+
+                    const instruments =  JSON.stringify(req.body.instruments);
+                    console.log('instruments', instruments);
+                if(req.body.styles) {
+
+                  const styles = JSON.stringify(req.body.styles);
+                  console.log('styles', styles);
+
+                  // newMember.addMusicStyle(styles);
+                }
+
+                // instruments.map(async (play) => await Play.create({
+                //   instrument_id: play.instrument_id,
+                //   member_id: newMember.id,
+                //   level_id: play.level
+                // }));
+                const member = await Member.findByPk(newMember.id, {
+                  include: [{
+                      association: 'city',
+                      include: {
+                          association: 'department',
+                          include: 'region',
+                      },
+                  }, {
+                      association: 'plays',
+                      include: ['instrument', 'level']
+              }, 'styles']
+              });
+                return res.json(member);
+
+                
+                //TODO Association level/instrument et style music
+                    
+
+            })
+                    
+            })
 
             // On lui renvoie
-              res.json(newMember);
+             // res.json(newMember);
 
-        } catch (error) {
+        }catch(error) {
             console.trace(error);
             res.status(500).json(error);
         }
