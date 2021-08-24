@@ -32,7 +32,9 @@ const memberController = {
                     association: 'plays',
                     include: ['instrument', 'level']
             }, 'styles']});
+
             res.json(members);
+            
         } catch (error) {
             console.trace(error);
             res.status(500).json(error);

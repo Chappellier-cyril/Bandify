@@ -6,6 +6,7 @@ const musicStyleController = require('../controllers/musicStyleController');
 const associationController = require('../controllers/associationController');
 const searchController = require('../controllers/searchController');
 const messageController = require('../controllers/messageController');
+const invitationController = require('../controllers/invitationController');
 
 const localisationController = require('../controllers/localisationController');
 const router = express.Router();
@@ -107,10 +108,20 @@ router.route('/musicstyles/:id')
 router.route('/messages')
     .get(messageController.getAllMessages)
     .post(messageController.createMessage)
+
+router.route('/messages/:id')
+    .post(messageController.createMessage);
+
+router.route('/invitations')
+    .get(invitationController.getAllInvitations);
+
+router.route('/invitations/:id')
+    .post(invitationController.sendInvitation)
+    .post(invitationController.deleteInvitation);
+
 // ROUTE DE LOCALISATION
 router.get('/cities', localisationController.getAllCities);
 router.get('/cities/:id', localisationController.getOneCity);
-
 router.get('/departments', localisationController.getAllDepartments);
 router.get('/departments/:id', localisationController.getOneDepartment);
 
