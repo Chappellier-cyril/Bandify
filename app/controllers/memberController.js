@@ -121,15 +121,15 @@ const memberController = {
                 };
                 // Envoi de la réponse au front si tout est ok
                 res.json({
-                id: member.id,
-                email: member.email,
-                token: jsonwebtoken.sign(jwtContent, jwtSecret, jwtOptions),
+                    success : 'New Member added'
                 });
             }) 
             })
         }catch(error) {
             console.trace(error);
-            res.status(500).json(error);
+            res.status(500).json({
+                error: error.message
+            });
         }
     },
 
