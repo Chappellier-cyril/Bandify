@@ -46,7 +46,7 @@ const MyProfile = ({
     plays, city, styles, profil_image,
   } = user;
 
-  const [citySearch, setCity] = useState('');
+  // const [citySearch, setCity] = useState('');
 
   return (
     <div className="profile__page">
