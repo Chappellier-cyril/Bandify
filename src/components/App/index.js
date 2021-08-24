@@ -1,5 +1,5 @@
 // == Import
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 // connected components
@@ -19,6 +19,15 @@ import './style.scss';
 
 // == Composant
 export default function App({ isLogged }) {
+  // AU premier rendu, je veux recupérer mon token
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      //TODO on stocke le token dans notre state user et on voir pour recuperer email et id au moment du setItem dans le ON_LOGIN_SUBMIT
+      // pour pouvoir autologgé 
+    }
+
+  }, []);
   return (
     <div className="app">
       <Header />

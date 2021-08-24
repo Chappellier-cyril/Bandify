@@ -40,6 +40,7 @@ const signupMiddleware = (store) => (next) => (action) => {
         }
       })
       .catch((e) => {
+
         store.dispatch({ type: 'SUBMIT_ERROR', error: e });
       });
     next(action);
