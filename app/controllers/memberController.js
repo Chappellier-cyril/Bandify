@@ -8,11 +8,12 @@ const multer = require('multer');
 */
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-    cb(null, 'upload/images')
-  },
-  filename: function (req, file, cb) {
-    cb(null, Date.now() + '-' + file.originalname )
-  }
+        cb(null, 'upload/images')
+    },
+    filename: function (req, file, cb) {
+        cb(null, Date.now() + '-' + file.originalname )
+    }
+
 });
 const upload = multer({ storage: storage }).single('file');
 
@@ -99,7 +100,7 @@ const memberController = {
                     birthdate: req.body.birthdate,
                     user_password: hash,
                     city_code: req.body.city_code,
-                    profil_image: `/image/${req.file.filename}`,
+                    profil_image: req.file ? `${req.file.filename}`: null,
                     })
                 // Si le membre à séléctionné des styles, on boucle dessus pour associer chaque style au member
                 if(styles) {
