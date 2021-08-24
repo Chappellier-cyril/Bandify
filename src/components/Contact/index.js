@@ -2,8 +2,10 @@ import React from 'react';
 
 import './style.scss';
 
-export default function Contact() {
-  return (
-    <h1>Page Contact</h1>
-  );
-};
+const Contact = () => (
+  <div className="main">
+    <h1>Contact</h1>
+  </div>
+);
+
+export default Contact;
