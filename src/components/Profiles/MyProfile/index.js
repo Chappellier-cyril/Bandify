@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes, { shape } from 'prop-types';
@@ -5,7 +6,6 @@ import { getAge } from 'src/selectors/user';
 
 // == Import : local
 import 'src/components/Profiles/style.scss';
-import axios from 'axios';
 
 const MyProfile = ({
   user,
@@ -15,7 +15,6 @@ const MyProfile = ({
   isProfileDeleted,
   deleteProfileMessage,
 }) => {
-  // eslint-disable-next-line camelcase
   const {
     plays, city, styles, profil_image,
   } = user;
@@ -96,6 +95,7 @@ MyProfile.propTypes = {
     lastname: PropTypes.string,
     birthdate: PropTypes.string,
     user_description: PropTypes.string,
+    profil_image: PropTypes.string,
     city: PropTypes.shape({
       city_name: PropTypes.string,
       code: PropTypes.string,
@@ -125,6 +125,7 @@ MyProfile.defaultProps = {
     lastname: '',
     birthdate: '',
     user_description: '',
+    profil_image: '',
     city: {
       city_name: '',
       code: '',

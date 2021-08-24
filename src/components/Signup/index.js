@@ -17,7 +17,7 @@ Avec Redux :
 
 const Signup = ({
   firstName, lastName, dateOfBirth, description, email, password, city, code,
-  instruments, styles, departement, region, isLogged,
+  instruments, styles, departement, region, success, error,
   onChangeInput, onSelectInput, addNewInputInstrument, removeInputInstrument,
   onStyleInput, addNewStyle, removeStyle, handleSubmitSignup,
 }) => {
@@ -28,7 +28,8 @@ const Signup = ({
   return (
     <>
       {/* Si l'utilisateur est connecté on redirige vers la page d'accueil */}
-      {isLogged && <Redirect to="/" />}
+      {success && <Redirect to="/login" />}
+      {error !== '' && <p>{error}</p>}
       {/* création des champs contrôlés pour les inputs du formulaire d'inscription grâce aux
       useState le state instrument sera un tableau qui récupère l'instrument et le level
       dans un objet */}
@@ -149,7 +150,8 @@ const Signup = ({
 };
 
 Signup.propTypes = {
-  isLogged: PropTypes.bool.isRequired,
+  success: PropTypes.bool.isRequired,
+  error: PropTypes.string.isRequired,
   firstName: PropTypes.string.isRequired,
   lastName: PropTypes.string.isRequired,
   dateOfBirth: PropTypes.string.isRequired,

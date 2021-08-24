@@ -17,6 +17,8 @@ export const initialState = {
   },
   instruments: [{}],
   styles: [0],
+  success: false,
+  error: '',
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -78,7 +80,16 @@ const reducer = (state = initialState, action = {}) => {
         styles: copyStyles,
       };
     }
-
+    case 'SUBMIT_SUCCESS':
+      return {
+        ...initialState,
+        success: true,
+      };
+    case 'SUBMIT_ERROR':
+      return {
+        ...state,
+        error: action.error,
+      };
     default:
       return state;
   }

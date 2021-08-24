@@ -27,12 +27,16 @@ const signupMiddleware = (store) => (next) => (action) => {
     };
     axios(options)
       .then((response) => {
-        console.log(response.data);
-        store.dispatch({ type: 'ON_LOGIN_SUCCESS', data: response.data });
+        if (response.data.success) {
+          store.dispatch({ type: 'SUBMIT_SUCCESS', success: response.data.success });
+        }
+        if (response.data.error) {
+          throw (response.data.error);
+        }
       })
       .catch((e) => {
         // TODO
-        store.dispatch({ type: 'ON_SUBMIT_ERROR', error: e });
+        store.dispatch({ type: 'SUBMIT_ERROR', error: e });
       });
     next(action);
   }
