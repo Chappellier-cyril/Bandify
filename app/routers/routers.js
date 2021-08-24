@@ -117,7 +117,8 @@ router.route('/invitations')
 
 router.route('/invitations/:id')
     .post(invitationController.sendInvitation)
-    .post(invitationController.deleteInvitation);
+    .post(invitationController.deleteInvitation)
+    .patch(invitationController.acceptInvitation);
 
 router.route('/cities')
 .get(cityController.getAllCities);

@@ -1,4 +1,4 @@
-const { Invitation } = require('../models');
+const { Invitation, Member } = require('../models');
 
 const invitationController = {
     // Get all messages
@@ -14,15 +14,14 @@ const invitationController = {
         }
     },
 
-    // Send invitation
     sendInvitation : async (req, res, next) => {
         try {
-            const newMessage = await Message.create({
+            const newInvitation = await Invitation.create({
                status : req.body.status,
                sender_id : req.body.request_user_id,
                reicever_id : req.body.response_user_id
             });
-              res.json(newMessage);
+              res.json(newInvitation);
 
         } catch (error) {
             console.trace(error);
@@ -40,16 +39,37 @@ const invitationController = {
                 }
             });
 
-            // Si y'a au moins 1 membre de supprimer alors :
+        
             if (deleteInvitation > 0) {
-                res.json({message: "ok, membre supprimé"});
+                res.json({message: "invitation supprimé"});
             } else {
-                next(); // On envoie une 404
+                next();
             }
 
         } catch (error) {
             console.trace(error);
             res.status(500).json(error);
+        }
+    },
+
+    acceptInvitation : async (req, res, next) => {
+        try {
+            
+            const targetId = req.params.id;
+            
+            const memberToUpdate = await Invitation.findByPk(targetId);
+            
+            if (!memberToUpdate) {
+                return next(); 
+            }
+            
+            await memberToUpdate.update(req.body);
+            
+            res.json(memberToUpdate);
+            
+        } catch (error) {
+            console.trace(error);
+            res.status(500).json(error); 
         }
     },
 
