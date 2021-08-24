@@ -47,7 +47,16 @@ const Localisation = ({
       <div className="autocompletion-city">
         <label htmlFor="city">
           Ville
-          <input name="city" id="city" type="text" onChange={onChangeCity} onKeyUp={getCitiesFromAPI} placeholder="ville" value={city} />
+          <input
+            name="city"
+            id="city"
+            type="text"
+            onChange={onChangeCity}
+            onKeyUp={getCitiesFromAPI}
+            placeholder="ville"
+            value={city}
+            className="search__form-filters__select"
+          />
         </label>
 
         <ul className="autocompletion-city__ul">

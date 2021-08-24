@@ -22,6 +22,20 @@ const searchMiddleware = (store) => (next) => (action) => {
       });
   }
 
+  if (action.type === 'GET_DEPARTMENTS') {
+    axios.get('http://localhost:3000/departments')
+      .then((response) => {
+        store.dispatch({ type: 'GET_DEPARTMENTS_SUCCESS', departments: response.data });
+      });
+  }
+
+  if (action.type === 'GET_REGIONS') {
+    axios.get('http://localhost:3000/regions')
+      .then((response) => {
+        store.dispatch({ type: 'GET_REGIONS_SUCCESS', regions: response.data });
+      });
+  }
+
   if (action.type === 'ON_SEARCH_SUBMIT') {
     const state = store.getState();
     // value de la searchBar, stockée dans le reducer settings

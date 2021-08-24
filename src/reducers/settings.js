@@ -14,6 +14,10 @@ export const initialState = {
   level: '',
   musicstyle: '',
   city: '',
+  departments: [{}],
+  department: '',
+  regions: [{}],
+  region: '',
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -81,6 +85,16 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         searchMessage: '',
+      };
+    case 'GET_DEPARTMENTS_SUCCESS':
+      return {
+        ...state,
+        departments: action.departments,
+      };
+    case 'GET_REGIONS_SUCCESS':
+      return {
+        ...state,
+        regions: action.regions,
       };
     default:
       return state;
