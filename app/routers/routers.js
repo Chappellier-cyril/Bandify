@@ -8,8 +8,7 @@ const searchController = require('../controllers/searchController');
 const messageController = require('../controllers/messageController');
 const invitationController = require('../controllers/invitationController');
 
-const cityController = require('../controllers/cityController');
-const imageController = require('../controllers/imageController');
+const localisationController = require('../controllers/localisationController');
 const router = express.Router();
 
 // SEARCH Route
@@ -108,6 +107,7 @@ router.route('/musicstyles/:id')
 
 router.route('/messages')
     .get(messageController.getAllMessages)
+    .post(messageController.createMessage)
 
 router.route('/messages/:id')
     .post(messageController.createMessage);
@@ -120,10 +120,14 @@ router.route('/invitations/:id')
     .post(invitationController.deleteInvitation)
     .patch(invitationController.acceptInvitation);
 
-router.route('/cities')
-.get(cityController.getAllCities);
+// ROUTE DE LOCALISATION
+router.get('/cities', localisationController.getAllCities);
+router.get('/cities/:id', localisationController.getOneCity);
+router.get('/departments', localisationController.getAllDepartments);
+router.get('/departments/:id', localisationController.getOneDepartment);
 
-
+router.get('/regions', localisationController.getAllRegions);
+router.get('/regions/:id', localisationController.getOneRegion);
 // MEMBER HAS INSTRUMENT
 
 router.route('/members/member_instrument')

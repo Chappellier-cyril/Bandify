@@ -97,7 +97,7 @@ Department.belongsTo(Region, {
 // 1,N entre région et département
 Region.hasMany(Department, {
     foreignKey: 'region_code',
-    as: 'region_department'
+    as: 'departments'
 });
 
 // N,N
