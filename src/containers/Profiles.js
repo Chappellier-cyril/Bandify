@@ -20,7 +20,7 @@ const mapStateToProps = (state) => ({
   lastName: state.users.user.lastName,
   dateOfBirth: state.users.user.dateOfBirth,
   emailInput: state.users.user.email,
-  password: state.users.user.password,
+  password: state.users.user.user_password,
   description: state.users.user.user_description,
   passwordShown: state.login.passwordShown,
 
@@ -71,6 +71,10 @@ const mapDispatchToProps = (dispatch) => ({
   handleSubmitDescription: (e) => {
     e.preventDefault();
     dispatch({ type: 'SUBMIT_MODIFIED_DESCRIPTION' });
+  },
+  handleSubmitPassword: (e) => {
+    e.preventDefault();
+    dispatch({ type: 'SUBMIT_MODIFIED_PASSWORD' });
   },
 });
 

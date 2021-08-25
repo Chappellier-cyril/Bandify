@@ -37,6 +37,7 @@ const Profiles = ({
   handleSubmitEmail,
   handleSubmitBirthdate,
   handleSubmitDescription,
+  handleSubmitPassword,
 }) => {
   const url = window.location.href;
   // pour avoir le dernier segment de l'url
@@ -86,6 +87,7 @@ const Profiles = ({
           handleSubmitEmail={handleSubmitEmail}
           handleSubmitBirthdate={handleSubmitBirthdate}
           handleSubmitDescription={handleSubmitDescription}
+          handleSubmitPassword={handleSubmitPassword}
         />
       ) : <OtherProfile user={user} />
   );
@@ -124,6 +126,7 @@ Profiles.propTypes = {
   handleSubmitEmail: PropTypes.func,
   handleSubmitBirthdate: PropTypes.func,
   handleSubmitDescription: PropTypes.func,
+  handleSubmitPassword: PropTypes.func,
 };
 
 Profiles.defaultProps = {
@@ -138,6 +141,7 @@ Profiles.defaultProps = {
   handleSubmitEmail: null,
   handleSubmitBirthdate: null,
   handleSubmitDescription: null,
+  handleSubmitPassword: null,
   firstName: '',
   lastName: '',
   dateOfBirth: '',

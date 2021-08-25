@@ -10,7 +10,7 @@ export const initialState = {
     dateOfBirth: '',
     user_description: '',
     email: '',
-    password: '',
+    user_password: '',
     city: '',
     code: '',
     departement: {
@@ -23,6 +23,7 @@ export const initialState = {
     },
     instruments: [{}],
     styles: [0],
+    profil_image: '',
   },
   editPhoto: false,
   editName: false,
@@ -34,7 +35,6 @@ export const initialState = {
   editPassword: false,
   editDescription: false,
   searchedUsers: [],
-  success: false,
   error: '',
 };
 
@@ -59,18 +59,22 @@ const reducer = (state = initialState, action = {}) => {
         searchedUsers: action.searchedUsers,
       };
     case 'ON_DELETE_PROFILE_SUCCESS':
-      {
-        localStorage.clear();
-        return {
-          ...state,
-          users: usersData,
-          user: {},
-        };
-      }
+    {
+      localStorage.clear();
+      return {
+        ...state,
+        users: usersData,
+        user: {},
+      };
+    }
     case 'EDIT_FORM_TOGGLE':
       return {
         ...state,
         [action.key]: !state[action.key],
+        user: {
+          ...state.user,
+          user_password: '',
+        },
       };
     case 'CHANGE_INPUT_MODIFY_PROFILE':
       return {
@@ -83,13 +87,11 @@ const reducer = (state = initialState, action = {}) => {
     case 'PHOTO_MODIFIED_SUCCESS':
       return {
         ...state,
-        success: true,
+        user: {
+          ...state.user,
+          profil_image: action.data.profil_image,
+        },
         editPhoto: false,
-      };
-    case 'PHOTO_MODIFIED_ERROR':
-      return {
-        ...state,
-        error: action.error,
       };
     case 'NAME_MODIFIED_SUCCESS':
       return {
@@ -101,11 +103,6 @@ const reducer = (state = initialState, action = {}) => {
           lastname: action.data.lastname,
         },
       };
-    case 'NAME_MODIFIED_ERROR':
-      return {
-        ...state,
-        error: action.error,
-      };
     case 'EMAIL_MODIFIED_SUCCESS':
       return {
         ...state,
@@ -114,11 +111,6 @@ const reducer = (state = initialState, action = {}) => {
           ...state.user,
           email: action.data.email,
         },
-      };
-    case 'EMAIL_MODIFIED_ERROR':
-      return {
-        ...state,
-        error: action.error,
       };
     case 'BIRTHDATE_MODIFIED_SUCCESS':
       return {
@@ -129,11 +121,6 @@ const reducer = (state = initialState, action = {}) => {
           birthdate: action.data.birthdate,
         },
       };
-    case 'BIRTHDATE_MODIFIED_ERROR':
-      return {
-        ...state,
-        error: action.error,
-      };
     case 'DESCRIPTION_MODIFIED_SUCCESS':
       return {
         ...state,
@@ -143,7 +130,16 @@ const reducer = (state = initialState, action = {}) => {
           user_description: action.data.user_description,
         },
       };
-    case 'DESCRIPTION_MODIFIED_ERROR':
+    case 'PASSWORD_MODIFIED_SUCCESS':
+      return {
+        ...state,
+        editPassword: false,
+        user: {
+          ...state.user,
+          user_password: '',
+        },
+      };
+    case 'SUBMIT_MODIFIED_ERROR':
       return {
         ...state,
         error: action.error,

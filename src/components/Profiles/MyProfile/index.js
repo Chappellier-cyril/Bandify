@@ -36,6 +36,7 @@ const MyProfile = ({
   handleSubmitEmail,
   handleSubmitBirthdate,
   handleSubmitDescription,
+  handleSubmitPassword,
 
 }) => {
   const {
@@ -45,6 +46,8 @@ const MyProfile = ({
   // const [citySearch, setCity] = useState('');
 
   const [avatar, setAvatar] = useState();
+
+  console.log(user);
 
   return (
     <>
@@ -211,16 +214,15 @@ const MyProfile = ({
               </h2>
             )}
             {editPassword ? (
-              // TODO => edit password
-              <form type="submit">
+              <form type="submit" onSubmit={handleSubmitPassword}>
                 <div>
                   <input
                     name="password"
             // Si l'oeil est cliqué on affiche le mot de passe sinon on laisse en type password
                     type={passwordShown ? 'text' : 'password'}
                     value={password.trim()}
-                    onChange={(e) => onChangeInput('password', e.target.value)}
-                    placeholder="Mot de passe"
+                    onChange={(e) => onChangeInput('user_password', e.target.value)}
+                    placeholder="Nouveau mot de passe"
                     required
                   />
                   <button
@@ -232,6 +234,7 @@ const MyProfile = ({
                     {passwordShown ? <i className="fas fa-eye-slash" /> : <i className="fas fa-eye" />}
                   </button>
                 </div>
+                <button type="submit">Envoyer</button>
                 <button
                   type="button"
                   onClick={() => editFormToggle('editPassword')}
@@ -241,13 +244,12 @@ const MyProfile = ({
               </form>
             ) : (
               <h2>
-                Mot de passe
                 <span>
                   <button
                     type="button"
                     onClick={() => editFormToggle('editPassword')}
                   >
-                    <i className="fas fa-pen" />
+                    Modifier mon mot de passe
                   </button>
                 </span>
               </h2>
@@ -413,6 +415,7 @@ MyProfile.propTypes = {
   handleSubmitEmail: PropTypes.func.isRequired,
   handleSubmitBirthdate: PropTypes.func.isRequired,
   handleSubmitDescription: PropTypes.func.isRequired,
+  handleSubmitPassword: PropTypes.func.isRequired,
 };
 
 MyProfile.defaultProps = {

@@ -4,7 +4,6 @@ const usersMiddleware = (store) => (next) => (action) => {
   const url = window.location.href;
   // pour avoir le dernier segment de l'url
   const lastSegmentUrl = url.split('/').pop();
-  
 
   const state = store.getState();
 
@@ -52,15 +51,16 @@ const usersMiddleware = (store) => (next) => (action) => {
     };
     axios(options)
       .then((response) => {
+        console.log(response.data.profil_image);
         if (response.data.success) {
-          store.dispatch({ type: 'PHOTO_MODIFIED_SUCCESS', success: response.data.success });
+          store.dispatch({ type: 'PHOTO_MODIFIED_SUCCESS', data: response.data.profil_image });
         }
         if (response.data.error) {
           throw (response.data.error);
         }
       })
       .catch((e) => {
-        store.dispatch({ type: 'PHOTO_MODIFIED_ERROR', error: e });
+        store.dispatch({ type: 'SUBMIT_MODIFIED_ERROR', error: e });
       });
   }
 
@@ -78,7 +78,7 @@ const usersMiddleware = (store) => (next) => (action) => {
         store.dispatch({ type: 'NAME_MODIFIED_SUCCESS', data: response.data });
       })
       .catch((e) => {
-        store.dispatch({ type: 'NAME_MODIFIED_ERROR', error: e });
+        store.dispatch({ type: 'SUBMIT_MODIFIED_ERROR', error: e });
       });
   }
 
@@ -95,7 +95,7 @@ const usersMiddleware = (store) => (next) => (action) => {
         store.dispatch({ type: 'EMAIL_MODIFIED_SUCCESS', data: response.data });
       })
       .catch((e) => {
-        store.dispatch({ type: 'EMAIL_MODIFIED_ERROR', error: e });
+        store.dispatch({ type: 'SUBMIT_MODIFIED_ERROR', error: e });
       });
   }
 
@@ -112,7 +112,7 @@ const usersMiddleware = (store) => (next) => (action) => {
         store.dispatch({ type: 'BIRTHDATE_MODIFIED_SUCCESS', data: response.data });
       })
       .catch((e) => {
-        store.dispatch({ type: 'BIRTHDATE_MODIFIED_ERROR', error: e });
+        store.dispatch({ type: 'SUBMIT_MODIFIED_ERROR', error: e });
       });
   }
 
@@ -129,7 +129,25 @@ const usersMiddleware = (store) => (next) => (action) => {
         store.dispatch({ type: 'DESCRIPTION_MODIFIED_SUCCESS', data: response.data });
       })
       .catch((e) => {
-        store.dispatch({ type: 'DESCRIPTION_MODIFIED_ERROR', error: e });
+        store.dispatch({ type: 'SUBMIT_MODIFIED_ERROR', error: e });
+      });
+  }
+
+  if (action.type === 'SUBMIT_MODIFIED_PASSWORD') {
+    const options = {
+      method: 'PATCH',
+      url: `http://localhost:3000/members/${lastSegmentUrl}`,
+      data: {
+        user_password: state.users.user.user_password,
+      },
+    };
+    axios(options)
+      .then((response) => {
+        console.log(response.data);
+        store.dispatch({ type: 'PASSWORD_MODIFIED_SUCCESS', data: response.data });
+      })
+      .catch((e) => {
+        store.dispatch({ type: 'SUBMIT_MODIFIED_ERROR', error: e });
       });
   }
   next(action);
