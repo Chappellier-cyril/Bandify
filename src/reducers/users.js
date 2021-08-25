@@ -60,6 +60,7 @@ const reducer = (state = initialState, action = {}) => {
       };
     case 'ON_DELETE_PROFILE_SUCCESS':
     {
+      // On clear le localStorage lors d'une suppression d'un profil
       localStorage.clear();
       return {
         ...state,

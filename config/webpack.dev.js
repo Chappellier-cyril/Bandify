@@ -43,7 +43,7 @@ module.exports = merge(common, {
   devServer: {
     historyApiFallback: true,
     contentBase: paths.build,
-    clientLogLevel: 'warn',
+    clientLogLevel: 'silent',
     overlay: true,
     stats: 'minimal',
     open: true,

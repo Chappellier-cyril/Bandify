@@ -18,6 +18,9 @@ const mapStateToProps = (state) => ({
   region: state.signup.region,
   image: state.signup.image,
   error: state.signup.error,
+  instrumentsData: state.settings.instruments,
+  levelsData: state.settings.levels,
+  musicStylesData: state.settings.musicstyles,
 });
 
 const mapDispatchToProps = (dispatch) => ({

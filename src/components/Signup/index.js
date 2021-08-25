@@ -3,9 +3,6 @@ import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import './style.scss';
 import { getAge } from 'src/selectors/user';
-import instrumentsData from 'src/data/instruments';
-import levelsData from 'src/data/levels';
-import musicStylesData from 'src/data/music_styles';
 import Localisation from 'src/components/Localisation';
 
 /*
@@ -18,6 +15,7 @@ Avec Redux :
 const Signup = ({
   firstName, lastName, dateOfBirth, description, email, password, city, code,
   instruments, styles, departement, region, success, error,
+  instrumentsData, levelsData, musicStylesData,
   onChangeInput, onSelectInput, addNewInputInstrument, removeInputInstrument,
   onStyleInput, addNewStyle, removeStyle, handleSubmitSignup,
 }) => {
@@ -121,8 +119,8 @@ const Signup = ({
                 <select name={`instrument${index}`} id={`instrument${index}`} onChange={(e) => onSelectInput(e, index, 'instrument')} required={index === 0} disabled={instrument.instrument && index < instruments.length - 1}>
                   <option value="">Choisir un instrument</option>
                   {
-                    instrumentsData.map(({ name, id }) => (
-                      <option value={id} key={id}>{name}</option>))
+                    instrumentsData.map(({ instrument_name, id }) => (
+                      <option value={id} key={id}>{instrument_name}</option>))
                   }
                 </select>
               </label>
@@ -130,7 +128,7 @@ const Signup = ({
                 <select name={`level${index}`} id={`level${index}`} onChange={(e) => onSelectInput(e, index, 'level')} disabled={!instrument.instrument}>
                   <option value="">Choisir un niveau de pratique</option>
                   {
-                    levelsData.map(({ name, id }) => <option value={id} key={id}>{name}</option>)
+                    levelsData.map(({ level_name, id }) => <option value={id} key={id}>{level_name}</option>)
                   }
                 </select>
                 {
@@ -159,7 +157,7 @@ const Signup = ({
                 <option value="">Choisir un style de musique</option>
                 {
                   musicStylesData.map((style) => (
-                    <option value={style.id} key={style.id}>{style.name}</option>
+                    <option value={style.id} key={style.id}>{style.music_name}</option>
                   ))
                 }
               </select>

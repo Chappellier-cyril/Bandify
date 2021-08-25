@@ -12,7 +12,7 @@ const usersMiddleware = (store) => (next) => (action) => {
       method: 'GET',
       url: 'http://localhost:3000/members',
       headers: {
-        // Dans le headers on fait passer notre token via la "méthode" x-acces-token
+        // On recupère le token stocker en localStorage (getItem)
         'x-acces-token': localStorage.getItem('token'),
       },
     };

@@ -24,9 +24,9 @@ const authMiddleware = (store) => (next) => (action) => {
         store.dispatch({ type: 'ON_LOGIN_SUCCESS', data: response.data });
         // ON clear le localstorage au cas où avant
         localStorage.clear();
-        // On y stocke notre token
+        
+        // On y STOCKE (setItem) les infos du user + le token
         localStorage.setItem('userId', response.data.id);
-        // console.log(response.data.token);
         localStorage.setItem('userEmail', response.data.email);
         localStorage.setItem('token', response.data.token);
       })
