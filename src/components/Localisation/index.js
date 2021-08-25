@@ -29,11 +29,8 @@ const Localisation = ({
   const onChangeCity = (e) => {
     setCities([]);
     onChangeInput('city', e.target.value);
-
-    console.log(cities);
   };
   const getCityInfo = (e) => {
-    console.log(e.target.innerHTML);
     const foundCity = cities.find((cityState) => (`${cityState.departement.code} - ${cityState.nom.toUpperCase()}`) === e.target.innerHTML);
     onChangeInput('city', foundCity.nom.toUpperCase());
     onChangeInput('code', foundCity.code);

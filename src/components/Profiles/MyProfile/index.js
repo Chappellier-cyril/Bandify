@@ -1,6 +1,5 @@
 /* eslint-disable camelcase */
-import React, { useEffect, useState } from 'react';
-import { Redirect } from 'react-router-dom';
+import React, { useState } from 'react';
 import PropTypes, { shape } from 'prop-types';
 import { getAge } from 'src/selectors/user';
 import Localisation from 'src/components/Localisation';
@@ -13,7 +12,6 @@ const MyProfile = ({
   onWishToDeleteProfile,
   onDeleteProfile,
   isDeleteModalClosed,
-  isLogged,
   editFormToggle,
   editPhoto,
   editName,
@@ -27,7 +25,7 @@ const MyProfile = ({
   firstName,
   lastName,
   dateOfBirth,
-  email,
+  emailInput,
   password,
   description,
   passwordShown,
@@ -37,16 +35,19 @@ const MyProfile = ({
   handleSubmitName,
   handleSubmitEmail,
   handleSubmitBirthdate,
+  handleSubmitDescription,
+  handleSubmitPassword,
 
 }) => {
   const {
-    plays, city, styles, profil_image,
+    plays, city, styles, profil_image, email,
   } = user;
 
-  console.log(user);
   // const [citySearch, setCity] = useState('');
 
   const [avatar, setAvatar] = useState();
+
+  console.log(user);
 
   return (
     <>
@@ -185,7 +186,7 @@ const MyProfile = ({
                   <input
                     name="email"
                     type="text"
-                    value={email.trim()}
+                    value={emailInput.trim()}
                     onChange={(e) => onChangeInput('email', e.target.value)}
                     placeholder="E-mail"
                     required
@@ -201,7 +202,7 @@ const MyProfile = ({
               </form>
             ) : (
               <h2>
-                Email
+                Email: {email}
                 <span>
                   <button
                     type="button"
@@ -213,16 +214,15 @@ const MyProfile = ({
               </h2>
             )}
             {editPassword ? (
-              // TODO => edit password
-              <form type="submit">
+              <form type="submit" onSubmit={handleSubmitPassword}>
                 <div>
                   <input
                     name="password"
             // Si l'oeil est cliqué on affiche le mot de passe sinon on laisse en type password
                     type={passwordShown ? 'text' : 'password'}
                     value={password.trim()}
-                    onChange={(e) => onChangeInput('password', e.target.value)}
-                    placeholder="Mot de passe"
+                    onChange={(e) => onChangeInput('user_password', e.target.value)}
+                    placeholder="Nouveau mot de passe"
                     required
                   />
                   <button
@@ -234,6 +234,7 @@ const MyProfile = ({
                     {passwordShown ? <i className="fas fa-eye-slash" /> : <i className="fas fa-eye" />}
                   </button>
                 </div>
+                <button type="submit">Envoyer</button>
                 <button
                   type="button"
                   onClick={() => editFormToggle('editPassword')}
@@ -243,26 +244,25 @@ const MyProfile = ({
               </form>
             ) : (
               <h2>
-                Mot de passe
                 <span>
                   <button
                     type="button"
                     onClick={() => editFormToggle('editPassword')}
                   >
-                    <i className="fas fa-pen" />
+                    Modifier mon mot de passe
                   </button>
                 </span>
               </h2>
             )}
             {editDescription ? (
-              // TODO => edit description
-              <form type="submit">
+              <form type="submit" onSubmit={handleSubmitDescription}>
                 <div>
                   <label htmlFor="description">
                     Description
-                    <textarea name="description" id="description" type="text" value={description} onChange={(e) => onChangeInput('description', e.target.value)} placeholder="Faire une courte description de vous" />
+                    <textarea name="description" id="description" type="text" value={description} onChange={(e) => onChangeInput('user_description', e.target.value)} placeholder="Faire une courte description de vous" />
                   </label>
                 </div>
+                <button type="submit">Envoyer</button>
                 <button
                   type="button"
                   onClick={() => editFormToggle('editDescription')}
@@ -330,10 +330,12 @@ const MyProfile = ({
             <div className="home__cards">
               <ul>
                 {styles.map((musicStyle) => (
+                  (musicStyle !== 0) && (
+                  // Règle le souci musicStyle.id is undefined
                   <li key={musicStyle.id}>
                     {musicStyle.music_name}
                   </li>
-
+                  )
                 ))}
               </ul>
             </div>
@@ -367,6 +369,7 @@ MyProfile.propTypes = {
     firstname: PropTypes.string,
     lastname: PropTypes.string,
     birthdate: PropTypes.string,
+    email: PropTypes.string,
     user_description: PropTypes.string,
     profil_image: PropTypes.string,
     city: PropTypes.shape({
@@ -388,7 +391,6 @@ MyProfile.propTypes = {
   onWishToDeleteProfile: PropTypes.func.isRequired,
   onDeleteProfile: PropTypes.func.isRequired,
   isDeleteModalClosed: PropTypes.bool.isRequired,
-  isLogged: PropTypes.bool.isRequired,
   editFormToggle: PropTypes.func.isRequired,
   editPhoto: PropTypes.bool.isRequired,
   editName: PropTypes.bool.isRequired,
@@ -399,11 +401,11 @@ MyProfile.propTypes = {
   editEmail: PropTypes.bool.isRequired,
   editPassword: PropTypes.bool.isRequired,
   editDescription: PropTypes.bool.isRequired,
-  firstName: PropTypes.string.isRequired,
-  lastName: PropTypes.string.isRequired,
-  dateOfBirth: PropTypes.string.isRequired,
-  email: PropTypes.string.isRequired,
-  password: PropTypes.string.isRequired,
+  firstName: PropTypes.string,
+  lastName: PropTypes.string,
+  dateOfBirth: PropTypes.string,
+  emailInput: PropTypes.string.isRequired,
+  password: PropTypes.string,
   description: PropTypes.string.isRequired,
   passwordShown: PropTypes.bool.isRequired,
   togglePasswordVisibility: PropTypes.func.isRequired,
@@ -412,6 +414,8 @@ MyProfile.propTypes = {
   handleSubmitName: PropTypes.func.isRequired,
   handleSubmitEmail: PropTypes.func.isRequired,
   handleSubmitBirthdate: PropTypes.func.isRequired,
+  handleSubmitDescription: PropTypes.func.isRequired,
+  handleSubmitPassword: PropTypes.func.isRequired,
 };
 
 MyProfile.defaultProps = {
@@ -420,6 +424,7 @@ MyProfile.defaultProps = {
     lastname: '',
     birthdate: '',
     user_description: '',
+    email: '',
     profil_image: '',
     city: {
       city_name: '',
@@ -441,6 +446,10 @@ MyProfile.defaultProps = {
       },
     ],
   },
+  dateOfBirth: '',
+  firstName: '',
+  lastName: '',
+  password: '',
 };
 
 export default MyProfile;
