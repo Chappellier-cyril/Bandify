@@ -143,23 +143,28 @@ const memberController = {
     updateOneMember: async (req, res, next) => {
         try {
             // On utilise l'id de la cible, dans les params d'url
+            console.log('1');
             const targetId = req.params.id;
             // on passe par une instance
             const memberToUpdate = await Member.findByPk(targetId);
             if (!memberToUpdate) {
+                console.log('2');
                 return next(); // <= pas de liste, 404
             }
             if(req.body.user_password) {
+                console.log('3');
                 // Lors d'un update (modification de mot de passe par exemple)
                 // On hash à nouveau le mot de passe
              const passwordHashed = await bcrypt.hash(req.body.user_password, 10);
              req.body.user_password = passwordHashed;
             }
             if(req.body.styles) {
+                console.log('4');
                return req.body.styles.map(async (style)=> await memberToUpdate.addStyle(Number(style))) 
             }
             // On boucle sur chaque objet instruments pour créer l'association
             if(req.body.instrument) {
+                console.log('5');
                 req.body.instruments.map(async (play) => play.instrument && await Play.findOrCreate({
                     instrument_id: play.instrument,
                     member_id: memberToUpdate.id,
@@ -167,27 +172,43 @@ const memberController = {
                   }));
                 return res.json(memberToUpdate);
             }
-
-            upload(req, res, function (err) {
-                // Je commence par le traitement d'erreur de Multer, et/ou général
-                if (err instanceof multer.MulterError) {
-                    // erreur de l'instance multer
-                    return res.status(500).json(err)
-                } else if (err) {
-                    //erreur génréale
-                    return res.status(500).json(err)
-                }
-                if(req.file) {
-                    memberToUpdate.update({
-                        profil_image: `${req.file.filename}`
-                    });
-                    return res.json(memberToUpdate);
-                }
-            })
+            const updatePhoto = async () => {
+                upload(req, res, function (err) {
+                    console.log('6');
+                    // Je commence par le traitement d'erreur de Multer, et/ou général
+                    if (err instanceof multer.MulterError) {
+                        console.log('7');
+                        // erreur de l'instance multer
+                        return res.status(500).json(err)
+                    } else if (err) {
+                        console.log('8');
+                        //erreur génréale
+                        return res.status(500).json(err)
+                    }
+                    if(req.file) {
+                        console.log('9');
+                        
+                        const updateMember = async () => {
+                           member = await memberToUpdate.update({
+                                profil_image: `${req.file.filename}`
+                            });
+                        }
+                        updateMember();
+                        return res.json(memberToUpdate);
+                    }
+                })
+            } 
+            await updatePhoto();
+            console.log('10');
+            console.log('body', req.body);
             // Et les nouvelles valeurs des props, dans le body
-            await memberToUpdate.update(req.body);
-            // l'objet est à jour, on le renvoie
-            return res.json(memberToUpdate);;
+            if (req.body.firstname || req.body.lastname || req.body.email || req.body.user_description || req.body.city_id || req.body.birthdate ) {
+                await memberToUpdate.update(req.body);
+                console.log('10');
+                // l'objet est à jour, on le renvoie
+                return res.json(memberToUpdate);
+            } 
+
             
         } catch (error) {
             console.trace(error);
