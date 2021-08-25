@@ -54,8 +54,7 @@ const reducer = (state = initialState, action = {}) => {
     case 'ON_SEARCH_SUBMIT_SUCCESS':
       return {
         ...state,
-        // pas le choix, faut passer par le reducer Users
-        // les users deviennent filtrés en fonction de la query de searchBar
+        // les users deviennent filtrés en fonction de la queryvfiltrée de searchBar
         searchedUsers: action.searchedUsers,
       };
     case 'ON_DELETE_PROFILE_SUCCESS':
@@ -93,6 +92,10 @@ const reducer = (state = initialState, action = {}) => {
           profil_image: action.data.profil_image,
         },
         editPhoto: false,
+        user: {
+          ...state.user,
+          profil_image: state.user.profil_image,
+        },
       };
     case 'NAME_MODIFIED_SUCCESS':
       return {
@@ -117,7 +120,7 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         editBirthdate: false,
-        user: {
+        user: {isMenuOpen: !state.isMenuOpen,
           ...state.user,
           birthdate: action.data.birthdate,
         },
@@ -145,7 +148,11 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         error: action.error,
       };
-
+    case 'ON_LOGOUT':
+      return {
+        ...state,
+        users: usersData,
+      };
     default:
       return state;
   }
