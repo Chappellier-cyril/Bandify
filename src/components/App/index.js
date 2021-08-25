@@ -24,10 +24,9 @@ export default function App({ isLogged, setReconnect }) {
   useEffect(() => {
     // On récupère notre token
     const token = localStorage.getItem('token');
-    console.log('token', token);
     // Si on en a un, on fait une requête vers le serveur
     // En y emporter au passage, le "timbre" (headers : x-acces-token)
-    if (token !== undefined) {
+    if (token && token !== undefined) {
       axios.post('http://localhost:3000/checkToken', {
         headers: {
           'x-acces-token': localStorage.getItem('token'),
@@ -44,7 +43,7 @@ export default function App({ isLogged, setReconnect }) {
             setReconnect(user);
           }
         })
-        .catch((error) => console.log(error));
+        .catch((error) => error);
     }
   }, []);
   return (
