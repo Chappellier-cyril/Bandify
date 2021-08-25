@@ -27,9 +27,9 @@ const Home = ({
           <div className="home__cards">
             {/* Option 1: on est loggué et on a effectué une recherche, on affiche le message
              contenant le résultat et on affiche les membres filtrés */}
-            {searchedUsers && (
+            {/* {searchedUsers && (
               <p>{searchMessage}</p>
-            )}
+            )} */}
             {searchedUsers.length !== 0 ? (
               searchedUsers.map(({ id, firstname }) => (
                 <Link to={`/member/${id}`} key={id} className="home__cards-users">

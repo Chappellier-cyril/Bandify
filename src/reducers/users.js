@@ -54,7 +54,7 @@ const reducer = (state = initialState, action = {}) => {
     case 'ON_SEARCH_SUBMIT_SUCCESS':
       return {
         ...state,
-        // les users deviennent filtrés en fonction de la queryvfiltrée de searchBar
+        // users filtrés en fonction de la query filtrée de searchBar
         searchedUsers: action.searchedUsers,
       };
     case 'ON_DELETE_PROFILE_SUCCESS':

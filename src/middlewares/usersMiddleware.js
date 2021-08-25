@@ -51,23 +51,10 @@ const usersMiddleware = (store) => (next) => (action) => {
     };
     axios(options)
       .then((response) => {
-<<<<<<< HEAD
         store.dispatch({ type: 'PHOTO_MODIFIED_SUCCESS', user: response.data });
       })
       .catch((e) => {
         store.dispatch({ type: 'PHOTO_MODIFIED_ERROR', error: e.message });
-=======
-        console.log(response.data.profil_image);
-        if (response.data.success) {
-          store.dispatch({ type: 'PHOTO_MODIFIED_SUCCESS', data: response.data.profil_image });
-        }
-        if (response.data.error) {
-          throw (response.data.error);
-        }
-      })
-      .catch((e) => {
-        store.dispatch({ type: 'SUBMIT_MODIFIED_ERROR', error: e });
->>>>>>> d1207ae5ff3b38d4c2d54f2f30a2ddf0dff8d18f
       });
   }
 
