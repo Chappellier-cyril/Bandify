@@ -42,20 +42,16 @@ const Localisation = ({
   return (
     <div className="signup__localisation">
       <div className="autocompletion-city">
-        <label htmlFor="city">
-          Ville
-          <input
-            name="city"
-            id="city"
-            type="text"
-            onChange={onChangeCity}
-            onKeyUp={getCitiesFromAPI}
-            placeholder="ville"
-            value={city}
-            className="search__form-filters__select"
-          />
-        </label>
-
+        <input
+          name="city"
+          id="city"
+          type="text"
+          onChange={onChangeCity}
+          onKeyUp={getCitiesFromAPI}
+          placeholder="ville"
+          value={city}
+          className="search__form-filters__select autocompletion-city__input"
+        />
         <ul className="autocompletion-city__ul">
           {
             cities.map((citySearch) => (

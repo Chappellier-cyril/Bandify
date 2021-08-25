@@ -11,6 +11,7 @@
     background-color: white;
     padding: 0 3rem;
     border-bottom: 1px solid black;
+    z-index: 1;
 
     &__menu-btn {
       display: inline-block;
@@ -30,19 +31,19 @@
 
 @media screen and (min-width: 700px) {
   .bandify__logo {
-    width: 200px;
-    margin-top: 2rem;
+    width: 150px;
+    margin-top: 1rem;
   }
   .header {
-    height: 10%;
+    //height: 10%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     align-items: center;
     background-color: white;
-    padding: 1rem 3rem;
+    padding: 0.5rem 2rem 0;
     border-bottom: 1px solid black;
-
+    z-index: 1;
     &__menu-btn {
       display: none;
     }

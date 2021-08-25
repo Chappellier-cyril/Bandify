@@ -1,33 +1,146 @@
 .signup-submit{
+    
     &__container{
+        margin: 3rem 0;
         width: 100%;
-        height: 70vh;
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
+        &__title{
+            font-size: 1.3rem;
+            padding: 0.2rem 0.3rem 1rem;
+        }
     }
     &__error{
-        color: red;
+        color: #D64550;
         font-size : 0.6rem;
+        padding: 0.2rem 0.3rem;
+        &-border{
+            border: 2px solid #D64550;
+        }
     }
     &__group{
         display: flex;
         flex-direction: column;
+        width: 100%;
 
         &__label{
             display: block;
             font-size: 0.8rem;
+            padding: 0.2rem 0.6rem 0;
+        }
+        &--avatar{
+            &__container{
+                display: flex;
+                width: 100%;
+                // border: 1px solid black;
+                border-radius: 2px;
+                padding: 0.2rem 0.3rem;
+                margin:  0.2rem;
+                background-color: #01b7df;
+                color: #fff;
+                &__label{
+                    display: block;
+                    width: 100%;
+                    text-align: center;
+                    padding: 0.2rem;
+                    font-size: 0.8rem;
+                }
+            }
+
         }
         &--instruments{
             display: flex;
-            flex-direction: column;
-            flex-wrap: wrap;
             width: 100%;
+
+            &__button-container{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 15%;
+            }
+            &__input-container{
+                width: 85%;
+            }
+            &__button{
+                border: none;
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                background-color: #01b7df;
+                color: #fff;
+                padding: 0.2rem 0.3rem;
+                &:disabled{
+                    background-color: #eee;
+                }
+            }
+        }
+        &--styles{
+            display: flex;
+            width: 100%;
+            flex-direction: column;
+            &__container{
+                display: flex;
+            }
+            &__button-container{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 15%;
+            }
+            &__input-container{
+                width: 85%;
+            }
+            &__button{
+                border: none;
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                background-color: #01B7DF;
+                color: #fff;
+                &:disabled{
+                    background-color: #eee;
+                }
+            }
+        }
+        &__input{
+            width: 100%;
+            padding: 0.2rem 0.3rem;
+            margin:  0.2rem;
+            &:focus{
+                border: 2px solid #01B7DF
+            }
+            &--avatar{
+                position: absolute;
+                top: 0;
+                left: 0;
+                opacity: 0;
+            }
+        }
+        &__select{
+            width: 100%;
+            padding: 0.2rem 0.3rem;
+            margin:  0.2rem;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            &:focus{
+                border: 2px solid #01B7DF
+            }
         }
     }
     &__form{
         display: flex;
         flex-direction: column;
+        &__submit{
+            padding: 1rem;
+            border-radius: 2px;
+            border: none;
+            background-color: #01B7DF;
+            box-shadow: none;
+            color: #fff;
+        }
     }
 
 }
