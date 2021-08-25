@@ -19,7 +19,10 @@ import './style.scss';
 import axios from 'axios';
 
 // == Composant
-export default function App({ isLogged, setReconnect }) {
+export default function App({
+  isLogged, setReconnect, getInstruments,
+  getLevels, getMusicStyles, getDepartments, getRegions,
+}) {
   // AU premier rendu, je veux recupérer mon token
   useEffect(() => {
     // On récupère notre token
@@ -45,6 +48,11 @@ export default function App({ isLogged, setReconnect }) {
         })
         .catch((error) => error);
     }
+    getInstruments();
+    getLevels();
+    getMusicStyles();
+    getDepartments();
+    getRegions();
   }, []);
   return (
     <div className="app">
@@ -82,6 +90,11 @@ export default function App({ isLogged, setReconnect }) {
 App.propTypes = {
   isLogged: PropTypes.bool.isRequired,
   setReconnect: PropTypes.func.isRequired,
+  getInstruments: PropTypes.func.isRequired,
+  getLevels: PropTypes.func.isRequired,
+  getMusicStyles: PropTypes.func.isRequired,
+  getDepartments: PropTypes.func.isRequired,
+  getRegions: PropTypes.func.isRequired,
 };
 
 // == Export
