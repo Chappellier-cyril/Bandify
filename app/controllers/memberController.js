@@ -265,9 +265,28 @@ const memberController = {
         }
       
             
-        }
+        },
 
-        
+        // "Middleware" qui vérifie si notre token est bon
+        verifyJWT: (req, res, next) => {
+            const token = req.headers["x-acces-token"]
+
+            if(!token) {
+                res.send("Token needed");
+            } else {
+                jsonwebtoken.verify(token, process.env.TOKEN_SECRET, (err, decoded) => {
+                    if (err) {
+                        res.json({
+                            auth: false,
+                            message: "Failed to authenticate"
+                        });
+                    } else {
+                        req.userId = decoded.id;
+                                next();
+                    }
+                });
+            }
+        }
         
     
 };

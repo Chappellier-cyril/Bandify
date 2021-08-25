@@ -31,8 +31,10 @@ router.route('/login')
  * @returns {object} 200 - An array of user info
  */
 
-router.route('/members')
-    .get(memberController.getAllMembers);
+ router.route('/members')
+    .get(memberController.verifyJWT, memberController.getAllMembers);
+ // On vérifie avec le verifyJWT qu'on ai bien le token avant de passer
+ // au getAllMembers (Si je recupère tous les membres c'est que j'ai le bon token)
 
 /**
  * Récuperer un membre par l' id

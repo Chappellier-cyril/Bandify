@@ -8,7 +8,7 @@ const associationController = {
         try {
             
             const { member_id, instrument_id, level_id } = req.body;
-            console.log(member_id);
+            // console.log(member_id);
             const member = await Member.findByPk(Number(member_id));
             const instrument = await Instrument.findByPk(Number(instrument_id));
             if (level_id) {
@@ -50,7 +50,7 @@ const associationController = {
           const { member_id, music_style_id } = req.body;
           const member = await Member.findByPk(Number(member_id));
           const music_style = await MusicStyle.findByPk(Number(music_style_id));
-
+      
         
           if (!member || !music_style) {
               return next();

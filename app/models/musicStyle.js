@@ -12,6 +12,7 @@ MusicStyle.init({
 {
   sequelize: database,
   tableName: "music_style",
+  
 });
 
 module.exports = MusicStyle;
