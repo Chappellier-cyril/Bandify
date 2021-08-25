@@ -38,11 +38,14 @@ const reducer = (state = initialState, action = {}) => {
         searchedUsers: action.searchedUsers,
       };
     case 'ON_DELETE_PROFILE_SUCCESS':
-      return {
-        ...state,
-        users: usersData,
-        user: {},
-      };
+      {
+        localStorage.clear();
+        return {
+          ...state,
+          users: usersData,
+          user: {},
+        };
+      }
     case 'EDIT_FORM_TOGGLE':
       return {
         ...state,

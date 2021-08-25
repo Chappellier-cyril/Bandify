@@ -23,7 +23,7 @@ const reducer = (state = initialState, action = {}) => {
       };
 
     case 'ON_LOGIN_SUCCESS': {
-      // localStorage.setItem('token', response.data.token);
+        // localStorage.setItem('token', response.data.token);
         // console.log(reponse.data.token)
       return {
         ...state,
@@ -34,7 +34,14 @@ const reducer = (state = initialState, action = {}) => {
         token: action.data.token,
       };
     }
-
+    case 'RECONNECT_USER':
+      return {
+        ...state,
+        id: action.user.id,
+        email: action.user.email,
+        isLogged: true,
+        token: action.user.token,
+      }
     case 'ON_LOGIN_ERROR':
       return {
         ...state,
@@ -43,15 +50,17 @@ const reducer = (state = initialState, action = {}) => {
         password: '',
       };
 
-    case 'ON_LOGOUT':
+    case 'ON_LOGOUT': {
+        
+        localStorage.clear();
       return {
         ...state,
         isLogged: false,
         isError: false,
         email: '',
         password: '',
-      };
-
+        };
+      }
     case 'ON_DELETE_PROFILE_SUCCESS':
       return {
         ...state,

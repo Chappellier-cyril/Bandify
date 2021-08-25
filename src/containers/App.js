@@ -6,4 +6,10 @@ const mapStateToProps = (state) => ({
 
 });
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = (dispatch) => ({
+  setReconnect: (user) => {
+    dispatch({type: 'RECONNECT_USER', user })
+  }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
