@@ -26,7 +26,7 @@ const Profiles = ({
   firstName,
   lastName,
   dateOfBirth,
-  email,
+  emailInput,
   password,
   description,
   passwordShown,
@@ -36,6 +36,7 @@ const Profiles = ({
   handleSubmitName,
   handleSubmitEmail,
   handleSubmitBirthdate,
+  handleSubmitDescription,
 }) => {
   const url = window.location.href;
   // pour avoir le dernier segment de l'url
@@ -61,7 +62,6 @@ const Profiles = ({
           onWishToDeleteProfile={onWishToDeleteProfile}
           isDeleteModalClosed={isDeleteModalClosed}
           onDeleteProfile={onDeleteProfile}
-          isLogged={isLogged}
           editFormToggle={editFormToggle}
           editPhoto={editPhoto}
           editName={editName}
@@ -75,7 +75,7 @@ const Profiles = ({
           firstName={firstName}
           lastName={lastName}
           dateOfBirth={dateOfBirth}
-          email={email}
+          emailInput={emailInput}
           password={password}
           description={description}
           passwordShown={passwordShown}
@@ -85,6 +85,7 @@ const Profiles = ({
           handleSubmitName={handleSubmitName}
           handleSubmitEmail={handleSubmitEmail}
           handleSubmitBirthdate={handleSubmitBirthdate}
+          handleSubmitDescription={handleSubmitDescription}
         />
       ) : <OtherProfile user={user} />
   );
@@ -109,11 +110,11 @@ Profiles.propTypes = {
   editEmail: PropTypes.bool.isRequired,
   editPassword: PropTypes.bool.isRequired,
   editDescription: PropTypes.bool.isRequired,
-  firstName: PropTypes.string.isRequired,
-  lastName: PropTypes.string.isRequired,
-  dateOfBirth: PropTypes.string.isRequired,
-  email: PropTypes.string.isRequired,
-  password: PropTypes.string.isRequired,
+  firstName: PropTypes.string,
+  lastName: PropTypes.string,
+  dateOfBirth: PropTypes.string,
+  emailInput: PropTypes.string.isRequired,
+  password: PropTypes.string,
   description: PropTypes.string.isRequired,
   passwordShown: PropTypes.bool.isRequired,
   togglePasswordVisibility: PropTypes.func,
@@ -122,6 +123,7 @@ Profiles.propTypes = {
   handleSubmitName: PropTypes.func,
   handleSubmitEmail: PropTypes.func,
   handleSubmitBirthdate: PropTypes.func,
+  handleSubmitDescription: PropTypes.func,
 };
 
 Profiles.defaultProps = {
@@ -135,6 +137,11 @@ Profiles.defaultProps = {
   handleSubmitName: null,
   handleSubmitEmail: null,
   handleSubmitBirthdate: null,
+  handleSubmitDescription: null,
+  firstName: '',
+  lastName: '',
+  dateOfBirth: '',
+  password: '',
 };
 
 export default Profiles;

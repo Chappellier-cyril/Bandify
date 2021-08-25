@@ -8,7 +8,7 @@ export const initialState = {
     firstName: '',
     lastName: '',
     dateOfBirth: '',
-    description: '',
+    user_description: '',
     email: '',
     password: '',
     city: '',
@@ -127,6 +127,20 @@ const reducer = (state = initialState, action = {}) => {
         },
       };
     case 'BIRTHDATE_MODIFIED_ERROR':
+      return {
+        ...state,
+        error: action.error,
+      };
+    case 'DESCRIPTION_MODIFIED_SUCCESS':
+      return {
+        ...state,
+        editDescription: false,
+        user: {
+          ...state.user,
+          user_description: action.data.user_description,
+        },
+      };
+    case 'DESCRIPTION_MODIFIED_ERROR':
       return {
         ...state,
         error: action.error,

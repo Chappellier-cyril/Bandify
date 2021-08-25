@@ -64,7 +64,6 @@ const usersMiddleware = (store) => (next) => (action) => {
   }
 
   if (action.type === 'SUBMIT_MODIFIED_NAME') {
-    console.log(state.users.user.firstName);
     const options = {
       method: 'PATCH',
       url: `http://localhost:3000/members/${lastSegmentUrl}`,
@@ -75,7 +74,6 @@ const usersMiddleware = (store) => (next) => (action) => {
     };
     axios(options)
       .then((response) => {
-        console.log(response.data);
         store.dispatch({ type: 'NAME_MODIFIED_SUCCESS', data: response.data });
       })
       .catch((e) => {
@@ -114,6 +112,23 @@ const usersMiddleware = (store) => (next) => (action) => {
       })
       .catch((e) => {
         store.dispatch({ type: 'BIRTHDATE_MODIFIED_ERROR', error: e });
+      });
+  }
+
+  if (action.type === 'SUBMIT_MODIFIED_DESCRIPTION') {
+    const options = {
+      method: 'PATCH',
+      url: `http://localhost:3000/members/${lastSegmentUrl}`,
+      data: {
+        user_description: state.users.user.user_description,
+      },
+    };
+    axios(options)
+      .then((response) => {
+        store.dispatch({ type: 'DESCRIPTION_MODIFIED_SUCCESS', data: response.data });
+      })
+      .catch((e) => {
+        store.dispatch({ type: 'DESCRIPTION_MODIFIED_ERROR', error: e });
       });
   }
   next(action);
