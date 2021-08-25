@@ -1,4 +1,13 @@
 .login__form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   height: 73vh;
+  width: 100%;
   margin-top: 1rem;
+  & > input {
+    width: 100%;
+    padding: 0.2rem 0.3rem;
+  }
 }

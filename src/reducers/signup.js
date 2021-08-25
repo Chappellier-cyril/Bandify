@@ -16,6 +16,8 @@ export const initialState = {
     nom: '',
   },
   instruments: [{}],
+  /* ici styles à 0 car on envoi l'id dans le formulaire du signup donc un number
+  contrairement au reducer du user ou on attend de styles un tableau d'objets reçu de la BDD */
   styles: [0],
   success: false,
   error: '',

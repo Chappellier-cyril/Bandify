@@ -45,7 +45,6 @@ const MyProfile = ({
   const {
     plays, styles, profil_image, email,
   } = user;
-
   const [avatar, setAvatar] = useState();
 
   return (
@@ -71,8 +70,8 @@ const MyProfile = ({
                 </button>
               </form>
             ) : (
-              <div>
-                {profil_image && <img className="home__user--picture" src={`http://localhost:3000/images/${profil_image}`} alt="avatar du membre" />}
+              <div className="profile__card__image-container">
+                {profil_image && <img src={`http://localhost:3000/images/${profil_image}`} alt="avatar du membre" className="profile__card__image-container__image" />}
                 <span>
                   <button
                     type="button"
@@ -304,10 +303,10 @@ const MyProfile = ({
               <ul>
                 {plays.map((play) => (
                   play.id && (
-                  <li key={play.id}>
-                    {play.instrument.instrument_name}
-                    {play.level && play.level.level_name}
-                  </li>
+                    <li key={play.id}>
+                      {play.instrument.instrument_name}
+                      {play.level && play.level.level_name}
+                    </li>
                   )
                 ))}
               </ul>
@@ -373,6 +372,7 @@ MyProfile.propTypes = {
     profil_image: PropTypes.string,
     city: PropTypes.shape({
       city_name: PropTypes.string,
+      code: PropTypes.string,
       department_code: PropTypes.string,
     }),
     plays: PropTypes.arrayOf(shape({

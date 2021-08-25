@@ -166,6 +166,12 @@ Searchbar.defaultProps = {
   instruments: [{ instrument_name: '' }],
   levels: [{ level_name: '' }],
   musicstyles: [{ music_name: '' }],
+  city: '',
+  code: '',
+  departement: '',
+  region: '',
+  departments: [{ department_name: '' }],
+  regions: [{ region_name: '' }],
 };
 Searchbar.propTypes = {
   onSearchChange: PropTypes.func.isRequired,
@@ -174,9 +180,6 @@ Searchbar.propTypes = {
   onSelectChange: PropTypes.func.isRequired,
   isFiltersOpen: PropTypes.bool.isRequired,
   toggleIsFiltersOpen: PropTypes.func.isRequired,
-  getInstruments: PropTypes.func.isRequired,
-  getLevels: PropTypes.func.isRequired,
-  getMusicStyles: PropTypes.func.isRequired,
   instruments: PropTypes.arrayOf(shape({
     instrument_name: PropTypes.string,
   })),
@@ -187,6 +190,16 @@ Searchbar.propTypes = {
     music_name: PropTypes.string,
   })),
   onResetFilters: PropTypes.func.isRequired,
+  city: PropTypes.string,
+  code: PropTypes.string,
+  departement: PropTypes.string,
+  region: PropTypes.string,
+  departments: PropTypes.arrayOf(PropTypes.shape({
+    department_name: PropTypes.string,
+  })),
+  regions: PropTypes.arrayOf(PropTypes.shape({
+    region_name: PropTypes.string,
+  })),
 };
 
 export default Searchbar;
