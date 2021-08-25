@@ -30,24 +30,25 @@ const MyProfile = ({
   description,
   passwordShown,
   togglePasswordVisibility,
-  onChangeInput,
+  onChangeProfileInput,
   handleSubmitPhoto,
   handleSubmitName,
   handleSubmitEmail,
   handleSubmitBirthdate,
   handleSubmitDescription,
   handleSubmitPassword,
+  handleSubmitCity,
+  city,
+  onCityChange,
 
 }) => {
   const {
-    plays, city, styles, profil_image, email,
+    plays, styles, profil_image, email,
   } = user;
 
-  // const [citySearch, setCity] = useState('');
+  console.log(user);
 
   const [avatar, setAvatar] = useState();
-
-  console.log(user);
 
   return (
     <>
@@ -90,13 +91,13 @@ const MyProfile = ({
                 <div>
                   <label htmlFor="firstName">
                     Prénom
-                    <input name="firstName" id="firstName" type="text" value={firstName} onChange={(e) => onChangeInput('firstName', e.target.value)} placeholder="Prénom" required />
+                    <input name="firstName" id="firstName" type="text" value={firstName} onChange={(e) => onChangeProfileInput('firstName', e.target.value)} placeholder="Prénom" required />
                   </label>
                 </div>
                 <div>
                   <label htmlFor="lastName">
                     Nom
-                    <input name="lastName" id="lastName" type="text" value={lastName} onChange={(e) => onChangeInput('lastName', e.target.value)} placeholder="Nom" required />
+                    <input name="lastName" id="lastName" type="text" value={lastName} onChange={(e) => onChangeProfileInput('lastName', e.target.value)} placeholder="Nom" required />
                   </label>
                 </div>
                 <button type="submit">Envoyer</button>
@@ -121,12 +122,12 @@ const MyProfile = ({
               </p>
             )}
             {editCity ? (
-              <form type="submit">
-                {/* //TODO => Utiliser le composant Localisation */}
-                {/* <Localisation
-                  city={citySearch}
-                  onChangeInput={setCity}
-                /> */}
+              <form type="submit" onSubmit={handleSubmitCity}>
+                <Localisation
+                  city={city}
+                  onChangeInput={onCityChange}
+                />
+                <button type="submit">Envoyer</button>
                 <button
                   type="button"
                   onClick={() => editFormToggle('editCity')}
@@ -136,9 +137,9 @@ const MyProfile = ({
               </form>
             ) : (
               <h2>Ville:
-                {city && (
+                {user.city && (
                 <span>
-                  {city.city_name} ({city.code})
+                  {user.city.city_name} ({user.city.department_code})
                 </span>
                 )}
                 <span>
@@ -156,7 +157,7 @@ const MyProfile = ({
                 <div>
                   <label htmlFor="dateOfBirth">
                     Date de naissance
-                    <input name="dateOfBirth" id="dateOfBirth" type="date" value={dateOfBirth} onChange={(e) => onChangeInput('dateOfBirth', e.target.value)} required />
+                    <input name="dateOfBirth" id="dateOfBirth" type="date" value={dateOfBirth} onChange={(e) => onChangeProfileInput('dateOfBirth', e.target.value)} required />
                   </label>
                 </div>
                 <button type="submit">Envoyer</button>
@@ -187,7 +188,7 @@ const MyProfile = ({
                     name="email"
                     type="text"
                     value={emailInput.trim()}
-                    onChange={(e) => onChangeInput('email', e.target.value)}
+                    onChange={(e) => onChangeProfileInput('email', e.target.value)}
                     placeholder="E-mail"
                     required
                   />
@@ -221,7 +222,7 @@ const MyProfile = ({
             // Si l'oeil est cliqué on affiche le mot de passe sinon on laisse en type password
                     type={passwordShown ? 'text' : 'password'}
                     value={password.trim()}
-                    onChange={(e) => onChangeInput('user_password', e.target.value)}
+                    onChange={(e) => onChangeProfileInput('user_password', e.target.value)}
                     placeholder="Nouveau mot de passe"
                     required
                   />
@@ -259,7 +260,7 @@ const MyProfile = ({
                 <div>
                   <label htmlFor="description">
                     Description
-                    <textarea name="description" id="description" type="text" value={description} onChange={(e) => onChangeInput('user_description', e.target.value)} placeholder="Faire une courte description de vous" />
+                    <textarea name="description" id="description" type="text" value={description} onChange={(e) => onChangeProfileInput('user_description', e.target.value)} placeholder="Faire une courte description de vous" />
                   </label>
                 </div>
                 <button type="submit">Envoyer</button>
@@ -409,13 +410,16 @@ MyProfile.propTypes = {
   description: PropTypes.string.isRequired,
   passwordShown: PropTypes.bool.isRequired,
   togglePasswordVisibility: PropTypes.func.isRequired,
-  onChangeInput: PropTypes.func.isRequired,
+  onChangeProfileInput: PropTypes.func.isRequired,
   handleSubmitPhoto: PropTypes.func.isRequired,
   handleSubmitName: PropTypes.func.isRequired,
   handleSubmitEmail: PropTypes.func.isRequired,
   handleSubmitBirthdate: PropTypes.func.isRequired,
   handleSubmitDescription: PropTypes.func.isRequired,
   handleSubmitPassword: PropTypes.func.isRequired,
+  handleSubmitCity: PropTypes.func.isRequired,
+  city: PropTypes.string,
+  onCityChange: PropTypes.func.isRequired,
 };
 
 MyProfile.defaultProps = {
@@ -450,6 +454,7 @@ MyProfile.defaultProps = {
   firstName: '',
   lastName: '',
   password: '',
+  city: '',
 };
 
 export default MyProfile;

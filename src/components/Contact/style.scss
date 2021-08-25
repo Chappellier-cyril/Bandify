@@ -1,4 +1,35 @@
-// For the example
-h1 {
-  font-size: x-large;
+// Just for the example
+.contact-submit{
+  &__container{
+      width: 100%;
+      height: 70vh;
+  }
+  &__title{
+    text-align: center;
+    font-size: 1.5rem;
+  }
+  &__form{
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+  }
+  &__group{
+    margin-bottom: 1rem;
+    &__message{
+      margin-top: 1rem;
+    }
+  }
+
+}
+
+
+
+@media screen and (max-width: 700px) {
+  .signup-submit{
+      &__group{
+          &__label{
+              display: none;
+          }
+      }
+  }
 }

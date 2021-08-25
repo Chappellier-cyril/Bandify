@@ -11,7 +11,9 @@ export const initialState = {
     user_description: '',
     email: '',
     user_password: '',
-    city: '',
+    city: {
+      city_name: '',
+    },
     code: '',
     departement: {
       code: '',
@@ -36,6 +38,8 @@ export const initialState = {
   editDescription: false,
   searchedUsers: [],
   error: '',
+  city: '',
+  code: '',
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -54,7 +58,8 @@ const reducer = (state = initialState, action = {}) => {
     case 'ON_SEARCH_SUBMIT_SUCCESS':
       return {
         ...state,
-        // les users deviennent filtrés en fonction de la queryvfiltrée de searchBar
+        // pas le choix, faut passer par le reducer Users
+        // les users deviennent filtrés en fonction de la query de searchBar
         searchedUsers: action.searchedUsers,
       };
     case 'ON_DELETE_PROFILE_SUCCESS':
@@ -89,13 +94,9 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         user: {
           ...state.user,
-          profil_image: action.data.profil_image,
+          profil_image: action.user.profil_image,
         },
         editPhoto: false,
-        user: {
-          ...state.user,
-          profil_image: state.user.profil_image,
-        },
       };
     case 'NAME_MODIFIED_SUCCESS':
       return {
@@ -120,7 +121,8 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         editBirthdate: false,
-        user: {isMenuOpen: !state.isMenuOpen,
+        user: {
+          // isMenuOpen: !state.isMenuOpen,
           ...state.user,
           birthdate: action.data.birthdate,
         },
@@ -148,11 +150,31 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         error: action.error,
       };
+    case 'CHANGE_CITY_INPUT':
+      return {
+        ...state,
+        [action.key]: action.value,
+      };
+    case 'CITY_MODIFIED_SUCCESS':
+      return {
+        ...state,
+        editCity: false,
+        user: {
+          ...state.user,
+          city: {
+            ...state.city,
+            city_name: state.user.city,
+          },
+        },
+        code: action.data.city_code,
+      };
+
     case 'ON_LOGOUT':
       return {
         ...state,
         users: usersData,
       };
+
     default:
       return state;
   }

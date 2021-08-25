@@ -23,6 +23,7 @@ const mapStateToProps = (state) => ({
   password: state.users.user.user_password,
   description: state.users.user.user_description,
   passwordShown: state.login.passwordShown,
+  city: state.users.city,
 
 });
 
@@ -45,7 +46,7 @@ const mapDispatchToProps = (dispatch) => ({
   togglePasswordVisibility: () => {
     dispatch({ type: 'ON_PASSWORD_TOGGLE' });
   },
-  onChangeInput: (key, value) => {
+  onChangeProfileInput: (key, value) => {
     dispatch({
       type: 'CHANGE_INPUT_MODIFY_PROFILE',
       key,
@@ -75,6 +76,17 @@ const mapDispatchToProps = (dispatch) => ({
   handleSubmitPassword: (e) => {
     e.preventDefault();
     dispatch({ type: 'SUBMIT_MODIFIED_PASSWORD' });
+  },
+  handleSubmitCity: (e) => {
+    e.preventDefault();
+    dispatch({ type: 'SUBMIT_MODIFIED_CITY' });
+  },
+  onCityChange: (key, value) => {
+    dispatch({
+      type: 'CHANGE_CITY_INPUT',
+      key,
+      value,
+    });
   },
 });
 
