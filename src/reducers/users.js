@@ -13,6 +13,7 @@ export const initialState = {
     user_password: '',
     city: {
       city_name: '',
+      department_code: '',
     },
     code: '',
     departement: {
@@ -24,7 +25,7 @@ export const initialState = {
       nom: '',
     },
     instruments: [{}],
-    styles: [0],
+    styles: [{}],
     profil_image: '',
   },
   editPhoto: false,
@@ -69,7 +70,9 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         users: usersData,
-        user: {},
+        user: {
+          ...initialState.user,
+        },
       };
     }
     case 'EDIT_FORM_TOGGLE':
@@ -163,7 +166,8 @@ const reducer = (state = initialState, action = {}) => {
           ...state.user,
           city: {
             ...state.city,
-            city_name: state.user.city,
+            city_name: action.data.city.city_name,
+            department_code: action.data.city.department_code,
           },
         },
         code: action.data.city_code,

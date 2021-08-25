@@ -18,6 +18,19 @@
         margin: 0 auto;
         padding: 1rem 1.5rem;
         background-color: lightgrey;
+        &__image-container{
+          width: 200px;
+          height:200px;
+          border-radius: 50%;
+          &__image{
+            display: block;
+            max-width: 200px;
+            object-fit: cover;
+            width: 200px;
+            height:200px;
+            border-radius: 50%;
+          }
+        }
       }
 
       &__friends {
