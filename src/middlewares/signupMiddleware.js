@@ -1,10 +1,6 @@
 import axios from 'axios';
 
 const signupMiddleware = (store) => (next) => (action) => {
-  const url = window.location.href;
-  // pour avoir le dernier segment de l'url
-  const lastSegmentUrl = url.split('/').pop();
-
   const state = store.getState();
 
   if (action.type === 'SUBMIT_SIGNUP') {
@@ -40,92 +36,12 @@ const signupMiddleware = (store) => (next) => (action) => {
         }
       })
       .catch((e) => {
-
         store.dispatch({ type: 'SUBMIT_ERROR', error: e });
       });
     next(action);
   }
   else {
     next(action);
-  }
-
-  if (action.type === 'SUBMIT_MODIFIED_PHOTO') {
-    const form = new FormData();
-    form.append('file', action.image);
-
-    const options = {
-      method: 'PATCH',
-      url: `http://localhost:3000/members/${lastSegmentUrl}`,
-      headers: {
-        'Content-Type': 'multipart/form-data',
-        Accept: 'application/json',
-      },
-      data: form,
-    };
-    axios(options)
-      .then((response) => {
-        if (response.data.success) {
-          store.dispatch({ type: 'PHOTO_MODIFIED_SUCCESS', success: response.data.success });
-        }
-        if (response.data.error) {
-          throw (response.data.error);
-        }
-      })
-      .catch((e) => {
-        store.dispatch({ type: 'PHOTO_MODIFIED_ERROR', error: e });
-      });
-  }
-
-  if (action.type === 'SUBMIT_MODIFIED_NAME') {
-    const options = {
-      method: 'PATCH',
-      url: `http://localhost:3000/members/${lastSegmentUrl}`,
-      data: {
-        firstname: state.signup.firstName,
-        lastname: state.signup.lastName,
-      },
-    };
-    axios(options)
-      .then((response) => {
-        store.dispatch({ type: 'NAME_MODIFIED_SUCCESS', data: response.data });
-      })
-      .catch((e) => {
-        store.dispatch({ type: 'NAME_MODIFIED_ERROR', error: e });
-      });
-  }
-
-  if (action.type === 'SUBMIT_MODIFIED_EMAIL') {
-    const options = {
-      method: 'PATCH',
-      url: `http://localhost:3000/members/${lastSegmentUrl}`,
-      data: {
-        email: state.signup.email,
-      },
-    };
-    axios(options)
-      .then((response) => {
-        store.dispatch({ type: 'EMAIL_MODIFIED_SUCCESS', data: response.data });
-      })
-      .catch((e) => {
-        store.dispatch({ type: 'EMAIL_MODIFIED_ERROR', error: e });
-      });
-  }
-
-  if (action.type === 'SUBMIT_MODIFIED_BIRTHDATE') {
-    const options = {
-      method: 'PATCH',
-      url: `http://localhost:3000/members/${lastSegmentUrl}`,
-      data: {
-        birthdate: state.signup.dateOfBirth,
-      },
-    };
-    axios(options)
-      .then((response) => {
-        store.dispatch({ type: 'BIRTHDATE_MODIFIED_SUCCESS', data: response.data });
-      })
-      .catch((e) => {
-        store.dispatch({ type: 'BIRTHDATE_MODIFIED_ERROR', error: e });
-      });
   }
 };
 
