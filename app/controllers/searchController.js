@@ -106,7 +106,7 @@ const searchController = {
                 console.log('je passe dans region');
                 return member.city.department.region.region_name === region;
             }) 
-            // On envoi le résultat de la recherche de l'utilisateur contenu dans la variable membersToFilter
+            // On envoi le résultat de la recherche de l'utilisateur  contenu dans la variable membersToFilter
             res.json(membersToFilter);
         } catch (error) {
             console.trace(error);

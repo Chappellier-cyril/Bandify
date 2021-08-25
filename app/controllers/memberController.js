@@ -205,7 +205,7 @@ const memberController = {
                             });
                         }
                         updateMember();
-                        return res.json(memberToUpdate);
+                        return res.json(member);
                     }
                 })
             } 
@@ -214,10 +214,10 @@ const memberController = {
             console.log('body', req.body);
             // Et les nouvelles valeurs des props, dans le body
             if (req.body.firstname || req.body.lastname || req.body.email || req.body.user_description || req.body.city_id || req.body.birthdate ) {
-                await memberToUpdate.update(req.body);
+                const update = await memberToUpdate.update(req.body);
                 console.log('10');
                 // l'objet est à jour, on le renvoie
-                return res.json(memberToUpdate);
+                return res.json(update);
             } 
 
             
