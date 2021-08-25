@@ -146,7 +146,18 @@ const memberController = {
             console.log('1');
             const targetId = req.params.id;
             // on passe par une instance
-            const memberToUpdate = await Member.findByPk(targetId);
+            const memberToUpdate = await Member.findByPk(targetId, {
+                include: [{
+                    association: 'city',
+                    include: {
+                        association: 'department',
+                        include: 'region',
+                    },
+                }, {
+                    association: 'plays',
+                    include: ['instrument', 'level']
+            }, 'styles']
+            });
             if (!memberToUpdate) {
                 console.log('2');
                 return next(); // <= pas de liste, 404

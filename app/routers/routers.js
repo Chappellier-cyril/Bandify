@@ -13,7 +13,7 @@ const router = express.Router();
 
 // SEARCH Route
 router.route('/search')
-    .get(searchController.getFilteredMembersByFirstname)
+    //.get(searchController.getFilteredMembersByFirstname)
     .get(searchController.getFilteredMembers);
 
 // SIGNUP Route
@@ -33,7 +33,7 @@ router.route('/login')
  */
 
 router.route('/members')
-    .get(memberController.verifyJWT , memberController.getAllMembers);
+    .get(/* memberController.verifyJWT, */ memberController.getAllMembers);
 // On vérifie avec le verifyJWT qu'on ai bien le token avant de passer
 // au getAllMembers (Si je recupère tous les membres c'est que j'ai le bon token)
 
