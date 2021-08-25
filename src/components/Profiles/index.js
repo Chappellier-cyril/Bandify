@@ -31,13 +31,16 @@ const Profiles = ({
   description,
   passwordShown,
   togglePasswordVisibility,
-  onChangeInput,
+  onChangeProfileInput,
   handleSubmitPhoto,
   handleSubmitName,
   handleSubmitEmail,
   handleSubmitBirthdate,
   handleSubmitDescription,
   handleSubmitPassword,
+  handleSubmitCity,
+  city,
+  onCityChange,
 }) => {
   const url = window.location.href;
   // pour avoir le dernier segment de l'url
@@ -81,13 +84,16 @@ const Profiles = ({
           description={description}
           passwordShown={passwordShown}
           togglePasswordVisibility={togglePasswordVisibility}
-          onChangeInput={onChangeInput}
+          onChangeProfileInput={onChangeProfileInput}
           handleSubmitPhoto={handleSubmitPhoto}
           handleSubmitName={handleSubmitName}
           handleSubmitEmail={handleSubmitEmail}
           handleSubmitBirthdate={handleSubmitBirthdate}
           handleSubmitDescription={handleSubmitDescription}
           handleSubmitPassword={handleSubmitPassword}
+          handleSubmitCity={handleSubmitCity}
+          city={city}
+          onCityChange={onCityChange}
         />
       ) : <OtherProfile user={user} />
   );
@@ -120,13 +126,16 @@ Profiles.propTypes = {
   description: PropTypes.string.isRequired,
   passwordShown: PropTypes.bool.isRequired,
   togglePasswordVisibility: PropTypes.func,
-  onChangeInput: PropTypes.func,
+  onChangeProfileInput: PropTypes.func,
   handleSubmitPhoto: PropTypes.func,
   handleSubmitName: PropTypes.func,
   handleSubmitEmail: PropTypes.func,
   handleSubmitBirthdate: PropTypes.func,
   handleSubmitDescription: PropTypes.func,
   handleSubmitPassword: PropTypes.func,
+  handleSubmitCity: PropTypes.func,
+  city: PropTypes.string,
+  onCityChange: PropTypes.func,
 };
 
 Profiles.defaultProps = {
@@ -135,17 +144,20 @@ Profiles.defaultProps = {
   onDeleteProfile: null,
   editFormToggle: null,
   togglePasswordVisibility: null,
-  onChangeInput: null,
+  onChangeProfileInput: null,
   handleSubmitPhoto: null,
   handleSubmitName: null,
   handleSubmitEmail: null,
   handleSubmitBirthdate: null,
   handleSubmitDescription: null,
   handleSubmitPassword: null,
+  handleSubmitCity: null,
   firstName: '',
   lastName: '',
   dateOfBirth: '',
   password: '',
+  city: '',
+  onCityChange: null,
 };
 
 export default Profiles;

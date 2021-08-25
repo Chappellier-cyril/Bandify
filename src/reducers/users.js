@@ -11,7 +11,9 @@ export const initialState = {
     user_description: '',
     email: '',
     user_password: '',
-    city: '',
+    city: {
+      city_name: '',
+    },
     code: '',
     departement: {
       code: '',
@@ -36,6 +38,8 @@ export const initialState = {
   editDescription: false,
   searchedUsers: [],
   error: '',
+  city: '',
+  code: '',
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -144,6 +148,24 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         error: action.error,
+      };
+    case 'CHANGE_CITY_INPUT':
+      return {
+        ...state,
+        [action.key]: action.value,
+      };
+    case 'CITY_MODIFIED_SUCCESS':
+      return {
+        ...state,
+        editCity: false,
+        user: {
+          ...state.user,
+          city: {
+            ...state.city,
+            city_name: action.data.city.city_name,
+          },
+        },
+        code: action.data.city_code,
       };
 
     default:

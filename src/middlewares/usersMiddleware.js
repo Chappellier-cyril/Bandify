@@ -150,6 +150,24 @@ const usersMiddleware = (store) => (next) => (action) => {
         store.dispatch({ type: 'SUBMIT_MODIFIED_ERROR', error: e });
       });
   }
+
+  if (action.type === 'SUBMIT_MODIFIED_CITY') {
+    const options = {
+      method: 'PATCH',
+      url: `http://localhost:3000/members/${lastSegmentUrl}`,
+      data: {
+        city_code: state.users.code,
+      },
+    };
+    axios(options)
+      .then((response) => {
+        console.log(response.data);
+        store.dispatch({ type: 'CITY_MODIFIED_SUCCESS', data: response.data });
+      })
+      .catch((e) => {
+        store.dispatch({ type: 'SUBMIT_MODIFIED_ERROR', error: e });
+      });
+  }
   next(action);
 };
 
