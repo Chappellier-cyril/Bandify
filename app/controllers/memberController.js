@@ -2,6 +2,7 @@ const { Member, Play, Instrument, Level, MusicStyle } = require('../models');
 const bcrypt = require('bcrypt');
 const jsonwebtoken = require('jsonwebtoken');
 const multer = require('multer');
+const { urlencoded } = require('body-parser');
 /* Mise en place de Multer qui nous permets de récupérer un multipart form-data depuis le front
     Il nous met à disposition une fonction pour choisir le storage et une fonction upload 
     que l'on appelera dans notre controller, à l'intérieur on aura accés au req.body et req.file
@@ -134,7 +135,7 @@ const memberController = {
         }catch(error) {
             console.trace(error);
             res.status(500).json({
-                error:-'Une erreur est survenue'
+                error: `Une erreur est survenue ${error.message}`
             });
         }
     },
@@ -155,16 +156,16 @@ const memberController = {
              req.body.user_password = passwordHashed;
             }
             if(req.body.styles) {
-               return req.body.styles.map(async (style)=> await member.addStyle(Number(style))) 
+               return req.body.styles.map(async (style)=> await memberToUpdate.addStyle(Number(style))) 
             }
             // On boucle sur chaque objet instruments pour créer l'association
             if(req.body.instrument) {
                 req.body.instruments.map(async (play) => play.instrument && await Play.findOrCreate({
                     instrument_id: play.instrument,
-                    member_id: member.id,
+                    member_id: memberToUpdate.id,
                     level_id: play.level
                   }));
-                return res.json({success : 'Member updated'});
+                return res.json(memberToUpdate);
             }
 
             upload(req, res, function (err) {
@@ -180,17 +181,17 @@ const memberController = {
                     memberToUpdate.update({
                         profil_image: `${req.file.filename}`
                     });
-                    return res.json({success : 'Member updated'});
+                    return res.json(memberToUpdate);
                 }
             })
             // Et les nouvelles valeurs des props, dans le body
             await memberToUpdate.update(req.body);
             // l'objet est à jour, on le renvoie
-            return res.json({success : 'Member updated'});;
+            return res.json(memberToUpdate);;
             
         } catch (error) {
             console.trace(error);
-            res.status(500).json(error); 
+            res.status(500).json({error: `Une erreur est survenue ${error.message}`}); 
         }
     },
 
@@ -269,8 +270,8 @@ const memberController = {
 
         // "Middleware" qui vérifie si notre token est bon
         verifyJWT: (req, res, next) => {
-            const token = req.headers["x-acces-token"]
-
+            const token = req.headers["x-acces-token"];
+            const url =  req.route.path;
             if(!token) {
                 res.send("Token needed");
             } else {
@@ -282,7 +283,13 @@ const memberController = {
                         });
                     } else {
                         req.userId = decoded.id;
-                                next();
+                        if (url === '/checkToken') {
+                            return res.json({
+                                auth: true,
+                                message: "Authentification Success"
+                            });
+                        }
+                        next();
                     }
                 });
             }

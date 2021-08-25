@@ -32,7 +32,7 @@ router.route('/login')
  */
 
  router.route('/members')
-    .get(memberController.verifyJWT, memberController.getAllMembers);
+    .get(memberController.verifyJWT , memberController.getAllMembers);
  // On vérifie avec le verifyJWT qu'on ai bien le token avant de passer
  // au getAllMembers (Si je recupère tous les membres c'est que j'ai le bon token)
 
@@ -47,6 +47,7 @@ router.route('/members/:id')
     .patch(memberController.updateOneMember)
     .delete(memberController.deleteOneMember);
 
+router.post('/checkToken', memberController.verifyJWT)
 
 /**
  * Récuperer toute la liste des instruments
