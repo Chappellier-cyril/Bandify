@@ -13,6 +13,7 @@ const router = express.Router();
 
 // SEARCH Route
 router.route('/search')
+    .get(searchController.getFilteredMembersByFirstname)
     .get(searchController.getFilteredMembers);
 
 // SIGNUP Route
@@ -31,10 +32,10 @@ router.route('/login')
  * @returns {object} 200 - An array of user info
  */
 
- router.route('/members')
+router.route('/members')
     .get(memberController.verifyJWT , memberController.getAllMembers);
- // On vérifie avec le verifyJWT qu'on ai bien le token avant de passer
- // au getAllMembers (Si je recupère tous les membres c'est que j'ai le bon token)
+// On vérifie avec le verifyJWT qu'on ai bien le token avant de passer
+// au getAllMembers (Si je recupère tous les membres c'est que j'ai le bon token)
 
 /**
  * Récuperer un membre par l' id
@@ -47,7 +48,7 @@ router.route('/members/:id')
     .patch(memberController.updateOneMember)
     .delete(memberController.deleteOneMember);
 
-router.post('/checkToken', memberController.verifyJWT)
+router.post('/checkToken', memberController.verifyJWT);
 
 /**
  * Récuperer toute la liste des instruments
@@ -110,7 +111,7 @@ router.route('/musicstyles/:id')
 
 router.route('/messages')
     .get(messageController.getAllMessages)
-    .post(messageController.createMessage)
+    .post(messageController.createMessage);
 
 router.route('/messages/:id')
     .post(messageController.createMessage);
