@@ -18,7 +18,7 @@ router.route('/search')
 // SIGNUP Route
 router.route('/signup')
     .post(memberController.createMember);
-
+    
 // LOGIN Route
 router.route('/login')
     .post(memberController.loginMember);
@@ -120,7 +120,7 @@ router.route('/invitations')
 
 router.route('/invitations/:id')
     .post(invitationController.sendInvitation)
-    .post(invitationController.deleteInvitation)
+    .delete(invitationController.deleteInvitation)
     .patch(invitationController.updateInvitation);
 
 // ROUTE DE LOCALISATION

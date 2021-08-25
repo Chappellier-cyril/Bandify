@@ -1,7 +1,7 @@
 const { Invitation, Member } = require('../models');
 
 const invitationController = {
-    // Get all messages
+    // Get all invitations
     getAllInvitations: async (req, res, next) => {
         try {
             const invitations = await Invitation.findAll({
@@ -14,6 +14,7 @@ const invitationController = {
         }
     },
 
+    // Create an invitation
     sendInvitation : async (req, res, next) => {
         try {
             const newInvitation = await Invitation.create({
