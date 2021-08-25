@@ -94,7 +94,7 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         user: {
           ...state.user,
-          profil_image: action.data.profil_image,
+          profil_image: action.user.profil_image,
         },
         editPhoto: false,
       };
@@ -122,6 +122,7 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         editBirthdate: false,
         user: {
+          // isMenuOpen: !state.isMenuOpen,
           ...state.user,
           birthdate: action.data.birthdate,
         },
@@ -166,6 +167,12 @@ const reducer = (state = initialState, action = {}) => {
           },
         },
         code: action.data.city_code,
+      };
+
+    case 'ON_LOGOUT':
+      return {
+        ...state,
+        users: usersData,
       };
 
     default:
