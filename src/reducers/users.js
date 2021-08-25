@@ -4,7 +4,26 @@ export const initialState = {
   // users = ARRAY
   users: usersData,
   // user = OBJECT
-  user: {},
+  user: {
+    firstName: '',
+    lastName: '',
+    dateOfBirth: '',
+    description: '',
+    email: '',
+    password: '',
+    city: '',
+    code: '',
+    departement: {
+      code: '',
+      nom: '',
+    },
+    region: {
+      code: '',
+      nom: '',
+    },
+    instruments: [{}],
+    styles: [0],
+  },
   editPhoto: false,
   editName: false,
   editCity: false,
@@ -15,6 +34,8 @@ export const initialState = {
   editPassword: false,
   editDescription: false,
   searchedUsers: [],
+  success: false,
+  error: '',
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -51,10 +72,24 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         [action.key]: !state[action.key],
       };
+    case 'CHANGE_INPUT_MODIFY_PROFILE':
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          [action.key]: action.value,
+        },
+      };
     case 'PHOTO_MODIFIED_SUCCESS':
       return {
         ...state,
+        success: true,
         editPhoto: false,
+      };
+    case 'PHOTO_MODIFIED_ERROR':
+      return {
+        ...state,
+        error: action.error,
       };
     case 'NAME_MODIFIED_SUCCESS':
       return {
@@ -66,6 +101,11 @@ const reducer = (state = initialState, action = {}) => {
           lastname: action.data.lastname,
         },
       };
+    case 'NAME_MODIFIED_ERROR':
+      return {
+        ...state,
+        error: action.error,
+      };
     case 'EMAIL_MODIFIED_SUCCESS':
       return {
         ...state,
@@ -75,6 +115,11 @@ const reducer = (state = initialState, action = {}) => {
           email: action.data.email,
         },
       };
+    case 'EMAIL_MODIFIED_ERROR':
+      return {
+        ...state,
+        error: action.error,
+      };
     case 'BIRTHDATE_MODIFIED_SUCCESS':
       return {
         ...state,
@@ -83,6 +128,11 @@ const reducer = (state = initialState, action = {}) => {
           ...state.user,
           birthdate: action.data.birthdate,
         },
+      };
+    case 'BIRTHDATE_MODIFIED_ERROR':
+      return {
+        ...state,
+        error: action.error,
       };
 
     default:
