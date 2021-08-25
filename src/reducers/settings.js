@@ -87,12 +87,14 @@ const reducer = (state = initialState, action = {}) => {
         searchedUsers: [],
         searchMessage: '',
       };
-    case 'ON_SEARCH_SUBMIT_SUCCESS':
-      return {
-        ...state,
-        searchMessage: action.searchMessage,
-        searchValue: '',
-      };
+    // case 'ON_SEARCH_SUBMIT_SUCCESS':
+    //   return {
+    //     ...state,
+
+    //     A remettre si on reprend la barre de recherche
+    //     searchMessage: action.searchMessage,
+    //     searchValue: '',
+    //   };
     case 'GET_MEMBERS_SUCCESS':
       // Lors d'une action ON_RESET_FILTERS, on remet tout à vide
       return {

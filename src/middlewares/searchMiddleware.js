@@ -62,6 +62,7 @@ const searchMiddleware = (store) => (next) => (action) => {
     axios.get('http://localhost:3000/search', { params: requestParameters })
     .then((response) => {
       console.log(response.data);
+      store.dispatch({ type: 'ON_SEARCH_SUBMIT_SUCCESS', searchedUsers: response.data });
     });
 
   }
