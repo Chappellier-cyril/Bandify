@@ -39,9 +39,7 @@ export default function App({ isLogged, setReconnect }) {
         setReconnect(user);
       })
       .catch((error) => console.log(error));
-      console.log('token après requete', token);
-      //TODO on stocke le token dans notre state user et on voir pour recuperer email et id au moment du setItem dans le ON_LOGIN_SUBMIT
-      // pour pouvoir autologgé 
+  
     }
 
   }, []);
