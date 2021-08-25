@@ -4,6 +4,7 @@ const usersMiddleware = (store) => (next) => (action) => {
   const url = window.location.href;
   // pour avoir le dernier segment de l'url
   const lastSegmentUrl = url.split('/').pop();
+  
 
   const state = store.getState();
 

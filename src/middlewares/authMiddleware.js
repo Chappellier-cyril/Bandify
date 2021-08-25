@@ -25,6 +25,9 @@ const authMiddleware = (store) => (next) => (action) => {
         // ON clear le localstorage au cas où avant
         localStorage.clear();
         // On y stocke notre token
+        localStorage.setItem('userId', response.data.id);
+        // console.log(response.data.token);
+        localStorage.setItem('userEmail', response.data.email);
         localStorage.setItem('token', response.data.token);
       })
       .catch((e) => {
