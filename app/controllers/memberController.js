@@ -190,7 +190,7 @@ const memberController = {
             
         } catch (error) {
             console.trace(error);
-            res.status(500).json(error); 
+            res.status(500).json({error: `Une erreur est survenue ${error.message}`}); 
         }
     },
 
