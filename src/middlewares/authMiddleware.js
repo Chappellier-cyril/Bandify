@@ -22,8 +22,14 @@ const authMiddleware = (store) => (next) => (action) => {
     axios(options)
       .then((response) => {
         store.dispatch({ type: 'ON_LOGIN_SUCCESS', data: response.data });
+        // ON clear le localstorage au cas où avant
+        localStorage.clear();
+        // On y stocke notre token
+        localStorage.setItem('token', response.data.token);
+        console.log(response.data.token);
       })
-      .catch(() => {
+      .catch((e) => {
+        console.log(e);
         store.dispatch({ type: 'ON_LOGIN_ERROR' });
       });
   }

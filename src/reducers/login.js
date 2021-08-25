@@ -23,6 +23,8 @@ const reducer = (state = initialState, action = {}) => {
       };
 
     case 'ON_LOGIN_SUCCESS': {
+      // localStorage.setItem('token', response.data.token);
+        // console.log(reponse.data.token)
       return {
         ...state,
         id: action.data.id,

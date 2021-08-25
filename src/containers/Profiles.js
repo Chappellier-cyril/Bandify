@@ -52,6 +52,22 @@ const mapDispatchToProps = (dispatch) => ({
       value,
     });
   },
+  handleSubmitPhoto: (e, image) => {
+    e.preventDefault();
+    dispatch({ type: 'SUBMIT_MODIFIED_PHOTO', image });
+  },
+  handleSubmitName: (e) => {
+    e.preventDefault();
+    dispatch({ type: 'SUBMIT_MODIFIED_NAME' });
+  },
+  handleSubmitEmail: (e) => {
+    e.preventDefault();
+    dispatch({ type: 'SUBMIT_MODIFIED_EMAIL' });
+  },
+  handleSubmitBirthdate: (e) => {
+    e.preventDefault();
+    dispatch({ type: 'SUBMIT_MODIFIED_BIRTHDATE' });
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profiles);

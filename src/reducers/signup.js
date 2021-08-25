@@ -123,6 +123,47 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         error: action.error,
       };
+    case 'PHOTO_MODIFIED_SUCCESS':
+      return {
+        ...initialState,
+        success: true,
+      };
+    case 'PHOTO_MODIFIED_ERROR':
+      return {
+        ...state,
+        error: action.error,
+      };
+    case 'NAME_MODIFIED_SUCCESS':
+      return {
+        ...state,
+        firstName: action.data.firstname,
+        lastName: action.data.lastname,
+      };
+    case 'NAME_MODIFIED_ERROR':
+      return {
+        ...state,
+        error: action.error,
+      };
+    case 'EMAIL_MODIFIED_SUCCESS':
+      return {
+        ...state,
+        email: action.data.email,
+      };
+    case 'EMAIL_MODIFIED_ERROR':
+      return {
+        ...state,
+        error: action.error,
+      };
+    case 'BIRTHDATE_MODIFIED_SUCCESS':
+      return {
+        ...state,
+        dateOfBirth: action.data.birthdate,
+      };
+    case 'BIRTHDATE_MODIFIED_ERROR':
+      return {
+        ...state,
+        error: action.error,
+      };
     default:
       return state;
   }

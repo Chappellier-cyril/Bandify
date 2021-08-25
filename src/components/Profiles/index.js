@@ -32,6 +32,10 @@ const Profiles = ({
   passwordShown,
   togglePasswordVisibility,
   onChangeInput,
+  handleSubmitPhoto,
+  handleSubmitName,
+  handleSubmitEmail,
+  handleSubmitBirthdate,
 }) => {
   const url = window.location.href;
   // pour avoir le dernier segment de l'url
@@ -77,6 +81,10 @@ const Profiles = ({
           passwordShown={passwordShown}
           togglePasswordVisibility={togglePasswordVisibility}
           onChangeInput={onChangeInput}
+          handleSubmitPhoto={handleSubmitPhoto}
+          handleSubmitName={handleSubmitName}
+          handleSubmitEmail={handleSubmitEmail}
+          handleSubmitBirthdate={handleSubmitBirthdate}
         />
       ) : <OtherProfile user={user} />
   );
@@ -110,6 +118,10 @@ Profiles.propTypes = {
   passwordShown: PropTypes.bool.isRequired,
   togglePasswordVisibility: PropTypes.func,
   onChangeInput: PropTypes.func,
+  handleSubmitPhoto: PropTypes.func,
+  handleSubmitName: PropTypes.func,
+  handleSubmitEmail: PropTypes.func,
+  handleSubmitBirthdate: PropTypes.func,
 };
 
 Profiles.defaultProps = {
@@ -119,6 +131,10 @@ Profiles.defaultProps = {
   editFormToggle: null,
   togglePasswordVisibility: null,
   onChangeInput: null,
+  handleSubmitPhoto: null,
+  handleSubmitName: null,
+  handleSubmitEmail: null,
+  handleSubmitBirthdate: null,
 };
 
 export default Profiles;

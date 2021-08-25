@@ -48,6 +48,39 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         [action.key]: !state[action.key],
       };
+    case 'PHOTO_MODIFIED_SUCCESS':
+      return {
+        ...state,
+        editPhoto: false,
+      };
+    case 'NAME_MODIFIED_SUCCESS':
+      return {
+        ...state,
+        editName: false,
+        user: {
+          ...state.user,
+          firstname: action.data.firstname,
+          lastname: action.data.lastname,
+        },
+      };
+    case 'EMAIL_MODIFIED_SUCCESS':
+      return {
+        ...state,
+        editEmail: false,
+        user: {
+          ...state.user,
+          email: action.data.email,
+        },
+      };
+    case 'BIRTHDATE_MODIFIED_SUCCESS':
+      return {
+        ...state,
+        editBirthdate: false,
+        user: {
+          ...state.user,
+          birthdate: action.data.birthdate,
+        },
+      };
 
     default:
       return state;
