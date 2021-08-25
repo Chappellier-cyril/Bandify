@@ -6,6 +6,8 @@ const mapStateToProps = (state) => ({
 
 });
 
+// On créer une action 'RECONNECT_USER', en lui envoyer dans le payload
+// les infos qu'on a dans le "user" (App/UseEffect)
 const mapDispatchToProps = (dispatch) => ({
   setReconnect: (user) => {
     dispatch({type: 'RECONNECT_USER', user })

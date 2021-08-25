@@ -22,8 +22,11 @@ import axios from 'axios';
 export default function App({ isLogged, setReconnect }) {
   // AU premier rendu, je veux recupérer mon token
   useEffect(() => {
+    // On récupère notre token
     const token = localStorage.getItem('token');
     console.log('token', token);
+    // Si on en a un, on fait une requête vers le serveur
+    // En y emporter au passage, le "timbre" (headers : x-acces-token)
     if (token) {
       axios.post('http://localhost:3000/checkToken', {
         headers: {
@@ -31,6 +34,7 @@ export default function App({ isLogged, setReconnect }) {
         }
       })
       .then((response) => {
+        // On crée un objet user en réponse, pour rester logger
         const user = {
           id: localStorage.getItem('userId'),
           email: localStorage.getItem('userEmail'),
