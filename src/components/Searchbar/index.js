@@ -50,15 +50,17 @@ const Searchbar = ({
               className="search__form-filters__select"
               onChange={(evt) => onSelectChange('instrument', evt.target.value)}
             >
-              <option value="">Instrument</option>
+              <option value="" key="instruments">Instrument</option>
               {
               instruments.map(({ instrument_name, id }) => (
+                instrument_name && (
                 <option
                   value={instrument_name}
-                  key={id}
+                  key={instrument_name + id}
                 >
                   {instrument_name}
                 </option>
+                )
               ))
             }
             </select>
@@ -69,15 +71,18 @@ const Searchbar = ({
               className="search__form-filters__select"
               onChange={(evt) => onSelectChange('level', evt.target.value)}
             >
-              <option value="">Niveau</option>
+              <option value="" key="level">Niveau</option>
               {
               levels.map(({ level_name, id }) => (
-                <option
-                  value={level_name}
-                  key={id}
-                >
-                  {level_name}
-                </option>
+                level_name && (
+                  <option
+                    value={level_name}
+                    key={level_name + id}
+                  >
+                    {level_name}
+                  </option>
+                )
+
               ))
             }
             </select>
@@ -88,15 +93,17 @@ const Searchbar = ({
               className="search__form-filters__select"
               onChange={(evt) => onSelectChange('musicstyle', evt.target.value)}
             >
-              <option value="">Styles musicaux</option>
+              <option value="" key="styles">Styles musicaux</option>
               {
-              musicstyles.map(({ music_name, id }) => (
-                <option
-                  value={music_name}
-                  key={id}
-                >
-                  {music_name}
-                </option>
+              musicstyles && musicstyles.map(({ music_name, id }) => (
+                music_name && (
+                  <option
+                    value={music_name}
+                    key={music_name + id}
+                  >
+                    {music_name}
+                  </option>
+                )
               ))
             }
             </select>
@@ -117,15 +124,17 @@ const Searchbar = ({
               className="search__form-filters__select"
               onChange={(evt) => onSelectChange('department', evt.target.value)}
             >
-              <option value="">Département</option>
+              <option value="" key="dpt">Département</option>
               {
               departments.map(({ department_name }) => (
-                <option
-                  value={department_name}
-                  key={department_name}
-                >
-                  {department_name}
-                </option>
+                department_name && (
+                  <option
+                    value={department_name}
+                    key={department_name}
+                  >
+                    {department_name}
+                  </option>
+                )
               ))
             }
             </select>
@@ -137,15 +146,17 @@ const Searchbar = ({
               className="search__form-filters__select"
               onChange={(evt) => onSelectChange('region', evt.target.value)}
             >
-              <option value="">Région</option>
+              <option value="" key="region">Région</option>
               {
               regions.map(({ region_name }) => (
-                <option
-                  value={region_name}
-                  key={region_name}
-                >
-                  {region_name}
-                </option>
+                region_name && (
+                  <option
+                    value={region_name}
+                    key={region_name}
+                  >
+                    {region_name}
+                  </option>
+                )
               ))
             }
             </select>

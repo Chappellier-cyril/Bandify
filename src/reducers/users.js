@@ -59,15 +59,15 @@ const reducer = (state = initialState, action = {}) => {
         searchedUsers: action.searchedUsers,
       };
     case 'ON_DELETE_PROFILE_SUCCESS':
-      {
-        // On clear le localStorage lors d'une suppression d'un profil
-        localStorage.clear();
-        return {
-          ...state,
-          users: usersData,
-          user: {},
-        };
-      }
+    {
+      // On clear le localStorage lors d'une suppression d'un profil
+      localStorage.clear();
+      return {
+        ...state,
+        users: usersData,
+        user: {},
+      };
+    }
     case 'EDIT_FORM_TOGGLE':
       return {
         ...state,
