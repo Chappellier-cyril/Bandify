@@ -270,10 +270,11 @@ const memberController = {
 
         // "Middleware" qui vérifie si notre token est bon
         verifyJWT: (req, res, next) => {
-            const token = req.headers["x-acces-token"];
+            const token = req.headers["x-acces-token"] || req.body.headers["x-acces-token"];
+            // console.log(token);
             const url =  req.route.path;
             if(!token) {
-                res.send("Token needed");
+                res.status(401).send("Token needed");
             } else {
                 jsonwebtoken.verify(token, process.env.TOKEN_SECRET, (err, decoded) => {
                     if (err) {
