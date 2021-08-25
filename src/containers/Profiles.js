@@ -16,12 +16,12 @@ const mapStateToProps = (state) => ({
   editEmail: state.users.editEmail,
   editPassword: state.users.editPassword,
   editDescription: state.users.editDescription,
-  firstName: state.signup.firstName,
-  lastName: state.signup.lastName,
-  dateOfBirth: state.signup.dateOfBirth,
-  email: state.signup.email,
-  password: state.signup.password,
-  description: state.signup.description,
+  firstName: state.users.user.firstName,
+  lastName: state.users.user.lastName,
+  dateOfBirth: state.users.user.dateOfBirth,
+  email: state.users.user.email,
+  password: state.users.user.password,
+  description: state.users.user.description,
   passwordShown: state.login.passwordShown,
 
 });

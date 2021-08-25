@@ -54,7 +54,7 @@ const Profiles = ({
   }, [lastSegmentUrl]);
 
   return (
-    (foundMember.id === connectedUserId)
+    (foundMember && (foundMember.id === connectedUserId))
       ? (
         <MyProfile
           user={user}

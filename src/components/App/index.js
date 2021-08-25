@@ -16,17 +16,43 @@ import Footer from 'src/components/Footer';
 
 // == Import
 import './style.scss';
+import axios from 'axios';
 
 // == Composant
-export default function App({ isLogged }) {
+export default function App({
+  isLogged, setReconnect, getInstruments,
+  getLevels, getMusicStyles, getDepartments, getRegions,
+}) {
   // AU premier rendu, je veux recupérer mon token
   useEffect(() => {
+    // On récupère notre token
     const token = localStorage.getItem('token');
-    if (token) {
-      //TODO on stocke le token dans notre state user et on voir pour recuperer email et id au moment du setItem dans le ON_LOGIN_SUBMIT
-      // pour pouvoir autologgé 
+    // Si on en a un, on fait une requête vers le serveur
+    // En y emporter au passage, le "timbre" (headers : x-acces-token)
+    if (token && token !== undefined) {
+      axios.post('http://localhost:3000/checkToken', {
+        headers: {
+          'x-acces-token': localStorage.getItem('token'),
+        },
+      })
+        .then((response) => {
+        // On crée un objet user en réponse, pour rester logger
+          if (response) {
+            const user = {
+              id: localStorage.getItem('userId'),
+              email: localStorage.getItem('userEmail'),
+              token: localStorage.getItem('token'),
+            };
+            setReconnect(user);
+          }
+        })
+        .catch((error) => error);
     }
-
+    getInstruments();
+    getLevels();
+    getMusicStyles();
+    getDepartments();
+    getRegions();
   }, []);
   return (
     <div className="app">
@@ -63,6 +89,12 @@ export default function App({ isLogged }) {
 
 App.propTypes = {
   isLogged: PropTypes.bool.isRequired,
+  setReconnect: PropTypes.func.isRequired,
+  getInstruments: PropTypes.func.isRequired,
+  getLevels: PropTypes.func.isRequired,
+  getMusicStyles: PropTypes.func.isRequired,
+  getDepartments: PropTypes.func.isRequired,
+  getRegions: PropTypes.func.isRequired,
 };
 
 // == Export

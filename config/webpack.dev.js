@@ -43,7 +43,7 @@ module.exports = merge(common, {
   devServer: {
     historyApiFallback: true,
     contentBase: paths.build,
-    clientLogLevel: 'warn',
+    clientLogLevel: 'silent',
     overlay: true,
     stats: 'minimal',
     open: true,
@@ -52,6 +52,10 @@ module.exports = merge(common, {
     watchOptions: {
       ignored: /node_modules/,
     },
+    openPage: `http://localhost:${port}`,
+    host: '0.0.0.0',
+    useLocalIp: true,
+    disableHostCheck: true,
     port,
   },
 });

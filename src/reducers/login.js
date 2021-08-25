@@ -23,18 +23,23 @@ const reducer = (state = initialState, action = {}) => {
       };
 
     case 'ON_LOGIN_SUCCESS': {
-      // localStorage.setItem('token', response.data.token);
-        // console.log(reponse.data.token)
       return {
         ...state,
-        id: action.data.id,
+        id: Number(action.data.id),
         isLogged: true,
         isError: false,
         email: action.data.email,
         token: action.data.token,
       };
     }
-
+    case 'RECONNECT_USER':
+      return {
+        ...state,
+        id: Number(action.user.id),
+        email: action.user.email,
+        isLogged: true,
+        token: action.user.token,
+      };
     case 'ON_LOGIN_ERROR':
       return {
         ...state,
@@ -43,7 +48,9 @@ const reducer = (state = initialState, action = {}) => {
         password: '',
       };
 
-    case 'ON_LOGOUT':
+    case 'ON_LOGOUT': {
+      // On clear le localStorage à la deconnexion du user
+      localStorage.clear();
       return {
         ...state,
         isLogged: false,
@@ -51,7 +58,7 @@ const reducer = (state = initialState, action = {}) => {
         email: '',
         password: '',
       };
-
+    }
     case 'ON_DELETE_PROFILE_SUCCESS':
       return {
         ...state,
