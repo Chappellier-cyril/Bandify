@@ -86,6 +86,10 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         success: true,
         editPhoto: false,
+        user: {
+          ...state.user,
+          profil_image: state.user.profil_image,
+        },
       };
     case 'PHOTO_MODIFIED_ERROR':
       return {

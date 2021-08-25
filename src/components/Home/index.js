@@ -14,7 +14,7 @@ const Home = ({
       // qui passe dans le userMiddleware
       getMembers();
     }
-  }, []);
+  }, [isLogged]);
 
   return (
     <div className="main">

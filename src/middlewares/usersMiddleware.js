@@ -4,7 +4,6 @@ const usersMiddleware = (store) => (next) => (action) => {
   const url = window.location.href;
   // pour avoir le dernier segment de l'url
   const lastSegmentUrl = url.split('/').pop();
-  
 
   const state = store.getState();
 
@@ -52,15 +51,10 @@ const usersMiddleware = (store) => (next) => (action) => {
     };
     axios(options)
       .then((response) => {
-        if (response.data.success) {
-          store.dispatch({ type: 'PHOTO_MODIFIED_SUCCESS', success: response.data.success });
-        }
-        if (response.data.error) {
-          throw (response.data.error);
-        }
+        store.dispatch({ type: 'PHOTO_MODIFIED_SUCCESS', user: response.data });
       })
       .catch((e) => {
-        store.dispatch({ type: 'PHOTO_MODIFIED_ERROR', error: e });
+        store.dispatch({ type: 'PHOTO_MODIFIED_ERROR', error: e.message });
       });
   }
 
