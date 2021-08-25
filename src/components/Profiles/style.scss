@@ -1,3 +1,5 @@
+@use 'src/styles/vars';
+
 @media screen and (max-width: 700px) {
   .profile__page {
     width: 100%;
@@ -17,7 +19,7 @@
         flex-direction: column;
         margin: 0 auto;
         padding: 1rem 1.5rem;
-        background-color: lightgrey;
+        background-color: vars.$secondColor;
       }
 
       &__friends {
@@ -25,7 +27,7 @@
         height: 20%;
         display: flex;
         margin: 0 auto;
-        background-color: lightgrey;
+        background-color: vars.$secondColor;
 
         &-title {
           text-align: center;

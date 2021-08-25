@@ -1,8 +1,10 @@
 @use 'reset';
 @use 'vars';
 
-body {
+body, html {
   font-family: sans-serif;
+  background-color: vars.$thirdColor;
+  width: 100vw
 }
 
 // fontawesome icons (menu burger, cross to close menu)

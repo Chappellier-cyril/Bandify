@@ -1,3 +1,5 @@
+@use 'src/styles/vars';
+
 .autocompletion-city{
     cursor: pointer;
     position: relative;
@@ -7,14 +9,15 @@
     }
     &__ul{
         width: 100%;
-        background-color: #fff;
+        background-color: vars.$fifthColor;
+        color: vars.$fourthColor;
         position: absolute;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
         &__li{
-            border-bottom: solid 1px #ccc;
-
+            border-bottom: solid 1px vars.$fourthColor;
+            padding: 10px;
         }
     }
 }

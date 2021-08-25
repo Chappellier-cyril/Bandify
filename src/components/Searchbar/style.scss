@@ -1,13 +1,15 @@
+@use 'src/styles/vars';
+
 .search {
   width: 60%;
   height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0 auto;
+  margin: 0.5rem auto;
   padding: .5rem 1rem;
-  background-color: lightgrey;
-  border-radius: 7px;
+  background-color: vars.$secondColor;
+  border-radius: vars.$borderRadius;
 
   &__header {
     display: flex;
@@ -49,10 +51,11 @@
     margin: 0 1rem;
     border: none;
     &--launch {
-      background-color: rgb(57, 184, 85);
+      background-color: vars.$fourthColor;
+      color: vars.$fifthColor;
       height: 40px;
       font-size: 1.2rem;
-      border-radius: 7px;
+      border-radius: vars.$borderRadius;
       padding: 0 1em;
       border: none;
     }
@@ -64,8 +67,10 @@
 .search__button {
   height: 45px;
   font-size: 1.2rem;
-  border-radius: 7px;
-  background-color: white;
+  border-radius: vars.$borderRadius;
+  background-color: vars.$fifthColor;
+  border: solid 1px vars.$fourthColor;
+  color: vars.$fourthColor;
 }
 
 @media screen and (max-width: 700px) {

@@ -46,8 +46,6 @@ const MyProfile = ({
     plays, styles, profil_image, email,
   } = user;
 
-  console.log(user);
-
   const [avatar, setAvatar] = useState();
 
   return (
@@ -57,7 +55,6 @@ const MyProfile = ({
         <div className="profile">
           <div className="profile__card">
             {editPhoto ? (
-              // TODO => vérifier l'édition de la photo
               <form type="submit" onSubmit={(e) => handleSubmitPhoto(e, avatar)}>
                 <div>
                   <label htmlFor="avatar">
@@ -75,7 +72,7 @@ const MyProfile = ({
               </form>
             ) : (
               <div>
-                {profil_image && <img src={`http://localhost:3000/images/${profil_image}`} alt="avatar du membre" />}
+                {profil_image && <img className="home__user--picture" src={`http://localhost:3000/images/${profil_image}`} alt="avatar du membre" />}
                 <span>
                   <button
                     type="button"
@@ -306,11 +303,12 @@ const MyProfile = ({
             <div className="home__cards">
               <ul>
                 {plays.map((play) => (
+                  play.id && (
                   <li key={play.id}>
                     {play.instrument.instrument_name}
                     {play.level && play.level.level_name}
                   </li>
-
+                  )
                 ))}
               </ul>
             </div>
@@ -331,7 +329,7 @@ const MyProfile = ({
             <div className="home__cards">
               <ul>
                 {styles.map((musicStyle) => (
-                  (musicStyle !== 0) && (
+                  musicStyle.id && (
                   // Règle le souci musicStyle.id is undefined
                   <li key={musicStyle.id}>
                     {musicStyle.music_name}
@@ -375,7 +373,7 @@ MyProfile.propTypes = {
     profil_image: PropTypes.string,
     city: PropTypes.shape({
       city_name: PropTypes.string,
-      code: PropTypes.string,
+      department_code: PropTypes.string,
     }),
     plays: PropTypes.arrayOf(shape({
       instrument: PropTypes.shape({
@@ -432,7 +430,7 @@ MyProfile.defaultProps = {
     profil_image: '',
     city: {
       city_name: '',
-      code: '',
+      department_code: '',
     },
     plays: [
       {

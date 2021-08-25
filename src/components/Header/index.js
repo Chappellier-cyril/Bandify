@@ -8,10 +8,12 @@ import './style.scss';
 
 const Header = ({ toggleIsMenuOpen }) => (
   <header className="header">
-
-    <Link to="/">
-      <img src={logoBandify} alt="bandify" className="bandify__logo" />
-    </Link>
+    <div className="header__bandify">
+      <Link to="/">
+        <img src={logoBandify} alt="bandify" className="header__bandify--logo" />
+      </Link>
+      <h1 className="header__bandify--title">Bandify</h1>
+    </div>
 
     <NavbarDesktop />
 
