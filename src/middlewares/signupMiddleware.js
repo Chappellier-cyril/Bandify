@@ -27,7 +27,6 @@ const signupMiddleware = (store) => (next) => (action) => {
     };
     axios(options)
       .then((response) => {
-        console.log(response);
         if (response.data.success) {
           store.dispatch({ type: 'SUBMIT_SUCCESS', success: response.data.success });
         }
@@ -36,8 +35,7 @@ const signupMiddleware = (store) => (next) => (action) => {
         }
       })
       .catch((e) => {
-        // TODO
-        store.dispatch({ type: 'SUBMIT_ERROR', error: e });
+        store.dispatch({ type: 'SUBMIT_ERROR', error: e.message ? e.message : e });
       });
     next(action);
   }
