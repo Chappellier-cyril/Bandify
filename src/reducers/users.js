@@ -162,7 +162,7 @@ const reducer = (state = initialState, action = {}) => {
           ...state.user,
           city: {
             ...state.city,
-            city_name: action.data.city.city_name,
+            city_name: state.user.city,
           },
         },
         code: action.data.city_code,

@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
@@ -128,7 +129,8 @@ const Signup = ({
                 <select name={`level${index}`} id={`level${index}`} onChange={(e) => onSelectInput(e, index, 'level')} disabled={!instrument.instrument}>
                   <option value="">Choisir un niveau de pratique</option>
                   {
-                    levelsData.map(({ level_name, id }) => <option value={id} key={id}>{level_name}</option>)
+                    levelsData.map(({ level_name, id }) => (
+                      <option value={id} key={id}>{level_name}</option>))
                   }
                 </select>
                 {
@@ -185,6 +187,9 @@ const Signup = ({
 };
 
 Signup.propTypes = {
+  instrumentsData: PropTypes.arrayOf().isRequired,
+  levelsData: PropTypes.arrayOf().isRequired,
+  musicStylesData: PropTypes.arrayOf().isRequired,
   success: PropTypes.bool.isRequired,
   error: PropTypes.string.isRequired,
   firstName: PropTypes.string.isRequired,

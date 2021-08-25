@@ -41,15 +41,8 @@ const searchMiddleware = (store) => (next) => (action) => {
     // value de la searchBar, stockée dans le reducer settings
     // const { searchValue } = state.settings;
     // const searchMessage = `Résultats pour ${searchValue}`;
-
-    // axios.get(`http://localhost:3000/search?q=${searchValue}`)
-    //   .then((response) => {
-    //     // on dispatch les users recherchés (et filtrés) dans le User reducer
-    //     // afin que ces derniers remplacent l'array contenant tous les users provenant de la bdd
-    //     store.dispatch({ type: 'ON_SEARCH_SUBMIT_SUCCESS', searchedUsers: response.data, searchMessage });
-    //   });
     const { instrument, level, musicstyle, city, department, region } = state.settings;
-    // console.log(instrument, level, musicstyle, city, department, region);
+
     const requestParameters = {
       instrument,
       level,
@@ -61,7 +54,7 @@ const searchMiddleware = (store) => (next) => (action) => {
 
     axios.get('http://localhost:3000/search', { params: requestParameters })
     .then((response) => {
-      console.log(response.data);
+      store.dispatch({ type: 'ON_SEARCH_SUBMIT_SUCCESS', searchedUsers: response.data });
     });
 
   }
