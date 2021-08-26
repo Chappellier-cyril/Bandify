@@ -9,6 +9,7 @@ import Login from 'src/containers/Login';
 import Signup from 'src/containers/Signup';
 import Navbar from 'src/containers/Navbar';
 import Header from 'src/containers/Header';
+import Chatroom from 'src/containers/Chatroom';
 // components
 import Contact from 'src/components/Contact';
 import About from 'src/components/About';
@@ -58,6 +59,7 @@ export default function App({
     <div className="app">
       <Header />
       <Navbar />
+      <Chatroom />
       <Switch>
         <Route exact path="/">
           <Home />
