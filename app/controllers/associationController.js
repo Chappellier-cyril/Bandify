@@ -29,7 +29,7 @@ const associationController = {
             if(alreadyExist) alreadyExist.destroy();
             const level = await Level.findByPk(levelId);
             if (!level) return next();
-            const association =  await Play.findOrCreate({
+            await Play.findOrCreate({
               where : {
                 member_id : memberId,
                 instrument_id: instrumentId,
@@ -40,7 +40,8 @@ const associationController = {
             const member = await Play.findAll({
               where : {
                 member_id : memberId,
-              }
+              },
+              include: ['instrument', 'level'],
             })
             return res.json(member);
           };
@@ -56,7 +57,8 @@ const associationController = {
             const member = await Play.findAll({
               where : {
                 member_id : memberId,
-              }
+              },
+              include: ['instrument', 'level'],
             })
             return res.json(member);
           }

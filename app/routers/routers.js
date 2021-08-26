@@ -135,12 +135,12 @@ router.get('/regions/:id', localisationController.getOneRegion);
 // MEMBER HAS INSTRUMENT
 
 router.route('/members/:id/add_instrument')
-    .post(associationController.MemberhasInstrument);
+    .patch(associationController.MemberhasInstrument);
 
 // MEMBER HAS MUSIC_STYLES
 
 router.route('/members/:id/add_musicstyle')
-    .post(associationController.MemberhasMusicStyle);
+    .patch(associationController.MemberhasMusicStyle);
 
 
 module.exports = router;
