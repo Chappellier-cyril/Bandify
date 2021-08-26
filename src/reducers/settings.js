@@ -1,6 +1,7 @@
 export const initialState = {
   isMenuOpen: false,
-  isFiltersOpen: true,
+  isFiltersOpen: false,
+  isChatroomOpen: false,
   isDeleteModalClosed: true,
   deleteProfileMessage: '',
   isProfileDeleted: false,
@@ -28,6 +29,11 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         isMenuOpen: !state.isMenuOpen,
+      };
+    case 'SET_IS_OPEN_CHATROOM':
+      return {
+        ...state,
+        isChatroomOpen: !state.isChatroomOpen,
       };
     case 'SET_IS_FILTERS_OPEN':
       return {
@@ -87,19 +93,23 @@ const reducer = (state = initialState, action = {}) => {
         searchedUsers: [],
         searchMessage: '',
       };
-    // case 'ON_SEARCH_SUBMIT_SUCCESS':
-    //   return {
-    //     ...state,
-
-    //     A remettre si on reprend la barre de recherche
-    //     searchMessage: action.searchMessage,
-    //     searchValue: '',
-    //   };
-    case 'GET_MEMBERS_SUCCESS':
-      // Lors d'une action ON_RESET_FILTERS, on remet tout à vide
+    case 'ON_SEARCH_SUBMIT_SUCCESS':
       return {
         ...state,
-        searchMessage: '',
+        searchMessage: action.searchMessage,
+        searchValue: '',
+      };
+    case 'GET_MEMBERS_SUCCESS':
+      // Lors d'une action ON_RESET_FILTERS, on vide les filtres
+      return {
+        ...state,
+        // searchMessage: '',
+        instrument: '',
+        level: '',
+        musicstyle: '',
+        city: '',
+        department: '',
+        region: '',
       };
     case 'GET_DEPARTMENTS_SUCCESS':
       return {

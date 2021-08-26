@@ -6,7 +6,7 @@ import NavbarDesktop from 'src/containers/NavbarDesktop';
 import logoBandify from 'src/assets/logoBandify.svg';
 import './style.scss';
 
-const Header = ({ toggleIsMenuOpen }) => (
+const Header = ({ toggleIsMenuOpen, toggleIsChatroomOpen }) => (
   <header className="header">
     <div className="header__bandify">
       <Link to="/">
@@ -16,6 +16,14 @@ const Header = ({ toggleIsMenuOpen }) => (
     </div>
 
     <NavbarDesktop />
+
+    <button
+      type="button"
+      className="header__menu-btn"
+      onClick={toggleIsChatroomOpen}
+    >
+      <i className="fas fa-comments" />
+    </button>
 
     <button
       type="button"
@@ -30,6 +38,7 @@ const Header = ({ toggleIsMenuOpen }) => (
 
 Header.propTypes = {
   toggleIsMenuOpen: PropTypes.func.isRequired,
+  toggleIsChatroomOpen: PropTypes.func.isRequired,
 };
 
 export default Header;
