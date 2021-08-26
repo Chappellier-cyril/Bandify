@@ -49,21 +49,41 @@
   }
 }
 
-@media screen and (min-width: 700px) {
-  .bandify__logo {
-    width: 150px;
-    margin-top: 1rem;
-  }
+@media screen and (min-width: 750px) {
+  
   .header {
-    //height: 10%;
+    position: sticky;
+    top: 0;
+    width: 100%;
     display: flex;
+    justify-content: space-around;
     align-items: center;
-    justify-content: space-between;
-    align-items: center;
+    text-align: center;
+    font-size: vars.$appFontSize;
     background-color: vars.$firstColor;
-    padding: 1rem 3rem;
+    margin: 0 auto;
     border-bottom: 1px solid vars.$thirdColor;
     z-index: 1;
+
+    &__bandify {
+      display: flex;
+      align-items: center;
+      margin: 0;
+
+      &--logo {
+        width: 150px;
+        margin-top: 1rem;
+      }
+
+      &--title {
+        font-size: 2rem;
+        letter-spacing: 1.5px;
+        color: vars.$thirdColor;
+      }
+    }
+    
+   
+
     &__menu-btn {
       display: none;
     }

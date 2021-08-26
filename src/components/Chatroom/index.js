@@ -1,23 +1,61 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Messages from 'src/components/Messages';
-import ChatForm from 'src/components/ChatForm';
+
+import ChatForm from 'src/containers/ChatForm';
+import Messages from 'src/containers/Messages';
+import FriendsList from 'src/containers/FriendsList';
+
 import './style.scss';
 
-const Chatroom = ({ isChatroomOpen, toggleIsChatroomOpen }) => (
+const Chatroom = ({
+  isChatroomOpen,
+  toggleIsChatroomOpen,
+  toggleIsMessagesOpen,
+  toggleIsFriendsListOpen,
+  isMessagesOpen,
+  isFriendsListOpen,
+}) => (
   <div className={isChatroomOpen ? 'chatroom chatroom--open' : 'chatroom'}>
-     Chatroom
+    <div className="chatroom__nav">
+      <button
+        type="button"
+        className="chatroom__nav-link"
+        onClick={toggleIsMessagesOpen}
+      >
+        Conversation
+      </button>
+      <button
+        type="button"
+        className="chatroom__nav-link"
+        onClick={toggleIsFriendsListOpen}
+      >
+        Amis
+      </button>
+    </div>
     <button type="button" onClick={toggleIsChatroomOpen} className="close-menu-btn">
       <i className="fas fa-times" />
     </button>
-    <Messages />
-    <ChatForm />
+
+    {isMessagesOpen && (
+    <div className="chatroom__discussion">
+      <Messages />
+      <ChatForm />
+    </div>
+    )}
+
+    {isFriendsListOpen && (
+      <FriendsList />
+    )}
   </div>
 );
 
 Chatroom.propTypes = {
   isChatroomOpen: PropTypes.bool.isRequired,
   toggleIsChatroomOpen: PropTypes.func.isRequired,
+  toggleIsMessagesOpen: PropTypes.func.isRequired,
+  toggleIsFriendsListOpen: PropTypes.func.isRequired,
+  isMessagesOpen: PropTypes.bool.isRequired,
+  isFriendsListOpen: PropTypes.bool.isRequired,
 };
 
 export default Chatroom;

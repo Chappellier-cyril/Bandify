@@ -1,5 +1,6 @@
 @use 'src/styles/vars';
 
+// MOBILE
 @media screen and (max-width: 700px) {
   .chatroom {
     position: fixed;
@@ -9,13 +10,28 @@
     z-index: 99;
     background-color: vars.$secondColor;
     transition: top 150ms ease-in-out;
-    // TEST
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
 
     &--open {
-      top: calc(0 + 15.3%);
+      top: calc(0 + 16.8%)
+    }
+
+    &__nav {
+      display: inline-block;
+      width: 100%;
+     
+
+      &-link {
+        width: 50%;
+        padding: 1em 1.3em;
+      }
+    }
+
+    &__discussion {
+      height: 80%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
   }
 
@@ -26,8 +42,15 @@
     background: none;
     appearance: none;
     position: absolute;
-    top: 25px;
+    top: 60px;
     right: 33px;
     color: vars.$thirdColor;
+  }
+}
+
+// DESKTOP
+@media screen and (min-width: 700px) {
+  .chatroom {
+    display: none;
   }
 }

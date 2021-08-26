@@ -21,6 +21,17 @@ export const initialState = {
   department: '',
   regions: [{}],
   region: '',
+  // chatroom
+  isMessagesOpen: false,
+  isFriendsListOpen: true,
+  messageInputValue: '',
+  messages: [],
+  id: null,
+  content: '',
+  status: false,
+  sender_id: null,
+  reicever_id: null,
+  reicever_name: '',
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -39,6 +50,18 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         isFiltersOpen: !state.isFiltersOpen,
+      };
+    case 'SET_IS_OPEN_MESSAGES':
+      return {
+        ...state,
+        isMessagesOpen: true,
+        isFriendsListOpen: false,
+      };
+    case 'SET_IS_OPEN_FRIENDS_LIST':
+      return {
+        ...state,
+        isFriendsListOpen: true,
+        isMessagesOpen: false,
       };
     case 'GET_INSTRUMENTS_SUCCESS':
       return {
@@ -121,6 +144,45 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         regions: action.regions,
       };
+    case 'SET_MESSAGE_INPUT_VALUE':
+      return {
+        ...state,
+        messageInputValue: action.messageInputValue,
+      };
+    case 'GET_MESSAGES_SUCCESS':
+      return {
+        ...state,
+        messages: action.messages,
+      };
+    case 'ADD_MESSAGE_SUCCESS': {
+      // si la value de l'input renseignée n'est pas vide, on soumet le form
+      if (state.messageInputValue.trim() !== '') {
+        return {
+          ...state,
+          messages: [
+            ...state.messages,
+            {
+              id: action.message.id,
+              content: state.messageInputValue,
+              status: false,
+              sender_id: action.message.sender_id,
+              reicever_id: state.reicever_id,
+            },
+          ],
+          messageInputValue: '',
+        };
+      }
+      // sinon, string vide ==> on return le state, pas de soumission du form
+      return state;
+    }
+    case 'GET_RECEIVER':
+      return {
+        ...state,
+        reicever_id: action.id,
+        reicever_name: action.name,
+        isMessagesOpen: true,
+      };
+
     default:
       return state;
   }
