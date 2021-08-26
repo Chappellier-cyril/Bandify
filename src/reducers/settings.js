@@ -1,6 +1,7 @@
 export const initialState = {
   isMenuOpen: false,
   isFiltersOpen: false,
+  isChatroomOpen: false,
   isDeleteModalClosed: true,
   deleteProfileMessage: '',
   isProfileDeleted: false,
@@ -28,6 +29,11 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         isMenuOpen: !state.isMenuOpen,
+      };
+    case 'SET_IS_OPEN_CHATROOM':
+      return {
+        ...state,
+        isChatroomOpen: !state.isChatroomOpen,
       };
     case 'SET_IS_FILTERS_OPEN':
       return {

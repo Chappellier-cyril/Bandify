@@ -1,0 +1,33 @@
+@use 'src/styles/vars';
+
+@media screen and (max-width: 700px) {
+  .chatroom {
+    position: fixed;
+    top: 100%;
+    width: 100%;
+    height: 100%;
+    z-index: 99;
+    background-color: vars.$secondColor;
+    transition: top 150ms ease-in-out;
+    // TEST
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &--open {
+      top: calc(0 + 15.3%);
+    }
+  }
+
+  .close-menu-btn {
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+    background: none;
+    appearance: none;
+    position: absolute;
+    top: 25px;
+    right: 33px;
+    color: vars.$thirdColor;
+  }
+}

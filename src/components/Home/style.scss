@@ -12,10 +12,11 @@
       margin: 0 auto;
       padding: 2rem;
       width: 100%;
-      font-size: 1.5rem;
-      color: vars.$fourthColor;
+      font-size: 1.4rem;
+      color: vars.$thirdColor;
+      text-align: center;
       &--teasing {
-        color: vars.$fourthColor;
+        color: vars.$thirdColor;
         margin: 2rem auto;
         text-align: center;
         font-size: 1.2rem;
@@ -25,8 +26,8 @@
       &--btn {
         width: 60%;
         margin: 0 auto;
-        background-color: vars.$fourthColor;
-        color: vars.$fifthColor;
+        background-color: vars.$thirdColor;
+        color: vars.$fourthColor;
         padding: 1rem;
         border-radius: vars.$borderRadius;
       }
@@ -55,22 +56,22 @@
         display: flex;
       }
       &--name {
-        color: vars.$fifthColor;
+        color: vars.$fourthColor;
       }
       &--short {
-        color: vars.$fifthColor;
+        color: vars.$fourthColor;
         margin: auto 1rem;
         font-weight: bold;
       }
     }
     &__instrument {
-      color: vars.$fifthColor;
+      color: vars.$fourthColor;
       &--description {
         margin: 1rem 0;
         font-weight: bold;
       }
       &__tag {
-        background-color: vars.$fourthColor;
+        background-color: vars.$thirdColor;
         display: inline-block;
         padding: 0.3rem;
         margin: 0.3rem 0.3rem 0.3rem 0;
@@ -79,8 +80,8 @@
           padding-right: 0.3rem;
         }
         &--level {
-          background-color: vars.$fifthColor;
-          color: vars.$fourthColor;
+          background-color: vars.$fourthColor;
+          color: vars.$thirdColor;
           font-size: 0.8rem;
           padding: 0.2rem;
           border-radius: vars.$borderRadius;
@@ -88,13 +89,13 @@
       }
     }
     &__style {
-      color: vars.$fifthColor;
+      color: vars.$fourthColor;
       &--description {
         margin: 1rem 0;
         font-weight: bold;
       }
       &__tag {
-        background-color: vars.$fourthColor;
+        background-color: vars.$thirdColor;
         display: inline-block;
         padding: 0.3rem;
         margin: 0.3rem 0.3rem 0.3rem 0;
@@ -116,8 +117,8 @@
   .home {
   &__signup {
     &--btn {
-      background-color: vars.$fourthColor;
-      color: vars.$fifthColor;
+      background-color: vars.$thirdColor;
+      color: vars.$fourthColor;
       border-radius: vars.$borderRadius;
       padding: 1rem 1.5rem;
     }

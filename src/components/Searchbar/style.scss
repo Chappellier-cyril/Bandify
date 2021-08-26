@@ -51,8 +51,8 @@
     margin: 0 1rem;
     border: none;
     &--launch {
-      background-color: vars.$fourthColor;
-      color: vars.$fifthColor;
+      background-color: vars.$thirdColor;
+      color: vars.$fourthColor;
       height: 40px;
       font-size: 1.2rem;
       border-radius: vars.$borderRadius;
@@ -68,9 +68,9 @@
   height: 45px;
   font-size: 1.2rem;
   border-radius: vars.$borderRadius;
-  background-color: vars.$fifthColor;
-  border: solid 1px vars.$fourthColor;
-  color: vars.$fourthColor;
+  background-color: vars.$fourthColor;
+  border: solid 1px vars.$thirdColor;
+  color: vars.$thirdColor;
 }
 
 @media screen and (max-width: 700px) {
