@@ -25,7 +25,7 @@ const Searchbar = ({
         name="searchBar"
         id="searchBar"
         className="search__form__search-input"
-        placeholder="Rechercher un membre, une ville..."
+        placeholder="Rechercher un membre"
         value={searchValue}
         onChange={(evt) => onSearchChange(evt.target.value)}
       />
