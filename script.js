@@ -59,13 +59,15 @@ axios.request(optionsRegions).then(function (regions) {
 }).then(() => {
   // CREATE ALL DEPARTMENTS
   axios.request(optionsDepartments).then(function (departments) {
-    departments.data.map(async (dpt) => createDepartment(dpt.nom.toUpperCase(), dpt.code, Number(dpt.codeRegion)));
+   departments.data.map(async (dpt) => createDepartment(dpt.nom.toUpperCase(), dpt.code, Number(dpt.codeRegion)));
   }).catch(function (error) {
     console.error(error);
   }).then(() => {
     // CREATE ALL CITIES
     axios.request(optionsCities).then(function (cities) {
-      cities.data.map(async(city) => createCity(city.nom.toUpperCase(), city.code, city.codeDepartement))
+      const filteredCities = cities.data.filter((c) => c.population > 3000);
+      console.log(filteredCities.length);
+      filteredCities.map(async(city) => createCity(city.nom.toUpperCase(), city.code, city.codeDepartement))
     }).catch(function (error) {
       console.error(error);
     }).then(console.log('Installation complete'));
