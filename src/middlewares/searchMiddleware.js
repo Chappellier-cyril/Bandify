@@ -41,22 +41,24 @@ const searchMiddleware = (store) => (next) => (action) => {
     // value de la searchBar, stockée dans le reducer settings
     // const { searchValue } = state.settings;
     // const searchMessage = `Résultats pour ${searchValue}`;
-    const { instrument, level, musicstyle, city, department, region } = state.settings;
-
+    const {
+      instrument, level, musicstyle, city, department, region, searchValue,
+    } = state.settings;
+    console.log(searchValue);
     const requestParameters = {
       instrument,
       level,
       musicstyle,
       city,
-      department, 
+      department,
       region,
+      searchValue,
     };
 
     axios.get('http://localhost:3000/search', { params: requestParameters })
-    .then((response) => {
-      store.dispatch({ type: 'ON_SEARCH_SUBMIT_SUCCESS', searchedUsers: response.data });
-    });
-
+      .then((response) => {
+        store.dispatch({ type: 'ON_SEARCH_SUBMIT_SUCCESS', searchedUsers: response.data });
+      });
   }
 
   // Si on a cliqué sur Réinitialiser dans la searchBar, on dispatch au reducer.
