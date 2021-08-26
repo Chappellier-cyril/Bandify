@@ -21,6 +21,9 @@ const Signup = ({
   onChangeInput, onSelectInput, addNewInputInstrument, removeInputInstrument,
   onStyleInput, addNewStyle, removeStyle, handleSubmitSignup,
 }) => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [error]);
   // On utilise un useState pour stocker le fichier avatar reçu afin de le
   // transmettre à l'action REDUX suivante via le handleSignUp
 
