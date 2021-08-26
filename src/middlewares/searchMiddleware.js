@@ -38,13 +38,10 @@ const searchMiddleware = (store) => (next) => (action) => {
 
   if (action.type === 'ON_SEARCH_SUBMIT') {
     const state = store.getState();
-    // value de la searchBar, stockée dans le reducer settings
-    // const { searchValue } = state.settings;
-    // const searchMessage = `Résultats pour ${searchValue}`;
     const {
       instrument, level, musicstyle, city, department, region, searchValue,
     } = state.settings;
-    console.log(searchValue);
+
     const requestParameters = {
       instrument,
       level,
