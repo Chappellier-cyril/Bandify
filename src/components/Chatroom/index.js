@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Messages from 'src/components/Messages';
-import ChatForm from 'src/components/ChatForm';
-import FriendsList from 'src/components/FriendsList';
+
+import ChatForm from 'src/containers/ChatForm';
+import Messages from 'src/containers/Messages';
+import FriendsList from 'src/containers/FriendsList';
+
 import './style.scss';
-import messagesData from 'src/data/messages';
 
 const Chatroom = ({
   isChatroomOpen,
@@ -37,7 +38,7 @@ const Chatroom = ({
 
     {isMessagesOpen && (
     <div className="chatroom__discussion">
-      <Messages messages={messagesData} />
+      <Messages />
       <ChatForm />
     </div>
     )}

@@ -1,19 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Message from './Message';
 import './style.scss';
 
-const Messages = ({ messages }) => (
-  <ul className="messages">
-    {messages.map((message) => (
-      <Message
-        key={message.id}
-        {...message}
-      />
-    ))}
+const Messages = ({ messages, getMessages, receiverName }) => {
+  useEffect(() => {
+    getMessages();
+  }, []);
 
-  </ul>
-);
+  return (
+    <div className="messages">
+      <p className="messages__author">{receiverName}</p>
+      {messages.map((message) => (
+        <Message
+          key={message.id}
+          {...message}
+        />
+      ))}
+
+    </div>
+  );
+};
 
 Messages.propTypes = {
   messages: PropTypes.arrayOf(PropTypes.shape({
@@ -21,6 +28,8 @@ Messages.propTypes = {
     content: PropTypes.string.isRequired,
     status: PropTypes.bool.isRequired,
   })).isRequired,
+  getMessages: PropTypes.func.isRequired,
+  receiverName: PropTypes.string.isRequired,
 };
 
 export default Messages;

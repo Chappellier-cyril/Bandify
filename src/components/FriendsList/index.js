@@ -1,27 +1,18 @@
 import React from 'react';
 import './style.scss';
 
-const FriendsList = () => (
+const FriendsList = ({ users, getCurrentUser }) => (
+
   <div className="friends">
     <ul className="friends-list">
-      <li className="friends-list__member">Toto</li>
-      <li className="friends-list__member">Toto</li>
-      <li className="friends-list__member">Toto</li>
-      <li className="friends-list__member">Toto</li>
-      <li className="friends-list__member">Toto</li>
-      <li className="friends-list__member">Toto</li>
-      <li className="friends-list__member">Toto</li>
-      <li className="friends-list__member">Toto</li>
-      <li className="friends-list__member">Toto</li>
-      <li className="friends-list__member">Toto</li>
-      <li className="friends-list__member">Toto</li>
-      <li className="friends-list__member">Toto</li>
-      <li className="friends-list__member">Toto</li>
-      <li className="friends-list__member">Toto</li>
-      <li className="friends-list__member">Toto</li>
-
+      {users.map((user) => (
+        <li className="friends-list__member" onClick={() => getCurrentUser(user.id, user.firstname)} key={user.id}>
+          {user.firstname} {user.lastname}
+        </li>
+      ))}
     </ul>
   </div>
+
 );
 
 export default FriendsList;

@@ -13,7 +13,7 @@ const Searchbar = ({
 }) => (
   <div className="search">
     <div className="search__header">
-      <h1>Recherche</h1>
+      <h1 className="search__header--title">Recherche</h1>
       {/* vide la recherche et réinitialise => nouvelle requete getMembers */}
       <button type="button" onClick={onResetFilters} className="search__button">Réinitialiser</button>
     </div>
