@@ -2,39 +2,10 @@ const { Member, Play, Instrument, Level } = require('../models');
 const memberController = require('./memberController');
 
 const searchController = {
-    /*
-  getFilteredMembersByFirstname: async (req, res, next) => {
-        const searchQuery = req.query.q;
-        console.log('searchQuery dans searchController :', searchQuery);
-        try {
-            const members = await Member.findAll({
-                include: [{
-                    association: 'city',
-                    include: {
-                        association: 'department',
-                        include: 'region',
-                    },
-                },{
-                    association: 'plays',
-                    include: ['instrument', 'level']
-            }, 'styles']});
-            
-            const filteredMembers = members.filter((member) => member.firstname.includes(searchQuery));
-
-            console.log('filteredMembers : ', filteredMembers);
-
-            res.json(filteredMembers);
-        } catch (error) {
-            console.trace(error);
-            res.status(500).json(error);
-        }
-    }, */
-
-     // filtres conditionnels
      getFilteredMembers: async (req, res, next) => {
         const filteredQuery = req.query;
         // Destructuring de la recherche
-        const { instrument, level, musicstyle, city, department, region } = filteredQuery;
+        const { instrument, level, musicstyle, city, department, region, searchValue } = filteredQuery;
         //on récupère tous les mebres pour pouvoir filtrer en fonction des queries
         try {
             const members = await Member.findAll({
@@ -50,6 +21,18 @@ const searchController = {
             }, 'styles']});
             // on copie les members dans une variable pour récupérer les users filtrés après la recherche
             let membersToFilter = [...members];
+
+            // Si ma recherche contient un champs searchValue (barre de recherche), je filtre les members par leur noms/prénoms/les deux
+            if (searchValue) membersToFilter = membersToFilter.filter((member) => {
+                const memberFullName = member.firstname + ' ' + member.lastname;
+
+                if (member.firstname || member.lastname || memberFullName) {
+                    return member.firstname.toLowerCase() === searchValue.toLowerCase() 
+                    || member.lastname.toLowerCase() === searchValue.toLowerCase()
+                    || memberFullName.toLowerCase() === searchValue.toLowerCase();
+                } 
+            })
+            
             // Si ma recherche contient un champs musicstyle, je filtre les members qui ont un style correspondant
             if (musicstyle) membersToFilter = membersToFilter.filter((member) => {
                 // Si le membre a une association avec un/des style(s) de musiques ...
