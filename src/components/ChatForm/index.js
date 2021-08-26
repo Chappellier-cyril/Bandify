@@ -7,7 +7,14 @@ const ChatForm = () => (
     <input 
       className="form_input"
       type="text"
+      placeholder="Saisir votre message..."
     />
+    <button
+      className="form__button"
+      type="submit"
+    >
+      Envoyer
+    </button>
   </form>
 );
 

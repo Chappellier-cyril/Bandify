@@ -7,7 +7,7 @@ const Messages = () => (
     <Message />
     <Message />
     <Message />
-    <Message />
+    
   </ul>
 );
 

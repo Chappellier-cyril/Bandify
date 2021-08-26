@@ -1,0 +1,18 @@
+.form {
+ display: flex;
+  height: 22vh;
+  &__input {
+    flex: 1;
+    // padding: 3em;
+    border: none;
+    font-size: 1.5em;
+    &::placeholder {
+      color: grey;
+    }
+  }
+  &__button {
+    width: 100px;
+    border: none;
+  }
+
+}
