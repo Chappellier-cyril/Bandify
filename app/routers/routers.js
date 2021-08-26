@@ -13,7 +13,6 @@ const router = express.Router();
 
 // SEARCH Route
 router.route('/search')
-    //.get(searchController.getFilteredMembersByFirstname)
     .get(searchController.getFilteredMembers);
 
 // SIGNUP Route
