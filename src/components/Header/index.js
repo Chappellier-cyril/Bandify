@@ -17,21 +17,23 @@ const Header = ({ toggleIsMenuOpen, toggleIsChatroomOpen }) => (
 
     <NavbarDesktop />
 
-    <button
-      type="button"
-      className="header__menu-btn"
-      onClick={toggleIsChatroomOpen}
-    >
-      <i className="fas fa-comments" />
-    </button>
+    <div className="header__menu-btn__container">
+      <button
+        type="button"
+        className="header__menu-btn"
+        onClick={toggleIsChatroomOpen}
+      >
+        <i className="fas fa-comments" />
+      </button>
 
-    <button
-      type="button"
-      className="header__menu-btn"
-      onClick={toggleIsMenuOpen}
-    >
-      <i className="fas fa-bars" />
-    </button>
+      <button
+        type="button"
+        className="header__menu-btn"
+        onClick={toggleIsMenuOpen}
+      >
+        <i className="fas fa-bars" />
+      </button>
+    </div>
 
   </header>
 );

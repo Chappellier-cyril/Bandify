@@ -4,6 +4,7 @@ import Messages from 'src/components/Messages';
 import ChatForm from 'src/components/ChatForm';
 import FriendsList from 'src/components/FriendsList';
 import './style.scss';
+import messagesData from 'src/data/messages';
 
 const Chatroom = ({
   isChatroomOpen,
@@ -36,7 +37,7 @@ const Chatroom = ({
 
     {isMessagesOpen && (
     <div className="chatroom__discussion">
-      <Messages />
+      <Messages messages={messagesData} />
       <ChatForm />
     </div>
     )}
@@ -44,7 +45,6 @@ const Chatroom = ({
     {isFriendsListOpen && (
       <FriendsList />
     )}
-
   </div>
 );
 
