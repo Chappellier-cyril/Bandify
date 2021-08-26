@@ -1,13 +1,13 @@
 @use 'src/styles/vars';
 
 .search {
-  width: 60%;
+  width: 100vw;
   height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0.5rem auto;
-  padding: .5rem 1rem;
+  margin: 1rem auto;
+  padding: .5rem .5rem;
   background-color: vars.$secondColor;
   border-radius: vars.$borderRadius;
 
@@ -19,8 +19,15 @@
     margin-top: 1rem;
 
     &--title {
-      font-size: 2.3rem;
+      font-size: 1.5rem;
+      color: vars.$fourthColor;
     }
+  }
+
+  &__launch {
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
 
   &__form {
@@ -28,13 +35,13 @@
     margin: 1rem 0;
 
     &__search-input {
-      width: 80%;
+      width: 100%;
       padding: 1em 1.5em;
       margin: 1rem 0;
     }
 
     &-filters {
-      width: 80%;
+      width: 100%;
       height: auto;
       display: flex;
       flex-wrap: wrap;
@@ -43,7 +50,7 @@
       margin: 0 auto;
 
       &__select {
-        min-width: 30%;
+        width: 100%;
         padding: 0 1em;
         margin: 1rem 0;
       }
@@ -54,6 +61,11 @@
     padding: 0 1em;
     margin: 0 1rem;
     border: none;
+    width: 50%;
+    &__container {
+      display: flex;
+      justify-content: space-around;
+    }
     &--launch {
       background-color: vars.$thirdColor;
       color: vars.$fourthColor;
@@ -62,6 +74,7 @@
       border-radius: vars.$borderRadius;
       padding: 0 1em;
       border: none;
+      margin: 1rem auto;
     }
   }
 }

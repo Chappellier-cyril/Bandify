@@ -13,6 +13,8 @@ import Styles from './Styles';
 // == Import : local
 import 'src/components/Profiles/style.scss';
 
+import './style.scss';
+
 const MyProfile = ({
   user,
   onWishToDeleteProfile,
@@ -63,97 +65,98 @@ const MyProfile = ({
 
   return (
     <>
-      <div className="profile__page">
+      <div className="myprofile__cards">
         {isDeleteModalClosed && (
-        <div className="profile">
-          <div className="profile__card">
-            <Avatar
-              editPhoto={editPhoto}
-              handleSubmitPhoto={handleSubmitPhoto}
-              profil_image={profil_image}
-              editFormToggle={editFormToggle}
-            />
-            <Name
-              editName={editName}
-              handleSubmitName={handleSubmitName}
-              firstName={firstName}
-              lastName={lastName}
-              user={user}
-              editFormToggle={editFormToggle}
-              onChangeProfileInput={onChangeProfileInput}
-            />
-            <City
-              editCity={editCity}
-              handleSubmitCity={handleSubmitCity}
-              onCityChange={onCityChange}
-              city={city}
-              editFormToggle={editFormToggle}
-              user={user}
-            />
-            <Birthdate
-              editBirthdate={editBirthdate}
-              handleSubmitBirthdate={handleSubmitBirthdate}
-              dateOfBirth={dateOfBirth}
-              editFormToggle={editFormToggle}
-              user={user}
-              onChangeProfileInput={onChangeProfileInput}
-            />
-            <Email
-              editEmail={editEmail}
-              handleSubmitEmail={handleSubmitEmail}
-              emailInput={emailInput}
-              onChangeProfileInput={onChangeProfileInput}
-              editFormToggle={editFormToggle}
-              email={email}
-
-            />
-            <Password
-              editPassword={editPassword}
-              handleSubmitPassword={handleSubmitPassword}
-              passwordShown={passwordShown}
-              password={password}
-              togglePasswordVisibility={togglePasswordVisibility}
-              editFormToggle={editFormToggle}
-              onChangeProfileInput={onChangeProfileInput}
-            />
-            <Description
-              editDescription={editDescription}
-              handleSubmitDescription={handleSubmitDescription}
-              editFormToggle={editFormToggle}
-              user={user}
-              description={description}
-              onChangeProfileInput={onChangeProfileInput}
-            />
-            <button
-              type="button"
-              onClick={onWishToDeleteProfile}
-            >Supprimer mon profil
-            </button>
-            <Instruments
-              editInstruments={editInstruments}
-              plays={plays}
-              deleteInstrumentAssociation={deleteInstrumentAssociation}
-              handleSubmitInstruments={handleSubmitInstruments}
-              instrumentsData={instrumentsData}
-              levelsData={levelsData}
-              instruments={instruments}
-              addNewInstrument={addNewInstrument}
-              removeInstrument={removeInstrument}
-              onSelectInput={onSelectInput}
-              editFormToggle={editFormToggle}
-            />
-            <Styles
-              editFormToggle={editFormToggle}
-              styles={styles}
-              editStyles={editStyles}
-              handleSubmitStyles={handleSubmitStyles}
-            />
-            <h2 className="profile__friends-title">Mes amis</h2>
-          </div>
+        <div className="myprofile__cards--users">
+          <>
+            <div className="myprofile__user--container">
+              <Avatar
+                editPhoto={editPhoto}
+                handleSubmitPhoto={handleSubmitPhoto}
+                profil_image={profil_image}
+                editFormToggle={editFormToggle}
+              />
+              <Name
+                editName={editName}
+                handleSubmitName={handleSubmitName}
+                firstName={firstName}
+                lastName={lastName}
+                user={user}
+                editFormToggle={editFormToggle}
+                onChangeProfileInput={onChangeProfileInput}
+              />
+              <City
+                editCity={editCity}
+                handleSubmitCity={handleSubmitCity}
+                onCityChange={onCityChange}
+                city={city}
+                editFormToggle={editFormToggle}
+                user={user}
+              />
+              <Birthdate
+                editBirthdate={editBirthdate}
+                handleSubmitBirthdate={handleSubmitBirthdate}
+                dateOfBirth={dateOfBirth}
+                editFormToggle={editFormToggle}
+                user={user}
+                onChangeProfileInput={onChangeProfileInput}
+              />
+              <button
+                type="button"
+                onClick={onWishToDeleteProfile}
+              >Supprimer mon profil
+              </button>
+              <Email
+                editEmail={editEmail}
+                handleSubmitEmail={handleSubmitEmail}
+                emailInput={emailInput}
+                onChangeProfileInput={onChangeProfileInput}
+                editFormToggle={editFormToggle}
+                email={email}
+              />
+              <Password
+                editPassword={editPassword}
+                handleSubmitPassword={handleSubmitPassword}
+                passwordShown={passwordShown}
+                password={password}
+                togglePasswordVisibility={togglePasswordVisibility}
+                editFormToggle={editFormToggle}
+                onChangeProfileInput={onChangeProfileInput}
+              />
+              <Description
+                editDescription={editDescription}
+                handleSubmitDescription={handleSubmitDescription}
+                editFormToggle={editFormToggle}
+                user={user}
+                description={description}
+                onChangeProfileInput={onChangeProfileInput}
+              />
+              <Instruments
+                editInstruments={editInstruments}
+                plays={plays}
+                deleteInstrumentAssociation={deleteInstrumentAssociation}
+                handleSubmitInstruments={handleSubmitInstruments}
+                instrumentsData={instrumentsData}
+                levelsData={levelsData}
+                instruments={instruments}
+                addNewInstrument={addNewInstrument}
+                removeInstrument={removeInstrument}
+                onSelectInput={onSelectInput}
+                editFormToggle={editFormToggle}
+              />
+              <Styles
+                editFormToggle={editFormToggle}
+                styles={styles}
+                editStyles={editStyles}
+                handleSubmitStyles={handleSubmitStyles}
+              />
+            </div>
+            <h2 className="myprofile__friends-title">Mes amis</h2>
+          </>
         </div>
         )}
         {!isDeleteModalClosed && (
-        <div className="profile">
+        <div className="myprofile">
           <p>Êtes-vous sûr(e) de vouloir supprimer votre profil?</p>
           <button
             type="button"

@@ -39,6 +39,7 @@ const reducer = (state = initialState, action = {}) => {
     case 'SET_IS_OPEN_MENU':
       return {
         ...state,
+        isChatroomOpen: false,
         isMenuOpen: !state.isMenuOpen,
       };
     case 'SET_IS_OPEN_CHATROOM':

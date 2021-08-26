@@ -5,6 +5,7 @@ import { getAge } from 'src/selectors/user';
 
 // == Import : local
 import 'src/components/Profiles/style.scss';
+import { firstLetterToUpper, restToLower } from 'src/selectors/city';
 import './style.scss';
 
 const OtherProfile = ({ user }) => {
@@ -13,52 +14,62 @@ const OtherProfile = ({ user }) => {
   } = user;
 
   return (
-    <div className="profile__page">
-      {/* eslint-disable-next-line camelcase  */}
-      <div className="profile">
-        <div className="home__cards">
-          {profil_image && <img src={`http://localhost:3000/images/${profil_image}`} alt="avatar du membre" />}
-          <p>{user.firstname}, {user.lastname}</p>
-          {user.city && (
-          <span>
-            {user.city.city_name} ({user.city.department_code})
-          </span>
-          )}
-          <h2>{getAge(user.birthdate)} ans</h2>
-          <button type="button">Ajouter à mes amis</button>
-          {/* //TODO => la route invitation + vue conditionnelle pour afficher profil ami */}
-          <p>{user.user_description}</p>
-          <p>Ses instruments:</p>
-          {plays && (
-          <div className="home__cards">
-            <ul>
-              {plays.map((play) => (
-                play.id && (
-                <li key={play.id}>
-                  {play.instrument.instrument_name}
-                  {play.level && play.level.level_name}
-                </li>
-                )
-              ))}
-            </ul>
+    <div className="profile__cards">
+      <div className="profile__cards--users">
+        <div className="profile__user--container">
+          {profil_image && <img className="profile__user--picture" src={`http://localhost:3000/images/${profil_image}`} alt="avatar du membre" />}
+          <div className="profile__user--short">
+            <p className="profile__user--name">{user.firstname} {user.lastname}</p>
+            {user.city && (
+            <p className="profile__user--city">
+              {firstLetterToUpper(restToLower(user.city.city_name))}
+              ({user.city.department_code})
+            </p>
+            )}
+            <p>{getAge(user.birthdate)} ans</p>
           </div>
-          )}
-          <p>Ses goûts musicaux:</p>
-          {styles && (
-          <div className="home__cards">
-            <ul>
-              {styles.map((musicStyle) => (
-                musicStyle.id && (
-                // Règle le souci musicStyle.id is undefined
-                <li key={musicStyle.id}>
-                  {musicStyle.music_name}
-                </li>
-                )
-              ))}
-            </ul>
-          </div>
-          )}
+          <button
+            type="button"
+            className="profile__user--add-btn"
+          >
+            <i className="fas fa-plus" />
+          </button>
         </div>
+        {/* //TODO => la route invitation + vue conditionnelle pour afficher profil ami */}
+        <div className="profile__user--description">
+          <p className="profile__user--description-title">Sa description:</p>
+          <p className="profile__user--description-content">{user.user_description}</p>
+        </div>
+        {plays && (
+        <div className="profile__instrument">
+          <p className="profile__instrument--description">Ses instruments:</p>
+          <ul className="profile__instrument--list">
+            {plays.map((play) => (
+              play.id && (
+              <li className="profile__instrument__tag" key={play.id}>
+                <span className="profile__instrument__tag--name">{play.instrument.instrument_name}</span>
+                <span className="profile__instrument__tag--level">{play.level && play.level.level_name}</span>
+              </li>
+              )
+            ))}
+          </ul>
+        </div>
+        )}
+        {styles && (
+        <div className="profile__style">
+          <p className="profile__style--description">Ses goûts musicaux:</p>
+          <ul className="profile__style--list">
+            {styles.map((musicStyle) => (
+              musicStyle.id && (
+              // Règle le souci musicStyle.id is undefined
+              <li className="profile__style__tag" key={musicStyle.id}>
+                <span className="profile__style__tag--name">{musicStyle.music_name}</span>
+              </li>
+              )
+            ))}
+          </ul>
+        </div>
+        )}
       </div>
     </div>
   );
