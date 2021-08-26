@@ -149,7 +149,7 @@
     &__form{
         display: flex;
         flex-direction: column;
-        width: 100%;
+        width: 90%;
         background-color: vars.$fourthColor;
         padding: 1rem;
         border-radius: vars.$borderRadius;
@@ -174,5 +174,9 @@
                 display: none;
             }
         }
+        &__form{
+            width: 90%;
+        }
     }
+
   }

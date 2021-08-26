@@ -230,11 +230,15 @@ MyProfile.propTypes = {
   handleSubmitInstruments: PropTypes.func.isRequired,
   city: PropTypes.string,
   onCityChange: PropTypes.func.isRequired,
-  instrumentsData: PropTypes.arrayOf().isRequired,
+  instrumentsData: PropTypes.arrayOf(
+    PropTypes.shape().isRequired,
+  ).isRequired,
+  levelsData: PropTypes.arrayOf(
+    PropTypes.shape().isRequired,
+  ).isRequired,
   instruments: PropTypes.arrayOf(
     PropTypes.shape().isRequired,
   ).isRequired,
-  levelsData: PropTypes.arrayOf().isRequired,
   onSelectInput: PropTypes.func.isRequired,
   addNewInstrument: PropTypes.func.isRequired,
   removeInstrument: PropTypes.func.isRequired,

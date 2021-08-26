@@ -45,7 +45,7 @@ Email.propTypes = {
   editEmail: PropTypes.bool.isRequired,
   handleSubmitEmail: PropTypes.func.isRequired,
   emailInput: PropTypes.string.isRequired,
-  onChangeProfileInput: PropTypes.string.isRequired,
+  onChangeProfileInput: PropTypes.func.isRequired,
   editFormToggle: PropTypes.func.isRequired,
   email: PropTypes.string.isRequired,
 };

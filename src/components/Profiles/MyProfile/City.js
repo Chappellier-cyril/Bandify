@@ -41,12 +41,12 @@ const City = ({
 );
 
 City.propTypes = {
-  user: PropTypes.arrayOf(PropTypes.shape({
+  user: PropTypes.shape({
     city: PropTypes.shape({
       city_name: PropTypes.string,
-      city_department_code: PropTypes.string,
+      department_code: PropTypes.string,
     }),
-  })),
+  }),
   editCity: PropTypes.bool.isRequired,
   handleSubmitCity: PropTypes.func.isRequired,
   onCityChange: PropTypes.func.isRequired,

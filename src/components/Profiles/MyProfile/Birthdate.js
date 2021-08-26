@@ -45,9 +45,9 @@ Birthdate.propTypes = {
   handleSubmitBirthdate: PropTypes.func.isRequired,
   dateOfBirth: PropTypes.string.isRequired,
   editFormToggle: PropTypes.func.isRequired,
-  user: PropTypes.arrayOf(PropTypes.shape({
+  user: PropTypes.shape({
     birthdate: PropTypes.string,
-  })),
+  }),
   onChangeProfileInput: PropTypes.func.isRequired,
 };
 

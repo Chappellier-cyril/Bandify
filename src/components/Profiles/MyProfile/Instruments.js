@@ -7,22 +7,20 @@ const Instruments = ({
   instrumentsData, levelsData, instruments, addNewInstrument, removeInstrument,
   onSelectInput, editFormToggle,
 }) => {
-  /* Essayer de faire maercher un filtre pour avoir seulement les instruments que
-   le membre n'a pas déjà choisi */
+  // On récupère un tableau filtré sans les instrument que l'utilisateur à déjà choisi
   const [filtredInstruments, setFilteredInstruments] = useState(instrumentsData);
   useEffect(() => {
+    if (!plays[0].instrument) return false;
     const filtredInst = instrumentsData.filter((inst) => {
-      console.log('instrumentsData', instrumentsData);
-      console.log(plays);
-      const foundPlay = plays.find((p) => inst.id === p.instrument.id);
-      console.log('foundPlay', foundPlay);
+      const foundPlay = plays.find((p) => p.instrument_id === inst.id);
+      if (foundPlay) return !foundPlay;
       const foundInst = instruments.find((instrument) => instrument.instrument === inst.id);
-      console.log('foundInst', foundInst);
-      return inst.id !== (foundPlay && foundPlay.id) || foundInst.instrument !== (inst && inst.id);
+      if (foundInst) return !foundInst;
+      return inst;
     });
-    console.log('filtredInst', filtredInst);
-    setFilteredInstruments(filtredInst);
+    return setFilteredInstruments(filtredInst);
   }, [instruments, plays]);
+
   return (
     <>
       {editInstruments ? (
@@ -125,9 +123,15 @@ Instruments.propTypes = {
   })),
   deleteInstrumentAssociation: PropTypes.func.isRequired,
   handleSubmitInstruments: PropTypes.func.isRequired,
-  instrumentsData: PropTypes.arrayOf().isRequired,
-  levelsData: PropTypes.arrayOf().isRequired,
-  instruments: PropTypes.arrayOf().isRequired,
+  instrumentsData: PropTypes.arrayOf(
+    PropTypes.shape().isRequired,
+  ).isRequired,
+  levelsData: PropTypes.arrayOf(
+    PropTypes.shape().isRequired,
+  ).isRequired,
+  instruments: PropTypes.arrayOf(
+    PropTypes.shape().isRequired,
+  ).isRequired,
   addNewInstrument: PropTypes.func.isRequired,
   removeInstrument: PropTypes.func.isRequired,
   onSelectInput: PropTypes.func.isRequired,
@@ -136,8 +140,9 @@ Instruments.propTypes = {
 
 Instruments.defaultProps = {
   plays: [{
-    instrument: '',
-    instrument_name: '',
+    instrument: {
+      instrument_name: '',
+    },
   }],
 };
 

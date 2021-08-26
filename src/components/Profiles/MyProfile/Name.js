@@ -44,10 +44,10 @@ const Name = ({
 );
 
 Name.propTypes = {
-  user: PropTypes.arrayOf(PropTypes.shape({
+  user: PropTypes.shape({
     firstname: PropTypes.string,
     lastname: PropTypes.string,
-  })),
+  }),
   firstName: PropTypes.string.isRequired,
   lastName: PropTypes.string.isRequired,
   editFormToggle: PropTypes.func.isRequired,

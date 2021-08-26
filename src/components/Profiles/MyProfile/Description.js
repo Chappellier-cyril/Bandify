@@ -44,13 +44,13 @@ Description.propTypes = {
   editDescription: PropTypes.bool.isRequired,
   handleSubmitDescription: PropTypes.func.isRequired,
   onChangeProfileInput: PropTypes.func.isRequired,
-  user: PropTypes.arrayOf(PropTypes.shape({
-    user_password: PropTypes.string,
-  })),
+  user: PropTypes.shape({
+    user_description: PropTypes.string,
+  }),
 };
 Description.defaultProps = {
   user: {
-    user_password: '',
+    user_description: '',
   },
 };
 

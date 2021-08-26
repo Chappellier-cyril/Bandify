@@ -1,4 +1,3 @@
-/* eslint-disable react/no-array-index-key */
 /* eslint-disable camelcase */
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
@@ -116,24 +115,24 @@ const Signup = ({
           instruments.map((instrument, index) => (
             // Prévoir de générer un id pour un code plus propre
             // eslint-disable-next-line react/no-array-index-key
-            <div key={index} className="signup-submit__group--instruments">
+            <div key={Math.random()} className="signup-submit__group--instruments">
               <label htmlFor={`instrument${index}`} className="signup-submit__group--instruments__input-container">
                 <select className="signup-submit__group__select" name={`instrument${index}`} id={`instrument${index}`} onChange={(e) => onSelectInput(e, index, 'instrument')} required={index === 0} disabled={instrument.instrument && index < instruments.length - 1}>
                   <option value="">Choisir un instrument</option>
                   {
-                    instrumentsData.map(({ instrument_name, id }) => (
-                      <option value={id} key={id}>{instrument_name}</option>))
+                    instrumentsData && instrumentsData.map(({ instrument_name, id }) => (
+                      <option value={id} key={instrument_name + id}>{instrument_name}</option>))
                   }
                 </select>
                 <select className="signup-submit__group__select" name={`level${index}`} id={`level${index}`} onChange={(e) => onSelectInput(e, index, 'level')} disabled={!instrument.instrument}>
                   <option value="">Choisir un niveau de pratique</option>
                   {
-                    levelsData.map(({ level_name, id }) => (
-                      <option value={id} key={id}>{level_name}</option>))
+                    levelsData && levelsData.map(({ level_name, id }) => (
+                      <option value={id} key={level_name + id}>{level_name}</option>))
                   }
                 </select>
               </label>
-              <div className="signup-submit__group--instruments__button-container">
+              <div key={Math.random() * 1000} className="signup-submit__group--instruments__button-container">
                 {// Ici on disabled le bouton + si pas d'instrument choisi
                 // On ajoute un bouton  - à la ligne précédente si ajoute une ligne
                 // On limite le nombre de choix max du membre (ici 3 est le maximum)
@@ -171,18 +170,21 @@ const Signup = ({
           {styles.map((s, index) => (
             // prévoir de générer un id proprement
 
-            <div className="signup-submit__group--styles__container">
-              <div key={index} className="signup-submit__group--styles__input-container">
+            <div key={Math.random() * 1000} className="signup-submit__group--styles__container">
+              {/* eslint-disable react/no-array-index-key */}
+              <div className="signup-submit__group--styles__input-container">
                 <select className="signup-submit__group__select" name={`musicStyle${index}`} id={`musicStyle${index}`} onChange={(e) => onStyleInput(e, index)}>
                   <option value="">Choisir un style de musique</option>
                   {
-                    musicStylesData.map((style) => (
-                      <option value={style.id} key={style.id}>{style.music_name}</option>
+                    musicStylesData && musicStylesData.map((style) => (
+                      <option value={style.id} key={style.music_name + style.id}>
+                        {style.music_name}
+                      </option>
                     ))
                   }
                 </select>
               </div>
-              <div className="signup-submit__group--styles__button-container">
+              <div key={Math.random() * 1000} className="signup-submit__group--styles__button-container">
                 {
                   index < 2 // 4 choix de style max (à définir)
                     && (index === styles.length - 1
@@ -228,9 +230,15 @@ const Signup = ({
 };
 
 Signup.propTypes = {
-  instrumentsData: PropTypes.arrayOf().isRequired,
-  levelsData: PropTypes.arrayOf().isRequired,
-  musicStylesData: PropTypes.arrayOf().isRequired,
+  instrumentsData: PropTypes.arrayOf(
+    PropTypes.shape().isRequired,
+  ).isRequired,
+  levelsData: PropTypes.arrayOf(
+    PropTypes.shape().isRequired,
+  ).isRequired,
+  musicStylesData: PropTypes.arrayOf(
+    PropTypes.shape().isRequired,
+  ).isRequired,
   success: PropTypes.bool.isRequired,
   error: PropTypes.string.isRequired,
   firstName: PropTypes.string.isRequired,
@@ -247,7 +255,7 @@ Signup.propTypes = {
     PropTypes.shape().isRequired,
   ).isRequired,
   styles: PropTypes.arrayOf(
-    PropTypes.number,
+    PropTypes.number.isRequired,
   ).isRequired,
   onChangeInput: PropTypes.func.isRequired,
   onSelectInput: PropTypes.func.isRequired,
