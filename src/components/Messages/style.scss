@@ -1,0 +1,22 @@
+.messages {
+  padding: 2rem;
+  overflow: auto;
+}
+
+.message {
+  margin-bottom: 2rem;
+  font-size: 1.2em;
+  &__author {
+    margin-bottom: 1.2em;
+    background-color: rgb(77, 226, 40);
+    border-radius: 40px;
+    padding: 1.2rem;
+  }
+  &__content {
+    background-color: white;
+    padding: 1.2rem;
+    display: inline-block;
+    border-radius: 40px;
+    color: rgb(64, 126, 218);
+  }
+}

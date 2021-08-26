@@ -1,33 +1,49 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Messages from 'src/components/Messages';
+import ChatForm from 'src/components/ChatForm';
+import FriendsList from 'src/components/FriendsList';
 import './style.scss';
 
-const Chatroom = ({ isChatroomOpen, toggleIsChatroomOpen }) => (
+const Chatroom = ({
+  isChatroomOpen,
+  toggleIsChatroomOpen,
+  toggleIsMessagesOpen,
+  toggleIsFriendsListOpen,
+  isMessagesOpen,
+  isFriendsListOpen,
+}) => (
   <div className={isChatroomOpen ? 'chatroom chatroom--open' : 'chatroom'}>
     <div className="chatroom__nav">
-      <button type="button" className="chatroom__nav-link">Conversation</button>
-      <button type="button" className="chatroom__nav-link">Amis</button>
+      <button
+        type="button"
+        className="chatroom__nav-link"
+        onClick={toggleIsMessagesOpen}
+      >
+        Conversation
+      </button>
+      <button
+        type="button"
+        className="chatroom__nav-link"
+        onClick={toggleIsFriendsListOpen}
+      >
+        Amis
+      </button>
     </div>
-
     <button type="button" onClick={toggleIsChatroomOpen} className="close-menu-btn">
       <i className="fas fa-times" />
     </button>
 
-    <div className="chatroom__messages">
-      <p className="chatroom__messages-item">Salut</p>
-      <p className="chatroom__messages-item">Ca va ?</p>
-      <p className="chatroom__messages-item">Non</p>
-      <p className="chatroom__messages-item">Ma connexion est a chier.</p>
+    {isMessagesOpen && (
+    <div className="chatroom__discussion">
+      <Messages />
+      <ChatForm />
     </div>
+    )}
 
-    <div className="chatroom__friends">
-      <ul className="chatroom__friends-list">
-        <li className="chatroom__friends-list__member">Roger</li>
-        <li className="chatroom__friends-list__member">Bardolph</li>
-        <li className="chatroom__friends-list__member">Tim</li>
-        <li className="chatroom__friends-list__member">Jason</li>
-      </ul>
-    </div>
+    {isFriendsListOpen && (
+      <FriendsList />
+    )}
 
   </div>
 );
@@ -35,6 +51,10 @@ const Chatroom = ({ isChatroomOpen, toggleIsChatroomOpen }) => (
 Chatroom.propTypes = {
   isChatroomOpen: PropTypes.bool.isRequired,
   toggleIsChatroomOpen: PropTypes.func.isRequired,
+  toggleIsMessagesOpen: PropTypes.func.isRequired,
+  toggleIsFriendsListOpen: PropTypes.func.isRequired,
+  isMessagesOpen: PropTypes.bool.isRequired,
+  isFriendsListOpen: PropTypes.bool.isRequired,
 };
 
 export default Chatroom;

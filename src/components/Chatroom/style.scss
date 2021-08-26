@@ -11,15 +11,13 @@
     transition: top 150ms ease-in-out;
 
     &--open {
-      // top: calc(0 + 17.6%);
-      // top: calc(0 + vars.$headerHeight);
       top: calc(0 + 16.8%)
     }
 
     &__nav {
       display: inline-block;
       width: 100%;
-      background-color: salmon;
+     
 
       &-link {
         width: 50%;

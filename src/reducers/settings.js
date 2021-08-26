@@ -21,6 +21,9 @@ export const initialState = {
   department: '',
   regions: [{}],
   region: '',
+  // chatroom
+  isMessagesOpen: false,
+  isFriendsListOpen: true,
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -39,6 +42,18 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         isFiltersOpen: !state.isFiltersOpen,
+      };
+    case 'SET_IS_OPEN_MESSAGES':
+      return {
+        ...state,
+        isMessagesOpen: true,
+        isFriendsListOpen: false,
+      };
+    case 'SET_IS_OPEN_FRIENDS_LIST':
+      return {
+        ...state,
+        isFriendsListOpen: true,
+        isMessagesOpen: false,
       };
     case 'GET_INSTRUMENTS_SUCCESS':
       return {
