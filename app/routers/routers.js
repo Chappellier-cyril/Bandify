@@ -134,12 +134,12 @@ router.get('/regions', localisationController.getAllRegions);
 router.get('/regions/:id', localisationController.getOneRegion);
 // MEMBER HAS INSTRUMENT
 
-router.route('/members/member_instrument')
+router.route('/members/:id/add_instrument')
     .post(associationController.MemberhasInstrument);
 
 // MEMBER HAS MUSIC_STYLES
 
-router.route('/members/member_musicstyle')
+router.route('/members/:id/add_musicstyle')
     .post(associationController.MemberhasMusicStyle);
 
 
