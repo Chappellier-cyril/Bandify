@@ -1,12 +1,18 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 
-const Message = () => (
+const Message = ({ content }) => (
   <li className="message">
-    <p className="message__author">Yo ça va?</p>
-    <p className="message__content">Bien et toi ?</p>
+    <p className="message__content--mine">{content}</p>
+    <p className="message__content--his">{content}</p>
   </li>
 );
+
+Message.propTypes = {
+  content: PropTypes.string.isRequired,
+  author: PropTypes.string.isRequired,
+};
 
 export default Message;
 
