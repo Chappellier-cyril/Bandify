@@ -96,7 +96,7 @@ const Signup = ({
         <div className="signup-submit__group">
           <label htmlFor="description">
             <span className="signup-submit__group__label">Description</span>
-            <textarea className="signup-submit__group__input" name="description" id="description" type="text" value={description} onChange={(e) => onChangeInput('description', e.target.value)} placeholder="Une petite présentation de vous, afin de permettre à nos membres de meiux vous connaître ... " />
+            <textarea className="signup-submit__group__input" name="description" id="description" type="text" value={description} onChange={(e) => onChangeInput('description', e.target.value)} placeholder="Une petite présentation de vous, afin de permettre à nos membres de mieux vous connaître ... " />
           </label>
         </div>
         <div className="signup-submit__group">
@@ -137,8 +137,23 @@ const Signup = ({
                 // A voir combien d'instruments maximum on pourrais choisir
                 index < 3 // maximum de ligne d'instrument
                 && (index === instruments.length - 1
-                  ? <button className="signup-submit__group--instruments__button" type="button" onClick={addNewInputInstrument} disabled={!instrument.instrument}>+</button>
-                  : <button type="button" onClick={() => removeInputInstrument(index)}>-</button>
+                  ? (
+                    <button
+                      className="signup-submit__group--instruments__button"
+                      type="button"
+                      onClick={addNewInputInstrument}
+                      disabled={!instrument.instrument}
+                    ><i className="fas fa-plus" />
+                    </button>
+                  )
+                  : (
+                    <button
+                      className="signup-submit__group--instruments__button"
+                      type="button"
+                      onClick={() => removeInputInstrument(index)}
+                    ><i className="fas fa-minus" />
+                    </button>
+                  )
                 )
                 }
               </div>
@@ -168,8 +183,25 @@ const Signup = ({
                 {
                   index < 2 // 4 choix de style max (à définir)
                     && (index === styles.length - 1
-                      ? <button className="signup-submit__group--styles__button" type="button" disabled={!styles[index]} onClick={addNewStyle}>+</button>
-                      : <button className="signup-submit__group--styles__" type="button" onClick={() => removeStyle(index)}>-</button>
+                      ? (
+                        <button
+                          className="signup-submit__group--styles__button"
+                          type="button"
+                          disabled={!styles[index]}
+                          onClick={addNewStyle}
+                        >
+                          <i className="fas fa-plus" />
+                        </button>
+                      )
+                      : (
+                        <button
+                          className="signup-submit__group--styles__button"
+                          type="button"
+                          onClick={() => removeStyle(index)}
+                        >
+                          <i className="fas fa-minus" />
+                        </button>
+                      )
                     )
                 }
               </div>

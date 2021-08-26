@@ -1,13 +1,48 @@
-.login__form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 73vh;
-  width: 100%;
-  margin-top: 1rem;
-  & > input {
-    width: 100%;
-    padding: 0.2rem 0.3rem;
+@use 'src/styles/vars';
+
+.login {
+  &__form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 73vh;
+    width: 100vw;
+    margin-top: 1rem;
+    &--submit {
+      background-color: vars.$thirdColor;
+      margin: 0.5rem 0;
+      border: none;
+      padding: 1rem;
+      border-radius: vars.$borderRadius;
+      color: vars.$fourthColor;
+      font-size: 1.1rem;
+    }
+    &__container {
+      border: 2px solid vars.$thirdColor;
+      border-radius: vars.$borderRadius;
+      width: 80%;
+      margin: 0.5rem 0;
+      position: relative;
+      &--input {
+        width: 100%;
+        border-radius: vars.$borderRadius;
+        padding: 1rem;
+        color: vars.$thirdColor;
+        font-size: 1.1rem;
+        border: none;
+      }
+      &--eye {
+        background-color: transparent;
+        border: none;
+        position: absolute;
+        right: 5%;
+        top: 33%;
+      }
+    }
   }
+}
+
+.login__form .fa-eye-slash, .fa-eye {
+  color: #1DA1F2;
 }

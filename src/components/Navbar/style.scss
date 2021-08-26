@@ -5,13 +5,15 @@
     position: fixed;
     top: 0;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     z-index: 99;
-    background-color: vars.$secondColor;
-    color: vars.$fifthColor;
+    background-color: vars.$firstColor;
+    color: vars.$thirdColor;
     opacity: 0;
     transform: translateX(-100%);
     transition: transform 300ms ease-in-out;
+    display: flex;
+    justify-content: center;
 
     &--open {
       transform: translateX(0%);
@@ -21,19 +23,25 @@
     &__nav {
       display: flex;
       flex-direction: column;
-      width: 300px;
-      height: auto;
-      margin: 50% auto;
+      justify-content: space-between;
+      height: 30%;
+      margin: auto;
       text-transform: uppercase;
   
-      &-link {
+      &--link {
         font-size: 1.3rem;
-        margin-bottom: 3rem;
+        text-align: center;
+        &--signup {
+          background-color: vars.$thirdColor;
+          color: vars.$fourthColor;
+          border-radius: vars.$borderRadius;
+          padding: 1rem;
+        }
       }
     }
   }
   .menu:hover {
-    color: vars.$fourthColor;
+    color: vars.$thirdColor;
   }
 
   .close-menu-btn {
@@ -45,7 +53,7 @@
     position: absolute;
     top: 25px;
     right: 33px;
-    color: vars.$fifthColor;
+    color: vars.$thirdColor;
   }
   
 }

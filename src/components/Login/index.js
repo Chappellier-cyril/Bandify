@@ -26,8 +26,9 @@ const Login = ({
       {/* Si la connexion échoue on affiche un message */}
       {isError && <p>E-mail ou Mot de passe incorrect</p>}
       <form onSubmit={onFormSubmit} method="post" className="login__form">
-        <div>
+        <div className="login__form__container">
           <input
+            className="login__form__container--input"
             name="email"
             type="text"
             value={email.trim()}
@@ -36,8 +37,9 @@ const Login = ({
             required
           />
         </div>
-        <div>
+        <div className="login__form__container">
           <input
+            className="login__form__container--input"
             name="password"
             // Si l'oeil est cliqué on affiche le mot de passe sinon on laisse en type password
             type={passwordShown ? 'text' : 'password'}
@@ -47,6 +49,7 @@ const Login = ({
             required
           />
           <button
+            className="login__form__container--eye"
             type="button"
             onClick={togglePasswordVisibility}
           >
@@ -57,6 +60,7 @@ const Login = ({
         </div>
         <button
           type="submit"
+          className="login__form--submit"
         >
           Envoyer
         </button>

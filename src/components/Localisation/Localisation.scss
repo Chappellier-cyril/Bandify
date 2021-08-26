@@ -1,9 +1,10 @@
 @use 'src/styles/vars';
 
 .autocompletion-city{
-    width: 100%;
+    width: 80%;
     cursor: pointer;
     position: relative;
+    margin: 0 auto;
     &__hidden-parts{
         display: none;
         visibility: hidden;
@@ -11,20 +12,19 @@
     &__input{
         width: 100%;
         border-radius: none;
-        border: 1px solid #000;
-        padding: .2rem .3rem;
-        margin:  0.2rem;
+        padding: 1rem;
+        margin:  1rem;
     }
     &__ul{
         width: 100%;
-        background-color: vars.$fifthColor;
-        color: vars.$fourthColor;
+        background-color: vars.$fourthColor;
+        color: vars.$thirdColor;
         position: absolute;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
         &__li{
-            border-bottom: solid 1px vars.$fourthColor;
+            border-bottom: solid 1px vars.$thirdColor;
             padding: 10px;
         }
     }

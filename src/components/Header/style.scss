@@ -12,7 +12,7 @@
     align-items: center;
     background-color: vars.$firstColor;
     padding: 1rem 1rem 1rem 0;
-    border-bottom: 1px solid vars.$fourthColor;
+    border-bottom: 1px solid vars.$thirdColor;
     z-index: 1;
 
     &__menu-btn {
@@ -21,8 +21,8 @@
       cursor: pointer;
       background: none;
       appearance: none;
-      color: vars.$fifthColor;
-      background-color: vars.$fourthColor;
+      color: vars.$fourthColor;
+      background-color: vars.$thirdColor;
       width: 50px;
       height: 50px;
       border-radius: 50%;
@@ -35,7 +35,7 @@
         margin-top: 1rem;
       }
       &--title {
-        color: vars.$fourthColor;
+        color: vars.$thirdColor;
         font-size: 1.5rem;
         margin: auto 0;
         font-weight: bold;
@@ -57,7 +57,7 @@
     align-items: center;
     background-color: vars.$firstColor;
     padding: 1rem 3rem;
-    border-bottom: 1px solid vars.$fourthColor;
+    border-bottom: 1px solid vars.$thirdColor;
     z-index: 1;
     &__menu-btn {
       display: none;

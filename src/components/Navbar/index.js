@@ -18,24 +18,24 @@ const Navbar = ({
     </button>
 
     <nav className="menu__nav">
-      <Link to="/" className="menu__nav-link" onClick={hideMenu}>
+      <Link to="/" className="menu__nav--link" onClick={hideMenu}>
         Accueil
       </Link>
       {isLogged ? (
         <>
-          <Link to={`/member/${connectedUserId}`} className="menu__nav-link" onClick={hideMenu}>
+          <Link to={`/member/${connectedUserId}`} className="menu__nav--link" onClick={hideMenu}>
             Mon profil
           </Link>
-          <Link to="/" onClick={onLogout} className="menu__nav-link">
+          <Link to="/" onClick={onLogout} className="menu__nav--link menu__nav--link--signup">
             Deconnexion
           </Link>
         </>
       ) : (
         <>
-          <Link to="/login" className="menu__nav-link" onClick={hideMenu}>
+          <Link to="/login" className="menu__nav--link" onClick={hideMenu}>
             Connexion
           </Link>
-          <Link to="/signup" className="menu__nav-link" onClick={hideMenu}>
+          <Link to="/signup" className="menu__nav--link menu__nav--link--signup" onClick={hideMenu}>
             Inscription
           </Link>
         </>

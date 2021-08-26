@@ -5,6 +5,7 @@ import { getAge } from 'src/selectors/user';
 
 // == Import : local
 import 'src/components/Profiles/style.scss';
+import './style.scss';
 
 const OtherProfile = ({ user }) => {
   const {
@@ -15,7 +16,7 @@ const OtherProfile = ({ user }) => {
     <div className="profile__page">
       {/* eslint-disable-next-line camelcase  */}
       <div className="profile">
-        <div className="profile__card">
+        <div className="home__cards">
           {profil_image && <img src={`http://localhost:3000/images/${profil_image}`} alt="avatar du membre" />}
           <p>{user.firstname}, {user.lastname}</p>
           {user.city && (
@@ -29,33 +30,33 @@ const OtherProfile = ({ user }) => {
           <p>{user.user_description}</p>
           <p>Ses instruments:</p>
           {plays && (
-            <div className="home__cards">
-              <ul>
-                {plays.map((play) => (
-                  play.id && (
-                  <li key={play.id}>
-                    {play.instrument.instrument_name}
-                    {play.level && play.level.level_name}
-                  </li>
-                  )
-                ))}
-              </ul>
-            </div>
+          <div className="home__cards">
+            <ul>
+              {plays.map((play) => (
+                play.id && (
+                <li key={play.id}>
+                  {play.instrument.instrument_name}
+                  {play.level && play.level.level_name}
+                </li>
+                )
+              ))}
+            </ul>
+          </div>
           )}
           <p>Ses goûts musicaux:</p>
           {styles && (
-            <div className="home__cards">
-              <ul>
-                {styles.map((musicStyle) => (
-                  musicStyle.id && (
-                  // Règle le souci musicStyle.id is undefined
-                  <li key={musicStyle.id}>
-                    {musicStyle.music_name}
-                  </li>
-                  )
-                ))}
-              </ul>
-            </div>
+          <div className="home__cards">
+            <ul>
+              {styles.map((musicStyle) => (
+                musicStyle.id && (
+                // Règle le souci musicStyle.id is undefined
+                <li key={musicStyle.id}>
+                  {musicStyle.music_name}
+                </li>
+                )
+              ))}
+            </ul>
+          </div>
           )}
         </div>
       </div>
