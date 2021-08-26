@@ -54,7 +54,6 @@ const MyProfile = ({
         <div className="profile">
           <div className="profile__card">
             {editPhoto ? (
-              // TODO => vérifier l'édition de la photo
               <form type="submit" onSubmit={(e) => handleSubmitPhoto(e, avatar)}>
                 <div>
                   <label htmlFor="avatar">
@@ -431,7 +430,7 @@ MyProfile.defaultProps = {
     profil_image: '',
     city: {
       city_name: '',
-      code: '',
+      department_code: '',
     },
     plays: [
       {

@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React from 'react';
 import PropTypes, { shape } from 'prop-types';
 import { getAge } from 'src/selectors/user';
@@ -6,48 +7,58 @@ import { getAge } from 'src/selectors/user';
 import 'src/components/Profiles/style.scss';
 
 const OtherProfile = ({ user }) => {
-  // eslint-disable-next-line camelcase
-  const { plays, city, styles } = user;
+  const {
+    plays, styles, profil_image,
+  } = user;
 
   return (
     <div className="profile__page">
       {/* eslint-disable-next-line camelcase  */}
-      {plays && city && styles ? (
-        <div className="profile">
-          <div className="profile__card">
-            {/* //TODO => ajouter une photo */}
-            <p>{user.firstname}, {user.lastname}</p>
-            <h2>Ville: {city.city_name} ({city.code})</h2>
-            <h2>{getAge(user.birthdate)} ans</h2>
-            <button type="button">Ajouter à mes amis</button>
-            {/* //TODO => la route invitation + vue conditionnelle pour afficher profil ami */}
-            <p>{user.user_description}</p>
-            <p>Ses instruments:</p>
+      <div className="profile">
+        <div className="profile__card">
+          {profil_image && <img src={`http://localhost:3000/images/${profil_image}`} alt="avatar du membre" />}
+          <p>{user.firstname}, {user.lastname}</p>
+          {user.city && (
+          <span>
+            {user.city.city_name} ({user.city.department_code})
+          </span>
+          )}
+          <h2>{getAge(user.birthdate)} ans</h2>
+          <button type="button">Ajouter à mes amis</button>
+          {/* //TODO => la route invitation + vue conditionnelle pour afficher profil ami */}
+          <p>{user.user_description}</p>
+          <p>Ses instruments:</p>
+          {plays && (
             <div className="home__cards">
               <ul>
                 {plays.map((play) => (
+                  play.id && (
                   <li key={play.id}>
                     {play.instrument.instrument_name}
-                    {play.level.level_name}
+                    {play.level && play.level.level_name}
                   </li>
-
+                  )
                 ))}
               </ul>
             </div>
-            <p>Ses goûts musicaux:</p>
+          )}
+          <p>Ses goûts musicaux:</p>
+          {styles && (
             <div className="home__cards">
               <ul>
                 {styles.map((musicStyle) => (
+                  musicStyle.id && (
+                  // Règle le souci musicStyle.id is undefined
                   <li key={musicStyle.id}>
                     {musicStyle.music_name}
                   </li>
-
+                  )
                 ))}
               </ul>
             </div>
-          </div>
+          )}
         </div>
-      ) : (null) }
+      </div>
     </div>
   );
 };
@@ -58,9 +69,10 @@ OtherProfile.propTypes = {
     lastname: PropTypes.string,
     birthdate: PropTypes.string,
     user_description: PropTypes.string,
+    profil_image: PropTypes.string,
     city: PropTypes.shape({
       city_name: PropTypes.string,
-      code: PropTypes.string,
+      department_code: PropTypes.string,
     }),
     plays: PropTypes.arrayOf(shape({
       instrument: PropTypes.shape({
@@ -82,9 +94,10 @@ OtherProfile.defaultProps = {
     lastname: '',
     birthdate: '',
     user_description: '',
+    profil_image: '',
     city: {
       city_name: '',
-      code: '',
+      department_code: '',
     },
     plays: [
       {

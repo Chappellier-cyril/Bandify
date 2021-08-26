@@ -19,9 +19,8 @@ const About = () => (
       Bandify a été crée par une équipe de 5 développeurs, tous issus de l'école O'Clock et réunis autour des mêmes passions.
     </p>
 
-    <Link to="/contact" className="home__signup-btn">Contactez-nous</Link>
-  
-    
+    <Link to="/contact" className="home__signup--btn">Contactez-nous</Link>
+
   </div>
 );
 

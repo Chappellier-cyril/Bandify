@@ -137,7 +137,6 @@ const usersMiddleware = (store) => (next) => (action) => {
     };
     axios(options)
       .then((response) => {
-        console.log(response.data);
         store.dispatch({ type: 'PASSWORD_MODIFIED_SUCCESS', data: response.data });
       })
       .catch((e) => {
@@ -155,7 +154,6 @@ const usersMiddleware = (store) => (next) => (action) => {
     };
     axios(options)
       .then((response) => {
-        console.log(response.data);
         store.dispatch({ type: 'CITY_MODIFIED_SUCCESS', data: response.data });
       })
       .catch((e) => {
