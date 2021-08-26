@@ -9,32 +9,42 @@ const Avatar = ({
   return (
     <>
       {editPhoto ? (
-        <form type="submit" onSubmit={(e) => handleSubmitPhoto(e, avatar)}>
-          <div>
-            <label htmlFor="avatar">
-              Image de profil
-              <input name="avatar" id="avatar" type="file" placeholder="Choisir une photo" onChange={(e) => setAvatar(e.target.files[0])} />
+        <form
+          className="myprofile__user--picture-form"
+          type="submit"
+          onSubmit={(e) => handleSubmitPhoto(e, avatar)}
+        >
+          <div className="myprofile__user--picture-desc">
+            <p>Image de profil</p>
+            <label htmlFor="avatar" className="myprofile__user--picture-file">
+              <input
+                name="avatar"
+                id="avatar"
+                type="file"
+                placeholder="Choisir une photo"
+                onChange={(e) => setAvatar(e.target.files[0])}
+              />
             </label>
+            <button type="submit">Envoyer</button>
           </div>
-          <button type="submit">Envoyer</button>
           <button
             type="button"
+            className="myprofile__user--close-edit-photo"
             onClick={() => editFormToggle('editPhoto')}
           >
             <i className="fas fa-times-circle" />
           </button>
         </form>
       ) : (
-        <div className="profile__card__image-container">
-          {profil_image && <img src={`http://localhost:3000/images/${profil_image}`} alt="avatar du membre" className="profile__card__image-container__image" />}
-          <span>
-            <button
-              type="button"
-              onClick={() => editFormToggle('editPhoto')}
-            >
-              <i className="fas fa-pen" />
-            </button>
-          </span>
+        <div className="myprofile__user--avatar">
+          {profil_image && <img className="myprofile__user--picture" src={`http://localhost:3000/images/${profil_image}`} alt="avatar du membre" />}
+          <button
+            type="button"
+            onClick={() => editFormToggle('editPhoto')}
+            className="myprofile__user--edit-photo"
+          >
+            <i className="fas fa-pen" />
+          </button>
         </div>
       )}
     </>

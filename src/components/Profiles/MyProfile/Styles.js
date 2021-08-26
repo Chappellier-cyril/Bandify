@@ -5,26 +5,22 @@ const Styles = ({
   editFormToggle, styles, editStyles, handleSubmitStyles,
 }) => (
   <>
-    <p>
-      Mes goûts musicaux:
-      {/* //TODO => edit */}
-      <span>
-        <button
-          type="button"
-          onClick={() => editFormToggle('editStyles')}
-        >
-          <i className="fas fa-pen" />
-        </button>
-      </span>
-    </p>
+    {/* //TODO => edit */}
+    <button
+      type="button"
+      onClick={() => editFormToggle('editStyles')}
+    >
+      <i className="fas fa-pen" />
+    </button>
     {styles && (
-    <div className="home__cards">
-      <ul>
+    <div className="myprofile__style">
+      <p className="myprofile__style--description">Mes goûts musicaux:</p>
+      <ul className="myprofile__style--list">
         {styles.map((musicStyle) => (
           musicStyle.id && (
           // Règle le souci musicStyle.id is undefined
-          <li key={musicStyle.id}>
-            {musicStyle.music_name}
+          <li className="myprofile__style__tag" key={musicStyle.id}>
+            <span className="myprofile__style__tag--name">{musicStyle.music_name}</span>
           </li>
           )
         ))}

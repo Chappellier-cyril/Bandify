@@ -15,7 +15,6 @@ const Searchbar = ({
     <div className="search__header">
       <h1 className="search__header--title">Recherche</h1>
       {/* vide la recherche et réinitialise => nouvelle requete getMembers */}
-      <button type="button" onClick={onResetFilters} className="search__button">Réinitialiser</button>
     </div>
 
     <form onSubmit={onSearchSubmit} method="GET" action="/search" className="search__form">
@@ -152,12 +151,17 @@ const Searchbar = ({
           </select>
         </div>
       )}
-      {/* ouvre/ferme les filtres */}
-      <button type="button" onClick={toggleIsFiltersOpen} className="search__button">
-        {isFiltersOpen ? 'Reduire' : 'Filtrer'}
-      </button>
-      {/* Appelle onSearchSubmit */}
-      <button type="submit" className="search__button--launch">Lancer</button>
+      <div className="search__button__container">
+        {/* ouvre/ferme les filtres */}
+        <button type="button" onClick={toggleIsFiltersOpen} className="search__button">
+          {isFiltersOpen ? 'Reduire' : 'Filtrer'}
+        </button>
+        <button type="button" onClick={onResetFilters} className="search__button">Réinitialiser</button>
+        {/* Appelle onSearchSubmit */}
+      </div>
+      <div className="search__launch">
+        <button type="submit" className="search__button--launch">Lancer</button>
+      </div>
     </form>
   </div>
 );
