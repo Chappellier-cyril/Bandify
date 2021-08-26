@@ -161,13 +161,10 @@ const usersMiddleware = (store) => (next) => (action) => {
       });
   }
   if (action.type === 'SUBMIT_MODIFIED_STYLES') {
-    const options = {
-      method: 'PATCH',
-      url: `http://localhost:3000/members/${lastSegmentUrl}`,
-      data: {
-        city_code: state.users.code,
-      },
-    };
+    console.log(action);
+  }
+  if (action.type === 'SUBMIT_MODIFIED_INSTRUMENTS') {
+    console.log(action);
   }
   next(action);
 };
