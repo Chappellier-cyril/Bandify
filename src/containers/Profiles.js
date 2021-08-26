@@ -24,7 +24,9 @@ const mapStateToProps = (state) => ({
   description: state.users.user.user_description,
   passwordShown: state.login.passwordShown,
   city: state.users.city,
-
+  instrumentsData: state.settings.instruments,
+  instruments: state.users.instruments,
+  levelsData: state.settings.levels,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -94,6 +96,30 @@ const mapDispatchToProps = (dispatch) => ({
       type: 'CHANGE_CITY_INPUT',
       key,
       value,
+    });
+  },
+  onSelectInput: (e, index, key) => {
+    dispatch({
+      type: 'CHANGE_INSTRUMENT_LEVEL_ON_PROFILE',
+      key,
+      index,
+      value: e.target.value,
+    });
+  },
+  addNewInstrument: () => {
+    dispatch({
+      type: 'ADD_NEW_INSTRUMENT_INPUT_PROFILE',
+    });
+  },
+  removeInstrument: (index) => {
+    dispatch({
+      type: 'REMOVE_INSTRUMENT_INPUT_PROFILE',
+      index,
+    });
+  },
+  deleteInstrumentAssociation: () => {
+    dispatch({
+      type: 'WISH_TO_DELETE_INSTRUMENT_ASSOCIATION',
     });
   },
 });

@@ -43,6 +43,13 @@ const Profiles = ({
   handleSubmitInstruments,
   city,
   onCityChange,
+  instruments,
+  instrumentsData,
+  levelsData,
+  onSelectInput,
+  addNewInstrument,
+  removeInstrument,
+  deleteInstrumentAssociation,
 }) => {
   const url = window.location.href;
   // pour avoir le dernier segment de l'url
@@ -98,6 +105,13 @@ const Profiles = ({
           handleSubmitInstruments={handleSubmitInstruments}
           city={city}
           onCityChange={onCityChange}
+          instruments={instruments}
+          instrumentsData={instrumentsData}
+          levelsData={levelsData}
+          onSelectInput={onSelectInput}
+          addNewInstrument={addNewInstrument}
+          removeInstrument={removeInstrument}
+          deleteInstrumentAssociation={deleteInstrumentAssociation}
         />
       ) : <OtherProfile user={user} />
   );
@@ -140,6 +154,15 @@ Profiles.propTypes = {
   handleSubmitCity: PropTypes.func,
   city: PropTypes.string,
   onCityChange: PropTypes.func,
+  instrumentsData: PropTypes.arrayOf(),
+  instruments: PropTypes.arrayOf(
+    PropTypes.shape(),
+  ),
+  levelsData: PropTypes.arrayOf(),
+  onSelectInput: PropTypes.func,
+  addNewInstrument: PropTypes.func,
+  removeInstrument: PropTypes.func,
+  deleteInstrumentAssociation: PropTypes.func,
 };
 
 Profiles.defaultProps = {
@@ -162,6 +185,13 @@ Profiles.defaultProps = {
   password: '',
   city: '',
   onCityChange: null,
+  instrumentsData: [],
+  instruments: [{}],
+  levelsData: [],
+  onSelectInput: null,
+  addNewInstrument: null,
+  removeInstrument: null,
+  deleteInstrumentAssociation: null,
 };
 
 export default Profiles;

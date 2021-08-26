@@ -160,11 +160,17 @@ const usersMiddleware = (store) => (next) => (action) => {
         store.dispatch({ type: 'SUBMIT_MODIFIED_ERROR', error: e });
       });
   }
+
   if (action.type === 'SUBMIT_MODIFIED_STYLES') {
     console.log(action);
   }
+
   if (action.type === 'SUBMIT_MODIFIED_INSTRUMENTS') {
     console.log(action);
+  }
+
+  if (action.type === 'WISH_TO_DELETE_INSTRUMENT_ASSOCIATION') {
+    console.log('test');
   }
   next(action);
 };

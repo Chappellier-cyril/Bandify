@@ -41,6 +41,7 @@ export const initialState = {
   error: '',
   city: '',
   code: '',
+  instruments: [{}],
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -179,6 +180,36 @@ const reducer = (state = initialState, action = {}) => {
         users: usersData,
       };
 
+    case 'CHANGE_INSTRUMENT_LEVEL_ON_PROFILE': {
+      const copyInstruments = [...state.instruments];
+      const instrumentAlreadyChoose = copyInstruments.find(
+        ({ instrument }) => instrument === action.value,
+      );
+      if (!instrumentAlreadyChoose || action.key === 'level') {
+        copyInstruments[action.index] = {
+          ...copyInstruments[action.index],
+          [action.key]: action.value,
+        };
+      }
+      return {
+        ...state,
+        instruments: copyInstruments,
+      };
+    }
+
+    case 'ADD_NEW_INSTRUMENT_INPUT_PROFILE':
+      return {
+        ...state,
+        instruments: [...state.instruments, {}],
+      };
+
+    case 'REMOVE_INSTRUMENT_INPUT_PROFILE': {
+      const copyInstruments = state.instruments.filter((_, i) => i !== action.index);
+      return {
+        ...state,
+        instruments: copyInstruments,
+      };
+    }
     default:
       return state;
   }

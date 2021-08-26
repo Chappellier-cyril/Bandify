@@ -1,9 +1,15 @@
 /* eslint-disable camelcase */
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes, { shape } from 'prop-types';
-import { getAge } from 'src/selectors/user';
-import Localisation from 'src/components/Localisation';
-
+import Avatar from './Avatar';
+import Name from './Name';
+import City from './City';
+import Birthdate from './Birthdate';
+import Email from './Email';
+import Password from './Password';
+import Description from './Description';
+import Instruments from './Instruments';
+import Styles from './Styles';
 // == Import : local
 import 'src/components/Profiles/style.scss';
 
@@ -42,12 +48,18 @@ const MyProfile = ({
   handleSubmitStyles,
   city,
   onCityChange,
+  instruments,
+  instrumentsData,
+  levelsData,
+  onSelectInput,
+  addNewInstrument,
+  removeInstrument,
+  deleteInstrumentAssociation,
 
 }) => {
   const {
     plays, styles, profil_image, email,
   } = user;
-  const [avatar, setAvatar] = useState();
 
   return (
     <>
@@ -55,291 +67,87 @@ const MyProfile = ({
         {isDeleteModalClosed && (
         <div className="profile">
           <div className="profile__card">
-            {editPhoto ? (
-              <form type="submit" onSubmit={(e) => handleSubmitPhoto(e, avatar)}>
-                <div>
-                  <label htmlFor="avatar">
-                    Image de profil
-                    <input name="avatar" id="avatar" type="file" placeholder="Choisir une photo" onChange={(e) => setAvatar(e.target.files[0])} />
-                  </label>
-                </div>
-                <button type="submit">Envoyer</button>
-                <button
-                  type="button"
-                  onClick={() => editFormToggle('editPhoto')}
-                >
-                  <i className="fas fa-times-circle" />
-                </button>
-              </form>
-            ) : (
-              <div className="profile__card__image-container">
-                {profil_image && <img src={`http://localhost:3000/images/${profil_image}`} alt="avatar du membre" className="profile__card__image-container__image" />}
-                <span>
-                  <button
-                    type="button"
-                    onClick={() => editFormToggle('editPhoto')}
-                  >
-                    <i className="fas fa-pen" />
-                  </button>
-                </span>
-              </div>
-            )}
-            {editName ? (
-              <form type="submit" onSubmit={handleSubmitName}>
-                <div>
-                  <label htmlFor="firstName">
-                    Prénom
-                    <input name="firstName" id="firstName" type="text" value={firstName} onChange={(e) => onChangeProfileInput('firstName', e.target.value)} placeholder="Prénom" required />
-                  </label>
-                </div>
-                <div>
-                  <label htmlFor="lastName">
-                    Nom
-                    <input name="lastName" id="lastName" type="text" value={lastName} onChange={(e) => onChangeProfileInput('lastName', e.target.value)} placeholder="Nom" required />
-                  </label>
-                </div>
-                <button type="submit">Envoyer</button>
-                <button
-                  type="button"
-                  onClick={() => editFormToggle('editName')}
-                >
-                  <i className="fas fa-times-circle" />
-                </button>
-              </form>
-            ) : (
-              <p>
-                {user.firstname}, {user.lastname}
-                <span>
-                  <button
-                    type="button"
-                    onClick={() => editFormToggle('editName')}
-                  >
-                    <i className="fas fa-pen" />
-                  </button>
-                </span>
-              </p>
-            )}
-            {editCity ? (
-              <form type="submit" onSubmit={handleSubmitCity}>
-                <Localisation
-                  city={city}
-                  onChangeInput={onCityChange}
-                />
-                <button type="submit">Envoyer</button>
-                <button
-                  type="button"
-                  onClick={() => editFormToggle('editCity')}
-                >
-                  <i className="fas fa-times-circle" />
-                </button>
-              </form>
-            ) : (
-              <h2>Ville:
-                {user.city && (
-                <span>
-                  {user.city.city_name} ({user.city.department_code})
-                </span>
-                )}
-                <span>
-                  <button
-                    type="button"
-                    onClick={() => editFormToggle('editCity')}
-                  >
-                    <i className="fas fa-pen" />
-                  </button>
-                </span>
-              </h2>
-            )}
-            {editBirthdate ? (
-              <form type="submit" onSubmit={handleSubmitBirthdate}>
-                <div>
-                  <label htmlFor="dateOfBirth">
-                    Date de naissance
-                    <input name="dateOfBirth" id="dateOfBirth" type="date" value={dateOfBirth} onChange={(e) => onChangeProfileInput('dateOfBirth', e.target.value)} required />
-                  </label>
-                </div>
-                <button type="submit">Envoyer</button>
-                <button
-                  type="button"
-                  onClick={() => editFormToggle('editBirthdate')}
-                >
-                  <i className="fas fa-times-circle" />
-                </button>
-              </form>
-            ) : (
-              <h2>
-                {getAge(user.birthdate)} ans
-                <span>
-                  <button
-                    type="button"
-                    onClick={() => editFormToggle('editBirthdate')}
-                  >
-                    <i className="fas fa-pen" />
-                  </button>
-                </span>
-              </h2>
-            )}
-            {editEmail ? (
-              <form type="submit" onSubmit={handleSubmitEmail}>
-                <div>
-                  <input
-                    name="email"
-                    type="text"
-                    value={emailInput.trim()}
-                    onChange={(e) => onChangeProfileInput('email', e.target.value)}
-                    placeholder="E-mail"
-                    required
-                  />
-                </div>
-                <button type="submit">Envoyer</button>
-                <button
-                  type="button"
-                  onClick={() => editFormToggle('editEmail')}
-                >
-                  <i className="fas fa-times-circle" />
-                </button>
-              </form>
-            ) : (
-              <h2>
-                Email: {email}
-                <span>
-                  <button
-                    type="button"
-                    onClick={() => editFormToggle('editEmail')}
-                  >
-                    <i className="fas fa-pen" />
-                  </button>
-                </span>
-              </h2>
-            )}
-            {editPassword ? (
-              <form type="submit" onSubmit={handleSubmitPassword}>
-                <div>
-                  <input
-                    name="password"
-            // Si l'oeil est cliqué on affiche le mot de passe sinon on laisse en type password
-                    type={passwordShown ? 'text' : 'password'}
-                    value={password.trim()}
-                    onChange={(e) => onChangeProfileInput('user_password', e.target.value)}
-                    placeholder="Nouveau mot de passe"
-                    required
-                  />
-                  <button
-                    type="button"
-                    onClick={togglePasswordVisibility}
-                  >
-                    {/* Si l'oeil est cliqué on change l'icone en oeil barré
-            sinon on affiche l'oeil normal */}
-                    {passwordShown ? <i className="fas fa-eye-slash" /> : <i className="fas fa-eye" />}
-                  </button>
-                </div>
-                <button type="submit">Envoyer</button>
-                <button
-                  type="button"
-                  onClick={() => editFormToggle('editPassword')}
-                >
-                  <i className="fas fa-times-circle" />
-                </button>
-              </form>
-            ) : (
-              <h2>
-                <span>
-                  <button
-                    type="button"
-                    onClick={() => editFormToggle('editPassword')}
-                  >
-                    Modifier mon mot de passe
-                  </button>
-                </span>
-              </h2>
-            )}
-            {editDescription ? (
-              <form type="submit" onSubmit={handleSubmitDescription}>
-                <div>
-                  <label htmlFor="description">
-                    Description
-                    <textarea name="description" id="description" type="text" value={description} onChange={(e) => onChangeProfileInput('user_description', e.target.value)} placeholder="Faire une courte description de vous" />
-                  </label>
-                </div>
-                <button type="submit">Envoyer</button>
-                <button
-                  type="button"
-                  onClick={() => editFormToggle('editDescription')}
-                >
-                  <i className="fas fa-times-circle" />
-                </button>
-              </form>
-            ) : (
-              <h2>
-                Description
-                <span>
-                  <button
-                    type="button"
-                    onClick={() => editFormToggle('editDescription')}
-                  >
-                    <i className="fas fa-pen" />
-                  </button>
-                </span>
-                <p>{user.user_description}</p>
-              </h2>
-            )}
+            <Avatar
+              editPhoto={editPhoto}
+              handleSubmitPhoto={handleSubmitPhoto}
+              profil_image={profil_image}
+              editFormToggle={editFormToggle}
+            />
+            <Name
+              editName={editName}
+              handleSubmitName={handleSubmitName}
+              firstName={firstName}
+              lastName={lastName}
+              user={user}
+              editFormToggle={editFormToggle}
+              onChangeProfileInput={onChangeProfileInput}
+            />
+            <City
+              editCity={editCity}
+              handleSubmitCity={handleSubmitCity}
+              onCityChange={onCityChange}
+              city={city}
+              editFormToggle={editFormToggle}
+              user={user}
+            />
+            <Birthdate
+              editBirthdate={editBirthdate}
+              handleSubmitBirthdate={handleSubmitBirthdate}
+              dateOfBirth={dateOfBirth}
+              editFormToggle={editFormToggle}
+              user={user}
+              onChangeProfileInput={onChangeProfileInput}
+            />
+            <Email
+              editEmail={editEmail}
+              handleSubmitEmail={handleSubmitEmail}
+              emailInput={emailInput}
+              onChangeProfileInput={onChangeProfileInput}
+              editFormToggle={editFormToggle}
+              email={email}
+
+            />
+            <Password
+              editPassword={editPassword}
+              handleSubmitPassword={handleSubmitPassword}
+              passwordShown={passwordShown}
+              password={password}
+              togglePasswordVisibility={togglePasswordVisibility}
+              editFormToggle={editFormToggle}
+              onChangeProfileInput={onChangeProfileInput}
+            />
+            <Description
+              editDescription={editDescription}
+              handleSubmitDescription={handleSubmitDescription}
+              editFormToggle={editFormToggle}
+              user={user}
+              description={description}
+              onChangeProfileInput={onChangeProfileInput}
+            />
             <button
               type="button"
               onClick={onWishToDeleteProfile}
             >Supprimer mon profil
             </button>
-            <p>
-              Mes instruments:
-              {/* //TODO => edit */}
-              <span>
-                <button
-                  type="button"
-                  onClick={() => editFormToggle('editInstruments')}
-                >
-                  <i className="fas fa-pen" />
-                </button>
-              </span>
-            </p>
-            {plays && (
-            <div className="home__cards">
-              <ul>
-                {plays.map((play) => (
-                  play.id && (
-                    <li key={play.id}>
-                      {play.instrument.instrument_name}
-                      {play.level && play.level.level_name}
-                    </li>
-                  )
-                ))}
-              </ul>
-            </div>
-            )}
-            <p>
-              Mes goûts musicaux:
-              {/* //TODO => edit */}
-              <span>
-                <button
-                  type="button"
-                  onClick={() => editFormToggle('editStyles')}
-                >
-                  <i className="fas fa-pen" />
-                </button>
-              </span>
-            </p>
-            {styles && (
-            <div className="home__cards">
-              <ul>
-                {styles.map((musicStyle) => (
-                  musicStyle.id && (
-                  // Règle le souci musicStyle.id is undefined
-                  <li key={musicStyle.id}>
-                    {musicStyle.music_name}
-                  </li>
-                  )
-                ))}
-              </ul>
-            </div>
-            )}
+            <Instruments
+              editInstruments={editInstruments}
+              plays={plays}
+              deleteInstrumentAssociation={deleteInstrumentAssociation}
+              handleSubmitInstruments={handleSubmitInstruments}
+              instrumentsData={instrumentsData}
+              levelsData={levelsData}
+              instruments={instruments}
+              addNewInstrument={addNewInstrument}
+              removeInstrument={removeInstrument}
+              onSelectInput={onSelectInput}
+              editFormToggle={editFormToggle}
+            />
+            <Styles
+              editFormToggle={editFormToggle}
+              styles={styles}
+              editStyles={editStyles}
+              handleSubmitStyles={handleSubmitStyles}
+            />
             <h2 className="profile__friends-title">Mes amis</h2>
           </div>
         </div>
@@ -422,6 +230,15 @@ MyProfile.propTypes = {
   handleSubmitInstruments: PropTypes.func.isRequired,
   city: PropTypes.string,
   onCityChange: PropTypes.func.isRequired,
+  instrumentsData: PropTypes.arrayOf().isRequired,
+  instruments: PropTypes.arrayOf(
+    PropTypes.shape().isRequired,
+  ).isRequired,
+  levelsData: PropTypes.arrayOf().isRequired,
+  onSelectInput: PropTypes.func.isRequired,
+  addNewInstrument: PropTypes.func.isRequired,
+  removeInstrument: PropTypes.func.isRequired,
+  deleteInstrumentAssociation: PropTypes.func.isRequired,
 };
 
 MyProfile.defaultProps = {
