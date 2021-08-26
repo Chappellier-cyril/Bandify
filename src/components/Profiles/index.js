@@ -39,6 +39,8 @@ const Profiles = ({
   handleSubmitDescription,
   handleSubmitPassword,
   handleSubmitCity,
+  handleSubmitStyles,
+  handleSubmitInstruments,
   city,
   onCityChange,
 }) => {
@@ -92,6 +94,8 @@ const Profiles = ({
           handleSubmitDescription={handleSubmitDescription}
           handleSubmitPassword={handleSubmitPassword}
           handleSubmitCity={handleSubmitCity}
+          handleSubmitStyles={handleSubmitStyles}
+          handleSubmitInstruments={handleSubmitInstruments}
           city={city}
           onCityChange={onCityChange}
         />
