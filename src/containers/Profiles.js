@@ -81,6 +81,14 @@ const mapDispatchToProps = (dispatch) => ({
     e.preventDefault();
     dispatch({ type: 'SUBMIT_MODIFIED_CITY' });
   },
+  handleSubmitStyles: (e) => {
+    e.preventDefault();
+    dispatch({ type: 'SUBMIT_MODIFIED_STYLES' });
+  },
+  handleSubmitInstruments: (e) => {
+    e.preventDefault();
+    dispatch({ type: 'SUBMIT_MODIFIED_INSTRUMENTS' });
+  },
   onCityChange: (key, value) => {
     dispatch({
       type: 'CHANGE_CITY_INPUT',

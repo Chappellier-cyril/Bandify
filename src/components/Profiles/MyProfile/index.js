@@ -38,6 +38,8 @@ const MyProfile = ({
   handleSubmitDescription,
   handleSubmitPassword,
   handleSubmitCity,
+  handleSubmitInstruments,
+  handleSubmitStyles,
   city,
   onCityChange,
 
@@ -416,6 +418,8 @@ MyProfile.propTypes = {
   handleSubmitDescription: PropTypes.func.isRequired,
   handleSubmitPassword: PropTypes.func.isRequired,
   handleSubmitCity: PropTypes.func.isRequired,
+  handleSubmitStyles: PropTypes.func.isRequired,
+  handleSubmitInstruments: PropTypes.func.isRequired,
   city: PropTypes.string,
   onCityChange: PropTypes.func.isRequired,
 };

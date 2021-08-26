@@ -160,6 +160,15 @@ const usersMiddleware = (store) => (next) => (action) => {
         store.dispatch({ type: 'SUBMIT_MODIFIED_ERROR', error: e });
       });
   }
+  if (action.type === 'SUBMIT_MODIFIED_STYLES') {
+    const options = {
+      method: 'PATCH',
+      url: `http://localhost:3000/members/${lastSegmentUrl}`,
+      data: {
+        city_code: state.users.code,
+      },
+    };
+  }
   next(action);
 };
 
