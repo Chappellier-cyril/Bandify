@@ -157,14 +157,12 @@ Profiles.propTypes = {
   city: PropTypes.string,
   onCityChange: PropTypes.func,
   instrumentsData: PropTypes.arrayOf(
-    PropTypes.shape({}).isRequired,
+    PropTypes.shape().isRequired,
   ).isRequired,
   levelsData: PropTypes.arrayOf(
-    PropTypes.shape({}).isRequired,
+    PropTypes.shape().isRequired,
   ).isRequired,
-  instruments: PropTypes.arrayOf(
-    PropTypes.shape({}).isRequired,
-  ).isRequired,
+  instruments: PropTypes.arrayOf().isRequired,
   onSelectInput: PropTypes.func,
   addNewInstrument: PropTypes.func,
   removeInstrument: PropTypes.func,
