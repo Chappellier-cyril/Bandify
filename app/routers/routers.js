@@ -114,7 +114,8 @@ router.route('/messages')
     .post(messageController.createMessage);
 
 router.route('/messages/:id')
-    .post(messageController.createMessage);
+     .get(messageController.readMessage);
+    // .post(messageController.createMessage);
 
 router.route('/invitations')
     .get(invitationController.getAllInvitations);

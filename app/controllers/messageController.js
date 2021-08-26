@@ -31,6 +31,26 @@ const messageController = {
         }
     },
 
+    // Read message
+    readMessage: async (req, res, next) => {
+        try {
+            const messageTarget = req.params.id;
+
+            const messageInc = await Message.findByPk(messageTarget);
+
+            if(messageInc) {
+                res.json(messageInc);
+
+            } else {
+                next();
+            }
+
+        } catch (error) {
+            console.trace(error);
+            res.status(500).json(error);
+        }
+    }
+
     // A MODIFIER
     
     // readMessage : async (req, res, next) => {
