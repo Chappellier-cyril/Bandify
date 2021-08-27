@@ -1,51 +1,120 @@
 @use 'src/styles/vars';
 
-.login {
-  &__form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 73vh;
-    width: 100vw;
-    margin-top: 1rem;
-    &__error {
-      color: rgb(168, 29, 29);
-    }
-    &--submit {
-      background-color: vars.$thirdColor;
-      margin: 0.5rem 0;
-      border: none;
-      padding: 1rem;
-      border-radius: vars.$borderRadius;
-      color: vars.$fourthColor;
-      font-size: 1.1rem;
-    }
-    &__container {
-      border: 2px solid vars.$thirdColor;
-      border-radius: vars.$borderRadius;
-      width: 80%;
-      margin: 0.5rem 0;
-      position: relative;
-      &--input {
-        width: 100%;
-        border-radius: vars.$borderRadius;
-        padding: 1rem;
-        color: vars.$thirdColor;
-        font-size: 1.1rem;
-        border: none;
+// MOBILE
+@media screen and (max-width: 700px) {
+  .login {
+    &__form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 73vh;
+      width: 100vw;
+      margin-top: 1rem;
+
+      &-title {
+        color: vars.$fourthColor;
+        font-size: 1.7rem;
+        margin-bottom: 2rem;
       }
-      &--eye {
-        background-color: transparent;
+      &__error {
+        color: rgb(168, 29, 29);
+      }
+      &--submit {
+        background-color: vars.$thirdColor;
+        margin: 0.5rem 0;
         border: none;
-        position: absolute;
-        right: 5%;
-        top: 33%;
+        padding: 1rem;
+        border-radius: vars.$borderRadius;
+        color: vars.$fourthColor;
+        font-size: 1.1rem;
+      }
+      &__container {
+        border: 2px solid vars.$thirdColor;
+        border-radius: vars.$borderRadius;
+        width: 80%;
+        margin: 0.5rem 0;
+        position: relative;
+        &--input {
+          width: 100%;
+          border-radius: vars.$borderRadius;
+          padding: 1rem;
+          color: vars.$thirdColor;
+          font-size: 1.1rem;
+          border: none;
+        }
+        &--eye {
+          background-color: transparent;
+          border: none;
+          position: absolute;
+          right: 5%;
+          top: 33%;
+        }
       }
     }
   }
+  
+  .login__form .fa-eye-slash, .fa-eye {
+    color: #1DA1F2;
+  }
 }
 
-.login__form .fa-eye-slash, .fa-eye {
-  color: #1DA1F2;
+// DESKTOP
+@media screen and (min-width: 700px) {
+  .login {
+    &__form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 73vh;
+      width: 50vw;
+      margin: 0 auto;
+
+      &-title {
+        color: vars.$fourthColor;
+        font-size: 1.7rem;
+        margin-bottom: 2rem;
+      }
+      &__error {
+        color: rgb(168, 29, 29);
+      }
+      &--submit {
+        background-color: vars.$thirdColor;
+        margin: 0.5rem 0;
+        border: none;
+        padding: 1rem;
+        border-radius: vars.$borderRadius;
+        color: vars.$fourthColor;
+        font-size: 1.1rem;
+      }
+      &__container {
+        border: 2px solid vars.$thirdColor;
+        border-radius: vars.$borderRadius;
+        width: 80%;
+        margin: 0.5rem 0;
+        position: relative;
+        &--input {
+          width: 100%;
+          border-radius: vars.$borderRadius;
+          padding: 1rem;
+          color: vars.$thirdColor;
+          font-size: 1.1rem;
+          border: none;
+        }
+        &--eye {
+          background-color: transparent;
+          border: none;
+          position: absolute;
+          right: 5%;
+          top: 33%;
+        }
+      }
+    }
+  }
+  
+  .login__form .fa-eye-slash, .fa-eye {
+    color: #1DA1F2;
+  }
 }
+
