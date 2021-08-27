@@ -192,12 +192,11 @@ const reducer = (state = initialState, action = {}) => {
       };
     }
 
-    case 'ON_LOGIN_SUCCESS': {
+    case 'ON_LOGIN_SUCCESS':
       return {
         ...state,
-        sender_id: action.data.id,
+        sender_id: Number(action.data.id),
       };
-    }
 
     default:
       return state;
