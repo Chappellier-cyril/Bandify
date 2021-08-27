@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import Message from './Message';
 import './style.scss';
 
-const Messages = ({ messages, getMessages, receiverName }) => {
+const Messages = ({
+  messages, getMessages, receiverName,
+}) => {
   useEffect(() => {
     getMessages();
   }, []);
@@ -11,6 +13,7 @@ const Messages = ({ messages, getMessages, receiverName }) => {
   return (
     <div className="messages">
       <p className="messages__author">{receiverName}</p>
+      {console.log(messages)}
       {messages.map((message) => (
         <Message
           key={message.id}
@@ -30,6 +33,7 @@ Messages.propTypes = {
   })).isRequired,
   getMessages: PropTypes.func.isRequired,
   receiverName: PropTypes.string.isRequired,
+  getIds: PropTypes.func.isRequired,
 };
 
 export default Messages;

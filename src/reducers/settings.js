@@ -151,10 +151,17 @@ const reducer = (state = initialState, action = {}) => {
         messageInputValue: action.messageInputValue,
       };
     case 'GET_MESSAGES_SUCCESS':
+    {
+      console.log(state);
+      console.log('sender_id:', state.sender_id, 'receiver_id', state.reicever_id);
       return {
         ...state,
-        messages: action.messages,
+        messages: action.messages
+          .filter((message) => (message.sender_id === state.sender_id
+          && message.reicever_id === state.reicever_id)
+          || (message.sender_id === state.reicever_id && message.reicever_id === state.sender_id)),
       };
+    }
     case 'ADD_MESSAGE_SUCCESS': {
       // si la value de l'input renseignée n'est pas vide, on soumet le form
       if (state.messageInputValue.trim() !== '') {
@@ -176,13 +183,21 @@ const reducer = (state = initialState, action = {}) => {
       // sinon, string vide ==> on return le state, pas de soumission du form
       return state;
     }
-    case 'GET_RECEIVER':
+    case 'GET_RECEIVER': {
       return {
         ...state,
         reicever_id: action.id,
         reicever_name: action.name,
         isMessagesOpen: true,
       };
+    }
+
+    case 'ON_LOGIN_SUCCESS': {
+      return {
+        ...state,
+        sender_id: action.data.id,
+      };
+    }
 
     default:
       return state;
