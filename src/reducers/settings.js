@@ -25,6 +25,7 @@ export const initialState = {
   isMessagesOpen: false,
   isFriendsListOpen: true,
   messageInputValue: '',
+  // Tableau où on stock nos messages au fur et à mesure
   messages: [],
   id: null,
   content: '',
@@ -168,6 +169,8 @@ const reducer = (state = initialState, action = {}) => {
       if (state.messageInputValue.trim() !== '') {
         return {
           ...state,
+          // ON compare les clefs dans le state 
+          // avec les clefs qu'il y a dans le tableau message du state
           messages: [
             ...state.messages,
             {
