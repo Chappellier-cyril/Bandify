@@ -15,13 +15,11 @@ const Header = ({ toggleIsMenuOpen, toggleIsChatroomOpen, isLogged }) => (
       <h1 className="header__bandify--title">Bandify</h1>
     </div>
 
-    <NavbarDesktop />
-
-    <div className="header__menu-btn__container">
+    <div className="header__menu-buttons">
       {isLogged && (
         <button
           type="button"
-          className="header__menu-btn"
+          className="header__menu-buttons-btn--chat"
           onClick={toggleIsChatroomOpen}
         >
           <i className="fas fa-comments" />
@@ -30,12 +28,14 @@ const Header = ({ toggleIsMenuOpen, toggleIsChatroomOpen, isLogged }) => (
 
       <button
         type="button"
-        className="header__menu-btn"
+        className="header__menu-buttons-btn--menu"
         onClick={toggleIsMenuOpen}
       >
         <i className="fas fa-bars" />
       </button>
     </div>
+
+    <NavbarDesktop />
 
   </header>
 );
@@ -43,6 +43,7 @@ const Header = ({ toggleIsMenuOpen, toggleIsChatroomOpen, isLogged }) => (
 Header.propTypes = {
   toggleIsMenuOpen: PropTypes.func.isRequired,
   toggleIsChatroomOpen: PropTypes.func.isRequired,
+  isLogged: PropTypes.bool.isRequired,
 };
 
 export default Header;

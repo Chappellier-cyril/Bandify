@@ -23,7 +23,9 @@ const Login = ({
     <>
       {/* Si l'utilisateur est connecté on redirige vers la page d'accueil */}
       {isLogged && <Redirect to="/" />}
+
       <form onSubmit={onFormSubmit} method="post" className="login__form">
+        <h1 className="login__form-title">Connexion</h1>
         {/* Si la connexion échoue on affiche un message */}
         {isError && <p className="login__form__error">E-mail ou Mot de passe incorrect</p>}
         <div className="login__form__container">
