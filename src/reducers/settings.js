@@ -165,13 +165,16 @@ const reducer = (state = initialState, action = {}) => {
       };
     }
     case 'GET_NEW_MESSAGE':
+    {
+      console.log('action.message dans le reducer settings', action.message);
       return {
         ...state,
         messages: [
-          ...state.settings.messages,
-          action.message,
+          ...state.messages,
+          { ...action.message },
         ],
       };
+    }
     case 'ADD_MESSAGE_SUCCESS': {
       // si la value de l'input renseignée n'est pas vide, on soumet le form
       if (state.messageInputValue.trim() !== '') {

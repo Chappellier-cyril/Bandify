@@ -8,19 +8,23 @@ const Messages = ({
 }) => {
   // create messageRef
   const messageRef = useRef();
-
+  // UseEffect pour récupérer les messages de la BDD
   useEffect(() => {
     getMessages();
-
-    // scroll de toute la hauteur de scroll disponible / Quand le tableau de message change on appel cet effet
+  }, []);
+  // UseEffect à chaque chagement du state de messages
+  useEffect(() => {
+    /* scroll de toute la hauteur de scroll disponible /
+    Quand le tableau de message change on appel cet effet */
     messageRef.current.scrollTop = messageRef.current.scrollHeight;
   }, [messages]);
 
   return (
     <div
     // On y pose la ref ici
-    ref={messageRef}
-    className="messages">
+      ref={messageRef}
+      className="messages"
+    >
       <p className="messages__author">{receiverName}</p>
       {messages.map((message) => (
         <Message
