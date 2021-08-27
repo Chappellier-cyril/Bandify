@@ -164,6 +164,14 @@ const reducer = (state = initialState, action = {}) => {
           || (message.sender_id === state.reicever_id && message.reicever_id === state.sender_id)),
       };
     }
+    case 'GET_NEW_MESSAGE':
+      return {
+        ...state,
+        messages: [
+          ...state.settings.messages,
+          action.message,
+        ],
+      };
     case 'ADD_MESSAGE_SUCCESS': {
       // si la value de l'input renseignée n'est pas vide, on soumet le form
       if (state.messageInputValue.trim() !== '') {
