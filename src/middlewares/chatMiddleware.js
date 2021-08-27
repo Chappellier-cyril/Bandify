@@ -20,7 +20,7 @@ const chatMiddleware = (store) => (next) => (action) => {
         id: state.settings.id,
         content: state.settings.messageInputValue,
         status: state.settings.status,
-        sender_id: state.login.id,
+        sender_id: state.settings.sender_id,
         reicever_id: state.settings.reicever_id,
       },
 
