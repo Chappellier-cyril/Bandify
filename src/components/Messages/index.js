@@ -6,15 +6,19 @@ import './style.scss';
 const Messages = ({
   messages, getMessages, receiverName, reicever, sender,
 }) => {
+  // create messageRef
   const messageRef = useRef();
+
   useEffect(() => {
     getMessages();
 
+    // scroll de toute la hauteur de scroll disponible / Quand le tableau de message change on appel cet effet
     messageRef.current.scrollTop = messageRef.current.scrollHeight;
   }, [messages]);
 
   return (
     <div
+    // On y pose la ref ici
     ref={messageRef}
     className="messages">
       <p className="messages__author">{receiverName}</p>
