@@ -33,6 +33,9 @@ export const initialState = {
   sender_id: null,
   reicever_id: null,
   reicever_name: '',
+  request_user_id: null,
+  invitations: [],
+  isInvitationSent: false,
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -218,6 +221,22 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         sender_id: Number(action.user.id),
       };
+
+    case 'SEND_INVITATION_SUCCESS': {
+      return {
+        ...state,
+        invitations: [
+          ...state.invitations,
+          {
+            id: action.invitation.id,
+            status: action.invitation.status,
+            request_user_id: action.invitation.request_user_id,
+            response_user_id: action.invitation.response_user_id,
+          },
+        ],
+        isInvitationSent: true,
+      };
+    }
 
     default:
       return state;

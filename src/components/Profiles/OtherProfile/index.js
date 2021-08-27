@@ -8,10 +8,17 @@ import 'src/components/Profiles/style.scss';
 import { firstLetterToUpper, restToLower } from 'src/selectors/city';
 import './style.scss';
 
-const OtherProfile = ({ user }) => {
+const OtherProfile = ({
+  user, sendInvitation, isInvitationSent, invitations,
+}) => {
   const {
     plays, styles, profil_image,
   } = user;
+
+  const foundInvitedUser = invitations
+    .find((invitation) => invitation.response_user_id === user.id);
+
+  // TODO => récupérer le tableau des invitations au refresh avec un useeffect
 
   return (
     <div className="profile__cards">
@@ -28,12 +35,17 @@ const OtherProfile = ({ user }) => {
             )}
             <p>{getAge(user.birthdate)} ans</p>
           </div>
-          <button
-            type="button"
-            className="profile__user--add-btn"
-          >
-            <i className="fas fa-plus" />
-          </button>
+          {isInvitationSent && foundInvitedUser ? (
+            <p className="profile__user--invitation-status">Invitation envoyée <i className="fas fa-check" /></p>
+          ) : (
+            <button
+              type="button"
+              className="profile__user--add-btn"
+              onClick={() => sendInvitation(user.id)}
+            >
+              <i className="fas fa-plus" />
+            </button>
+          )}
         </div>
         {/* //TODO => la route invitation + vue conditionnelle pour afficher profil ami */}
         <div className="profile__user--description">
@@ -77,6 +89,7 @@ const OtherProfile = ({ user }) => {
 
 OtherProfile.propTypes = {
   user: PropTypes.shape({
+    id: PropTypes.number.isRequired,
     firstname: PropTypes.string,
     lastname: PropTypes.string,
     birthdate: PropTypes.string,
@@ -98,6 +111,9 @@ OtherProfile.propTypes = {
       music_name: PropTypes.string,
     })),
   }),
+  sendInvitation: PropTypes.func.isRequired,
+  isInvitationSent: PropTypes.bool.isRequired,
+  invitations: PropTypes.arrayOf().isRequired,
 };
 
 OtherProfile.defaultProps = {

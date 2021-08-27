@@ -50,6 +50,9 @@ const Profiles = ({
   addNewInstrument,
   removeInstrument,
   deleteInstrumentAssociation,
+  sendInvitation,
+  isInvitationSent,
+  invitations,
 }) => {
   const url = window.location.href;
   // pour avoir le dernier segment de l'url
@@ -113,7 +116,14 @@ const Profiles = ({
           removeInstrument={removeInstrument}
           deleteInstrumentAssociation={deleteInstrumentAssociation}
         />
-      ) : <OtherProfile user={user} />
+      ) : (
+        <OtherProfile
+          user={user}
+          sendInvitation={sendInvitation}
+          isInvitationSent={isInvitationSent}
+          invitations={invitations}
+        />
+      )
   );
 };
 
@@ -167,6 +177,9 @@ Profiles.propTypes = {
   addNewInstrument: PropTypes.func,
   removeInstrument: PropTypes.func,
   deleteInstrumentAssociation: PropTypes.func,
+  sendInvitation: PropTypes.func,
+  isInvitationSent: PropTypes.bool.isRequired,
+  invitations: PropTypes.arrayOf().isRequired,
 };
 
 Profiles.defaultProps = {
@@ -193,6 +206,7 @@ Profiles.defaultProps = {
   addNewInstrument: null,
   removeInstrument: null,
   deleteInstrumentAssociation: null,
+  sendInvitation: null,
 };
 
 export default Profiles;

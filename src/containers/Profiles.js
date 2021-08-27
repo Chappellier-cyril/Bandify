@@ -27,6 +27,8 @@ const mapStateToProps = (state) => ({
   instrumentsData: state.settings.instruments,
   instruments: state.users.instruments,
   levelsData: state.settings.levels,
+  isInvitationSent: state.settings.isInvitationSent,
+  invitations: state.settings.invitations,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -120,6 +122,11 @@ const mapDispatchToProps = (dispatch) => ({
   deleteInstrumentAssociation: () => {
     dispatch({
       type: 'WISH_TO_DELETE_INSTRUMENT_ASSOCIATION',
+    });
+  },
+  sendInvitation: (id) => {
+    dispatch({
+      type: 'SEND_INVITATION_TO_USER', id,
     });
   },
 });
