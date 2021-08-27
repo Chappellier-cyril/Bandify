@@ -25,6 +25,7 @@ export const initialState = {
   isMessagesOpen: false,
   isFriendsListOpen: true,
   messageInputValue: '',
+  // Tableau où on stock nos messages au fur et à mesure
   messages: [],
   id: null,
   content: '',
@@ -93,6 +94,9 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         isMenuOpen: !state.isMenuOpen,
+        isChatroomOpen: false,
+        isMessagesOpen: false,
+        messages: [],
       };
     case 'DELETE_PROFILE_WISH':
       return {
@@ -151,15 +155,22 @@ const reducer = (state = initialState, action = {}) => {
         messageInputValue: action.messageInputValue,
       };
     case 'GET_MESSAGES_SUCCESS':
+    {
       return {
         ...state,
-        messages: action.messages,
+        messages: action.messages
+          .filter((message) => (message.sender_id === state.sender_id
+          && message.reicever_id === state.reicever_id)
+          || (message.sender_id === state.reicever_id && message.reicever_id === state.sender_id)),
       };
+    }
     case 'ADD_MESSAGE_SUCCESS': {
       // si la value de l'input renseignée n'est pas vide, on soumet le form
       if (state.messageInputValue.trim() !== '') {
         return {
           ...state,
+          // ON compare les clefs dans le state 
+          // avec les clefs qu'il y a dans le tableau message du state
           messages: [
             ...state.messages,
             {
@@ -176,12 +187,25 @@ const reducer = (state = initialState, action = {}) => {
       // sinon, string vide ==> on return le state, pas de soumission du form
       return state;
     }
-    case 'GET_RECEIVER':
+    case 'GET_RECEIVER': {
       return {
         ...state,
         reicever_id: action.id,
         reicever_name: action.name,
         isMessagesOpen: true,
+      };
+    }
+
+    case 'ON_LOGIN_SUCCESS':
+      return {
+        ...state,
+        sender_id: Number(action.data.id),
+      };
+
+    case 'RECONNECT_USER':
+      return {
+        ...state,
+        sender_id: Number(action.user.id),
       };
 
     default:

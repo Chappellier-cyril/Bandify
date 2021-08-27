@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import Message from './Message';
 import './style.scss';
 
-const Messages = ({ messages, getMessages, receiverName }) => {
+const Messages = ({
+  messages, getMessages, receiverName, reicever, sender,
+}) => {
   useEffect(() => {
     getMessages();
   }, []);
@@ -15,6 +17,8 @@ const Messages = ({ messages, getMessages, receiverName }) => {
         <Message
           key={message.id}
           {...message}
+          reicever={reicever}
+          sender={sender}
         />
       ))}
 
@@ -30,6 +34,8 @@ Messages.propTypes = {
   })).isRequired,
   getMessages: PropTypes.func.isRequired,
   receiverName: PropTypes.string.isRequired,
+  reicever: PropTypes.number.isRequired,
+  sender: PropTypes.number.isRequired,
 };
 
 export default Messages;

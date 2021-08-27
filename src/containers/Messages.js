@@ -4,6 +4,8 @@ import Messages from 'src/components/Messages';
 const mapStateToProps = (state) => ({
   messages: state.settings.messages,
   receiverName: state.settings.reicever_name,
+  reicever: state.settings.reicever_id,
+  sender: state.settings.sender_id,
 });
 
 const mapDispatchToProps = (dispatch) => ({

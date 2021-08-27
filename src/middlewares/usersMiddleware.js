@@ -170,7 +170,7 @@ const usersMiddleware = (store) => (next) => (action) => {
   }
 
   if (action.type === 'WISH_TO_DELETE_INSTRUMENT_ASSOCIATION') {
-    console.log('test');
+    console.log(action);
   }
   next(action);
 };
