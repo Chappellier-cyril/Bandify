@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
 import Header from 'src/components/Header';
 
-// const mapStateToProps = (state) => ({
-
-// });
+const mapStateToProps = (state) => ({
+  isLogged: state.login.isLogged,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   toggleIsMenuOpen: () => {
@@ -14,4 +14,4 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-export default connect(null, mapDispatchToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
