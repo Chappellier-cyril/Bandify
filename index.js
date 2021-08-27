@@ -8,7 +8,7 @@ const socketio = require('socket.io');
 const server = http.createServer(app);
 const expressSwagger = require('express-swagger-generator')(app);
 const CLIENT_SIDE = process.env.CLIENT_SIDE || 'http://localhost:8080';
-const { addMemberOnline, removeMemberOnline} = require('./sockets/users');
+const { addMemberOnline, removeMemberOnline, findUserOnline} = require('./sockets/users');
 let swaggerOptions = {
    swaggerDefinition: {
        info: {
@@ -45,9 +45,26 @@ app.use(router);
 //TESTS SOCKETS => CREER UN TABLEAU DE MEMBER ONLINE ET LE RENVOYER AU FRONT
 io.on('connect', (socket) => {
     socket.on('isOnline', (member) => {
-        console.log('member', member);
         const onlineMembers = addMemberOnline(member.id, socket.id);
         io.emit('online-members', {online: onlineMembers});
+        socket.on('sendMessage', (message) => {
+            const foundReiceverOnline = findUserOnline(message.reicever_id);
+            if(foundReiceverOnline) {
+                io.to(foundReiceverOnline.socketId).emit('notifications', {notification: 'new message', message: message});
+            }
+            console.log(message);
+        });
+        socket.on('sendInvitation', (invitation) => {
+            console.log('socket a reçu invitation sur écouteur Sendinvitation', invitation);
+            console.log(invitation.reicever_id);
+            const foundReiceverOnline = findUserOnline(invitation.reicever_id);
+            console.log('foundReiceverOnline', foundReiceverOnline)
+            if(foundReiceverOnline) {
+                console.log('foundReiceverOnline.socketId', foundReiceverOnline.socketId);
+                io.to(foundReiceverOnline.socketId).emit('notifications', {notification: 'new invitation', invitation: invitation});
+            }
+            console.log(invitation);
+        })
     })
     socket.on('disconnect', () => {
         console.log('A member left', socket.id);
@@ -55,7 +72,6 @@ io.on('connect', (socket) => {
         console.log(newOnlineMembers);
         io.emit('online-members', {online: newOnlineMembers});
     });
-
 });
 
 const port = process.env.PORT || 3000;

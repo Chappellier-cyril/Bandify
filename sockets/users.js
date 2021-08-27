@@ -17,10 +17,18 @@ const addMemberOnline = (userId, socketId) => {
 };
 
 const removeMemberOnline = (socketId) => {
-    console.log(socketId);
     const filteredMembersOnline = membersOnline.filter((m) => m.socketId !== socketId);
     membersOnline = filteredMembersOnline;
     return membersOnline;
+};
+
+const findUserOnline = (userId) => {
+    console.log('userId du findUserOnline', userId);
+    console.log('members online du finduserOnline', membersOnline)
+    const foundUser = membersOnline.find((m) => Number(m.id) === userId);
+    console.log('foundUsr du finduseronline', foundUser);
+    if(foundUser) return foundUser;
+    return;
 }
 
-module.exports = { addMemberOnline, removeMemberOnline };
+module.exports = { addMemberOnline, removeMemberOnline, findUserOnline };
