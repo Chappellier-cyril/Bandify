@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import Message from './Message';
 import './style.scss';
@@ -6,12 +6,21 @@ import './style.scss';
 const Messages = ({
   messages, getMessages, receiverName, reicever, sender,
 }) => {
+  // create messageRef
+  const messageRef = useRef();
+
   useEffect(() => {
     getMessages();
-  }, []);
+
+    // scroll de toute la hauteur de scroll disponible / Quand le tableau de message change on appel cet effet
+    messageRef.current.scrollTop = messageRef.current.scrollHeight;
+  }, [messages]);
 
   return (
-    <div className="messages">
+    <div
+    // On y pose la ref ici
+    ref={messageRef}
+    className="messages">
       <p className="messages__author">{receiverName}</p>
       {messages.map((message) => (
         <Message
@@ -21,7 +30,6 @@ const Messages = ({
           sender={sender}
         />
       ))}
-
     </div>
   );
 };
