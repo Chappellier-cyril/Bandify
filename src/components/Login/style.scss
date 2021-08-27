@@ -9,6 +9,9 @@
     height: 73vh;
     width: 100vw;
     margin-top: 1rem;
+    &__error {
+      color: rgb(168, 29, 29);
+    }
     &--submit {
       background-color: vars.$thirdColor;
       margin: 0.5rem 0;
