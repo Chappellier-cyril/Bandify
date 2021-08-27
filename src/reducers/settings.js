@@ -95,6 +95,7 @@ const reducer = (state = initialState, action = {}) => {
         isMenuOpen: !state.isMenuOpen,
         isChatroomOpen: false,
         isMessagesOpen: false,
+        messages: [],
       };
     case 'DELETE_PROFILE_WISH':
       return {
