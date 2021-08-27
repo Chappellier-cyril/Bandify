@@ -8,6 +8,7 @@ sequelize = new Sequelize(process.env.PG_URL, {
       requestTimeout:1000000,
     }
   },
+  logging: false,
   pool: {
     acquire: 1000000,
   }
