@@ -154,7 +154,7 @@ const Searchbar = ({
       <div className="search__button__container">
         {/* ouvre/ferme les filtres */}
         <button type="button" onClick={toggleIsFiltersOpen} className="search__button">
-          {isFiltersOpen ? 'Reduire' : 'Filtrer'}
+          {isFiltersOpen ? 'Masquer' : 'Filtres'}
         </button>
         <button type="button" onClick={onResetFilters} className="search__button">Réinitialiser</button>
         {/* Appelle onSearchSubmit */}

@@ -155,6 +155,7 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         messages: action.messages,
       };
+
     case 'ADD_MESSAGE_SUCCESS': {
       // si la value de l'input renseignée n'est pas vide, on soumet le form
       if (state.messageInputValue.trim() !== '') {
@@ -182,6 +183,12 @@ const reducer = (state = initialState, action = {}) => {
         reicever_id: action.id,
         reicever_name: action.name,
         isMessagesOpen: true,
+      };
+
+    case 'ON_LOGIN_SUCCESS':
+      return {
+        ...state,
+        sender_id: action.data.id,
       };
 
     default:
