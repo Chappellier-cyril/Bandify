@@ -10,8 +10,6 @@ const Messages = ({
     getMessages();
   }, []);
 
-  // TODO => régler le souci du chat quand on le ferme pas et qu'on se déco reco
-
   return (
     <div className="messages">
       <p className="messages__author">{receiverName}</p>
