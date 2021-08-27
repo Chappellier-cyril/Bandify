@@ -5,7 +5,6 @@ const authMiddleware = (store) => (next) => (action) => {
     // on commence par récupérer un instantané du state
     // dans lequel nous viendrons piocher email et password
     const state = store.getState();
-
     const options = {
       method: 'POST',
       url: 'http://localhost:3000/login',
@@ -21,20 +20,20 @@ const authMiddleware = (store) => (next) => (action) => {
 
     axios(options)
       .then((response) => {
-        store.dispatch({ type: 'ON_LOGIN_SUCCESS', data: response.data });
         // ON clear le localstorage au cas où avant
         localStorage.clear();
-        
         // On y STOCKE (setItem) les infos du user + le token
         localStorage.setItem('userId', response.data.id);
         localStorage.setItem('userEmail', response.data.email);
         localStorage.setItem('token', response.data.token);
+        store.dispatch({ type: 'ON_LOGIN_SUCCESS', data: response.data });
       })
       .catch((e) => {
         console.log(e);
         store.dispatch({ type: 'ON_LOGIN_ERROR' });
       });
   }
+
   else {
     next(action);
   }
