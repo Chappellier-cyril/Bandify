@@ -6,7 +6,7 @@ import NavbarDesktop from 'src/containers/NavbarDesktop';
 import logoBandify from 'src/assets/logoBandify.svg';
 import './style.scss';
 
-const Header = ({ toggleIsMenuOpen, toggleIsChatroomOpen }) => (
+const Header = ({ toggleIsMenuOpen, toggleIsChatroomOpen, isLogged }) => (
   <header className="header">
     <div className="header__bandify">
       <Link to="/">
@@ -15,25 +15,27 @@ const Header = ({ toggleIsMenuOpen, toggleIsChatroomOpen }) => (
       <h1 className="header__bandify--title">Bandify</h1>
     </div>
 
-    <NavbarDesktop />
+    <div className="header__menu-buttons">
+      {isLogged && (
+        <button
+          type="button"
+          className="header__menu-buttons-btn--chat"
+          onClick={toggleIsChatroomOpen}
+        >
+          <i className="fas fa-comments" />
+        </button>
+      )}
 
-    <div className="header__menu-btn__container">
       <button
         type="button"
-        className="header__menu-btn"
-        onClick={toggleIsChatroomOpen}
-      >
-        <i className="fas fa-comments" />
-      </button>
-
-      <button
-        type="button"
-        className="header__menu-btn"
+        className="header__menu-buttons-btn--menu"
         onClick={toggleIsMenuOpen}
       >
         <i className="fas fa-bars" />
       </button>
     </div>
+
+    <NavbarDesktop />
 
   </header>
 );
@@ -41,6 +43,7 @@ const Header = ({ toggleIsMenuOpen, toggleIsChatroomOpen }) => (
 Header.propTypes = {
   toggleIsMenuOpen: PropTypes.func.isRequired,
   toggleIsChatroomOpen: PropTypes.func.isRequired,
+  isLogged: PropTypes.bool.isRequired,
 };
 
 export default Header;

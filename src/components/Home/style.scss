@@ -5,6 +5,7 @@
   .main {
     height: auto;
     width: 100vw;
+    margin-top: 8rem;
   }
 
   .home {
@@ -13,10 +14,10 @@
       padding: 2rem;
       width: 100%;
       font-size: 1.4rem;
-      color: vars.$thirdColor;
+      color: vars.$fourthColor;
       text-align: center;
       &--teasing {
-        color: vars.$thirdColor;
+        color: vars.$fourthColor;
         margin: 2rem auto;
         text-align: center;
         font-size: 1.2rem;
@@ -116,7 +117,7 @@
     width: 100%;
     align-items: center;
     justify-content: space-around;
-    min-height: 750px;
+    // min-height: 750px;
     padding: 3rem 0;
     font-size: vars.$appFontSize;
     color: white;
@@ -133,11 +134,16 @@
   }
   &__desc {
     padding: 2rem 3rem;
-    margin: 0 auto;
+    margin: 5rem auto;
     width: 70%;
     font-size: 1.5rem;
     font-weight: bold;
     line-height: 1.5;
+    text-align: center;
+
+    &--teasing {
+      margin: 2rem auto;
+    }
   }
   &__cards {
     display: flex;

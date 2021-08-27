@@ -8,6 +8,7 @@ import signupMiddleware from 'src/middlewares/signupMiddleware';
 import searchMiddleware from 'src/middlewares/searchMiddleware';
 import chatMiddleware from 'src/middlewares/chatMiddleware';
 import invitationMiddleware from 'src/middlewares/invitationMiddleware';
+import socketMiddleware from '../middlewares/socketMiddleware';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -19,6 +20,7 @@ const enhancers = composeEnhancers(
     searchMiddleware,
     chatMiddleware,
     invitationMiddleware,
+    socketMiddleware,
   ),
 );
 

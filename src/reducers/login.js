@@ -32,6 +32,7 @@ const reducer = (state = initialState, action = {}) => {
         token: action.data.token,
       };
     }
+    // Action pour se reconnecter automatiquement si le token est valable
     case 'RECONNECT_USER':
       return {
         ...state,
