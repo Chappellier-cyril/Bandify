@@ -198,6 +198,12 @@ const reducer = (state = initialState, action = {}) => {
         sender_id: Number(action.data.id),
       };
 
+    case 'RECONNECT_USER':
+      return {
+        ...state,
+        sender_id: Number(action.user.id),
+      };
+
     default:
       return state;
   }
