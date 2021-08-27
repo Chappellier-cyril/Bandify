@@ -25,8 +25,7 @@ const chatMiddleware = (store) => (next) => (action) => {
       },
 
     };
-    console.log('receiverId dans chatMiddleware: ', state.settings.reicever_id);
-    console.log('connectedUserId dans chatMiddleware: ', state.login.id);
+
     axios(options)
       .then((response) => {
         store.dispatch({ type: 'ADD_MESSAGE_SUCCESS', message: response.data });
