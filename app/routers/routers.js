@@ -117,10 +117,10 @@ router.route('/messages/:id')
     // .post(messageController.createMessage);
 
 router.route('/invitations')
-    .get(invitationController.getAllInvitations);
+    .get(invitationController.getAllInvitations)
+    .post(invitationController.sendInvitation);
 
 router.route('/invitations/:id')
-    .post(invitationController.sendInvitation)
     .delete(invitationController.deleteInvitation)
     .patch(invitationController.updateInvitation);
 
