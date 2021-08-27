@@ -78,11 +78,19 @@
       }
       &--add-btn {
         background-color: vars.$thirdColor;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      border: none;
-      color: vars.$fourthColor;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: none;
+        color: vars.$fourthColor;
+      }
+      &--invitation-status {
+        background-color: vars.$thirdColor;
+        padding: .5rem;
+        border-radius: vars.$borderRadius;
+        color: vars.$fourthColor;
+        width: 35%;
+        height: 10%;
       }
     }
     &__instrument {
