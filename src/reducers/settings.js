@@ -152,8 +152,6 @@ const reducer = (state = initialState, action = {}) => {
       };
     case 'GET_MESSAGES_SUCCESS':
     {
-      console.log(state);
-      console.log('sender_id:', state.sender_id, 'receiver_id', state.reicever_id);
       return {
         ...state,
         messages: action.messages

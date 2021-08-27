@@ -4,20 +4,23 @@ import Message from './Message';
 import './style.scss';
 
 const Messages = ({
-  messages, getMessages, receiverName,
+  messages, getMessages, receiverName, reicever, sender,
 }) => {
   useEffect(() => {
     getMessages();
   }, []);
 
+  // TODO => régler le souci du chat quand on le ferme pas et qu'on se déco reco
+
   return (
     <div className="messages">
       <p className="messages__author">{receiverName}</p>
-      {console.log(messages)}
       {messages.map((message) => (
         <Message
           key={message.id}
           {...message}
+          reicever={reicever}
+          sender={sender}
         />
       ))}
 
@@ -33,7 +36,8 @@ Messages.propTypes = {
   })).isRequired,
   getMessages: PropTypes.func.isRequired,
   receiverName: PropTypes.string.isRequired,
-  getIds: PropTypes.func.isRequired,
+  reicever: PropTypes.number.isRequired,
+  sender: PropTypes.number.isRequired,
 };
 
 export default Messages;
