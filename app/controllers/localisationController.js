@@ -1,4 +1,6 @@
+
 const { City, Department, Region } = require('../models');
+const { Op } = require('sequelize');
 
 const localisationController = {
     // Get all members
@@ -6,6 +8,30 @@ const localisationController = {
         try {
             const cities = await City.findAll({
                 include: ['department']});
+            res.json(cities);
+        } catch (error) {
+            console.trace(error);
+            res.status(500).json(error);
+        }
+    },
+    
+    autocompleteCities: async (req, res, next) => {
+        try {
+            const search = req.params.search;
+            console.log('params', search);
+
+            const cities = await City.findAll({
+                where: {
+                    city_name: {
+                        [Op.iLike]: `${search}%`
+                    }
+                },
+                include: { 
+                    association : 'department',
+                    include: 'region'
+                },
+                limit: 5,
+            });
             res.json(cities);
         } catch (error) {
             console.trace(error);

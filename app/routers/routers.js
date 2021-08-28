@@ -2,8 +2,8 @@
 const express = require('express');
 const router = express.Router();
 const multer = require('multer');
-
 const upload = multer({dest: 'upload/'});
+
 //CONTROLLERS
 const memberController = require('../controllers/memberController');
 const instrumentController = require('../controllers/instrumentController');
@@ -133,6 +133,7 @@ router.route('/invitations/:id')
 
 // ROUTE DE LOCALISATION
 router.get('/cities', localisationController.getAllCities);
+router.get('/autocomplete/:search', localisationController.autocompleteCities);
 router.get('/cities/:id', localisationController.getOneCity);
 router.get('/departments', localisationController.getAllDepartments);
 router.get('/departments/:id', localisationController.getOneDepartment);
