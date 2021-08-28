@@ -35,7 +35,7 @@ const Home = ({
               searchedUsers.map((searchedUser) => (
                 <Link to={`/member/${searchedUser.id}`} key={searchedUser.id} className="home__cards--users">
                   <div className="home__user--container">
-                    {searchedUser.profil_image && <img className="home__user--picture" src={`http://localhost:3000/images/${searchedUser.profil_image}`} alt="avatar du membre" />}
+                    {searchedUser.profil_image && <img className="home__user--picture" src={`http://localhost:3000/avatar/${searchedUser.profil_image}`} alt="avatar du membre" />}
                     <div className="home__user--short">
                       <p className="home__user--name">{searchedUser.firstname} {searchedUser.lastname}</p>
                       {searchedUser.city && (
@@ -85,7 +85,7 @@ const Home = ({
               users.slice(0, 5).map((user) => (
                 <Link to={`/member/${user.id}`} key={user.id} className="home__cards--users">
                   <div className="home__user--container">
-                    {user.profil_image && <img className="home__user--picture" src={`http://localhost:3000/images/${user.profil_image}`} alt="avatar du membre" />}
+                    {user.profil_image && <img className="home__user--picture" src={`http://localhost:3000/avatar/${user.profil_image}`} alt="avatar du membre" />}
                     <div className="home__user--short">
                       <p className="home__user--name">{user.firstname} {user.lastname}</p>
                       {user.city && (
@@ -154,7 +154,7 @@ const Home = ({
             {users.map((user) => (
               <div className="home__cards--users" key={user.id}>
                 <img
-                  src={user.profil_image}
+                  src={`http://localhost:3000/avatar/${user.profil_image}`}
                   alt="avatr de membre"
                 />
                 <p className="home__user--name">{user.firstname} {user.lastname}</p>

@@ -79,8 +79,6 @@ export default function App({
         </Route>
         <Route exact path="/profile" />
         <Route exact path="/search" component={Home} />
-
-        <Route exact path="/search" component={Home} />
         {isLogged
           ? <Route exact path="/member/:profileId" component={Profiles} />
           : <Redirect exact to="/" />}
