@@ -270,9 +270,8 @@ const memberController = {
         try{
             const key = req.params.key;
             const readStream = getFileStream(key);
-            console.log('finished', res.finished);
-            if (res.finished) return readStream.pipe(res);
-            if (!res.finished) res.send({ error: 'Aborted' });
+            return readStream.pipe(res);
+
         }catch(err) {
             console.trace(err);
             res.status(401).send(err);

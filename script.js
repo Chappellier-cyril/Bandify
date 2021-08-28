@@ -70,7 +70,7 @@ axios.request(optionsRegions).then(function (regions) {
       filteredCities.map(async(city) => createCity(city.nom.toUpperCase(), city.code, city.codeDepartement))
     }).catch(function (error) {
       console.error(error);
-    }).then(console.log('Installation complete'));
+    });
   });
 });
 
