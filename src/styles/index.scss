@@ -1,11 +1,11 @@
 @use 'reset';
 @use 'vars';
 
-body, html, #root {
+body, html, #root, .app {
   font-family: sans-serif;
   background-color: vars.$firstColor;
   width: 100vw;
-  // height: 100%;
+  //height: 100%;
 }
 
 // fontawesome icons (menu burger, cross to close menu)

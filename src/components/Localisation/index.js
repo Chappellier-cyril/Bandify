@@ -8,15 +8,9 @@ const Localisation = ({
 }) => {
   const [cities, setCities] = useState([]);
   const getCitiesFromAPI = () => {
-    axios.get('https://geo.api.gouv.fr/communes?', {
-      params: {
-        nom: city,
-        fields: 'departement,region,codesPostaux',
-        codePostaux: [],
-        limit: 5,
-      },
-    })
+    axios.get(`http://localhost:3000/autocomplete/${city}`)
       .then((response) => {
+        console.log(response);
         setCities(response.data);
       })
       .catch((error) => {
@@ -31,11 +25,11 @@ const Localisation = ({
     onChangeInput('city', e.target.value);
   };
   const getCityInfo = (e) => {
-    const foundCity = cities.find((cityState) => (`${cityState.departement.code} - ${cityState.nom.toUpperCase()}`) === e.target.innerHTML);
-    onChangeInput('city', foundCity.nom.toUpperCase());
+    const foundCity = cities.find((cityState) => (`${cityState.department_code} - ${cityState.city_name.toUpperCase()}`) === e.target.innerHTML);
+    onChangeInput('city', foundCity.city_name.toUpperCase());
     onChangeInput('code', foundCity.code);
     onChangeInput('departement', foundCity.departement);
-    onChangeInput('region', foundCity.region);
+    onChangeInput('region', foundCity.department.region);
     setCities([]);
   };
 
@@ -54,8 +48,8 @@ const Localisation = ({
         />
         <ul className="autocompletion-city__ul">
           {
-            cities.map((citySearch) => (
-              <li className="autocompletion-city__ul__li" key={citySearch.code} onClick={getCityInfo}>{citySearch.departement.code} - {citySearch.nom.toUpperCase()}</li>
+            cities && cities.map((citySearch) => (
+              <li className="autocompletion-city__ul__li" key={citySearch.code} onClick={getCityInfo}>{citySearch.department_code} - {citySearch.city_name.toUpperCase()}</li>
             ))
           }
         </ul>

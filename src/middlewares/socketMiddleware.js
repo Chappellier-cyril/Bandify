@@ -15,6 +15,7 @@ const socketMiddleware = (store) => (next) => (action) => {
         store.dispatch({ type: 'GET_NEW_MESSAGE', message: response.message });
       }
       if (response.notification === 'new invitation') {
+        console.log('je reçois notif');
         store.dispatch({ type: 'GET_NEW_INVITATION', invitation: response.invitation });
       }
     });
@@ -27,11 +28,13 @@ const socketMiddleware = (store) => (next) => (action) => {
     });
     socket.emit('isOnline', { id: localStorage.getItem('userId') });
     socket.on('notifications', (response) => {
-      if (response.notification === 'new message') {
+      if (response.notification === 'message') {
         console.log('GET_NEW_MESSAGE response.message', response.message);
         store.dispatch({ type: 'GET_NEW_MESSAGE', message: response.message });
       }
-      if (response.notification === 'new invitation') {
+      if (response.notification === 'invitation') {
+        console.log('je reçois notif');
+        console.log(response);
         store.dispatch({ type: 'GET_NEW_INVITATION', invitation: response.invitation });
       }
     });
@@ -42,17 +45,28 @@ const socketMiddleware = (store) => (next) => (action) => {
     console.log(action.message);
     socket.emit('sendMessage', action.message, () => {
       socket.on('notifications', (response) => {
-        if (response.notification === 'new message') {
+        if (response.notification === 'message') {
           console.log('ADD_MESSAGE_SUCCESS response.message', response.message);
           store.dispatch({ type: 'GET_NEW_MESSAGE', message: response.message });
         }
-        if (response.notification === 'new invitation') {
+      });
+    });
+    next(action);
+  }
+  if (action.type === 'SEND_INVITATION_SUCCESS') {
+    console.log('je passe au bon endroit mais pas d\'action');
+    socket.emit('sendInvitation', action.invitation, () => {
+      console.log('je send l\'invit');
+      socket.on('notifications', (response) => {
+        console.log('je reçois notif');
+        console.log(response);
+        if (response.notification === 'invitation') {
           store.dispatch({ type: 'GET_NEW_INVITATION', invitation: response.invitation });
         }
       });
     });
+    next(action);
   }
-
   if (action.type === 'ON_LOGOUT') {
     socket.disconnect();
     next(action);

@@ -24,7 +24,7 @@ const OtherProfile = ({
     <div className="profile__cards">
       <div className="profile__cards--users">
         <div className="profile__user--container">
-          {profil_image && <img className="profile__user--picture" src={`http://localhost:3000/images/${profil_image}`} alt="avatar du membre" />}
+          {profil_image && <img className="profile__user--picture" src={`http://localhost:3000/avatar/${profil_image}`} alt="avatar du membre" />}
           <div className="profile__user--short">
             <p className="profile__user--name">{user.firstname} {user.lastname}</p>
             {user.city && (

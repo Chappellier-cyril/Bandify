@@ -46,7 +46,9 @@ export default function App({
             setReconnect(user);
           }
         })
-        .catch((error) => error);
+        .catch(() => {
+          localStorage.clear();
+        });
     }
     getInstruments();
     getLevels();

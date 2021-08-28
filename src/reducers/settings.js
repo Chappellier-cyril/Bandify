@@ -169,7 +169,6 @@ const reducer = (state = initialState, action = {}) => {
     }
     case 'GET_NEW_MESSAGE':
     {
-      console.log('action.message dans le reducer settings', action.message);
       return {
         ...state,
         messages: [
@@ -237,7 +236,21 @@ const reducer = (state = initialState, action = {}) => {
         isInvitationSent: true,
       };
     }
-
+    case 'GET_NEW_INVITATION': {
+      return {
+        ...state,
+        invitations: [
+          ...state.invitations,
+          {
+            id: action.invitation.id,
+            status: action.invitation.status,
+            request_user_id: action.invitation.request_user_id,
+            response_user_id: action.invitation.response_user_id,
+          },
+        ],
+        isInvitationSent: true,
+      };
+    }
     default:
       return state;
   }

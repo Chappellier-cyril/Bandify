@@ -153,6 +153,10 @@ const Home = ({
             {/* fakes members */}
             {users.map((user) => (
               <div className="home__cards--users" key={user.id}>
+                <img
+                  src={user.profil_image}
+                  alt="avatr de membre"
+                />
                 <p className="home__user--name">{user.firstname} {user.lastname}</p>
               </div>
             ))}
