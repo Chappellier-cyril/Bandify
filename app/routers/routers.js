@@ -121,11 +121,15 @@ router.route('/messages')
 
 router.route('/messages/:id')
      .get(messageController.readMessage);
-    // .post(messageController.createMessage);
+
+router.route('/messages/:id/status')
+    .patch(messageController.updateMessageStatus);
 
 router.route('/invitations')
-    .get(invitationController.getAllInvitations)
     .post(invitationController.sendInvitation);
+
+router.route('/members/:id/invitations')
+    .get(invitationController.getAllInvitations)
 
 router.route('/invitations/:id')
     .delete(invitationController.deleteInvitation)
