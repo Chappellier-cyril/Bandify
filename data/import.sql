@@ -87,6 +87,9 @@ CREATE TABLE "invitation" (
  
 );
 
+
+
+
 CREATE TABLE "user_has_instrument_level" (
     "id" int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "member_id" INT NOT NULL REFERENCES "member"("id") ON DELETE CASCADE,

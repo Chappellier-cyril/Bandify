@@ -2,11 +2,18 @@ const { Invitation, Member } = require('../models');
 
 const invitationController = {
     // Get all invitations
+
+    // Requete qui permet de voir la liste des invitations en attente de réponse de la part d' un membre
+
     getAllInvitations: async (req, res, next) => {
         try {
-            const invitations = await Invitation.findAll({
-                });
+            console.log('toto')
+            const targetId = req.params.id;
+            
+            
+            const invitations = await Invitation.findAll({ where: { response_user_id: targetId } });
             res.json(invitations);
+
 
         } catch (error) {
             console.trace(error);
@@ -18,9 +25,9 @@ const invitationController = {
     sendInvitation : async (req, res, next) => {
         try {
             const newInvitation = await Invitation.create({
-               status : req.body.status,
-               request_user_id : req.body.request_user_id,
-               response_user_id : req.body.response_user_id
+               status: req.body.status,
+               request_user_id: req.body.request_user_id,
+               response_user_id: req.body.response_user_id
             });
               res.json(newInvitation);
 
