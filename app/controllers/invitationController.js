@@ -19,8 +19,8 @@ const invitationController = {
         try {
             const newInvitation = await Invitation.create({
                status : req.body.status,
-               sender_id : req.body.request_user_id,
-               reicever_id : req.body.response_user_id
+               request_user_id : req.body.request_user_id,
+               response_user_id : req.body.response_user_id
             });
               res.json(newInvitation);
 

@@ -38,13 +38,13 @@ Message.belongsTo(Member, {
 // 1,N entre member et invitation
 Member.hasMany(Invitation, {
     foreignKey: 'request_user_id',
-    as: 'OutgoingInvitation',
+    //as: 'OutgoingInvitation',
     onDelete: 'CASCADE'
 });
 
 Member.hasMany(Invitation, {
     foreignKey: 'response_user_id',
-    as: 'IncomingInvitation',
+    //as: 'IncomingInvitation',
     onDelete: 'CASCADE'
 });
 

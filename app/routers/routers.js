@@ -1,4 +1,10 @@
+// MODULES EXPRESS
 const express = require('express');
+const router = express.Router();
+const multer = require('multer');
+
+const upload = multer({dest: 'upload/'});
+//CONTROLLERS
 const memberController = require('../controllers/memberController');
 const instrumentController = require('../controllers/instrumentController');
 const levelController = require('../controllers/levelController');
@@ -7,9 +13,7 @@ const associationController = require('../controllers/associationController');
 const searchController = require('../controllers/searchController');
 const messageController = require('../controllers/messageController');
 const invitationController = require('../controllers/invitationController');
-
 const localisationController = require('../controllers/localisationController');
-const router = express.Router();
 
 // SEARCH Route
 router.route('/search')
@@ -17,7 +21,7 @@ router.route('/search')
 
 // SIGNUP Route
 router.route('/signup')
-    .post(memberController.createMember);
+    .post(upload.single('file'), memberController.createMember);
     
 // LOGIN Route
 router.route('/login')
@@ -36,6 +40,9 @@ router.route('/members')
 // On vérifie avec le verifyJWT qu'on ai bien le token avant de passer
 // au getAllMembers (Si je recupère tous les membres c'est que j'ai le bon token)
 
+// Route qui permet de stream les fichiers d'images des membres
+router.get('/avatar/:key', memberController.streamMemberAvatar);
+
 /**
  * Récuperer un membre par l' id
  * @route GET /members/1
@@ -44,7 +51,7 @@ router.route('/members')
 
 router.route('/members/:id')
     .get(memberController.getOneMember)
-    .patch(memberController.updateOneMember)
+    .patch(upload.single('file'), memberController.updateOneMember)
     .delete(memberController.deleteOneMember);
 
 router.post('/checkToken', memberController.verifyJWT);

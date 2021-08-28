@@ -50,21 +50,17 @@ io.on('connect', (socket) => {
         socket.on('sendMessage', (message) => {
             const foundReiceverOnline = findUserOnline(message.reicever_id);
             if(foundReiceverOnline) {
-                io.to(foundReiceverOnline.socketId).emit('notifications', {notification: 'new message', message: message});
+                io.to(foundReiceverOnline.socketId).emit('notifications', {notification: 'message', message: message});
             }
-            console.log(message);
         });
         socket.on('sendInvitation', (invitation) => {
-            console.log('socket a reçu invitation sur écouteur Sendinvitation', invitation);
-            console.log(invitation.reicever_id);
-            const foundReiceverOnline = findUserOnline(invitation.reicever_id);
-            console.log('foundReiceverOnline', foundReiceverOnline)
+            const foundReiceverOnline = findUserOnline(invitation.response_user_id);
             if(foundReiceverOnline) {
                 console.log('foundReiceverOnline.socketId', foundReiceverOnline.socketId);
-                io.to(foundReiceverOnline.socketId).emit('notifications', {notification: 'new invitation', invitation: invitation});
+                socket.emit('notifications', {notification: 'new invitation', invitation: invitation});
+                io.to(foundReiceverOnline.socketId).emit('notifications', {notification: 'invitation', invitation: invitation});
             }
-            console.log(invitation);
-        })
+        });
     })
     socket.on('disconnect', () => {
         console.log('A member left', socket.id);
