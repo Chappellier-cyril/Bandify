@@ -29,12 +29,17 @@ exports.uploadFile = uploadFile;
 //download file to S3 to stream it from this API
 
 function getFileStream(fileKey) {
-    const downloadParams = {
-        Key : fileKey,
-        Bucket: bucketName,
+    try {
+        const downloadParams = {
+            Key : fileKey,
+            Bucket: bucketName,
+        }
+    
+        return s3.getObject(downloadParams).createReadStream();
+    }catch(err) {
+        console.trace(err);
     }
 
-    return s3.getObject(downloadParams).createReadStream();
 }
 
 exports.getFileStream = getFileStream;

@@ -267,9 +267,17 @@ const memberController = {
     },
     // Middleware qui permet d'accéder au fichier statique d'avatar des membres
     streamMemberAvatar: (req, res) => {
+        try{
             const key = req.params.key;
             const readStream = getFileStream(key);
-            readStream.pipe(res);
+            console.log('finished', res.finished);
+            if (res.finished) return readStream.pipe(res);
+            if (!res.finished) res.send({ error: 'Aborted' });
+        }catch(err) {
+            console.trace(err);
+            res.status(401).send(err);
+        }
+
     },
     // "Middleware" qui vérifie si notre token est bon
     verifyJWT: (req, res, next) => {
