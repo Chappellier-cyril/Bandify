@@ -131,6 +131,12 @@ router.route('/invitations')
 router.route('/members/:id/invitations')
     .get(invitationController.getAllInvitations)
 
+router.route('/members/:id/friends')
+    .get(invitationController.getAllFriends)
+
+router.route('/members/:id/pending_invitations')
+    .get(invitationController.getPendingInvitations)    
+
 router.route('/invitations/:id')
     .delete(invitationController.deleteInvitation)
     .patch(invitationController.updateInvitation);

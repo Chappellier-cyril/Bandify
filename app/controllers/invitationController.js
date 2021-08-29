@@ -1,4 +1,5 @@
 const { Invitation, Member } = require('../models');
+const { Op } = require("sequelize");
 
 const invitationController = {
     // Get all invitations
@@ -80,6 +81,34 @@ const invitationController = {
         } catch (error) {
             console.trace(error);
             res.status(500).json(error); 
+        }
+    },
+
+    getAllFriends: async (req, res, next) => {
+        try {
+            const targetId = req.params.id;
+            
+            const friends = await Invitation.findAll({ where: { status:1, [Op.or]: [{ from: targetId }, { to: targetId }] }, include: ['fromMember', 'toMember'] });
+            res.json(friends);
+
+
+        } catch (error) {
+            console.trace(error);
+            res.status(500).json(error);
+        }
+    },
+
+    getPendingInvitations: async (req, res, next) => {
+        try {
+            const targetId = req.params.id;
+            
+            const pendingInvitations = await Invitation.findAll({ where: { status:1, [Op.or]: [{ from: targetId }, { to: targetId }] }, include: ['fromMember', 'toMember'] });
+            res.json(pendingInvitations);
+
+
+        } catch (error) {
+            console.trace(error);
+            res.status(500).json(error);
         }
     },
 
