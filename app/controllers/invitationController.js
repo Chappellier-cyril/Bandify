@@ -102,7 +102,7 @@ const invitationController = {
         try {
             const targetId = req.params.id;
             
-            const pendingInvitations = await Invitation.findAll({ where: { status:1, [Op.or]: [{ from: targetId }, { to: targetId }] }, include: ['fromMember', 'toMember'] });
+            const pendingInvitations = await Invitation.findAll({ where: { status:0, from: targetId }, include: ['fromMember', 'toMember'] });
             res.json(pendingInvitations);
 
 
