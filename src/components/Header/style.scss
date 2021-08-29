@@ -12,7 +12,7 @@
     align-items: center;
     background-color: vars.$firstColor;
     border-bottom: 1px solid vars.$thirdColor;
-    z-index: 1;
+    z-index: 5;
 
     &__menu-buttons {
       display: flex;

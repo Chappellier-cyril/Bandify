@@ -12,6 +12,9 @@ const mapDispatchToProps = (dispatch) => ({
   toggleIsChatroomOpen: () => {
     dispatch({ type: 'SET_IS_OPEN_CHATROOM' });
   },
+  toggleIsNotificationsOpen: () => {
+    dispatch({ type: 'SET_IS_OPEN_NOTIF' });
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

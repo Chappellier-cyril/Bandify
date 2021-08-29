@@ -10,6 +10,7 @@ import Signup from 'src/containers/Signup';
 import Navbar from 'src/containers/Navbar';
 import Header from 'src/containers/Header';
 import Chatroom from 'src/containers/Chatroom';
+import Notifications from 'src/containers/Notifications';
 // components
 import Contact from 'src/components/Contact';
 import About from 'src/components/About';
@@ -58,31 +59,34 @@ export default function App({
   }, []);
   return (
     <div className="app">
-      <Header />
       <Navbar />
       <Chatroom />
-      <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route exact path="/login">
-          <Login />
-        </Route>
-        <Route exact path="/signup">
-          <Signup />
-        </Route>
-        <Route exact path="/contact">
-          <Contact />
-        </Route>
-        <Route exact path="/about">
-          <About />
-        </Route>
-        <Route exact path="/profile" />
-        <Route exact path="/search" component={Home} />
-        {isLogged
-          ? <Route exact path="/member/:profileId" component={Profiles} />
-          : <Redirect exact to="/" />}
-      </Switch>
+      <Header />
+      <div className="maincontainer">
+        <Notifications />
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route exact path="/login">
+            <Login />
+          </Route>
+          <Route exact path="/signup">
+            <Signup />
+          </Route>
+          <Route exact path="/contact">
+            <Contact />
+          </Route>
+          <Route exact path="/about">
+            <About />
+          </Route>
+          <Route exact path="/profile" />
+          <Route exact path="/search" component={Home} />
+          {isLogged
+            ? <Route exact path="/member/:profileId" component={Profiles} />
+            : <Redirect exact to="/" />}
+        </Switch>
+      </div>
       <Footer />
     </div>
   );
