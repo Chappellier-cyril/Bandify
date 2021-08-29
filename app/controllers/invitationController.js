@@ -11,7 +11,7 @@ const invitationController = {
             const targetId = req.params.id;
             
             
-            const invitations = await Invitation.findAll({ where: { response_user_id: targetId } });
+            const invitations = await Invitation.findAll({ where: { to: targetId }, include: ['fromMember', 'toMember'] });
             res.json(invitations);
 
 
@@ -26,8 +26,8 @@ const invitationController = {
         try {
             const newInvitation = await Invitation.create({
                status: req.body.status,
-               request_user_id: req.body.request_user_id,
-               response_user_id: req.body.response_user_id
+               from: req.body.from,
+               to: req.body.to
             });
               res.json(newInvitation);
 

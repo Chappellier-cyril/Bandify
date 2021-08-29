@@ -11,7 +11,7 @@ Invitation.init({
           isInt: true,
       }
   },
-  request_user_id : {
+  from : {
     type: DataTypes.INTEGER,
     allowNull: false,
         references: {
@@ -19,7 +19,7 @@ Invitation.init({
             key: 'id'
         }
   },
-  response_user_id : {
+  to : {
     type: DataTypes.INTEGER,
     allowNull: false,
         references: {

@@ -37,27 +37,27 @@ Message.belongsTo(Member, {
 
 // 1,N entre member et invitation
 Member.hasMany(Invitation, {
-    foreignKey: 'request_user_id',
-    //as: 'OutgoingInvitation',
+    foreignKey: 'from',
+    as: 'invitationsFrom',
     onDelete: 'CASCADE'
 });
 
 Member.hasMany(Invitation, {
-    foreignKey: 'response_user_id',
-    //as: 'IncomingInvitation',
+    foreignKey: 'to',
+    as: 'invitationsTo',
     onDelete: 'CASCADE'
 });
 
 // 1,1 entre invitation et member
 Invitation.belongsTo(Member, {
-    foreignKey: 'request_user_id',
-    as: 'InvitationSender',
+    foreignKey: 'from',
+    as: 'fromMember',
     onDelete: 'CASCADE'
 });
 
 Invitation.belongsTo(Member, {
-    foreignKey: 'response_user_id',
-    as: 'InvitationReceiver',
+    foreignKey: 'to',
+    as: 'toMember',
     onDelete: 'CASCADE'
 });
 

@@ -78,8 +78,8 @@ CREATE TABLE invitation (
 	status INT NOT NULL,
     createdAt Timestamptz default now(),
     updatedAt Timestamptz,
-    request_user_id INT REFERENCES member(id),
-    response_user_id INT REFERENCES member(id)
+    from INT REFERENCES member(id),
+    to INT REFERENCES member(id)
 );
 
 CREATE TABLE user_has_instrument_level (

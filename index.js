@@ -54,7 +54,7 @@ io.on('connect', (socket) => {
             }
         });
         socket.on('sendInvitation', (invitation) => {
-            const foundReiceverOnline = findUserOnline(invitation.response_user_id);
+            const foundReiceverOnline = findUserOnline(invitation.to);
             if(foundReiceverOnline) {
                 console.log('foundReiceverOnline.socketId', foundReiceverOnline.socketId);
                 socket.emit('notifications', {notification: 'new invitation', invitation: invitation});

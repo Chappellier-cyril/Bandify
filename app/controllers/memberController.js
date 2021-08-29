@@ -22,7 +22,11 @@ const memberController = {
                 },{
                     association: 'plays',
                     include: ['instrument', 'level']
-            }, 'styles']});
+            }, 'styles'],
+                attributes: {
+                    exclude: ['user_password']
+                }
+            });
 
             res.json(members);
             
@@ -47,8 +51,11 @@ const memberController = {
                 }, {
                     association: 'plays',
                     include: ['instrument', 'level']
-            }, 'styles']
-            });
+                }, 'styles'],
+                attributes: {
+                    exclude: ['user_password']
+                }
+                });
 
             // Soit le membre existe : Soit il n'existe pas
             if (member) {
