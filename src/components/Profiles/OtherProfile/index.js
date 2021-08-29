@@ -16,7 +16,7 @@ const OtherProfile = ({
   } = user;
 
   const foundInvitedUser = invitations
-    .find((invitation) => invitation.response_user_id === user.id);
+    .find((invitation) => invitation.to === user.id);
 
   // TODO => récupérer le tableau des invitations au refresh avec un useeffect
 
@@ -113,7 +113,9 @@ OtherProfile.propTypes = {
   }),
   sendInvitation: PropTypes.func.isRequired,
   isInvitationSent: PropTypes.bool.isRequired,
-  invitations: PropTypes.arrayOf().isRequired,
+  invitations: PropTypes.arrayOf(
+    PropTypes.shape().isRequired,
+  ).isRequired,
 };
 
 OtherProfile.defaultProps = {

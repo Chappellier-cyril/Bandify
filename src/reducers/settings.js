@@ -33,7 +33,7 @@ export const initialState = {
   sender_id: null,
   reicever_id: null,
   reicever_name: '',
-  request_user_id: null,
+  from: null,
   invitations: [],
   isInvitationSent: false,
 };
@@ -229,8 +229,8 @@ const reducer = (state = initialState, action = {}) => {
           {
             id: action.invitation.id,
             status: action.invitation.status,
-            request_user_id: action.invitation.request_user_id,
-            response_user_id: action.invitation.response_user_id,
+            from: action.invitation.from,
+            to: action.invitation.to,
           },
         ],
         isInvitationSent: true,
@@ -244,8 +244,8 @@ const reducer = (state = initialState, action = {}) => {
           {
             id: action.invitation.id,
             status: action.invitation.status,
-            request_user_id: action.invitation.request_user_id,
-            response_user_id: action.invitation.response_user_id,
+            from: action.invitation.from,
+            to: action.invitation.to,
           },
         ],
         isInvitationSent: true,

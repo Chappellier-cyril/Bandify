@@ -15,7 +15,7 @@ const socketMiddleware = (store) => (next) => (action) => {
         store.dispatch({ type: 'GET_NEW_MESSAGE', message: response.message });
       }
       if (response.notification === 'new invitation') {
-        console.log('je reçois notif');
+        console.log('je reçois notif dans LOGIN_SUCCESS');
         store.dispatch({ type: 'GET_NEW_INVITATION', invitation: response.invitation });
       }
     });
@@ -33,7 +33,7 @@ const socketMiddleware = (store) => (next) => (action) => {
         store.dispatch({ type: 'GET_NEW_MESSAGE', message: response.message });
       }
       if (response.notification === 'invitation') {
-        console.log('je reçois notif');
+        console.log('je reçois notif dans RECONNECT_USER');
         console.log(response);
         store.dispatch({ type: 'GET_NEW_INVITATION', invitation: response.invitation });
       }
@@ -58,7 +58,7 @@ const socketMiddleware = (store) => (next) => (action) => {
     socket.emit('sendInvitation', action.invitation, () => {
       console.log('je send l\'invit');
       socket.on('notifications', (response) => {
-        console.log('je reçois notif');
+        console.log('je reçois notif dans action SEND_INVITATION_SUCCESS');
         console.log(response);
         if (response.notification === 'invitation') {
           store.dispatch({ type: 'GET_NEW_INVITATION', invitation: response.invitation });

@@ -172,14 +172,18 @@ Profiles.propTypes = {
   levelsData: PropTypes.arrayOf(
     PropTypes.shape().isRequired,
   ).isRequired,
-  instruments: PropTypes.arrayOf().isRequired,
+  instruments: PropTypes.arrayOf(
+    PropTypes.shape().isRequired,
+  ).isRequired,
   onSelectInput: PropTypes.func,
   addNewInstrument: PropTypes.func,
   removeInstrument: PropTypes.func,
   deleteInstrumentAssociation: PropTypes.func,
   sendInvitation: PropTypes.func,
   isInvitationSent: PropTypes.bool.isRequired,
-  invitations: PropTypes.arrayOf().isRequired,
+  invitations: PropTypes.arrayOf(
+    PropTypes.shape().isRequired,
+  ).isRequired,
 };
 
 Profiles.defaultProps = {
