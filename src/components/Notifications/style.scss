@@ -1,3 +1,5 @@
+@use 'src/styles/vars';
+
 .notifications{
     &__container{
         position: absolute;
@@ -8,7 +10,7 @@
         right: 3%;
         z-index: 1;
         overflow: scroll;
-        background-color: #fff;
+        background-color: vars.$fourthColor;
         transition: 0.5s ease-in-out;
         border-radius: 0 0 3px 3px;
     }
@@ -17,7 +19,7 @@
     }
     &__li{
         padding: 0.2rem 0.3rem;
-        border-bottom: 1px solid #ccc;
+        border-bottom: 1px solid vars.$fourthColor;
     }
     &__isHidden{
         top: -100%;

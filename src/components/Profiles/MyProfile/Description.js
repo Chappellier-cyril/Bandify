@@ -17,23 +17,25 @@ const Description = ({
         <button
           type="button"
           onClick={() => editFormToggle('editDescription')}
+          className="myprofile__user--close-edit-description"
         >
           <i className="fas fa-times-circle" />
         </button>
       </form>
     ) : (
-      <h2>
+      <div className="myprofile__user--description">
         Description
         <span>
           <button
             type="button"
             onClick={() => editFormToggle('editDescription')}
+            className="myprofile__user--edit-description"
           >
             <i className="fas fa-pen" />
           </button>
         </span>
-        <p>{user.user_description}</p>
-      </h2>
+        <p className="myprofile__user--description-details">{user.user_description}</p>
+      </div>
     )}
   </>
 );

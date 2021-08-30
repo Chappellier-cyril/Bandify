@@ -18,11 +18,11 @@
         }
     }
     &__error{
-        color: #D64550;
+        color: vars.$fifthColor;
         font-size : 0.6rem;
         padding: 0.2rem 0.3rem;
         &-border{
-            border: 2px solid #D64550;
+            border: 2px solid vars.$fifthColor;
         }
     }
     &__group{

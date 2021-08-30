@@ -16,12 +16,13 @@ const City = ({
         <button
           type="button"
           onClick={() => editFormToggle('editCity')}
+          className="myprofile__user--close-edit-city"
         >
           <i className="fas fa-times-circle" />
         </button>
       </form>
     ) : (
-      <h2>Ville:
+      <p className="myprofile__user--name">Ville:
         {user.city && (
         <span>
           {user.city.city_name} ({user.city.department_code})
@@ -31,11 +32,12 @@ const City = ({
           <button
             type="button"
             onClick={() => editFormToggle('editCity')}
+            className="myprofile__user--edit-city"
           >
             <i className="fas fa-pen" />
           </button>
         </span>
-      </h2>
+      </p>
     )}
   </>
 );

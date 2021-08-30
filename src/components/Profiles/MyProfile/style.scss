@@ -23,6 +23,13 @@
         font-size: 1.2rem;
       }
     }
+    &__delete-btn {
+      &--container {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+      }
+    }
     &__signup {
       &--btn {
         width: 60%;
@@ -54,6 +61,14 @@
         height: 75px;
         border-radius: 50%;
       }
+      &--delete-btn {
+        background-color: vars.$fifthColor;
+        border: none;
+        border-radius: vars.$borderRadius;
+        color: vars.$fourthColor;
+        padding: 1rem;
+        margin: 1rem;
+        }
       &--picture-desc {
         color: vars.$fourthColor;
         margin: 1rem;
@@ -69,8 +84,12 @@
         justify-content: center;
         align-items: center;
       }
-      &--name {
+      &--name, &--age, &--email, &--description {
         color: vars.$fourthColor;
+        font-weight: bold;
+      }
+      &--description-details {
+        font-weight: normal;
       }
       &--short {
         color: vars.$fourthColor;
@@ -79,7 +98,7 @@
       }
       &--description {
         color: vars.$fourthColor;
-        margin: 2rem 0;
+        margin: 1rem 0;
         font-weight: bold;
         text-align: left;
       }
@@ -107,12 +126,9 @@
         left: 70%;
         top: 0%;
       }
-      &--closeedit-photo {
+      &--edit-age, &--edit-city, &--edit-email, &--edit-name, &--edit-description, &--edit-instruments, &--edit-styles {
         background-color: transparent;
         border: none;
-        position: absolute;
-        left: 70%;
-        top: 0%;
       }
     }
     &__instrument {
@@ -153,11 +169,38 @@
         border-radius: vars.$borderRadius;
       }
     }
+    &__friends {
+      color: vars.$fourthColor;
+      &--description {
+        margin: 1rem 0;
+        font-weight: bold;
+      }
+      &--picture {
+        width:75px;
+        height: 75px;
+        border-radius: 50%;
+        margin-bottom: 1rem;
+      }
     }
+    } 
+}
 
-  
+.edit {
+  &__password {
+    &--btn {
+      background-color: vars.$thirdColor;
+      border: none;
+      border-radius: vars.$borderRadius;
+      color: vars.$fourthColor;
+      padding: 1rem;
+      margin: 1rem;
+    }
+  }
 }
 
 .fa-pen, .fa-times-circle {
   color: #1DA1F2;
+  background-color: vars.$firstColor;
+  padding: .5rem;
+  border-radius: 50%;
 }

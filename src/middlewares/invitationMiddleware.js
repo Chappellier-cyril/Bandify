@@ -5,8 +5,6 @@ const invitationMiddleware = (store) => (next) => (action) => {
   const myId = state.login.id;
 
   if (action.type === 'SEND_INVITATION_TO_USER') {
-    console.log('from', state.settings.sender_id);
-    console.log('to', action.id);
     const options = {
       method: 'POST',
       url: 'http://localhost:3000/invitations',
@@ -32,7 +30,6 @@ const invitationMiddleware = (store) => (next) => (action) => {
     };
     axios(options)
       .then((response) => {
-        console.log('response', response.data);
         const myFriends = response.data.map((f) => {
           if (f.from !== myId) return f.fromMember;
           if (f.to !== myId) return f.toMember;
