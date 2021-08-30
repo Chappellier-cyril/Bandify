@@ -30,6 +30,9 @@ const mapDispatchToProps = (dispatch) => ({
   getMessages: () => {
     dispatch({ type: 'GET_MESSAGES' });
   },
+  getFriends: () => {
+    dispatch({ type: 'GET_FRIENDS' });
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

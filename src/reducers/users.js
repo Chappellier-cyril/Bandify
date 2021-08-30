@@ -28,6 +28,7 @@ export const initialState = {
     styles: [{}],
     profil_image: '',
   },
+  friends: [],
   editPhoto: false,
   editName: false,
   editCity: false,
@@ -210,6 +211,13 @@ const reducer = (state = initialState, action = {}) => {
         instruments: copyInstruments,
       };
     }
+
+    case 'GET_FRIENDS_SUCCESS':
+      return {
+        ...state,
+        friends: action.friends,
+      };
+
     default:
       return state;
   }

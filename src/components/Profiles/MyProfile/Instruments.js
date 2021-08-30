@@ -83,6 +83,7 @@ const Instruments = ({
             <button
               type="button"
               onClick={() => editFormToggle('editInstruments')}
+              className="myprofile__user--close-edit-instruments"
             >
               <i className="fas fa-times-circle" />
             </button>
@@ -91,7 +92,17 @@ const Instruments = ({
       ) : (
         <>
           <div className="myprofile__instrument">
-            <p className="myprofile__instrument--description">Mes instruments:</p>
+            <p className="myprofile__instrument--description">Mes instruments:
+              <span>
+                <button
+                  type="button"
+                  onClick={() => editFormToggle('editInstruments')}
+                  className="myprofile__user--edit-instruments"
+                >
+                  <i className="fas fa-pen" />
+                </button>
+              </span>
+            </p>
             <ul className="myprofile__instrument--list">
               {plays[0] && plays.map((play) => (
                 play.id && (
@@ -103,12 +114,6 @@ const Instruments = ({
               ))}
             </ul>
           </div>
-          <button
-            type="button"
-            onClick={() => editFormToggle('editInstruments')}
-          >
-            <i className="fas fa-pen" />
-          </button>
         </>
       )}
     </>

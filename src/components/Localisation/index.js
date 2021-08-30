@@ -10,7 +10,6 @@ const Localisation = ({
   const getCitiesFromAPI = () => {
     axios.get(`http://localhost:3000/autocomplete/${city}`)
       .then((response) => {
-        console.log(response);
         setCities(response.data);
       })
       .catch((error) => {

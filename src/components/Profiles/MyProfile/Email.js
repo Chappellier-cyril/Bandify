@@ -21,22 +21,24 @@ const Email = ({
         <button
           type="button"
           onClick={() => editFormToggle('editEmail')}
+          className="myprofile__user--close-edit-email"
         >
           <i className="fas fa-times-circle" />
         </button>
       </form>
     ) : (
-      <h2>
+      <div className="myprofile__user--email">
         Email: {email}
         <span>
           <button
             type="button"
             onClick={() => editFormToggle('editEmail')}
+            className="myprofile__user--edit-email"
           >
             <i className="fas fa-pen" />
           </button>
         </span>
-      </h2>
+      </div>
     )}
   </>
 );

@@ -1,18 +1,22 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './style.scss';
 
-const FriendsList = ({ users, getCurrentUser }) => (
-
+const FriendsList = ({ getCurrentUser, friends }) => (
   <div className="friends">
     <ul className="friends-list">
-      {users.map((user) => (
-        <li className="friends-list__member" onClick={() => getCurrentUser(user.id, user.firstname)} key={user.id}>
-          {user.firstname} {user.lastname}
+      {friends.map((friend) => (
+        <li className="friends-list__member" onClick={() => getCurrentUser(friend.id, friend.firstname)} key={friend.id}>
+          {friend.firstname} {friend.lastname}
         </li>
       ))}
     </ul>
   </div>
-
 );
+
+FriendsList.propTypes = {
+  getCurrentUser: PropTypes.func.isRequired,
+  friends: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+};
 
 export default FriendsList;

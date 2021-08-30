@@ -29,6 +29,7 @@ const mapStateToProps = (state) => ({
   levelsData: state.settings.levels,
   isInvitationSent: state.settings.isInvitationSent,
   invitations: state.settings.invitations,
+  friends: state.users.friends,
 });
 
 const mapDispatchToProps = (dispatch) => ({

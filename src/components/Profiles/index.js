@@ -53,6 +53,7 @@ const Profiles = ({
   sendInvitation,
   isInvitationSent,
   invitations,
+  friends,
 }) => {
   const url = window.location.href;
   // pour avoir le dernier segment de l'url
@@ -115,6 +116,7 @@ const Profiles = ({
           addNewInstrument={addNewInstrument}
           removeInstrument={removeInstrument}
           deleteInstrumentAssociation={deleteInstrumentAssociation}
+          friends={friends}
         />
       ) : (
         <OtherProfile
@@ -184,6 +186,7 @@ Profiles.propTypes = {
   invitations: PropTypes.arrayOf(
     PropTypes.shape().isRequired,
   ).isRequired,
+  friends: PropTypes.arrayOf(PropTypes.shape()).isRequired,
 };
 
 Profiles.defaultProps = {

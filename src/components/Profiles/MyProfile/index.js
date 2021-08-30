@@ -10,6 +10,7 @@ import Password from './Password';
 import Description from './Description';
 import Instruments from './Instruments';
 import Styles from './Styles';
+import Friends from './Friends';
 // == Import : local
 import 'src/components/Profiles/style.scss';
 
@@ -57,12 +58,12 @@ const MyProfile = ({
   addNewInstrument,
   removeInstrument,
   deleteInstrumentAssociation,
+  friends,
 
 }) => {
   const {
     plays, styles, profil_image, email,
   } = user;
-
   return (
     <>
       <div className="myprofile__cards">
@@ -70,12 +71,20 @@ const MyProfile = ({
         <div className="myprofile__cards--users">
           <>
             <div className="myprofile__user--container">
-              <Avatar
-                editPhoto={editPhoto}
-                handleSubmitPhoto={handleSubmitPhoto}
-                profil_image={profil_image}
-                editFormToggle={editFormToggle}
-              />
+              <div className="myprofile__delete-btn--container">
+                <Avatar
+                  editPhoto={editPhoto}
+                  handleSubmitPhoto={handleSubmitPhoto}
+                  profil_image={profil_image}
+                  editFormToggle={editFormToggle}
+                />
+                <button
+                  type="button"
+                  onClick={onWishToDeleteProfile}
+                  className="myprofile__user--delete-btn"
+                >Supprimer mon profil
+                </button>
+              </div>
               <Name
                 editName={editName}
                 handleSubmitName={handleSubmitName}
@@ -101,11 +110,6 @@ const MyProfile = ({
                 user={user}
                 onChangeProfileInput={onChangeProfileInput}
               />
-              <button
-                type="button"
-                onClick={onWishToDeleteProfile}
-              >Supprimer mon profil
-              </button>
               <Email
                 editEmail={editEmail}
                 handleSubmitEmail={handleSubmitEmail}
@@ -150,8 +154,8 @@ const MyProfile = ({
                 editStyles={editStyles}
                 handleSubmitStyles={handleSubmitStyles}
               />
+              {friends && <Friends friends={friends} />}
             </div>
-            <h2 className="myprofile__friends-title">Mes amis</h2>
           </>
         </div>
         )}
@@ -200,6 +204,7 @@ MyProfile.propTypes = {
       music_name: PropTypes.string,
     })),
   }),
+  friends: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   onWishToDeleteProfile: PropTypes.func.isRequired,
   onDeleteProfile: PropTypes.func.isRequired,
   isDeleteModalClosed: PropTypes.bool.isRequired,

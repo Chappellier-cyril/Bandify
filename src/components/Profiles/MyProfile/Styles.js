@@ -6,15 +6,19 @@ const Styles = ({
 }) => (
   <>
     {/* //TODO => edit */}
-    <button
-      type="button"
-      onClick={() => editFormToggle('editStyles')}
-    >
-      <i className="fas fa-pen" />
-    </button>
     {styles && (
     <div className="myprofile__style">
-      <p className="myprofile__style--description">Mes goûts musicaux:</p>
+      <p className="myprofile__style--description">Mes goûts musicaux:
+        <span>
+          <button
+            type="button"
+            onClick={() => editFormToggle('editStyles')}
+            className="myprofile__user--edit-styles"
+          >
+            <i className="fas fa-pen" />
+          </button>
+        </span>
+      </p>
       <ul className="myprofile__style--list">
         {styles.map((musicStyle) => (
           musicStyle.id && (

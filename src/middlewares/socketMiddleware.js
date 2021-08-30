@@ -12,11 +12,9 @@ const socketMiddleware = (store) => (next) => (action) => {
     socket.emit('isOnline', { id: localStorage.getItem('userId') });
     socket.on('notifications', (response) => {
       if (response.notification === 'new message') {
-        console.log('GET_NEW_MESSAGE response.message', response.message);
         store.dispatch({ type: 'GET_NEW_MESSAGE', message: response.message });
       }
       if (response.notification === 'new invitation') {
-        console.log('je reçois notif dans LOGIN_SUCCESS');
         store.dispatch({ type: 'GET_NEW_INVITATION', invitation: response.invitation });
       }
     });

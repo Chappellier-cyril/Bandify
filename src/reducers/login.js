@@ -6,6 +6,7 @@ export const initialState = {
   isError: false,
   passwordShown: false,
   token: null,
+  friends: [],
 };
 
 const reducer = (state = initialState, action = {}) => {

@@ -41,6 +41,7 @@ const Password = ({
           <button
             type="button"
             onClick={() => editFormToggle('editPassword')}
+            className="edit__password--btn"
           >
             Modifier mon mot de passe
           </button>

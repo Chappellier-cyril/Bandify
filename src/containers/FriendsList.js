@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import FriendsList from 'src/components/FriendsList';
 
 const mapStateToProps = (state) => ({
-  users: state.users.users,
+  friends: state.users.friends,
 });
 
 const mapDispatchToProps = (dispatch) => ({

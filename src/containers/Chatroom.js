@@ -5,6 +5,7 @@ const mapStateToProps = (state) => ({
   isChatroomOpen: state.settings.isChatroomOpen,
   isMessagesOpen: state.settings.isMessagesOpen,
   isFriendsListOpen: state.settings.isFriendsListOpen,
+  friends: state.users.friends,
 });
 
 const mapDispatchToProps = (dispatch) => ({

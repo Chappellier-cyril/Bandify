@@ -19,22 +19,22 @@ const Birthdate = ({
         <button
           type="button"
           onClick={() => editFormToggle('editBirthdate')}
+          className="myprofile__user--close-edit-age"
         >
           <i className="fas fa-times-circle" />
         </button>
       </form>
     ) : (
-      <h2>
+      <div className="myprofile__user--age">
         {getAge(user.birthdate)} ans
-        <span>
-          <button
-            type="button"
-            onClick={() => editFormToggle('editBirthdate')}
-          >
-            <i className="fas fa-pen" />
-          </button>
-        </span>
-      </h2>
+        <button
+          type="button"
+          onClick={() => editFormToggle('editBirthdate')}
+          className="myprofile__user--edit-age"
+        >
+          <i className="fas fa-pen" />
+        </button>
+      </div>
     )}
   </>
 );

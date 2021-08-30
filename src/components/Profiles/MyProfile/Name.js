@@ -23,17 +23,19 @@ const Name = ({
         <button
           type="button"
           onClick={() => editFormToggle('editName')}
+          className="myprofile__user--close-edit-name"
         >
           <i className="fas fa-times-circle" />
         </button>
       </form>
     ) : (
-      <p>
-        {user.firstname}, {user.lastname}
+      <p className="myprofile__user--name">
+        {user.firstname} {user.lastname}
         <span>
           <button
             type="button"
             onClick={() => editFormToggle('editName')}
+            className="myprofile__user--edit-name"
           >
             <i className="fas fa-pen" />
           </button>
