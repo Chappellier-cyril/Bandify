@@ -6,7 +6,11 @@ import NavbarDesktop from 'src/containers/NavbarDesktop';
 import logoBandify from 'src/assets/logoBandify.svg';
 import './style.scss';
 
-const Header = ({ toggleIsMenuOpen, toggleIsChatroomOpen, isLogged }) => (
+const Header = ({
+  toggleIsMenuOpen, toggleIsChatroomOpen,
+  isLogged, toggleIsNotificationsOpen,
+  notifications,
+}) => (
   <header className="header">
     <div className="header__bandify">
       <Link to="/">
@@ -17,13 +21,24 @@ const Header = ({ toggleIsMenuOpen, toggleIsChatroomOpen, isLogged }) => (
 
     <div className="header__menu-buttons">
       {isLogged && (
-        <button
-          type="button"
-          className="header__menu-buttons-btn--chat"
-          onClick={toggleIsChatroomOpen}
-        >
-          <i className="fas fa-comments" />
-        </button>
+        <>
+          <button
+            type="button"
+            className="header__menu-buttons-btn--chat"
+            onClick={toggleIsChatroomOpen}
+          >
+            <i className="fas fa-comments" />
+          </button>
+          <button
+            type="button"
+            className={notifications.length > 1
+              ? 'header__menu-buttons-btn--notifs header__menu-buttons-btn--notifs__new'
+              : 'header__menu-buttons-btn--notifs'}
+            onClick={toggleIsNotificationsOpen}
+          >
+            <i className={notifications.length > 1 ? 'fas fa-bell fas fa-bell__new' : 'fas fa-bell'} />
+          </button>
+        </>
       )}
 
       <button
@@ -44,6 +59,7 @@ Header.propTypes = {
   toggleIsMenuOpen: PropTypes.func.isRequired,
   toggleIsChatroomOpen: PropTypes.func.isRequired,
   isLogged: PropTypes.bool.isRequired,
+  toggleIsNotificationsOpen: PropTypes.func.isRequired,
 };
 
 export default Header;

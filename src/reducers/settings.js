@@ -2,6 +2,7 @@ export const initialState = {
   isMenuOpen: false,
   isFiltersOpen: false,
   isChatroomOpen: false,
+  isNotificationsOpen: false,
   isDeleteModalClosed: true,
   deleteProfileMessage: '',
   isProfileDeleted: false,
@@ -50,6 +51,11 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         isChatroomOpen: !state.isChatroomOpen,
+      };
+    case 'SET_IS_OPEN_NOTIF':
+      return {
+        ...state,
+        isNotificationsOpen: !state.isNotificationsOpen,
       };
     case 'SET_IS_FILTERS_OPEN':
       return {
@@ -244,8 +250,8 @@ const reducer = (state = initialState, action = {}) => {
           {
             id: action.invitation.id,
             status: action.invitation.status,
-            from: action.invitation.from,
-            to: action.invitation.to,
+            fromMember: action.invitation.fromMember,
+            toMember: action.invitation.toMember,
           },
         ],
         isInvitationSent: true,

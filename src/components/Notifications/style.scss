@@ -1,0 +1,25 @@
+.notifications{
+    &__container{
+        position: absolute;
+        display: block;
+        width: 25%;
+        padding: 1rem;
+        top: 10%;
+        right: 3%;
+        z-index: 1;
+        overflow: scroll;
+        background-color: #fff;
+        transition: 0.5s ease-in-out;
+        border-radius: 0 0 3px 3px;
+    }
+    &__ul{
+        margin: 1rem;
+    }
+    &__li{
+        padding: 0.2rem 0.3rem;
+        border-bottom: 1px solid #ccc;
+    }
+    &__isHidden{
+        top: -100%;
+    }
+}
