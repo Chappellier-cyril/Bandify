@@ -35,8 +35,6 @@ export const initialState = {
   reicever_id: null,
   reicever_name: '',
   from: null,
-  invitations: [],
-  isInvitationSent: false,
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -227,36 +225,6 @@ const reducer = (state = initialState, action = {}) => {
         sender_id: Number(action.user.id),
       };
 
-    case 'SEND_INVITATION_SUCCESS': {
-      return {
-        ...state,
-        invitations: [
-          ...state.invitations,
-          {
-            id: action.invitation.id,
-            status: action.invitation.status,
-            from: action.invitation.from,
-            to: action.invitation.to,
-          },
-        ],
-        isInvitationSent: true,
-      };
-    }
-    case 'GET_NEW_INVITATION': {
-      return {
-        ...state,
-        invitations: [
-          ...state.invitations,
-          {
-            id: action.invitation.id,
-            status: action.invitation.status,
-            fromMember: action.invitation.fromMember,
-            toMember: action.invitation.toMember,
-          },
-        ],
-        isInvitationSent: true,
-      };
-    }
     default:
       return state;
   }

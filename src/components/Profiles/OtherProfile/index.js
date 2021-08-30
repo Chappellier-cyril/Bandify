@@ -9,16 +9,16 @@ import { firstLetterToUpper, restToLower } from 'src/selectors/city';
 import './style.scss';
 
 const OtherProfile = ({
-  user, sendInvitation, isInvitationSent, invitations,
+  user, sendInvitation, pendingInvitations, friends,
 }) => {
   const {
     plays, styles, profil_image,
   } = user;
 
-  const foundInvitedUser = invitations
-    .find((invitation) => invitation.to === user.id);
+  const alreadyInvitedUser = pendingInvitations
+    .find((pendingInvitation) => pendingInvitation.to === user.id);
 
-  // TODO => récupérer le tableau des invitations au refresh avec un useeffect
+  const foundFriend = friends.find((friend) => friend.id === user.id);
 
   return (
     <div className="profile__cards">
@@ -35,9 +35,12 @@ const OtherProfile = ({
             )}
             <p>{getAge(user.birthdate)} ans</p>
           </div>
-          {isInvitationSent && foundInvitedUser ? (
+          {/* Si l'utilisateur est déjà invité et qu'il est pas dans nos amis on affiche */}
+          {alreadyInvitedUser && !foundFriend && (
             <p className="profile__user--invitation-status">Invitation envoyée <i className="fas fa-check" /></p>
-          ) : (
+          )}
+          {/* Si l'utilisateur n'est pas encore invité et pas dans nos amis on affiche */}
+          {!alreadyInvitedUser && !foundFriend && (
             <button
               type="button"
               className="profile__user--add-btn"
@@ -46,8 +49,16 @@ const OtherProfile = ({
               <i className="fas fa-plus" />
             </button>
           )}
+          {/* Si l'utilisateur est dans nos amis */}
+          {foundFriend && (
+            <button
+              type="button"
+              className="profile__user--delete-btn"
+            >
+              Supprimer
+            </button>
+          )}
         </div>
-        {/* //TODO => la route invitation + vue conditionnelle pour afficher profil ami */}
         <div className="profile__user--description">
           <p className="profile__user--description-title">Sa description:</p>
           <p className="profile__user--description-content">{user.user_description}</p>
@@ -112,8 +123,7 @@ OtherProfile.propTypes = {
     })),
   }),
   sendInvitation: PropTypes.func.isRequired,
-  isInvitationSent: PropTypes.bool.isRequired,
-  invitations: PropTypes.arrayOf(
+  pendingInvitations: PropTypes.arrayOf(
     PropTypes.shape().isRequired,
   ).isRequired,
 };

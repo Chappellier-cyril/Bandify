@@ -51,8 +51,7 @@ const Profiles = ({
   removeInstrument,
   deleteInstrumentAssociation,
   sendInvitation,
-  isInvitationSent,
-  invitations,
+  pendingInvitations,
   friends,
 }) => {
   const url = window.location.href;
@@ -122,8 +121,8 @@ const Profiles = ({
         <OtherProfile
           user={user}
           sendInvitation={sendInvitation}
-          isInvitationSent={isInvitationSent}
-          invitations={invitations}
+          pendingInvitations={pendingInvitations}
+          friends={friends}
         />
       )
   );
@@ -182,8 +181,7 @@ Profiles.propTypes = {
   removeInstrument: PropTypes.func,
   deleteInstrumentAssociation: PropTypes.func,
   sendInvitation: PropTypes.func,
-  isInvitationSent: PropTypes.bool.isRequired,
-  invitations: PropTypes.arrayOf(
+  pendingInvitations: PropTypes.arrayOf(
     PropTypes.shape().isRequired,
   ).isRequired,
   friends: PropTypes.arrayOf(PropTypes.shape()).isRequired,

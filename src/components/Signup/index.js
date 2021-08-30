@@ -10,7 +10,6 @@ import Localisation from 'src/components/Localisation';
 Avec Redux :
  Vérifiez si l'utilisateur à plus de 18 ans
  Voir la solution la plus adapté pour l'envoi de la photo en BDD ( multer ou file-loader )
- TODO : Fonction SUBMIT LOGIN et autocompletion des champs CITY et ZIPCODE
 */
 
 const Signup = ({

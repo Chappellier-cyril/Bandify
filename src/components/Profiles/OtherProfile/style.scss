@@ -53,6 +53,14 @@
         height: 75px;
         border-radius: 50%;
       }
+      &--delete-btn {
+        background-color: vars.$fifthColor;
+        border: none;
+        border-radius: vars.$borderRadius;
+        color: vars.$fourthColor;
+        padding: 1rem;
+        margin: 1rem;
+      }
       &--container {
         display: flex;
       }

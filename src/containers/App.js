@@ -33,6 +33,9 @@ const mapDispatchToProps = (dispatch) => ({
   getFriends: () => {
     dispatch({ type: 'GET_FRIENDS' });
   },
+  getPendingInvitations: () => {
+    dispatch({ type: 'GET_PENDING_INVITATIONS' });
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
