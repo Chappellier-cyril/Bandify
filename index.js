@@ -8,7 +8,7 @@ const sanitizer = require('sanitizer')
 const socketio = require('socket.io');
 const server = http.createServer(app);
 const expressSwagger = require('express-swagger-generator')(app);
-const CLIENT_SIDE = process.env.CLIENT_SIDE || 'http://localhost:8080';
+const CLIENT_SIDE = process.env.CLIENT_SIDE;
 const { addMemberOnline, removeMemberOnline, findUserOnline} = require('./sockets/users');
 let swaggerOptions = {
    swaggerDefinition: {
@@ -63,14 +63,14 @@ io.on('connect', (socket) => {
         socket.on('sendMessage', (message) => {
             const foundReiceverOnline = findUserOnline(message.reicever_id);
             if(foundReiceverOnline) {
+                // socket.emit('notifications', {notification: 'message', message: message});
                 io.to(foundReiceverOnline.socketId).emit('notifications', {notification: 'message', message: message});
             }
         });
         socket.on('sendInvitation', (invitation) => {
             const foundReiceverOnline = findUserOnline(invitation.to);
             if(foundReiceverOnline) {
-                console.log('foundReiceverOnline.socketId', foundReiceverOnline.socketId);
-                socket.emit('notifications', {notification: 'new invitation', invitation: invitation});
+                socket.emit('notifications', {notification: 'invitation', invitation: invitation});
                 io.to(foundReiceverOnline.socketId).emit('notifications', {notification: 'invitation', invitation: invitation});
             }
         });

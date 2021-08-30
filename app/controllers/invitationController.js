@@ -31,7 +31,8 @@ const invitationController = {
                from: req.body.from,
                to: req.body.to
             });
-              res.json(newInvitation);
+            const invitation = await Invitation.findByPk(newInvitation.id, {include: ['fromMember', 'toMember'] })
+              res.json(invitation);
 
         } catch (error) {
             console.trace(error);
@@ -67,7 +68,7 @@ const invitationController = {
             
             const targetId = req.params.id;
             
-            const invitationUpdate = await Invitation.findByPk(targetId);
+            const invitationUpdate = await Invitation.findByPk(targetId, {include: ['fromMember', 'toMember'] });
             
             if (!invitationUpdate) {
                 return next(); 
