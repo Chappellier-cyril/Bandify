@@ -24,8 +24,7 @@ const Notifications = ({ notifications, isNotificationsOpen }) => (
           if (n.notification === 'message') {
             return (
               <li className="notifications__li" key={n.message.id}>
-                Vous avez reçu un message de
-                {`${n.message.Sender.firstname} ${n.message.Sender.lastname}`}
+                Vous avez reçu 1 message de {`${n.message.Sender.firstname} ${n.message.Sender.lastname}`}
               </li>
             );
           }

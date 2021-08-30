@@ -22,7 +22,7 @@ const notificationMiddleware = (store) => (next) => (action) => {
         store.dispatch({ type: 'GET_MESSAGES_SUCCESS', messages: response.data });
 
         response.data.map((msg) => {
-          if (msg.status === false) {
+          if ((msg.status === false) && (msg.sender_id !== state.login.id)) {
             const notif = { notification: 'message', message: msg };
             return (
               store.dispatch({ type: 'GET_ALL_NOTIFICATIONS', notif, memberId: memberId })

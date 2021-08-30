@@ -111,6 +111,7 @@ App.propTypes = {
   getRegions: PropTypes.func.isRequired,
   getFriends: PropTypes.func.isRequired,
   getMessages: PropTypes.func.isRequired,
+  getPendingInvitations: PropTypes.func.isRequired,
 };
 
 // == Export
