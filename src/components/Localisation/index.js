@@ -8,7 +8,7 @@ const Localisation = ({
 }) => {
   const [cities, setCities] = useState([]);
   const getCitiesFromAPI = () => {
-    axios.get(`http://localhost:3000/autocomplete/${city}`)
+    axios.get(`${process.env.BANDIFY_API_URL}/autocomplete/${city}`)
       .then((response) => {
         setCities(response.data);
       })

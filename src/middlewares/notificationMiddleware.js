@@ -6,7 +6,7 @@ const notificationMiddleware = (store) => (next) => (action) => {
   if (state.login.id && action.type === ('GET_MESSAGES' || 'GET_PENDING_INVITATIONS_SUCCESS')) {
     const memberId = state.login.id;
     // invitations
-    axios.get(`http://localhost:3000/members/${memberId}/invitations`)
+    axios.get(`${process.env.BANDIFY_API_URL}/members/${memberId}/invitations`)
       .then((response) => {
         console.log('response dans notifMiddleware :', response.data);
         response.data.map((inv) => {
@@ -17,7 +17,7 @@ const notificationMiddleware = (store) => (next) => (action) => {
         });
       });
     // messages
-    axios.get(`http://localhost:3000/members/${memberId}/messages`)
+    axios.get(`${process.env.BANDIFY_API_URL}/members/${memberId}/messages`)
       .then((response) => {
         store.dispatch({ type: 'GET_MESSAGES_SUCCESS', messages: response.data });
 

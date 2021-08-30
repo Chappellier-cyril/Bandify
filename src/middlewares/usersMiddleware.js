@@ -10,7 +10,7 @@ const usersMiddleware = (store) => (next) => (action) => {
   if (action.type === 'GET_MEMBERS') {
     const options = {
       method: 'GET',
-      url: 'http://localhost:3000/members',
+      url: `${process.env.BANDIFY_API_URL}/members`,
       headers: {
         // On recupère le token stocker en localStorage (getItem)
         'x-acces-token': localStorage.getItem('token'),
@@ -23,14 +23,14 @@ const usersMiddleware = (store) => (next) => (action) => {
   }
 
   if (action.type === 'GET_ONE_MEMBER') {
-    axios.get(`http://localhost:3000/members/${lastSegmentUrl}`)
+    axios.get(`${process.env.BANDIFY_API_URL}/members/${lastSegmentUrl}`)
       .then((response) => {
         store.dispatch({ type: 'GET_ONE_MEMBER_SUCCESS', user: response.data });
       });
   }
 
   if (action.type === 'SAID_YES_TO_DELETE_PROFILE') {
-    axios.delete(`http://localhost:3000/members/${lastSegmentUrl}`)
+    axios.delete(`${process.env.BANDIFY_API_URL}/members/${lastSegmentUrl}`)
       .then(() => {
         store.dispatch({ type: 'ON_DELETE_PROFILE_SUCCESS' });
       });
@@ -42,7 +42,7 @@ const usersMiddleware = (store) => (next) => (action) => {
 
     const options = {
       method: 'PATCH',
-      url: `http://localhost:3000/members/${lastSegmentUrl}`,
+      url: `${process.env.BANDIFY_API_URL}/members/${lastSegmentUrl}`,
       headers: {
         'Content-Type': 'multipart/form-data',
         Accept: 'application/json',
@@ -61,7 +61,7 @@ const usersMiddleware = (store) => (next) => (action) => {
   if (action.type === 'SUBMIT_MODIFIED_NAME') {
     const options = {
       method: 'PATCH',
-      url: `http://localhost:3000/members/${lastSegmentUrl}`,
+      url: `${process.env.BANDIFY_API_URL}/members/${lastSegmentUrl}`,
       data: {
         firstname: state.users.user.firstName,
         lastname: state.users.user.lastName,
@@ -79,7 +79,7 @@ const usersMiddleware = (store) => (next) => (action) => {
   if (action.type === 'SUBMIT_MODIFIED_EMAIL') {
     const options = {
       method: 'PATCH',
-      url: `http://localhost:3000/members/${lastSegmentUrl}`,
+      url: `${process.env.BANDIFY_API_URL}/members/${lastSegmentUrl}`,
       data: {
         email: state.users.user.email,
       },
@@ -96,7 +96,7 @@ const usersMiddleware = (store) => (next) => (action) => {
   if (action.type === 'SUBMIT_MODIFIED_BIRTHDATE') {
     const options = {
       method: 'PATCH',
-      url: `http://localhost:3000/members/${lastSegmentUrl}`,
+      url: `${process.env.BANDIFY_API_URL}/members/${lastSegmentUrl}`,
       data: {
         birthdate: state.users.user.dateOfBirth,
       },
@@ -113,7 +113,7 @@ const usersMiddleware = (store) => (next) => (action) => {
   if (action.type === 'SUBMIT_MODIFIED_DESCRIPTION') {
     const options = {
       method: 'PATCH',
-      url: `http://localhost:3000/members/${lastSegmentUrl}`,
+      url: `${process.env.BANDIFY_API_URL}/members/${lastSegmentUrl}`,
       data: {
         user_description: state.users.user.user_description,
       },
@@ -130,7 +130,7 @@ const usersMiddleware = (store) => (next) => (action) => {
   if (action.type === 'SUBMIT_MODIFIED_PASSWORD') {
     const options = {
       method: 'PATCH',
-      url: `http://localhost:3000/members/${lastSegmentUrl}`,
+      url: `${process.env.BANDIFY_API_URL}/members/${lastSegmentUrl}`,
       data: {
         user_password: state.users.user.user_password,
       },
@@ -147,7 +147,7 @@ const usersMiddleware = (store) => (next) => (action) => {
   if (action.type === 'SUBMIT_MODIFIED_CITY') {
     const options = {
       method: 'PATCH',
-      url: `http://localhost:3000/members/${lastSegmentUrl}`,
+      url: `${process.env.BANDIFY_API_URL}/members/${lastSegmentUrl}`,
       data: {
         city_code: state.users.code,
       },

@@ -18,7 +18,7 @@ const signupMiddleware = (store) => (next) => (action) => {
 
     const options = {
       method: 'POST',
-      url: 'http://localhost:3000/signup',
+      url: `${process.env.BANDIFY_API_URL}/signup`,
       headers: {
         'Content-Type': 'multipart/form-data',
         Accept: 'application/json',

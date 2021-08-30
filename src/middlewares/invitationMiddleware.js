@@ -7,7 +7,7 @@ const invitationMiddleware = (store) => (next) => (action) => {
   if (action.type === 'SEND_INVITATION_TO_USER') {
     const options = {
       method: 'POST',
-      url: 'http://localhost:3000/invitations',
+      url: `${process.env.BANDIFY_API_URL}/invitations`,
       data: {
         status: 0,
         from: myId,
@@ -27,7 +27,7 @@ const invitationMiddleware = (store) => (next) => (action) => {
   if (action.type === 'GET_FRIENDS') {
     const options = {
       method: 'GET',
-      url: `http://localhost:3000/members/${myId}/friends`,
+      url: `${process.env.BANDIFY_API_URL}/members/${myId}/friends`,
     };
     axios(options)
       .then((response) => {
@@ -46,7 +46,7 @@ const invitationMiddleware = (store) => (next) => (action) => {
   if (action.type === 'GET_PENDING_INVITATIONS') {
     const options = {
       method: 'GET',
-      url: `http://localhost:3000/members/${myId}/pending_invitations`,
+      url: `${process.env.BANDIFY_API_URL}/members/${myId}/pending_invitations`,
     };
     axios(options)
       .then((response) => {

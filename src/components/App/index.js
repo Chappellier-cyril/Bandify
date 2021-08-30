@@ -32,7 +32,7 @@ export default function App({
     // Si on en a un, on fait une requête vers le serveur
     // En y emporter au passage, le "timbre" (headers : x-acces-token)
     if (token && token !== undefined) {
-      axios.post('http://localhost:3000/checkToken', {
+      axios.post(`${process.env.BANDIFY_API_URL}/checkToken`, {
         headers: {
           'x-acces-token': localStorage.getItem('token'),
         },

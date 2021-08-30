@@ -37,7 +37,7 @@ const Avatar = ({
         </form>
       ) : (
         <div className="myprofile__user--avatar">
-          {profil_image && <img className="myprofile__user--picture" src={`http://localhost:3000/avatar/${profil_image}`} alt="avatar du membre" />}
+          {profil_image && <img className="myprofile__user--picture" src={`${process.env.BANDIFY_API_URL}/avatar/${profil_image}`} alt="avatar du membre" />}
           <button
             type="button"
             onClick={() => editFormToggle('editPhoto')}

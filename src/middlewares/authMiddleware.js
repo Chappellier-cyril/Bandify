@@ -7,7 +7,7 @@ const authMiddleware = (store) => (next) => (action) => {
     const state = store.getState();
     const options = {
       method: 'POST',
-      url: 'http://localhost:3000/login',
+      url: `${process.env.BANDIFY_API_URL}/login`,
       headers: {
         'Content-Type': 'application/json',
       },
