@@ -8,7 +8,8 @@ const sanitizer = require('sanitizer')
 const socketio = require('socket.io');
 const server = http.createServer(app);
 const expressSwagger = require('express-swagger-generator')(app);
-const CLIENT_SIDE = process.env.CLIENT_SIDE || 'http://localhost:8080';
+const CLIENT_SIDE = process.env.CLIENT_SIDE;
+
 const { addMemberOnline, removeMemberOnline, findUserOnline} = require('./sockets/users');
 let swaggerOptions = {
    swaggerDefinition: {
