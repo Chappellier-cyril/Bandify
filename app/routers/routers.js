@@ -33,11 +33,6 @@ router.post('/checkToken', memberController.verifyJWT);
 
 // MEMBERS Routes
 
-/**
- * Récuperer tout les membres
- * @route GET /members
- * @returns {object} 200 - Tableau de tout les membres récuperé
- */
 
 router.route('/members')
     .get(/* memberController.verifyJWT, */ memberController.getAllMembers);
@@ -62,14 +57,15 @@ router.route('/members/:id')
  * @returns {object} 200 - Tableau de tout les instruments
  */
 
-router.route('/instruments')
-    .get(instrumentController.getAllInstruments);
-
 /**
  * Récuperer un instrument par l' id
  * @route GET /instruments/1
  * @returns {object} 200 - Tableau d' un instrument récupéré
- */    
+ */  
+
+router.route('/instruments')
+    .get(instrumentController.getAllInstruments);
+
 router.route('/instruments/:id')
     .get(instrumentController.getOneInstrument);
 
@@ -79,40 +75,45 @@ router.route('/instruments/:id')
  * @returns {object} 200 - Tableau de tout les levels
  */
 
-router.route('/levels')
-    .get(levelController.getAllLevel);
-
 /**
  * Récuperer un level par l' id
  * @route GET /levels/2
  * @returns {object} 200 - Tableau d' un level récupéré
  */    
 
+
+router.route('/levels')
+    .get(levelController.getAllLevel);
+
 router.route('/levels/:id')
     .get(levelController.getOneLevel);
 
+
+// Style de musiques
 /**
  * Récuperer la liste des styles de musiques
  * @route GET /musicstyles
  * @returns {object} 200 - Tableau de tout les styles de musiques
  */        
 
-router.route('/musicstyles')
-    .get(musicStyleController.getAllMusicStyles);
-    
 /**
  * Récuperer un style de musique par son id
  * @route GET /musicstyles/3
  * @returns {object} 200 - Tableau d' un style de musique récupéré
  */   
 
+ router.route('/musicstyles')
+ .get(musicStyleController.getAllMusicStyles);
+
 router.route('/musicstyles/:id')
     .get(musicStyleController.getOneMusicStyle);
 
+// MESSAGES
+
 /**
- * Récuperer la liste de tout les messages
- * @route GET /messages
- * @returns {object} 200 - Tableau de tout les messages
+ * Récuperer la liste des messages d' un membre connecté selon son id
+ * @route GET /members/2/messages
+ * @returns {object} 200 - Tableau de tout les messages d' un membre
  */   
 
 /**
@@ -121,15 +122,16 @@ router.route('/musicstyles/:id')
  * @returns {object} 200 - Tableau du message envoyé
  */   
 
-router.route('/members/:id/messages')
-    .get(messageController.getAllMessages)
-    .post(messageController.sendMessage);
-   
 /**
  * Récupere un message 
  * @route GET /messages/3
  * @returns {object} 200 - Tableau du message recu
  */   
+
+
+router.route('/members/:id/messages')
+    .get(messageController.getAllMessages)
+    .post(messageController.sendMessage);   
 
 router.route('/messages/:id')
      .get(messageController.readMessage);
@@ -137,10 +139,11 @@ router.route('/messages/:id')
 router.route('/messages/:id/status')
     .patch(messageController.updateMessageStatus);
 
+// INVITATIONS
 /**
  * Récupere toutes les invitations en attente de réponse pour un membre
  * @route GET /members/2/invitations
- * @returns {object} 200 - Tableau du message recu
+ * @returns {object} 200 - Tableau de des invitations en attente
  */  
 
 router.route('/invitations')
@@ -149,8 +152,16 @@ router.route('/invitations')
 router.route('/members/:id/invitations')
     .get(invitationController.getAllInvitations)
 
+// FRIENDS
+/**
+ * Récupere toutes les amis d' un membre selon son id
+ * @route GET /members/2/friends
+ * @returns {object} 200 - Tableau des amis d' un membre
+ */  
+
 router.route('/members/:id/friends')
     .get(invitationController.getAllFriends)
+
 
 router.route('/members/:id/pending_invitations')
     .get(invitationController.getPendingInvitations)    
@@ -161,36 +172,41 @@ router.route('/invitations/:id')
 
 // ROUTE DE LOCALISATION
 
+// VILLES
 /**
  * Récuperer la liste de toutes les villes
  * @route GET /cities
  * @returns {object} 200 - Tableau de toutes les villes
- */
-router.get('/cities', localisationController.getAllCities);
-router.get('/autocomplete/:search', localisationController.autocompleteCities);
 
 /**
- * Récuperer la liste de toutes les villes
- * @route GET /city/85
+ * Récuperer la liste d' une ville selon son code
+ * @route GET /city/01034
  * @returns {object} 200 - Tableau d' une ville récupéré
  */
+
+router.get('/cities', localisationController.getAllCities);
+router.get('/autocomplete/:search', localisationController.autocompleteCities);
 router.get('/city/:id', localisationController.getOneCity);
 
+// DEPARTEMENTS
 /**
  * Récuperer la liste de tout les départements
  * @route GET /departments
  * @returns {object} 200 - Tableau de tout les départements
  */
 
-router.get('/departments', localisationController.getAllDepartments);
-
 /**
- * Récuperer la liste d'un département selon son Id
- * @route GET /department/85
+ * Récuperer la liste d'un département selon son code
+ * @route GET /department/93
  * @returns {object} 200 - Tableau d'un département récupéré
  */
 
+
+router.get('/departments', localisationController.getAllDepartments);
 router.get('/department/:id', localisationController.getOneDepartment);
+
+
+//REGIONS
 
 /**
  * Récuperer la liste de toutes les régions
@@ -199,8 +215,8 @@ router.get('/department/:id', localisationController.getOneDepartment);
  */   
 
 /**
- * Récuperer la liste d' une région selon son Id
- * @route GET /region/85
+ * Récuperer la liste d' une région selon son code
+ * @route GET /region/44
  * @returns {object} 200 - Tableau d' une région récupéré
  */ 
 
@@ -228,3 +244,4 @@ router.route('/error')
     .get(errorController.notFound);
 
 module.exports = router;
+

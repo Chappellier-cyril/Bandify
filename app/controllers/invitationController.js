@@ -8,11 +8,10 @@ const invitationController = {
 
     getAllInvitations: async (req, res, next) => {
         try {
-            console.log('toto')
             const targetId = req.params.id;
             
             
-            const invitations = await Invitation.findAll({ where: { to: targetId }, include: ['fromMember', 'toMember'] });
+            const invitations = await Invitation.findAll({ where: { to: targetId } , include: ['fromMember', 'toMember'] });
             res.json(invitations);
 
 

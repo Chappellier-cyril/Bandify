@@ -54,6 +54,7 @@ app.use( (req, res, next) => {
 })
 
 app.use(router);
+
 //TESTS SOCKETS => CREER UN TABLEAU DE MEMBER ONLINE ET LE RENVOYER AU FRONT
 io.on('connect', (socket) => {
     socket.on('isOnline', (member) => {
