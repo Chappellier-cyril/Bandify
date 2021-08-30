@@ -14,6 +14,7 @@ const searchController = require('../controllers/searchController');
 const messageController = require('../controllers/messageController');
 const invitationController = require('../controllers/invitationController');
 const localisationController = require('../controllers/localisationController');
+const errorController = require('../controllers/errorController');
 
 // SEARCH Route
 router.route('/search')
@@ -150,6 +151,7 @@ router.get('/departments/:id', localisationController.getOneDepartment);
 
 router.get('/regions', localisationController.getAllRegions);
 router.get('/regions/:id', localisationController.getOneRegion);
+
 // MEMBER HAS INSTRUMENT
 
 router.route('/members/:id/add_instrument')
@@ -162,7 +164,9 @@ router.route('/members/:id/add_instrument')
 router.route('/members/:id/add_musicstyle')
     .get(associationController.getMemberMusicStyles)
     .patch(associationController.updateMemberMusicStyles)
-    .delete(associationController.deleteMemberMusicStyles)
+    .delete(associationController.deleteMemberMusicStyles);
 
+router.route('/error')
+    .get(errorController.notFound);
 
 module.exports = router;
