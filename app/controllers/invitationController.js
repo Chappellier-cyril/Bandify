@@ -8,7 +8,6 @@ const invitationController = {
 
     getAllInvitations: async (req, res, next) => {
         try {
-            console.log('toto')
             const targetId = req.params.id;
             
             
@@ -65,10 +64,8 @@ const invitationController = {
         try {
             
             const targetId = req.params.id;
-            console.log(targetId)
             
             const invitationUpdate = await Invitation.findByPk(targetId);
-            console.log(invitationUpdate)
             
             if (!invitationUpdate) {
                 return next(); 
@@ -84,6 +81,7 @@ const invitationController = {
         }
     },
 
+    // We called "Friends" when the status is accepted ("1")
     getAllFriends: async (req, res, next) => {
         try {
             const targetId = req.params.id;
@@ -98,6 +96,7 @@ const invitationController = {
         }
     },
 
+    // We called "PendingInvitations" when the status is "0"
     getPendingInvitations: async (req, res, next) => {
         try {
             const targetId = req.params.id;
