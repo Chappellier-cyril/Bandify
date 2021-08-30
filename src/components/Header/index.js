@@ -31,12 +31,12 @@ const Header = ({
           </button>
           <button
             type="button"
-            className={notifications.length > 1
+            className={notifications.length > 0
               ? 'header__menu-buttons-btn--notifs header__menu-buttons-btn--notifs__new'
               : 'header__menu-buttons-btn--notifs'}
             onClick={toggleIsNotificationsOpen}
           >
-            <i className={notifications.length > 1 ? 'fas fa-bell fas fa-bell__new' : 'fas fa-bell'} />
+            <i className={notifications.length > 0 ? 'fas fa-bell fas fa-bell__new' : 'fas fa-bell'} />
           </button>
         </>
       )}

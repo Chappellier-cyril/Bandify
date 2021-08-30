@@ -4,14 +4,14 @@ import Message from './Message';
 import './style.scss';
 
 const Messages = ({
-  messages, getMessages, receiverName, reicever, sender,
+  messages, receiverName, reicever, sender,
 }) => {
   // create messageRef
   const messageRef = useRef();
-  // UseEffect pour récupérer les messages de la BDD
-  useEffect(() => {
-    getMessages();
-  }, []);
+  // // UseEffect pour récupérer les messages de la BDD
+  // useEffect(() => {
+  //   getMessages();
+  // }, []);
   // UseEffect à chaque chagement du state de messages
   useEffect(() => {
     /* scroll de toute la hauteur de scroll disponible /

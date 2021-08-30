@@ -27,6 +27,9 @@ const mapDispatchToProps = (dispatch) => ({
   getRegions: () => {
     dispatch({ type: 'GET_REGIONS' });
   },
+  getMessages: () => {
+    dispatch({ type: 'GET_MESSAGES' });
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
