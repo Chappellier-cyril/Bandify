@@ -1,3 +1,5 @@
+@use 'src/styles/vars';
+
 @media screen and (max-width: 700px) {
   .notifications{
     &__container{

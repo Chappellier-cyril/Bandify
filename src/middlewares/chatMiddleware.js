@@ -1,12 +1,6 @@
 import axios from 'axios';
 
 const chatMiddleware = (store) => (next) => (action) => {
-  if (action.type === 'GET_MESSAGES') {
-    axios.get('http://localhost:3000/messages')
-      .then((response) => {
-        store.dispatch({ type: 'GET_MESSAGES_SUCCESS', messages: response.data });
-      });
-  }
   if (action.type === 'ON_MESSAGE_SUBMIT') {
     const state = store.getState();
 

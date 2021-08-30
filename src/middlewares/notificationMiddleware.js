@@ -19,7 +19,8 @@ const notificationMiddleware = (store) => (next) => (action) => {
     // messages
     axios.get(`http://localhost:3000/members/${memberId}/messages`)
       .then((response) => {
-        console.log('response dans notifMiddleware :', response.data);
+        store.dispatch({ type: 'GET_MESSAGES_SUCCESS', messages: response.data });
+
         response.data.map((msg) => {
           if (msg.status === false) {
             const notif = { notification: 'message', message: msg };
