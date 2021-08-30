@@ -33,7 +33,10 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         notifications: [
           ...state.notifications,
-          { ...action.message },
+          {
+            notification: 'message',
+            message: { ...action.message },
+          },
         ],
       };
     }
@@ -47,8 +50,18 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         notifications: [
           ...state.notifications,
-          { ...action.invitation },
+          {
+            notification: 'invitation',
+            invitation: { ...action.invitation },
+          },
         ],
+      };
+    }
+    case 'DELETE_NOTIFICATION': {
+      const filteredNotif = state.notifications.filter((n, i) => i === action.index);
+      return {
+        ...state,
+        notifications: filteredNotif,
       };
     }
     default:
