@@ -149,6 +149,10 @@ router.route('/messages/:id/status')
 router.route('/invitations')
     .post(invitationController.sendInvitation);
 
+router.route('/invitations/:id')
+    .delete(invitationController.deleteInvitation)
+    .patch(invitationController.updateInvitation);
+
 router.route('/members/:id/invitations')
     .get(invitationController.getAllInvitations)
 
@@ -166,9 +170,7 @@ router.route('/members/:id/friends')
 router.route('/members/:id/pending_invitations')
     .get(invitationController.getPendingInvitations)    
 
-router.route('/invitations/:id')
-    .delete(invitationController.deleteInvitation)
-    .patch(invitationController.updateInvitation);
+
 
 // ROUTE DE LOCALISATION
 
@@ -200,7 +202,6 @@ router.get('/city/:id', localisationController.getOneCity);
  * @route GET /department/93
  * @returns {object} 200 - Tableau d'un département récupéré
  */
-
 
 router.get('/departments', localisationController.getAllDepartments);
 router.get('/department/:id', localisationController.getOneDepartment);
