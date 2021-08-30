@@ -27,8 +27,7 @@ const mapStateToProps = (state) => ({
   instrumentsData: state.settings.instruments,
   instruments: state.users.instruments,
   levelsData: state.settings.levels,
-  isInvitationSent: state.settings.isInvitationSent,
-  invitations: state.settings.invitations,
+  pendingInvitations: state.users.pendingInvitations,
   friends: state.users.friends,
 });
 

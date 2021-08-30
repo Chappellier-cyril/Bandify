@@ -29,6 +29,7 @@ export const initialState = {
     profil_image: '',
   },
   friends: [],
+  pendingInvitations: [],
   editPhoto: false,
   editName: false,
   editCity: false,
@@ -216,6 +217,31 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         friends: action.friends,
+      };
+
+    case 'SEND_INVITATION_SUCCESS': {
+      return {
+        ...state,
+        pendingInvitations: [
+          ...state.pendingInvitations,
+          action.invitation,
+        ],
+      };
+    }
+    case 'GET_NEW_INVITATION': {
+      return {
+        ...state,
+        pendingInvitations: [
+          ...state.pendingInvitations,
+          action.invitation,
+        ],
+      };
+    }
+
+    case 'GET_PENDING_INVITATIONS_SUCCESS':
+      return {
+        ...state,
+        pendingInvitations: action.pendingInvitations,
       };
 
     default:

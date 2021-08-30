@@ -10,12 +10,13 @@ const invitationMiddleware = (store) => (next) => (action) => {
       url: 'http://localhost:3000/invitations',
       data: {
         status: 0,
-        from: state.settings.sender_id,
+        from: myId,
         to: action.id,
       },
     };
     axios(options)
       .then((response) => {
+        console.log(response.data);
         store.dispatch({ type: 'SEND_INVITATION_SUCCESS', invitation: response.data });
       })
       .catch((e) => {
@@ -36,6 +37,20 @@ const invitationMiddleware = (store) => (next) => (action) => {
           return null;
         });
         store.dispatch({ type: 'GET_FRIENDS_SUCCESS', friends: myFriends });
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }
+
+  if (action.type === 'GET_PENDING_INVITATIONS') {
+    const options = {
+      method: 'GET',
+      url: `http://localhost:3000/members/${myId}/pending_invitations`,
+    };
+    axios(options)
+      .then((response) => {
+        store.dispatch({ type: 'GET_PENDING_INVITATIONS_SUCCESS', pendingInvitations: response.data });
       })
       .catch((e) => {
         console.log(e);

@@ -22,7 +22,7 @@ import axios from 'axios';
 // == Composant
 export default function App({
   isLogged, setReconnect, getInstruments,
-  getLevels, getMusicStyles, getDepartments, getRegions, getFriends,
+  getLevels, getMusicStyles, getDepartments, getRegions, getFriends, getPendingInvitations,
 }) {
   // AU premier rendu, je veux recupérer mon token
   useEffect(() => {
@@ -60,6 +60,7 @@ export default function App({
 
   useEffect(() => {
     if (isLogged) {
+      getPendingInvitations();
       getFriends();
     }
   }, [isLogged]);
