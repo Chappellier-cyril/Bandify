@@ -3,7 +3,7 @@ import axios from 'axios';
 const notificationMiddleware = (store) => (next) => (action) => {
   const state = store.getState();
 
-  if (action.type === 'ON_LOGIN_SUCCESS' || action.type === 'RECONNECT_USER') {
+  if (state.login.id && action.type === ('GET_MESSAGES' || 'GET_PENDING_INVITATIONS_SUCCESS')) {
     const memberId = state.login.id;
     // invitations
     axios.get(`http://localhost:3000/members/${memberId}/invitations`)

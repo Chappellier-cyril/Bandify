@@ -6,7 +6,7 @@ const chatMiddleware = (store) => (next) => (action) => {
 
     const options = {
       method: 'POST',
-      url: 'http://localhost:3000/messages',
+      url: `http://localhost:3000/members/${state.login.id}/messages`,
       headers: {
         'Content-Type': 'application/json',
       },

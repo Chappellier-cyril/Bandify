@@ -165,10 +165,7 @@ const reducer = (state = initialState, action = {}) => {
     {
       return {
         ...state,
-        messages: action.messages
-          .filter((message) => (message.sender_id === state.sender_id
-          && message.reicever_id === state.reicever_id)
-          || (message.sender_id === state.reicever_id && message.reicever_id === state.sender_id)),
+        messages: action.messages,
       };
     }
     case 'GET_NEW_MESSAGE':
