@@ -128,7 +128,6 @@ router.route('/musicstyles/:id')
  * @returns {object} 200 - Tableau du message recu
  */   
 
-
 router.route('/members/:id/messages')
     .get(messageController.getAllMessages)
     .post(messageController.sendMessage);   
