@@ -11,7 +11,7 @@ const invitationController = {
             const targetId = req.params.id;
             
             
-            const invitations = await Invitation.findAll({ where: { to: targetId }, include: ['fromMember', 'toMember'] });
+            const invitations = await Invitation.findAll({ where: { to: targetId } , include: ['fromMember', 'toMember'] });
             res.json(invitations);
 
 
@@ -86,7 +86,30 @@ const invitationController = {
         try {
             const targetId = req.params.id;
             
-            const friends = await Invitation.findAll({ where: { status:1, [Op.or]: [{ from: targetId }, { to: targetId }] }, include: ['fromMember', 'toMember'] });
+            const friends = await Invitation.findAll({
+                where: {
+                    status:1,
+                    [Op.or]: [{ from: targetId }, { to: targetId }]
+                },
+                include: [{
+                    association: 'fromMember',
+                    include: ['city', 'styles', {
+                        association: 'plays',
+                        include: ['level', 'instrument']
+                    }],
+                    attributes: {
+                        exclude: ['user_password']
+                    }
+                }, {
+                    association: 'toMember',
+                    include: ['city', 'styles', {
+                        association: 'plays',
+                        include: ['level', 'instrument']
+                    }],
+                    attributes: {
+                        exclude: ['user_password']
+                    }
+                }]});
             res.json(friends);
 
 

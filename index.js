@@ -4,6 +4,7 @@ const cors = require('cors');
 const router = require('./app/routers/routers');
 const http = require('http');
 const app = express();
+const sanitizer = require('sanitizer')
 const socketio = require('socket.io');
 const server = http.createServer(app);
 const expressSwagger = require('express-swagger-generator')(app);
@@ -37,11 +38,23 @@ const io = socketio(server, {
 });
 app.use(express.json());
 app.use(express.static('upload'));
+
 // A Modifier pour la sécurité a voir pour la suite
 app.use( cors('*') );
 app.use(express.urlencoded({extended: true})); 
 
+// ajout d' une méthode pour vérifier les données d'un formulaire avec sanitizer
+app.use( (req, res, next) => {
+    if (req.body) {
+        for (let prop in req.body) {
+            req.body[prop = sanitizer.escape(req.body[prop])];
+        }
+    }
+    next();
+})
+
 app.use(router);
+
 //TESTS SOCKETS => CREER UN TABLEAU DE MEMBER ONLINE ET LE RENVOYER AU FRONT
 io.on('connect', (socket) => {
     socket.on('isOnline', (member) => {

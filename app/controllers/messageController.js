@@ -1,11 +1,13 @@
 const { Message } = require('../models');
+const { Op } = require("sequelize");
 
 const messageController = {
     // Get all messages
     getAllMessages: async (req, res, next) => {
+
+        const targetId = req.params.id;
         try {
-            const messages = await Message.findAll({
-                });
+            const messages = await Message.findAll({ where: { [Op.or]: [{ reicever_id: targetId }, { sender_id: targetId }] }, include: ['Receiver', 'Sender'] });
             res.json(messages);
 
         } catch (error) {
@@ -15,7 +17,7 @@ const messageController = {
     },
     
     // Create a message
-    createMessage: async (req, res, next) => {
+    sendMessage: async (req, res, next) => {
         try {
             const newMessage = await Message.create({
                content: req.body.content,
