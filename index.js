@@ -46,7 +46,7 @@ app.use(express.urlencoded({extended: true}));
 // ajout d' une méthode pour vérifier les données d'un formulaire avec sanitizer
 app.use( (req, res, next) => {
     if (req.body) {
-        for (const prop in req.body) {
+        for (let prop in req.body) {
             req.body[prop = sanitizer.escape(req.body[prop])];
         }
     }

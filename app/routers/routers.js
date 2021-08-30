@@ -28,12 +28,15 @@ router.route('/signup')
 router.route('/login')
     .post(memberController.loginMember);
 
+// TOKEN Verify
+router.post('/checkToken', memberController.verifyJWT);
+
 // MEMBERS Routes
 
 /**
  * Récuperer tout les membres
  * @route GET /members
- * @returns {object} 200 - An array of user info
+ * @returns {object} 200 - Tableau de tout les membres récuperé
  */
 
 router.route('/members')
@@ -41,13 +44,11 @@ router.route('/members')
 // On vérifie avec le verifyJWT qu'on ai bien le token avant de passer
 // au getAllMembers (Si je recupère tous les membres c'est que j'ai le bon token)
 
-// Route qui permet de stream les fichiers d'images des membres
-router.get('/avatar/:key', memberController.streamMemberAvatar);
-
 /**
  * Récuperer un membre par l' id
- * @route GET /members/1
- * @returns {object} 200 - An array of user info
+ * @route GET /members/2
+ * @route patch /members/2
+ * @returns {object} 200 - Tableau d' un membre récuperé
  */
 
 router.route('/members/:id')
@@ -55,12 +56,10 @@ router.route('/members/:id')
     .patch(upload.single('file'), memberController.updateOneMember)
     .delete(memberController.deleteOneMember);
 
-router.post('/checkToken', memberController.verifyJWT);
-
 /**
  * Récuperer toute la liste des instruments
  * @route GET /instruments
- * @returns {object} 200 - An array of user info
+ * @returns {object} 200 - Tableau de tout les instruments
  */
 
 router.route('/instruments')
@@ -68,8 +67,8 @@ router.route('/instruments')
 
 /**
  * Récuperer un instrument par l' id
- * @route GET /instruments/:id
- * @returns {object} 200 - An array of user info
+ * @route GET /instruments/1
+ * @returns {object} 200 - Tableau d' un instrument récupéré
  */    
 router.route('/instruments/:id')
     .get(instrumentController.getOneInstrument);
@@ -77,7 +76,7 @@ router.route('/instruments/:id')
 /**
  * Récuperer la liste des levels
  * @route GET /levels
- * @returns {object} 200 - An array of user info
+ * @returns {object} 200 - Tableau de tout les levels
  */
 
 router.route('/levels')
@@ -85,8 +84,8 @@ router.route('/levels')
 
 /**
  * Récuperer un level par l' id
- * @route GET /levels/:id
- * @returns {object} 200 - An array of user info
+ * @route GET /levels/2
+ * @returns {object} 200 - Tableau d' un level récupéré
  */    
 
 router.route('/levels/:id')
@@ -95,7 +94,7 @@ router.route('/levels/:id')
 /**
  * Récuperer la liste des styles de musiques
  * @route GET /musicstyles
- * @returns {object} 200 - An array of user info
+ * @returns {object} 200 - Tableau de tout les styles de musiques
  */        
 
 router.route('/musicstyles')
@@ -103,28 +102,46 @@ router.route('/musicstyles')
     
 /**
  * Récuperer un style de musique par son id
- * @route GET /musicstyles/:id
- * @returns {object} 200 - An array of user info
+ * @route GET /musicstyles/3
+ * @returns {object} 200 - Tableau d' un style de musique récupéré
  */   
 
 router.route('/musicstyles/:id')
     .get(musicStyleController.getOneMusicStyle);
 
 /**
- * Récuperer la liste de toutes les villes
- * @route GET /cities
- * @returns {object} 200 - An array of user info
+ * Récuperer la liste de tout les messages
+ * @route GET /messages
+ * @returns {object} 200 - Tableau de tout les messages
  */   
 
-router.route('/messages')
+/**
+ * Envoyer un message
+ * @route POST /messages
+ * @returns {object} 200 - Tableau du message envoyé
+ */   
+
+router.route('/members/:id/messages')
     .get(messageController.getAllMessages)
-    .post(messageController.createMessage);
+    .post(messageController.sendMessage);
+   
+/**
+ * Récupere un message 
+ * @route GET /messages/3
+ * @returns {object} 200 - Tableau du message recu
+ */   
 
 router.route('/messages/:id')
      .get(messageController.readMessage);
 
 router.route('/messages/:id/status')
     .patch(messageController.updateMessageStatus);
+
+/**
+ * Récupere toutes les invitations en attente de réponse pour un membre
+ * @route GET /members/2/invitations
+ * @returns {object} 200 - Tableau du message recu
+ */  
 
 router.route('/invitations')
     .post(invitationController.sendInvitation);
@@ -143,14 +160,52 @@ router.route('/invitations/:id')
     .patch(invitationController.updateInvitation);
 
 // ROUTE DE LOCALISATION
+
+/**
+ * Récuperer la liste de toutes les villes
+ * @route GET /cities
+ * @returns {object} 200 - Tableau de toutes les villes
+ */
 router.get('/cities', localisationController.getAllCities);
 router.get('/autocomplete/:search', localisationController.autocompleteCities);
-router.get('/cities/:id', localisationController.getOneCity);
+
+/**
+ * Récuperer la liste de toutes les villes
+ * @route GET /city/85
+ * @returns {object} 200 - Tableau d' une ville récupéré
+ */
+router.get('/city/:id', localisationController.getOneCity);
+
+/**
+ * Récuperer la liste de tout les départements
+ * @route GET /departments
+ * @returns {object} 200 - Tableau de tout les départements
+ */
+
 router.get('/departments', localisationController.getAllDepartments);
-router.get('/departments/:id', localisationController.getOneDepartment);
+
+/**
+ * Récuperer la liste d'un département selon son Id
+ * @route GET /department/85
+ * @returns {object} 200 - Tableau d'un département récupéré
+ */
+
+router.get('/department/:id', localisationController.getOneDepartment);
+
+/**
+ * Récuperer la liste de toutes les régions
+ * @route GET /regions
+ * @returns {object} 200 - Tableau de toutes les régions
+ */   
+
+/**
+ * Récuperer la liste d' une région selon son Id
+ * @route GET /region/85
+ * @returns {object} 200 - Tableau d' une région récupéré
+ */ 
 
 router.get('/regions', localisationController.getAllRegions);
-router.get('/regions/:id', localisationController.getOneRegion);
+router.get('/region/:id', localisationController.getOneRegion);
 
 // MEMBER HAS INSTRUMENT
 
@@ -165,6 +220,9 @@ router.route('/members/:id/add_musicstyle')
     .get(associationController.getMemberMusicStyles)
     .patch(associationController.updateMemberMusicStyles)
     .delete(associationController.deleteMemberMusicStyles);
+
+// Route qui permet de stream les fichiers d'images des membres
+router.get('/avatar/:key', memberController.streamMemberAvatar);
 
 router.route('/error')
     .get(errorController.notFound);
