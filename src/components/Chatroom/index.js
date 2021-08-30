@@ -14,6 +14,7 @@ const Chatroom = ({
   toggleIsFriendsListOpen,
   isMessagesOpen,
   isFriendsListOpen,
+  friends,
 }) => (
   <div className={isChatroomOpen ? 'chatroom chatroom--open' : 'chatroom'}>
     <div className="chatroom__nav">
@@ -43,7 +44,7 @@ const Chatroom = ({
     </div>
     )}
 
-    {isFriendsListOpen && (
+    {isFriendsListOpen && friends && (
       <FriendsList />
     )}
   </div>
@@ -56,6 +57,7 @@ Chatroom.propTypes = {
   toggleIsFriendsListOpen: PropTypes.func.isRequired,
   isMessagesOpen: PropTypes.bool.isRequired,
   isFriendsListOpen: PropTypes.bool.isRequired,
+  friends: PropTypes.arrayOf(PropTypes.shape()).isRequired,
 };
 
 export default Chatroom;

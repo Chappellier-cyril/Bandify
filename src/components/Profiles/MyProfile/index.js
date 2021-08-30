@@ -10,6 +10,7 @@ import Password from './Password';
 import Description from './Description';
 import Instruments from './Instruments';
 import Styles from './Styles';
+import Friends from './Friends';
 // == Import : local
 import 'src/components/Profiles/style.scss';
 
@@ -57,12 +58,13 @@ const MyProfile = ({
   addNewInstrument,
   removeInstrument,
   deleteInstrumentAssociation,
+  friends,
 
 }) => {
   const {
     plays, styles, profil_image, email,
   } = user;
-
+  console.log('myProfile', friends);
   return (
     <>
       <div className="myprofile__cards">
@@ -150,8 +152,8 @@ const MyProfile = ({
                 editStyles={editStyles}
                 handleSubmitStyles={handleSubmitStyles}
               />
+              {friends && <Friends friends={friends} />}
             </div>
-            <h2 className="myprofile__friends-title">Mes amis</h2>
           </>
         </div>
         )}
@@ -200,6 +202,7 @@ MyProfile.propTypes = {
       music_name: PropTypes.string,
     })),
   }),
+  friends: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   onWishToDeleteProfile: PropTypes.func.isRequired,
   onDeleteProfile: PropTypes.func.isRequired,
   isDeleteModalClosed: PropTypes.bool.isRequired,
