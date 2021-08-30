@@ -171,7 +171,6 @@ const memberController = {
             }
 
             const file = req.file;
-            console.log(file);
             let result;
             if(file) {
                 result = await uploadFile(file);
