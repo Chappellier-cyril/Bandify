@@ -30,6 +30,7 @@ export const initialState = {
   },
   friends: [],
   pendingInvitations: [],
+  acceptedInvitations: [],
   editPhoto: false,
   editName: false,
   editCity: false,
@@ -242,6 +243,29 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         pendingInvitations: action.pendingInvitations,
+      };
+
+    case 'GET_ACCEPTED_INVITATIONS_SUCCESS':
+      return {
+        ...state,
+        acceptedInvitations: action.acceptedInvitations,
+      };
+
+    case 'DELETE_FROM_FRIENDLIST_SUCCESS':
+      return {
+        ...state,
+        pendingInvitations: [
+          ...state.pendingInvitations.slice(0, action.indexPending),
+          ...state.pendingInvitations.slice(action.indexPending + 1),
+        ],
+        acceptedInvitations: [
+          ...state.acceptedInvitations.slice(0, action.indexAccepted),
+          ...state.acceptedInvitations.slice(action.indexAccepted + 1),
+        ],
+        friends: [
+          ...state.friends.slice(0, action.indexFriends),
+          ...state.friends.slice(action.indexFriends + 1),
+        ],
       };
 
     default:

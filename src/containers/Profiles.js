@@ -28,7 +28,9 @@ const mapStateToProps = (state) => ({
   instruments: state.users.instruments,
   levelsData: state.settings.levels,
   pendingInvitations: state.users.pendingInvitations,
+  acceptedInvitations: state.users.acceptedInvitations,
   friends: state.users.friends,
+  isDeleteFriendModalOpen: state.settings.isDeleteFriendModalOpen,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -127,6 +129,15 @@ const mapDispatchToProps = (dispatch) => ({
   sendInvitation: (id) => {
     dispatch({
       type: 'SEND_INVITATION_TO_USER', id,
+    });
+  },
+  wishToDeleteFriend: () => {
+    dispatch({ type: 'DELETE_FRIEND_WISH' });
+  },
+  deleteFromFriendList: (accepted, pending,
+    friends, acceptedUser, pendingUser, friendUser) => {
+    dispatch({
+      type: 'DELETE_FROM_FRIENDLIST', accepted, pending, friends, acceptedUser, pendingUser, friendUser,
     });
   },
 });

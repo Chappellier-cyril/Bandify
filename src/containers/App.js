@@ -36,6 +36,9 @@ const mapDispatchToProps = (dispatch) => ({
   getPendingInvitations: () => {
     dispatch({ type: 'GET_PENDING_INVITATIONS' });
   },
+  getAcceptedInvitations: () => {
+    dispatch({ type: 'GET_ACCEPTED_INVITATIONS' });
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
