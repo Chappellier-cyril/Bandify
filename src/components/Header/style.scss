@@ -20,7 +20,9 @@
       width: 40%;
     }
 
-    &__menu-buttons-btn--menu, &__menu-buttons-btn--chat {
+    &__menu-buttons-btn--menu, 
+    &__menu-buttons-btn--chat,
+    &__menu-buttons-btn--notifs {
       display: inline-block;
       border: none;
       cursor: pointer;
@@ -32,23 +34,48 @@
       height: 50px;
       border-radius: 50%;
       
-    }
-    &__bandify {
-      display: flex;
-      width: 60%;
-      &--logo {
-        width: 100px;
-        margin-top: 1rem;
+      &__new {
+        background-color: vars.$fourthColor;
+
+        .fas.fa-bell {
+          width: 100%;
+          height: 100%;
+          padding-top: .7em;
+
+          &__new {
+            color: vars.$thirdColor;
+            animation: bounce 0.5s infinite ease alternate;
+
+            &:hover {
+              -webkit-animation-play-state: paused;
+              animation-play-state: paused;
+            }
+          }
+        }
       }
-      &--title {
-        color: vars.$thirdColor;
-        font-size: 1.5rem;
-        margin: auto 0;
-        font-weight: bold;
+
+      }
+
+      &__bandify {
+        display: flex;
+        width: 60%;
+        &--logo {
+          width: 100px;
+          margin-top: 1rem;
+        }
+        &--title {
+          color: vars.$thirdColor;
+          font-size: 1.5rem;
+          margin: auto 0;
+          font-weight: bold;
+        }
       }
     }
+
+
+    
   }
-}
+
 
 @media screen and (min-width: 700px) {
   
@@ -70,10 +97,11 @@
     &__menu-buttons {
       display: flex;
       justify-content: space-around;
-      width: 40%;
+      width: 7%;
     }
 
-    &__menu-buttons-btn--chat {
+    &__menu-buttons-btn--chat,
+    &__menu-buttons-btn--notifs {
       display: inline-block;
       border: none;
       cursor: pointer;
@@ -84,6 +112,26 @@
       width: 50px;
       height: 50px;
       border-radius: 50%;
+
+      &__new {
+        background-color: vars.$fourthColor;
+
+        .fas.fa-bell {
+          width: 100%;
+          height: 100%;
+          padding-top: .7em;
+
+          &__new {
+            color: vars.$thirdColor;
+            animation: bounce 0.5s infinite ease alternate;
+
+            &:hover {
+              -webkit-animation-play-state: paused;
+              animation-play-state: paused;
+            }
+          }
+        }
+      }
     }
 
     &__menu-buttons-btn--menu {
@@ -109,4 +157,23 @@
   
   }
   
+}
+
+
+// bouncing bell when new notification to alert user
+@-webkit-keyframes bounce {
+  0% { 
+      transform: translateY(0); 
+  }
+  100% { 
+      transform: translateY(-10px); 
+  } 
+}
+@keyframes bounce {
+  0% { 
+      transform: translateY(0); 
+  }
+  100% { 
+      transform: translateY(-10px); 
+  } 
 }

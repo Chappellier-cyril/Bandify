@@ -5,16 +5,36 @@ import './style.scss';
 const Notifications = ({ notifications, isNotificationsOpen }) => (
   <div className={`notifications__container ${!isNotificationsOpen && 'notifications__isHidden'}`}>
     <ul className="notifications__ul">
-      {
+      {notifications.length > 0
+        && notifications.map((n) => {
+          if (n.notification === 'invitation') {
+            return (
+              <li
+                className="notifications__li"
+                key={n.invitation.id + n.invitation.fromMember.firstname}
+              >
+                <p>Vous avez reçu une invitation de
+                  {`${n.invitation.fromMember.firstname} ${n.invitation.fromMember.lastname}`}
+                </p>
+                <button type="button">Accepter</button>
+                <button type="button">Supprimer</button>
+              </li>
+            );
+          }
+          if (n.notification === 'message') {
+            return (
+              <li className="notifications__li" key={n.message.id}>
+                Vous avez reçu un message de
+                {`${n.message.Sender.firstname} ${n.message.Sender.lastname}`}
+              </li>
+            );
+          }
+          return null;
+        })}
 
-    }
-      <li className="notifications__li">Notif 1</li>
-      <li className="notifications__li">Notif 2</li>
-      <li className="notifications__li">Notif 3</li>
     </ul>
   </div>
 );
-
 Notifications.propTypes = {
   notifications: PropTypes.arrayOf(PropTypes.shape().isRequired).isRequired,
   isNotificationsOpen: PropTypes.bool.isRequired,

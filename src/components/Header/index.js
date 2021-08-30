@@ -9,6 +9,7 @@ import './style.scss';
 const Header = ({
   toggleIsMenuOpen, toggleIsChatroomOpen,
   isLogged, toggleIsNotificationsOpen,
+  notifications,
 }) => (
   <header className="header">
     <div className="header__bandify">
@@ -30,10 +31,12 @@ const Header = ({
           </button>
           <button
             type="button"
-            className="header__menu-buttons-btn--chat"
+            className={notifications.length > 0
+              ? 'header__menu-buttons-btn--notifs header__menu-buttons-btn--notifs__new'
+              : 'header__menu-buttons-btn--notifs'}
             onClick={toggleIsNotificationsOpen}
           >
-            <i className="far fa-bell" />
+            <i className={notifications.length > 0 ? 'fas fa-bell fas fa-bell__new' : 'fas fa-bell'} />
           </button>
         </>
       )}

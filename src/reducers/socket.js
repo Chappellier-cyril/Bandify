@@ -21,6 +21,10 @@ const reducer = (state = initialState, action = {}) => {
       */
       return {
         ...state,
+        notifications: [
+          ...state.notifications,
+          action.notif,
+        ],
       };
     }
     case 'GET_NEW_MESSAGE': {

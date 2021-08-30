@@ -3,6 +3,9 @@ import Header from 'src/components/Header';
 
 const mapStateToProps = (state) => ({
   isLogged: state.login.isLogged,
+  // isInvitationSent: state.settings.isInvitationSent,
+  // status: state.settings.status,
+  notifications: state.socket.notifications,
 });
 
 const mapDispatchToProps = (dispatch) => ({

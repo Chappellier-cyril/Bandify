@@ -22,7 +22,8 @@ import axios from 'axios';
 // == Composant
 export default function App({
   isLogged, setReconnect, getInstruments,
-  getLevels, getMusicStyles, getDepartments, getRegions, getFriends, getPendingInvitations,
+  getLevels, getMusicStyles, getDepartments,
+  getRegions, getMessages, getFriends, getPendingInvitations,
 }) {
   // AU premier rendu, je veux recupérer mon token
   useEffect(() => {
@@ -62,6 +63,7 @@ export default function App({
     if (isLogged) {
       getPendingInvitations();
       getFriends();
+      getMessages();
     }
   }, [isLogged]);
   return (
@@ -108,6 +110,7 @@ App.propTypes = {
   getDepartments: PropTypes.func.isRequired,
   getRegions: PropTypes.func.isRequired,
   getFriends: PropTypes.func.isRequired,
+  getMessages: PropTypes.func.isRequired,
 };
 
 // == Export

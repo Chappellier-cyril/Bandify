@@ -27,6 +27,9 @@ const mapDispatchToProps = (dispatch) => ({
   getRegions: () => {
     dispatch({ type: 'GET_REGIONS' });
   },
+  getMessages: () => {
+    dispatch({ type: 'GET_MESSAGES' });
+  },
   getFriends: () => {
     dispatch({ type: 'GET_FRIENDS' });
   },
