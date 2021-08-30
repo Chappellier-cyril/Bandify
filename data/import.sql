@@ -40,7 +40,7 @@ CREATE TABLE "member" (
     "user_password" text NOT NULL,
     "user_description" text,
     "profil_image" text,
-    "city_code" text REFERENCES city(code),
+    "city_code" text REFERENCES "city"("code"),
     "createdAt" Timestamptz NOT NULL default now(),
     "updatedAt" Timestamptz NOT NULL default now()
 );
