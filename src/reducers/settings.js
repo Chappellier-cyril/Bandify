@@ -35,6 +35,7 @@ export const initialState = {
   reicever_id: null,
   reicever_name: '',
   from: null,
+  isDeleteFriendModalOpen: false,
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -220,6 +221,18 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         sender_id: Number(action.user.id),
+      };
+
+    case 'DELETE_FRIEND_WISH':
+      return {
+        ...state,
+        isDeleteFriendModalOpen: !state.isDeleteFriendModalOpen,
+      };
+
+    case 'DELETE_FROM_FRIENDLIST_SUCCESS':
+      return {
+        ...state,
+        isDeleteFriendModalOpen: false,
       };
 
     default:

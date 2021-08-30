@@ -53,6 +53,10 @@ const Profiles = ({
   sendInvitation,
   pendingInvitations,
   friends,
+  acceptedInvitations,
+  wishToDeleteFriend,
+  isDeleteFriendModalOpen,
+  deleteFromFriendList,
 }) => {
   const url = window.location.href;
   // pour avoir le dernier segment de l'url
@@ -122,7 +126,11 @@ const Profiles = ({
           user={user}
           sendInvitation={sendInvitation}
           pendingInvitations={pendingInvitations}
+          acceptedInvitations={acceptedInvitations}
           friends={friends}
+          wishToDeleteFriend={wishToDeleteFriend}
+          isDeleteFriendModalOpen={isDeleteFriendModalOpen}
+          deleteFromFriendList={deleteFromFriendList}
         />
       )
   );

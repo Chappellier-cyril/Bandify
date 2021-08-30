@@ -8,7 +8,6 @@ const notificationMiddleware = (store) => (next) => (action) => {
     // invitations
     axios.get(`http://localhost:3000/members/${memberId}/invitations`)
       .then((response) => {
-        console.log('response dans notifMiddleware :', response.data);
         response.data.map((inv) => {
           const notif = { notification: 'invitation', invitation: inv };
           return (

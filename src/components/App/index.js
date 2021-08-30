@@ -23,7 +23,7 @@ import axios from 'axios';
 export default function App({
   isLogged, setReconnect, getInstruments,
   getLevels, getMusicStyles, getDepartments,
-  getRegions, getMessages, getFriends, getPendingInvitations,
+  getRegions, getMessages, getFriends, getPendingInvitations, getAcceptedInvitations,
 }) {
   // AU premier rendu, je veux recupérer mon token
   useEffect(() => {
@@ -62,6 +62,7 @@ export default function App({
   useEffect(() => {
     if (isLogged) {
       getPendingInvitations();
+      getAcceptedInvitations();
       getFriends();
       getMessages();
     }

@@ -167,6 +167,7 @@ const MyProfile = ({
             onClick={onDeleteProfile}
           >Oui
           </button>
+          {/* //TODO => repasser onWishToDeleteProfile à false si on clique ailleurs que sur Non */}
           <button
             type="button"
             onClick={onWishToDeleteProfile}
