@@ -128,7 +128,6 @@ router.route('/musicstyles/:id')
  * @returns {object} 200 - Tableau du message recu
  */   
 
-
 router.route('/members/:id/messages')
     .get(messageController.getAllMessages)
     .post(messageController.sendMessage);   
@@ -148,6 +147,10 @@ router.route('/messages/:id/status')
 
 router.route('/invitations')
     .post(invitationController.sendInvitation);
+
+router.route('/invitations/:id')
+    .delete(invitationController.deleteInvitation)
+    .patch(invitationController.updateInvitation);
 
 router.route('/members/:id/invitations')
     .get(invitationController.getAllInvitations)
@@ -169,9 +172,7 @@ router.route('/members/:id/pending_invitations')
 router.route('/members/:id/accepted_invitations')
     .get(invitationController.getAcceptedInvitations) 
 
-router.route('/invitations/:id')
-    .delete(invitationController.deleteInvitation)
-    .patch(invitationController.updateInvitation);
+
 
 // ROUTE DE LOCALISATION
 
@@ -203,7 +204,6 @@ router.get('/city/:id', localisationController.getOneCity);
  * @route GET /department/93
  * @returns {object} 200 - Tableau d'un département récupéré
  */
-
 
 router.get('/departments', localisationController.getAllDepartments);
 router.get('/department/:id', localisationController.getOneDepartment);

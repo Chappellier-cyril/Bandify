@@ -22,6 +22,8 @@ const invitationController = {
     },
 
     // Create an invitation
+
+    // MODIFIER POUR NE PAS RENVOYER DEUX FOIS UNE INVITATION
     sendInvitation : async (req, res, next) => {
         try {
             const newInvitation = await Invitation.create({
