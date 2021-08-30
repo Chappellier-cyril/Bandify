@@ -124,8 +124,22 @@ const invitationController = {
         try {
             const targetId = req.params.id;
             
-            const pendingInvitations = await Invitation.findAll({ where: { status:0, from: targetId }, include: ['fromMember', 'toMember'] });
+            const pendingInvitations = await Invitation.findAll({ where: { status:0, [Op.or]: [{ from: targetId }, { to: targetId }] }, include: ['fromMember', 'toMember'] });
             res.json(pendingInvitations);
+
+
+        } catch (error) {
+            console.trace(error);
+            res.status(500).json(error);
+        }
+    },
+
+    getAcceptedInvitations: async (req, res, next) => {
+        try {
+            const targetId = req.params.id;
+            
+            const acceptedInvitations = await Invitation.findAll({ where: { status:1, [Op.or]: [{ from: targetId }, { to: targetId }] }, include: ['fromMember', 'toMember'] });
+            res.json(acceptedInvitations);
 
 
         } catch (error) {

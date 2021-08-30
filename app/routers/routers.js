@@ -164,7 +164,10 @@ router.route('/members/:id/friends')
 
 
 router.route('/members/:id/pending_invitations')
-    .get(invitationController.getPendingInvitations)    
+    .get(invitationController.getPendingInvitations)
+    
+router.route('/members/:id/accepted_invitations')
+    .get(invitationController.getAcceptedInvitations) 
 
 router.route('/invitations/:id')
     .delete(invitationController.deleteInvitation)
