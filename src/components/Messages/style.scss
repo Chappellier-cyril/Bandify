@@ -23,16 +23,18 @@
   }
   
   .message {
+    width: 100%;
     margin-bottom: 2rem;
     padding: 0 2rem;
     font-size: 1.2em;
-    width: 100%;
+    text-align: left;
 
     &__content--his {
       width: fit-content;
+      max-width: 150px;
+      word-wrap: break-word;
       padding: 1.2rem;
       margin-bottom: 1.2em;
-      text-align: left;
       background-color: white;
       border-radius: 40px;
       color: rgb(64, 126, 218);
@@ -41,8 +43,10 @@
 
     &__content--mine {
       width: fit-content;
+      max-width: 150px;
+      word-wrap: break-word;
       padding: 1.2rem;
-      margin-left: 50%;
+      margin-left: 60%;
       text-align: right;
       background-color: vars.$thirdColor;
       color: white;
@@ -79,12 +83,14 @@
     padding: 0 2rem;
     font-size: 1.2em;
     width: 100%;
+    text-align: left;
 
     &__content--his {
       width: fit-content;
+      max-width: 150px;
+      word-wrap: break-word;
       padding: 1.2rem;
       margin-bottom: 1.2em;
-      text-align: left;
       background-color: white;
       border-radius: 40px;
       color: rgb(64, 126, 218);
@@ -93,9 +99,11 @@
 
     &__content--mine {
       width: fit-content;
+      max-width: 150px;
+      word-wrap: break-word;
       padding: 1.2rem;
-      margin-left: 50%;
-      text-align: right;
+      margin-left: 70%;
+      text-align: right;  
       background-color: vars.$thirdColor;
       color: white;
       border-radius: 40px;

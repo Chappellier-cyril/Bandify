@@ -30,6 +30,7 @@
   }
 }
 
+// DESKTOP
 @media screen and (min-width: 700px) {
   .notifications{
     &__container{
@@ -49,8 +50,18 @@
       padding: .7rem 1rem;
     }
     &__li{
-      padding: 0.7rem 0.3rem;
+        padding: 0.7rem 0.3rem;
         border-bottom: 1px solid vars.$secondColor;
+        transition: all 200ms ease;
+
+        &:hover {
+          background-color: vars.$secondColor;
+          color: vars.$fourthColor;
+        }
+
+        &--message {
+          cursor: pointer;
+        }
     }
     &__isHidden{
         top: -100%;

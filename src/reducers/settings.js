@@ -225,7 +225,9 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         reicever_id: action.id,
         reicever_name: action.name,
+        isChatroomOpen: true,
         isMessagesOpen: true,
+        isNotificationsOpen: false,
       };
     }
 

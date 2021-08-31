@@ -13,6 +13,9 @@ const mapDispatchToProps = (dispatch) => ({
   toggleIsNotificationsOpen: () => {
     dispatch({ type: 'SET_IS_OPEN_NOTIF' });
   },
+  getCurrentUser: (id, name) => {
+    dispatch({ type: 'GET_RECEIVER', id, name });
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Notifications);
