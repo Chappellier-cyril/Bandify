@@ -90,6 +90,29 @@ const invitationMiddleware = (store) => (next) => (action) => {
       });
   }
 
+  if (action.type === 'ON_ACCEPT_INVITATION') {
+    const invitationId = action.id;
+    const { futureFriend } = action;
+    console.log('invitationId à patcher dans le middleware :', invitationId);
+    const options = {
+      method: 'PATCH',
+      url: `http://localhost:3000/invitations/${invitationId}`,
+      data: {
+        status: 1,
+        // from: futureFriend.id,
+        // to:
+      },
+    };
+    axios(options)
+      .then((response) => {
+        console.log(response.data);
+        store.dispatch({ type: 'ON_ACCEPT_INVITATION_SUCCESS', invitation: response.data, futureFriend });
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }
+
   next(action);
 };
 

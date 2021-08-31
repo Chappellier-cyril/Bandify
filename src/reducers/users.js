@@ -267,7 +267,14 @@ const reducer = (state = initialState, action = {}) => {
           ...state.friends.slice(action.indexFriends + 1),
         ],
       };
-
+    case 'ON_ACCEPT_INVITATION_SUCCESS':
+      return {
+        ...state,
+        friends: [
+          ...state.friends,
+          action.futureFriend,
+        ],
+      };
     default:
       return state;
   }

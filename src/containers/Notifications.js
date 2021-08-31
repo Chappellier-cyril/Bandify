@@ -4,6 +4,8 @@ import Notifications from 'src/components/Notifications';
 const mapStateToProps = (state) => ({
   notifications: state.socket.notifications,
   isNotificationsOpen: state.settings.isNotificationsOpen,
+  pendingInvitations: state.users.pendingInvitations,
+  friends: state.users.friends,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -15,6 +17,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   getCurrentUser: (id, name) => {
     dispatch({ type: 'GET_RECEIVER', id, name });
+  },
+  onAcceptInvitation: (id, futureFriend) => {
+    dispatch({ type: 'ON_ACCEPT_INVITATION', id, futureFriend });
   },
 });
 

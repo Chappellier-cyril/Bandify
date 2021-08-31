@@ -7,13 +7,24 @@ const Notifications = ({
   isNotificationsOpen,
   toggleIsNotificationsOpen,
   getCurrentUser,
-}) => (
-  <div className={`notifications__container ${!isNotificationsOpen && 'notifications__isHidden'}`}>
-    <button type="button" onClick={toggleIsNotificationsOpen} className="close-menu-btn">
-      <i className="fas fa-times" />
-    </button>
-    <ul className="notifications__ul">
-      {notifications.length > 0
+  onAcceptInvitation,
+  pendingInvitations,
+  friends,
+}) =>
+// const foundPendingUser = pendingInvitations
+//   .find((pendingInvitation) => pendingInvitation.to === user.id
+//   || pendingInvitation.from === user.id);
+
+// const friend = friends
+//   .find((f) => f.id === user.id);
+
+  (
+    <div className={`notifications__container ${!isNotificationsOpen && 'notifications__isHidden'}`}>
+      <button type="button" onClick={toggleIsNotificationsOpen} className="close-menu-btn">
+        <i className="fas fa-times" />
+      </button>
+      <ul className="notifications__ul">
+        {notifications.length > 0
         && notifications.map((n) => {
           if (n.notification === 'invitation') {
             return (
@@ -22,7 +33,7 @@ const Notifications = ({
                 key={n.invitation.id + n.invitation.fromMember.firstname}
               >
                 <p>Vous avez reçu une invitation de {`${n.invitation.fromMember.firstname} ${n.invitation.fromMember.lastname}`}</p>
-                <button type="button">Accepter</button>
+                <button type="button" onClick={() => onAcceptInvitation(n.invitation.id, n.invitation.fromMember)}>Accepter</button>
                 <button type="button">Supprimer</button>
               </li>
             );
@@ -42,9 +53,10 @@ const Notifications = ({
           return null;
         })}
 
-    </ul>
-  </div>
-);
+      </ul>
+    </div>
+
+  );
 Notifications.propTypes = {
   notifications: PropTypes.arrayOf(PropTypes.shape().isRequired).isRequired,
   isNotificationsOpen: PropTypes.bool.isRequired,

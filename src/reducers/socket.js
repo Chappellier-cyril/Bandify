@@ -68,6 +68,17 @@ const reducer = (state = initialState, action = {}) => {
         notifications: filteredNotif,
       };
     }
+    case 'ON_ACCEPT_INVITATION_SUCCESS':
+      return {
+        ...state,
+        notifications: [
+          ...state.notifications,
+          {
+            notification: 'invitation',
+            invitation: action.invitation,
+          },
+        ],
+      };
     default:
       return state;
   }
