@@ -31,6 +31,13 @@ const notificationMiddleware = (store) => (next) => (action) => {
         });
       });
   }
+  if (action.type === 'DELETE_MESSAGES_NOTIFICATION') {
+    action.messages.map((message) => (
+      axios.patch(`${process.env.BANDIFY_API_URL}/messages/${message.id}/status`)
+        .then(() => next(action))
+    ));
+    store.dispatch({ type: 'UPDATE_MESSAGES_NOTIFICATIONS', index: action.index });
+  }
   next(action);
 };
 

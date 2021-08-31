@@ -22,9 +22,17 @@
     }
     &__li{
         padding: 0.7rem 0.3rem;
+        display: flex;
+        justify-content: space-around;
         border-bottom: 1px solid vars.$secondColor;
         &--message{
           cursor: pointer;
+        }
+        &--delete{
+          border: none;
+          background-color: vars.$thirdColor;
+          color: vars.$fourthColor;
+          border-radius: 50%;
         }
     }
     &__isHidden{
@@ -32,6 +40,7 @@
     }
   }
 }
+
 
 // DESKTOP
 @media screen and (min-width: 700px) {

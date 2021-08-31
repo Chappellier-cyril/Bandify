@@ -7,8 +7,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  deleteNotification: (index) => {
-    dispatch({ type: 'DELETE_NOTICATION', index });
+  deleteMessagesNotification: (index, messages) => {
+    dispatch({ type: 'DELETE_MESSAGES_NOTIFICATION', index, messages });
   },
   toggleIsNotificationsOpen: () => {
     dispatch({ type: 'SET_IS_OPEN_NOTIF' });

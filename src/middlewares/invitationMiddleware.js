@@ -88,7 +88,6 @@ const invitationMiddleware = (store) => (next) => (action) => {
         console.log(e);
       });
   }
-
   next(action);
 };
 

@@ -92,8 +92,9 @@ const reducer = (state = initialState, action = {}) => {
         ],
       };
     }
-    case 'DELETE_NOTIFICATION': {
-      const filteredNotif = state.notifications.filter((n, i) => i === action.index);
+    case 'UPDATE_MESSAGES_NOTIFICATIONS': {
+      const filteredNotif = state.notifications.filter((n, i) => i !== action.index);
+      console.log(filteredNotif);
       return {
         ...state,
         notifications: filteredNotif,
