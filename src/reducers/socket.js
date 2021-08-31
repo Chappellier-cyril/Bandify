@@ -100,6 +100,32 @@ const reducer = (state = initialState, action = {}) => {
         notifications: filteredNotif,
       };
     }
+    case 'ON_ACCEPT_INVITATION_SUCCESS':
+      return {
+        ...state,
+        notifications: [
+          // on utilise la méthode slice, qui permet de
+          // supprimer un item d'un array à un index donné
+          // ici l'objectif est de retirer la notification ayant le même id
+          // que celle qu'on vient de patch pour la remplacer par celle ci
+          // dans le tableau de notifs
+          ...state.notifications.slice(0, action.invIndex),
+          ...state.notifications.slice(action.invIndex + 1),
+          {
+            notification: 'invitation',
+            invitation: action.invitation,
+          },
+        ],
+      };
+    case 'ON_DENY_INVITATION_SUCCESS':
+      return {
+        ...state,
+        notifications: [
+          // on supprime complétement la notif du tableau
+          ...state.notifications.slice(0, action.invIndex),
+          ...state.notifications.slice(action.invIndex + 1),
+        ],
+      };
     default:
       return state;
   }

@@ -8,6 +8,8 @@ const Notifications = ({
   toggleIsNotificationsOpen,
   getCurrentUser,
   deleteMessagesNotification,
+  onAcceptInvitation,
+  onDenyInvitation,
 }) => (
   <div className={`notifications__container ${!isNotificationsOpen && 'notifications__isHidden'}`}>
     <div className="notifications__li">
@@ -26,8 +28,8 @@ const Notifications = ({
                 key={n.invitation.id + n.invitation.fromMember.firstname}
               >
                 <p>Vous avez reçu une invitation de {`${n.invitation.fromMember.firstname} ${n.invitation.fromMember.lastname}`}</p>
-                <button type="button">Accepter</button>
-                <button type="button">Supprimer</button>
+                <button type="button" onClick={() => onAcceptInvitation(n.invitation.id, n.invitation.fromMember)}>Accepter</button>
+                <button type="button" onClick={() => onDenyInvitation(n.invitation.id, n.invitation.fromMember)}>Refuser</button>
               </li>
             );
           }
@@ -48,6 +50,7 @@ const Notifications = ({
 
     </ul>
   </div>
+
 );
 Notifications.propTypes = {
   notifications: PropTypes.arrayOf(PropTypes.shape().isRequired).isRequired,
@@ -55,6 +58,8 @@ Notifications.propTypes = {
   toggleIsNotificationsOpen: PropTypes.func.isRequired,
   getCurrentUser: PropTypes.func.isRequired,
   deleteMessagesNotification: PropTypes.func.isRequired,
+  onAcceptInvitation: PropTypes.func.isRequired,
+  onDenyInvitation: PropTypes.func.isRequired,
 };
 
 export default Notifications;

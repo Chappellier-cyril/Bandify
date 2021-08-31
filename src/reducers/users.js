@@ -263,7 +263,29 @@ const reducer = (state = initialState, action = {}) => {
           ...state.friends.slice(action.indexFriends + 1),
         ],
       };
-
+    case 'ON_ACCEPT_INVITATION_SUCCESS':
+      return {
+        ...state,
+        friends: [
+          ...state.friends,
+          // on ajoute le membre à notre tableau de friends
+          action.futureFriend,
+        ],
+        acceptedInvitations: [
+          ...state.acceptedInvitations,
+          // on ajoute l'invitation à notre tableau d'invitations accepétées
+          action.invitation,
+        ],
+      };
+    case 'ON_DENY_INVITATION_SUCCESS':
+      return {
+        ...state,
+        pendingInvitations: [
+          // on retire la pending invitation du tableau
+          ...state.pendingInvitations.slice(0, action.pendingInvIndex),
+          ...state.pendingInvitations.slice(action.pendingInvIndex + 1),
+        ],
+      };
     default:
       return state;
   }
