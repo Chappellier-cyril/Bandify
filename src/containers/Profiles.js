@@ -134,10 +134,10 @@ const mapDispatchToProps = (dispatch) => ({
   wishToDeleteFriend: () => {
     dispatch({ type: 'DELETE_FRIEND_WISH' });
   },
-  deleteFromFriendList: (accepted, pending,
-    friends, acceptedUser, pendingUser, friendUser) => {
+  deleteFromFriendList: (accepted,
+    friends, acceptedUser, friendUser) => {
     dispatch({
-      type: 'DELETE_FROM_FRIENDLIST', accepted, pending, friends, acceptedUser, pendingUser, friendUser,
+      type: 'DELETE_FROM_FRIENDLIST', accepted, friends, acceptedUser, friendUser,
     });
   },
 });
