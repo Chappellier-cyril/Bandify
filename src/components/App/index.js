@@ -15,6 +15,7 @@ import Notifications from 'src/containers/Notifications';
 import Contact from 'src/components/Contact';
 import About from 'src/components/About';
 import Footer from 'src/components/Footer';
+import PageNotFound from 'src/components/PageNotFound';
 // == Import
 import './style.scss';
 import axios from 'axios';
@@ -92,6 +93,7 @@ export default function App({
           </Route>
           <Route exact path="/profile" />
           <Route exact path="/search" component={Home} />
+          <Route component={PageNotFound} />
           {isLogged
             ? <Route exact path="/member/:profileId" component={Profiles} />
             : <Redirect exact to="/" />}
