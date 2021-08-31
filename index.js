@@ -11,6 +11,7 @@ const expressSwagger = require('express-swagger-generator')(app);
 const CLIENT_SIDE = process.env.CLIENT_SIDE;
 
 const { addMemberOnline, removeMemberOnline, findUserOnline} = require('./sockets/users');
+
 let swaggerOptions = {
    swaggerDefinition: {
        info: {
@@ -37,6 +38,7 @@ const io = socketio(server, {
         methods: ["GET", "POST"]
     }
 });
+
 app.use(express.json());
 app.use(express.static('upload'));
 
