@@ -193,7 +193,7 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         messages: [
           ...state.messages,
-          { ...action.message },
+          { ...action.notif.messages[0] },
         ],
       };
     }

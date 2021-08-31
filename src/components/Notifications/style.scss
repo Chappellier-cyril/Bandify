@@ -23,6 +23,9 @@
     &__li{
         padding: 0.7rem 0.3rem;
         border-bottom: 1px solid vars.$secondColor;
+        &--message{
+          cursor: pointer;
+        }
     }
     &__isHidden{
         top: -100%;
