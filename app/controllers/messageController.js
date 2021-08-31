@@ -7,7 +7,7 @@ const messageController = {
 
         const targetId = req.params.id;
         try {
-            const messages = await Message.findAll({ where: { [Op.or]: [{ reicever_id: targetId }, { sender_id: targetId }] }, include: ['Receiver', 'Sender'] });
+            const messages = await Message.findAll({ where: { [Op.or]: [{ reicever_id: targetId }, { sender_id: targetId }] }, include: ['Receiver', 'Sender'], order: [['createdAt', 'ASC']] });
             res.json(messages);
 
         } catch (error) {
@@ -25,7 +25,8 @@ const messageController = {
                sender_id : req.body.sender_id,
                reicever_id : req.body.reicever_id
             });
-              res.json(newMessage);
+            const message = await Message.findByPk(newMessage.id, {include: ['Receiver', 'Sender'], order: [['createdAt', 'ASC']] })
+              res.json(message);
 
         } catch (error) {
             console.trace(error);
