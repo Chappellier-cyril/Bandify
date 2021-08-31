@@ -97,7 +97,6 @@ export default function App({
           {isLogged
             ? <Route exact path="/member/:profileId" component={Profiles} />
             : <Redirect exact to="/" /> }
-            
         </Switch>
       </div>
       <Footer />
