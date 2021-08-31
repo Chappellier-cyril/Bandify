@@ -192,7 +192,13 @@ Profiles.propTypes = {
   pendingInvitations: PropTypes.arrayOf(
     PropTypes.shape().isRequired,
   ).isRequired,
+  acceptedInvitations: PropTypes.arrayOf(
+    PropTypes.shape().isRequired,
+  ).isRequired,
   friends: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  wishToDeleteFriend: PropTypes.func.isRequired,
+  deleteFromFriendList: PropTypes.func.isRequired,
+  isDeleteFriendModalOpen: PropTypes.bool.isRequired,
 };
 
 Profiles.defaultProps = {
@@ -202,13 +208,6 @@ Profiles.defaultProps = {
   editFormToggle: null,
   togglePasswordVisibility: null,
   onChangeProfileInput: null,
-  // handleSubmitPhoto: null,
-  // handleSubmitName: null,
-  // handleSubmitEmail: null,
-  // handleSubmitBirthdate: null,
-  // handleSubmitDescription: null,
-  // handleSubmitPassword: null,
-  // handleSubmitCity: null,
   firstName: '',
   lastName: '',
   dateOfBirth: '',

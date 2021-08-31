@@ -20,8 +20,12 @@ Message.propTypes = {
   content: PropTypes.string.isRequired,
   reicever_id: PropTypes.number.isRequired,
   sender_id: PropTypes.number.isRequired,
-  reicever: PropTypes.number.isRequired,
+  reicever: PropTypes.number,
   sender: PropTypes.number.isRequired,
+};
+
+Message.defaultProps = {
+  reicever: null,
 };
 
 export default Message;

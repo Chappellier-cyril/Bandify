@@ -60,7 +60,7 @@ const Notifications = ({
 Notifications.propTypes = {
   notifications: PropTypes.arrayOf(PropTypes.shape().isRequired).isRequired,
   isNotificationsOpen: PropTypes.bool.isRequired,
-  toggleIsNotificationsOpen: PropTypes.bool.isRequired,
+  toggleIsNotificationsOpen: PropTypes.func.isRequired,
   getCurrentUser: PropTypes.func.isRequired,
 };
 

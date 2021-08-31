@@ -113,6 +113,7 @@ App.propTypes = {
   getFriends: PropTypes.func.isRequired,
   getMessages: PropTypes.func.isRequired,
   getPendingInvitations: PropTypes.func.isRequired,
+  getAcceptedInvitations: PropTypes.func.isRequired,
 };
 
 // == Export

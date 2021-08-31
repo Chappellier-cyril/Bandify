@@ -8,7 +8,6 @@ const Messages = ({
 }) => {
   // create messageRef
   const messageRef = useRef();
-  // // UseEffect pour récupérer les messages de la BDD
   // useEffect(() => {
   //   getMessages();
   // }, []);
@@ -46,8 +45,12 @@ Messages.propTypes = {
   })).isRequired,
   getMessages: PropTypes.func.isRequired,
   receiverName: PropTypes.string.isRequired,
-  reicever: PropTypes.number.isRequired,
+  reicever: PropTypes.number,
   sender: PropTypes.number.isRequired,
+};
+
+Messages.defaultProps = {
+  reicever: null,
 };
 
 export default Messages;

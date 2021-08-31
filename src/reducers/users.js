@@ -254,10 +254,6 @@ const reducer = (state = initialState, action = {}) => {
     case 'DELETE_FROM_FRIENDLIST_SUCCESS':
       return {
         ...state,
-        pendingInvitations: [
-          ...state.pendingInvitations.slice(0, action.indexPending),
-          ...state.pendingInvitations.slice(action.indexPending + 1),
-        ],
         acceptedInvitations: [
           ...state.acceptedInvitations.slice(0, action.indexAccepted),
           ...state.acceptedInvitations.slice(action.indexAccepted + 1),

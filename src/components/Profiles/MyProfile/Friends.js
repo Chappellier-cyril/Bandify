@@ -1,7 +1,6 @@
 /* eslint-disable camelcase */
 import React from 'react';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import { firstLetterToUpper, restToLower } from 'src/selectors/city';
 
 const Friends = ({ friends }) => (
