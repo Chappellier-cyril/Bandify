@@ -10,6 +10,9 @@ const FriendsList = ({ getCurrentUser, friends }) => (
           {friend.firstname} {friend.lastname}
         </li>
       ))}
+      {friends.length === 0 && (
+        <p>Vous n'avez pas encore d'amis</p>
+      )}
     </ul>
   </div>
 );

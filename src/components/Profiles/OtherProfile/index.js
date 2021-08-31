@@ -158,6 +158,15 @@ OtherProfile.propTypes = {
   pendingInvitations: PropTypes.arrayOf(
     PropTypes.shape().isRequired,
   ).isRequired,
+  acceptedInvitations: PropTypes.arrayOf(
+    PropTypes.shape().isRequired,
+  ).isRequired,
+  friends: PropTypes.arrayOf(
+    PropTypes.shape().isRequired,
+  ).isRequired,
+  wishToDeleteFriend: PropTypes.func.isRequired,
+  deleteFromFriendList: PropTypes.func.isRequired,
+  isDeleteFriendModalOpen: PropTypes.bool.isRequired,
 };
 
 OtherProfile.defaultProps = {

@@ -45,8 +45,12 @@ Messages.propTypes = {
   })).isRequired,
   getMessages: PropTypes.func.isRequired,
   receiverName: PropTypes.string.isRequired,
-  reicever: PropTypes.number.isRequired,
+  reicever: PropTypes.number,
   sender: PropTypes.number.isRequired,
+};
+
+Messages.defaultProps = {
+  reicever: null,
 };
 
 export default Messages;
