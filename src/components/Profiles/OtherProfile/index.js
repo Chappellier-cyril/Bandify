@@ -26,13 +26,6 @@ const OtherProfile = ({
     .find((acceptedInvitation) => acceptedInvitation.to === user.id
     || acceptedInvitation.from === user.id);
 
-  const foundPendingUser = pendingInvitations
-    .find((pendingInvitation) => pendingInvitation.to === user.id
-    || pendingInvitation.from === user.id);
-
-  const friend = friends
-    .find((f) => f.id === user.id);
-
   return (
     <>
       {isDeleteFriendModalOpen && foundUserToDelete ? (
@@ -42,8 +35,8 @@ const OtherProfile = ({
             type="button"
             onClick={
               () => deleteFromFriendList(
-                acceptedInvitations, pendingInvitations,
-                friends, foundUserToDelete, foundPendingUser, friend,
+                acceptedInvitations,
+                friends, foundUserToDelete, foundFriend,
               )
 }
           >Oui
@@ -59,7 +52,7 @@ const OtherProfile = ({
         <div className="profile__cards">
           <div className="profile__cards--users">
             <div className="profile__user--container">
-              {profil_image && <img className="profile__user--picture" src={`http://localhost:3000/avatar/${profil_image}`} alt="avatar du membre" />}
+              {profil_image && <img className="profile__user--picture" src={`${process.env.BANDIFY_API_URL}/avatar/${profil_image}`} alt="avatar du membre" />}
               <div className="profile__user--short">
                 <p className="profile__user--name">{user.firstname} {user.lastname}</p>
                 {user.city && (
@@ -91,6 +84,7 @@ const OtherProfile = ({
                 className="profile__user--delete-btn"
                 onClick={wishToDeleteFriend}
               >
+                {console.log(foundFriend)}
                 Supprimer
               </button>
               )}

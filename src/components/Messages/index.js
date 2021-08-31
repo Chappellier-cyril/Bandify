@@ -8,7 +8,6 @@ const Messages = ({
 }) => {
   // create messageRef
   const messageRef = useRef();
-  // // UseEffect pour récupérer les messages de la BDD
   // useEffect(() => {
   //   getMessages();
   // }, []);
