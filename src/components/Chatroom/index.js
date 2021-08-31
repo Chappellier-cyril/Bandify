@@ -22,6 +22,7 @@ const Chatroom = ({
         type="button"
         className="chatroom__nav-link"
         onClick={toggleIsMessagesOpen}
+        disabled={friends.length === 0}
       >
         Conversation
       </button>
