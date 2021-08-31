@@ -1,0 +1,49 @@
+@use 'src/styles/vars';
+
+.notFound {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    color: vars.$secondColor;
+    height: 70vh;
+    &--logo {
+      width: 20rem;
+    }
+  }
+  &__btn {
+    background-color: vars.$secondColor;
+    color: vars.$fourthColor;
+    text-align: center;
+    width: 30%;
+    padding: 10px;
+    border-radius: vars.$borderRadius;
+    margin: 40px 0px 20px 0px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .notFound {
+    &__container {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      color: vars.$secondColor;
+      height: 70vh;
+      &--logo {
+        width: 20rem;
+      }
+    }
+    &__btn {
+      background-color: vars.$sixthColor;
+      color: vars.$firstColor;
+      text-align: center;
+      width: 60%;
+      padding: 10px;
+      border-radius: vars.$borderRadius;
+      margin: 40px 0px 20px 0px;
+    }
+  }
+}
