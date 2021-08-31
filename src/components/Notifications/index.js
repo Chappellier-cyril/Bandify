@@ -8,23 +8,14 @@ const Notifications = ({
   toggleIsNotificationsOpen,
   getCurrentUser,
   onAcceptInvitation,
-  pendingInvitations,
-  friends,
-}) =>
-// const foundPendingUser = pendingInvitations
-//   .find((pendingInvitation) => pendingInvitation.to === user.id
-//   || pendingInvitation.from === user.id);
-
-// const friend = friends
-//   .find((f) => f.id === user.id);
-
-  (
-    <div className={`notifications__container ${!isNotificationsOpen && 'notifications__isHidden'}`}>
-      <button type="button" onClick={toggleIsNotificationsOpen} className="close-menu-btn">
-        <i className="fas fa-times" />
-      </button>
-      <ul className="notifications__ul">
-        {notifications.length > 0
+  onDenyInvitation,
+}) => (
+  <div className={`notifications__container ${!isNotificationsOpen && 'notifications__isHidden'}`}>
+    <button type="button" onClick={toggleIsNotificationsOpen} className="close-menu-btn">
+      <i className="fas fa-times" />
+    </button>
+    <ul className="notifications__ul">
+      {notifications.length > 0
         && notifications.map((n) => {
           if (n.notification === 'invitation') {
             return (
@@ -34,7 +25,7 @@ const Notifications = ({
               >
                 <p>Vous avez reçu une invitation de {`${n.invitation.fromMember.firstname} ${n.invitation.fromMember.lastname}`}</p>
                 <button type="button" onClick={() => onAcceptInvitation(n.invitation.id, n.invitation.fromMember)}>Accepter</button>
-                <button type="button">Supprimer</button>
+                <button type="button" onClick={() => onDenyInvitation(n.invitation.id, n.invitation.fromMember)}>Refuser</button>
               </li>
             );
           }
@@ -53,15 +44,17 @@ const Notifications = ({
           return null;
         })}
 
-      </ul>
-    </div>
+    </ul>
+  </div>
 
-  );
+);
 Notifications.propTypes = {
   notifications: PropTypes.arrayOf(PropTypes.shape().isRequired).isRequired,
   isNotificationsOpen: PropTypes.bool.isRequired,
   toggleIsNotificationsOpen: PropTypes.func.isRequired,
   getCurrentUser: PropTypes.func.isRequired,
+  onAcceptInvitation: PropTypes.func.isRequired,
+  onDenyInvitation: PropTypes.func.isRequired,
 };
 
 export default Notifications;

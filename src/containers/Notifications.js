@@ -21,6 +21,9 @@ const mapDispatchToProps = (dispatch) => ({
   onAcceptInvitation: (id, futureFriend) => {
     dispatch({ type: 'ON_ACCEPT_INVITATION', id, futureFriend });
   },
+  onDenyInvitation: (id, refusedMember) => {
+    dispatch({ type: 'ON_DENY_INVITATION', id, refusedMember });
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Notifications);
