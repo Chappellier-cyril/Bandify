@@ -10,7 +10,7 @@
     height: 15%;
     padding: 1em 1.3em 1.3em;
     background-color: vars.$firstColor;
-    margin-bottom: 1rem;
+    // margin-bottom: 1rem;
     
      &-input, &-button {
         border: none;
@@ -23,6 +23,49 @@
        font-size: 1.3em;
        padding: 1em 1.3em;
        border: 2px solid vars.$thirdColor;
+
+       &::placeholder {
+         color: grey;
+       }
+     }
+
+     &-button {
+       color: vars.$thirdColor;
+       background-color: transparent;
+     }
+   
+   }
+
+   // send message button icon
+   .fa-paper-plane {
+     font-size: 2.3em;
+   }
+   
+}
+
+// DESKTOP
+@media screen and (min-width: 700px) {
+  .chatroom__form {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 15%;
+    padding: 1em 1.3em 1.3em;
+    background-color: vars.$firstColor;
+    // margin-bottom: 1rem;
+    
+     &-input, &-button {
+        border: none;
+        border-radius: vars.$borderRadius;
+     }
+
+     &-input {
+       width: 70%;
+       height: 70%;
+       font-size: 1.3em;
+       padding: 1em 1.3em;
+       border: 3px solid vars.$thirdColor;
 
        &::placeholder {
          color: grey;

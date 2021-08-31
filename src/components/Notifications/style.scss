@@ -5,22 +5,24 @@
     &__container{
         position: absolute;
         display: block;
-        width: 70%;
-        padding: 1rem;
-        top: 25%;
-        right: 3%;
-        z-index: 1;
-        overflow: scroll;
+        width: 90%;
+        height: 250px;
+        margin: 0 auto;
+        top: 15%;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        overflow-y: scroll;
         background-color: vars.$fourthColor;
         transition: 0.5s ease-in-out;
-        border-radius: 0 0 3px 3px;
+        border-radius: 7px;
     }
     &__ul{
-        margin: 1rem;
+        padding: .7rem 1rem;
     }
     &__li{
-        padding: 0.2rem 0.3rem;
-        border-bottom: 1px solid vars.$fourthColor;
+        padding: 0.7rem 0.3rem;
+        border-bottom: 1px solid vars.$secondColor;
     }
     &__isHidden{
         top: -100%;
@@ -33,25 +35,38 @@
     &__container{
         position: absolute;
         display: block;
-        width: 20%;
-        padding: 1rem;
-        top: 7%;
-        right: 3%;
+        width: 30%;
+        height: 300px;
+        top: 10%;
+        left: 40%;
         z-index: 1;
-        overflow: scroll;
-        background-color: #fff;
+        overflow-y: scroll;
+        background-color: vars.$fourthColor;
         transition: 0.5s ease-in-out;
-        border-radius: 0 0 3px 3px;
+        border-radius: 7px;
     }
     &__ul{
-        margin: 1rem;
+      padding: .7rem 1rem;
     }
     &__li{
-        padding: 0.2rem 0.3rem;
-        border-bottom: 1px solid #ccc;
+      padding: 0.7rem 0.3rem;
+        border-bottom: 1px solid vars.$secondColor;
     }
     &__isHidden{
         top: -100%;
     }
   }
+}
+
+.close-menu-btn {
+  display: inline-block;
+  border: none;
+  cursor: pointer;
+  background: none;
+  appearance: none;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: vars.$thirdColor;
+  z-index: 1;
 }

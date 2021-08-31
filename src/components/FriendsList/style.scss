@@ -18,8 +18,39 @@
         width: 100%;
         height: 100px;
         padding: 1rem 1.5rem;
+        font-size: 1.3rem;
         background-color: vars.$firstColor;
+        color: vars.$fourthColor;
         border-bottom: 1px solid vars.$fourthColor;
+      }
+    }
+  }
+}
+
+// DESKTOP
+@media screen and (min-width: 700px) {
+  .friends {
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    
+    &-list {
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      color: white;
+      
+      &__member {
+        width: 100%;
+        height: 100px;
+        padding: 1rem 1.5rem;
+        font-size: 1.3rem;
+        background-color: vars.$firstColor;
+        color: vars.$fourthColor;
+        border-bottom: 1px solid vars.$fourthColor;
+        cursor: pointer;
       }
     }
   }

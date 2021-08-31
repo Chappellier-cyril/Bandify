@@ -8,11 +8,11 @@
     width: 100%;
     height: 100%;
     z-index: 99;
-    background-color: vars.$secondColor;
+    background-color: vars.$firstColor;
     transition: top 150ms ease-in-out;
 
     &--open {
-      top: 100px;
+      top: 90px;
     }
 
     &__nav {
@@ -35,7 +35,7 @@
     }
     &__form {
       position: absolute;
-      bottom: 100px;
+      bottom: 90px;
     }
   }
 
@@ -49,12 +49,62 @@
     top: 60px;
     right: 33px;
     color: vars.$thirdColor;
+    z-index: 1;
   }
 }
 
 // DESKTOP
 @media screen and (min-width: 700px) {
   .chatroom {
-    display: none;
+    position: fixed;
+    top: 10%;
+    right: -100%;
+    width: 30%;
+    height: 90%;
+    z-index: 99;
+    transition: right 150ms ease-in-out;
+    background-color: vars.$firstColor;
+
+    &--open {
+      right: 0;
+    }
+
+    &__nav {
+      display: inline-block;
+      width: 100%;
+     
+
+      &-link {
+        width: 50%;
+        padding: 1em 1.3em;
+       font-size: 1.1em;
+      }
+    }
+
+    &__discussion {
+      height: 80%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      // background-color: vars.$secondColor !important;
+    }
+    &__form {
+      position: absolute;
+      bottom: 0;
+    }
+  }
+
+  .close-menu-btn {
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+    background: none;
+    appearance: none;
+    position: absolute;
+    top: 80px;
+    right: 33px;
+    color: vars.$thirdColor;
+    z-index: 1;
   }
 }

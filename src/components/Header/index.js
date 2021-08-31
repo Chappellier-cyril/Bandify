@@ -9,11 +9,11 @@ import './style.scss';
 const Header = ({
   toggleIsMenuOpen, toggleIsChatroomOpen,
   isLogged, toggleIsNotificationsOpen,
-  notifications,
+  notifications, hideAllWindows,
 }) => (
   <header className="header">
     <div className="header__bandify">
-      <Link to="/">
+      <Link to="/" onClick={hideAllWindows}>
         <img src={logoBandify} alt="bandify" className="header__bandify--logo" />
       </Link>
       <h1 className="header__bandify--title">Bandify</h1>
@@ -60,6 +60,8 @@ Header.propTypes = {
   toggleIsChatroomOpen: PropTypes.func.isRequired,
   isLogged: PropTypes.bool.isRequired,
   toggleIsNotificationsOpen: PropTypes.func.isRequired,
+  hideAllWindows: PropTypes.func.isRequired,
+  notifications: PropTypes.arrayOf(PropTypes.shape().isRequired).isRequired,
 };
 
 export default Header;

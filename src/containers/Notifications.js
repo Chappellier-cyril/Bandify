@@ -10,6 +10,9 @@ const mapDispatchToProps = (dispatch) => ({
   deleteNotification: (index) => {
     dispatch({ type: 'DELETE_NOTICATION', index });
   },
+  toggleIsNotificationsOpen: () => {
+    dispatch({ type: 'SET_IS_OPEN_NOTIF' });
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Notifications);

@@ -40,26 +40,44 @@ export const initialState = {
 
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
+    case 'HIDE_ALL_WINDOWS':
+      return {
+        ...state,
+        isMenuOpen: false,
+        isChatroomOpen: false,
+        isNotificationsOpen: false,
+        isFiltersOpen: false,
+      };
     case 'SET_IS_OPEN_MENU':
       return {
         ...state,
-        isChatroomOpen: false,
         isMenuOpen: !state.isMenuOpen,
+        isChatroomOpen: false,
+        isNotificationsOpen: false,
+        isFiltersOpen: false,
       };
     case 'SET_IS_OPEN_CHATROOM':
       return {
         ...state,
         isChatroomOpen: !state.isChatroomOpen,
+        isNotificationsOpen: false,
+        isMenuOpen: false,
+        isFiltersOpen: false,
       };
     case 'SET_IS_OPEN_NOTIF':
       return {
         ...state,
         isNotificationsOpen: !state.isNotificationsOpen,
+        // isChatroomOpen: false,
+        isMenuOpen: false,
       };
     case 'SET_IS_FILTERS_OPEN':
       return {
         ...state,
         isFiltersOpen: !state.isFiltersOpen,
+        isNotificationsOpen: false,
+        isChatroomOpen: false,
+        isMenuOpen: false,
       };
     case 'SET_IS_OPEN_MESSAGES':
       return {

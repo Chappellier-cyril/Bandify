@@ -3,8 +3,6 @@ import Header from 'src/components/Header';
 
 const mapStateToProps = (state) => ({
   isLogged: state.login.isLogged,
-  // isInvitationSent: state.settings.isInvitationSent,
-  // status: state.settings.status,
   notifications: state.socket.notifications,
 });
 
@@ -17,6 +15,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   toggleIsNotificationsOpen: () => {
     dispatch({ type: 'SET_IS_OPEN_NOTIF' });
+  },
+  hideAllWindows: () => {
+    dispatch({ type: 'HIDE_ALL_WINDOWS' });
   },
 });
 
