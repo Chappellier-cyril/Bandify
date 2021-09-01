@@ -36,7 +36,7 @@
       display: flex;
       flex-direction: column;
       width: 90%;
-      margin: 0 auto;
+      margin: 8rem auto 0;
       &--users {
         width: 100%;
         height: auto;
@@ -49,8 +49,156 @@
     }
     &__user {
       &--picture {
-        width:75px;
-        height: 75px;
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+      }
+      &--delete-btn {
+        background-color: vars.$fifthColor;
+        border: none;
+        border-radius: vars.$borderRadius;
+        color: vars.$fourthColor;
+        height: 50px;
+      }
+      &--container {
+        display: flex;
+      }
+      &--name {
+        color: vars.$fourthColor;
+      }
+      &--short {
+        color: vars.$fourthColor;
+        margin: auto 1rem;
+        font-weight: bold;
+      }
+      &--description {
+        color: vars.$fourthColor;
+        margin: 2rem 0;
+        font-weight: bold;
+        text-align: left;
+      }
+      &--description-title {
+        margin-bottom: 1rem;
+      }
+      &--description-content {
+        font-weight: normal;
+      }
+      &--add-btn {
+        background-color: vars.$thirdColor;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: none;
+        color: vars.$fourthColor;
+      }
+      &--invitation-status {
+        background-color: vars.$thirdColor;
+        padding: .5rem;
+        border-radius: vars.$borderRadius;
+        color: vars.$fourthColor;
+        width: 35%;
+        height: 10%;
+      }
+    }
+    &__instrument {
+      color: vars.$fourthColor;
+      &--description {
+        margin: 1rem 0;
+        font-weight: bold;
+      }
+      &__tag {
+        background-color: vars.$thirdColor;
+        display: inline-block;
+        padding: 0.3rem;
+        margin: 0.3rem 0.3rem 0.3rem 0;
+        border-radius: vars.$borderRadius;
+        &--name {
+          padding-right: 0.3rem;
+        }
+        &--level {
+          background-color: vars.$fourthColor;
+          color: vars.$thirdColor;
+          font-size: 0.8rem;
+          padding: 0.2rem;
+          border-radius: vars.$borderRadius;
+        }
+      }
+    }
+    &__style {
+      color: vars.$fourthColor;
+      &--description {
+        margin: 1rem 0;
+        font-weight: bold;
+      }
+      &__tag {
+        background-color: vars.$thirdColor;
+        display: inline-block;
+        padding: 0.3rem;
+        margin: 0.3rem 0.3rem 0.3rem 0;
+        border-radius: vars.$borderRadius;
+      }
+    }
+    }
+
+  
+}
+
+// DESKTOP LAYOUT
+@media screen and (min-width: 600px) {
+  .main {
+    height: auto;
+    width: 100vw;
+
+  }
+
+  .profile {
+    
+    &__desc {
+      margin: 0 auto;
+      padding: 2rem;
+      width: 100%;
+      font-size: 1.4rem;
+      color: vars.$thirdColor;
+      text-align: center;
+      &--teasing {
+        color: vars.$thirdColor;
+        margin: 2rem auto;
+        text-align: center;
+        font-size: 1.2rem;
+      }
+    }
+    &__signup {
+      &--btn {
+        width: 60%;
+        margin: 0 auto;
+        background-color: vars.$thirdColor;
+        color: vars.$fourthColor;
+        padding: 1rem;
+        border-radius: vars.$borderRadius;
+      }
+    }
+    &__cards {
+      display: flex;
+      flex-direction: column;
+      width: 40%;
+      margin: 8rem auto 0;
+      font-size: 1.3rem;
+      
+
+      &--users {
+        width: 100%;
+        height: auto;
+        margin-bottom: 0.5rem;
+        margin-top: 1rem;
+        padding: 1em 2em;
+        background-color: vars.$secondColor;
+        border-radius: vars.$borderRadius;
+      }
+    }
+    &__user {
+      &--picture {
+        width: 300px;
+        height: 300px;
         border-radius: 50%;
       }
       &--delete-btn {
@@ -60,9 +208,13 @@
         color: vars.$fourthColor;
         padding: 1rem;
         margin: 1rem;
+        height: 50px;
       }
       &--container {
         display: flex;
+        justify-content: space-around;
+        align-items: center;
+        
       }
       &--name {
         color: vars.$fourthColor;

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import NavbarDesktop from 'src/containers/NavbarDesktop';
-import logoBandify from 'src/assets/logoBandify.svg';
+import logoBandify from 'src/assets/Logo_Bandify_final.png';
 import './style.scss';
 
 const Header = ({

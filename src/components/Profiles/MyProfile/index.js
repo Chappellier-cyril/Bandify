@@ -128,34 +128,43 @@ const MyProfile = ({
                 onChangeProfileInput={onChangeProfileInput}
                 myId={user.id}
               />
-              <Description
-                editDescription={editDescription}
-                handleSubmitDescription={handleSubmitDescription}
-                editFormToggle={editFormToggle}
-                user={user}
-                description={description}
-                onChangeProfileInput={onChangeProfileInput}
-              />
-              <Instruments
-                editInstruments={editInstruments}
-                plays={plays}
-                deleteInstrumentAssociation={deleteInstrumentAssociation}
-                handleSubmitInstruments={handleSubmitInstruments}
-                instrumentsData={instrumentsData}
-                levelsData={levelsData}
-                instruments={instruments}
-                addNewInstrument={addNewInstrument}
-                removeInstrument={removeInstrument}
-                onSelectInput={onSelectInput}
-                editFormToggle={editFormToggle}
-              />
-              <Styles
-                editFormToggle={editFormToggle}
-                styles={styles}
-                editStyles={editStyles}
-                handleSubmitStyles={handleSubmitStyles}
-              />
-              {friends && <Friends friends={friends} />}
+
+              <div className="user__hobbies">
+                <Description
+                  editDescription={editDescription}
+                  handleSubmitDescription={handleSubmitDescription}
+                  editFormToggle={editFormToggle}
+                  user={user}
+                  description={description}
+                  onChangeProfileInput={onChangeProfileInput}
+                />
+                <Instruments
+                  editInstruments={editInstruments}
+                  plays={plays}
+                  deleteInstrumentAssociation={deleteInstrumentAssociation}
+                  handleSubmitInstruments={handleSubmitInstruments}
+                  instrumentsData={instrumentsData}
+                  levelsData={levelsData}
+                  instruments={instruments}
+                  addNewInstrument={addNewInstrument}
+                  removeInstrument={removeInstrument}
+                  onSelectInput={onSelectInput}
+                  editFormToggle={editFormToggle}
+                />
+                <Styles
+                  editFormToggle={editFormToggle}
+                  styles={styles}
+                  editStyles={editStyles}
+                  handleSubmitStyles={handleSubmitStyles}
+                />
+              </div>
+              {friends
+                && (
+                <div className="user__friends">
+                  <p className="myprofile__friend--description">Mes amis:</p>
+                  <Friends friends={friends} />
+                </div>
+                )}
             </div>
           </>
         </div>
