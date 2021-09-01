@@ -29,6 +29,10 @@ const Signup = ({
   const [errorAge, setErrorAge] = useState(false);
   const [errorEmail, setErrorEmail] = useState(false);
   const [passwordCheck, setPasswordCheck] = useState('');
+  const [errorPassword, setErrorPassword] = useState('');
+  const [errorPasswordCheck, setErrorPasswordCheck] = useState('');
+  const [avatar, setAvatar] = useState();
+  const [errorAvatar, setErrorAvatar] = useState('');
   useEffect(() => {
     if (dateOfBirth !== '') {
       const age = getAge(dateOfBirth);
@@ -40,16 +44,46 @@ const Signup = ({
       }
     }
   }, [dateOfBirth]);
-  const [avatar, setAvatar] = useState();
-  const getEmailValidation = () => {
-    const regEx = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9-]{2,}[.][a-zA-Z]{2,3}$/;
-    if (!regEx.exec(email)) {
-      setErrorEmail(true);
+  useEffect(() => {
+    if (avatar) {
+      const allowedExtension = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+      if (!allowedExtension.exec(avatar.name)) {
+        return setErrorAvatar('Le fichier que vous avez séléctionné n\'a pas le format autorisé. Veuillez choisir un fichier image au format *.jpeg / *.png / *.jpg');
+      }
+      if (avatar.size > 2000000) return setErrorAvatar('Le fichier que vous séléctionné est trop volumineux. Veuillez choisir un fichier de taille 2mo maximum');
+      return setErrorAvatar('');
     }
-    else {
-      setErrorEmail(false);
+    return null;
+  }, [avatar]);
+  useEffect(() => {
+    if (passwordCheck) {
+      if (password !== passwordCheck) return setErrorPasswordCheck('Les mots de passes renseignés ne correspondent pas');
+      return setErrorPasswordCheck('');
     }
-  };
+    return setErrorPasswordCheck('');
+  }, [passwordCheck]);
+  useEffect(() => {
+    if (password) {
+      if (password.length < 6) return setErrorPassword('Le mot de passe doit contenir au moins 6 charactères');
+      return setErrorPassword('');
+    }
+    return setErrorPassword('');
+  }, [password]);
+  // TODO voir pourquoi l'emial ne se valide pas à l'autocompletion
+  useEffect(() => {
+    if (email) {
+      const regEx = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9-]{2,}[.][a-zA-Z]{2,3}$/;
+      if (!regEx.exec(email)) {
+        console.log('email validator', !regEx.exec(email), email);
+        setErrorEmail(true);
+      }
+      else {
+        console.log('validator ok');
+        setErrorEmail(false);
+      }
+    }
+  }, [email]);
+
   return (
     <div className="signup-submit__container">
       <h2 className="signup-submit__container__title">Signup</h2>
@@ -79,19 +113,39 @@ const Signup = ({
         </div>
         <div className="signup-submit__group">
           <label htmlFor="email">
-            <input className={`signup-submit__group__input ${errorEmail && 'signup-submit__error-border'}`} name="email" id="email" type="email" value={email} onChange={(e) => onChangeInput('email', e.target.value)} onBlur={getEmailValidation} placeholder="Email*" required />
+            <input className={`signup-submit__group__input ${errorEmail && 'signup-submit__error-border'}`} name="email" id="email" type="email" value={email} onChange={(e) => onChangeInput('email', e.target.value)} placeholder="Email*" required />
             {errorEmail && <p className="signup-submit__error">L'adresse email entrée n'est pas valide</p>}
           </label>
         </div>
         <div className="signup-submit__group">
           <label htmlFor="password">
 
-            <input className="signup-submit__group__input" name="password" id="password" type="password" value={password} onChange={(e) => onChangeInput('password', e.target.value)} placeholder="Mot de passe*" required />
+            <input
+              className="signup-submit__group__input"
+              name="password"
+              id="password"
+              type="password"
+              value={password}
+              onChange={(e) => onChangeInput('password', e.target.value)}
+              placeholder="Mot de passe*"
+              required
+            />
+            {errorPassword && <p className="signup-submit__error">{errorPassword}</p>}
           </label>
         </div>
         <div className="signup-submit__group">
           <label htmlFor="password-confirm">
-            <input className="signup-submit__group__input" name="password-confirm" id="password-confirm" type="password" value={passwordCheck} onChange={(e) => setPasswordCheck(e.target.value)} placeholder="Confirmez le mot de passe*" required />
+            <input
+              className="signup-submit__group__input"
+              name="password-confirm"
+              id="password-confirm"
+              type="password"
+              value={passwordCheck}
+              onChange={(e) => setPasswordCheck(e.target.value)}
+              placeholder="Confirmez le mot de passe*"
+              required
+            />
+            {errorPasswordCheck && <p className="signup-submit__error">{errorPasswordCheck}</p>}
           </label>
         </div>
         <div className="signup-submit__group">
@@ -104,9 +158,12 @@ const Signup = ({
           <span className="signup-submit__group__label">Image de profil</span>
           <label htmlFor="avatar" className="signup-submit__group--avatar__container">
             <span className="signup-submit__group--avatar__container__label">Choisir un fichier</span>
-
             <input className="signup-submit__group__input--avatar" name="avatar" id="avatar" type="file" placeholder="Choisir une photo" onChange={(e) => setAvatar(e.target.files[0])} />
+            {errorAvatar && <p className="signup-submit__error">{errorAvatar}</p>}
           </label>
+          <div className="signup-submit__container-shown-avatar">
+            {avatar && <img className="signup-submit__show-avatar" src={URL.createObjectURL(avatar)} alt={`Votre fichier séléctionné est ${avatar.name}`} />}
+          </div>
         </div>
         <div className="signup-submit__group">
           <span className="signup-submit__group__label">Choississez au moins un instrument et un niveau de pratique (optionel)</span>
@@ -223,7 +280,15 @@ const Signup = ({
             onChangeInput={onChangeInput}
           />
         </div>
-        <button className="signup-submit__form__submit" type="submit">SUBMIT</button>
+        <button
+          className="signup-submit__form__submit"
+          type="submit"
+          disabled={!firstName || !lastName || !dateOfBirth
+            || !email || !password || !passwordCheck || !instruments[0].instrument || !city
+            || errorPasswordCheck || errorPassword || errorEmail || errorAge || errorAvatar
+            || error}
+        >SUBMIT
+        </button>
       </form>
     </div>
   );
