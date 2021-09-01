@@ -7,9 +7,10 @@
     justify-content: flex-end;
     align-items: center;
     color: vars.$secondColor;
-    height: 70vh;
+    // height: 70vh;
     &--logo {
-      width: 20rem;
+      width: 25%;
+      height: 70%;
     }
   }
   &__btn {
@@ -33,7 +34,8 @@
       color: vars.$secondColor;
       height: 70vh;
       &--logo {
-        width: 20rem;
+        width: 100%;
+        height: 70%;
       }
     }
     &__btn {
