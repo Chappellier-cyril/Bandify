@@ -73,10 +73,40 @@ io.on('connect', (socket) => {
         socket.on('sendInvitation', (invitation) => {
             const foundReiceverOnline = findUserOnline(invitation.to);
             if(foundReiceverOnline) {
-                socket.emit('notifications', {notification: 'invitation', invitation: invitation});
                 io.to(foundReiceverOnline.socketId).emit('notifications', {notification: 'invitation', invitation: invitation});
             }
         });
+        socket.on('invitationAccepted', (payload) => {
+            //prévoir le changement de status de l'invitation => 1
+            const foundReiceverOnline = findUserOnline(payload.futureFriend.id);
+            const invitation = {
+                ...payload.invitation,
+                status: 1
+            }
+            console.log('invitation', invitation)
+            if(foundReiceverOnline) {
+                io.to(foundReiceverOnline.socketId).emit('notifications', {notification: 'new-friend', futureFriend: payload.futureFriend, invitation} )
+            }
+        })
+        socket.on('invitationRefused', (payload) => {
+            //prévoir le changement de status de l'invitation => 2
+            const foundReceiverOnline = findUserOnline(payload.refusedMember.id);
+            const invitation = {
+                ...payload.invitation,
+                status: 2
+            }
+            console.log(invitation);
+            if (foundReceiverOnline) {
+                io.to(foundReceiverOnline.socketId).emit('notifications', {notification: 'no-friend', refusedMember: payload.refusedMember, invitation});
+            }
+        })
+        socket.on('removeFromFriends', (payload) => {
+            const foundReceiverOnline = findUserOnline(payload.friendOn.id);
+            if(foundReceiverOnline) {
+                console.log(payload.friendEmit);
+                io.to(foundReceiverOnline.socketId).emit('remove-friend', {friend: payload.friendEmit })
+            }
+        })
     })
     socket.on('disconnect', () => {
         console.log('A member left', socket.id);
