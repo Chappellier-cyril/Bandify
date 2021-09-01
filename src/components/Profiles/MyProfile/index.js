@@ -126,6 +126,7 @@ const MyProfile = ({
                 togglePasswordVisibility={togglePasswordVisibility}
                 editFormToggle={editFormToggle}
                 onChangeProfileInput={onChangeProfileInput}
+                myId={user.id}
               />
               <Description
                 editDescription={editDescription}
@@ -182,6 +183,7 @@ const MyProfile = ({
 
 MyProfile.propTypes = {
   user: PropTypes.shape({
+    id: PropTypes.number.isRequired,
     firstname: PropTypes.string,
     lastname: PropTypes.string,
     birthdate: PropTypes.string,
@@ -256,6 +258,7 @@ MyProfile.propTypes = {
 
 MyProfile.defaultProps = {
   user: {
+    id: null,
     firstname: '',
     lastname: '',
     birthdate: '',

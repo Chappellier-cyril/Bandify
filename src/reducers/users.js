@@ -184,19 +184,19 @@ const reducer = (state = initialState, action = {}) => {
       };
 
     case 'CHANGE_INSTRUMENT_LEVEL_ON_PROFILE': {
-      const copyInstruments = [...state.instruments];
-      const instrumentAlreadyChoose = copyInstruments.find(
-        ({ instrument }) => instrument === action.value,
-      );
-      if (!instrumentAlreadyChoose || action.key === 'level') {
-        copyInstruments[action.index] = {
-          ...copyInstruments[action.index],
-          [action.key]: action.value,
-        };
-      }
+      // const copyInstruments = [...state.instruments];
+      // const instrumentAlreadyChoose = copyInstruments.find(
+      //   ({ instrument }) => instrument === action.value,
+      // );
+      // if (!instrumentAlreadyChoose || action.key === 'level') {
+      //   copyInstruments[action.index] = {
+      //     ...copyInstruments[action.index],
+      //     [action.key]: action.value,
+      //   };
+      // }
       return {
         ...state,
-        instruments: copyInstruments,
+        // instruments: copyInstruments,
       };
     }
 

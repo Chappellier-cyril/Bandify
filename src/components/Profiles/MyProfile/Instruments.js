@@ -3,23 +3,24 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 const Instruments = ({
-  editInstruments, plays, deleteInstrumentAssociation, handleSubmitInstruments,
+  editInstruments, deleteInstrumentAssociation, handleSubmitInstruments,
   instrumentsData, levelsData, instruments, addNewInstrument, removeInstrument,
   onSelectInput, editFormToggle,
 }) => {
   // On récupère un tableau filtré sans les instrument que l'utilisateur à déjà choisi
   const [filtredInstruments, setFilteredInstruments] = useState(instrumentsData);
+
   useEffect(() => {
-    if (!plays[0].instrument) return false;
-    const filtredInst = instrumentsData.filter((inst) => {
-      const foundPlay = plays.find((p) => p.instrument_id === inst.id);
-      if (foundPlay) return !foundPlay;
-      const foundInst = instruments.find((instrument) => instrument.instrument === inst.id);
-      if (foundInst) return !foundInst;
-      return inst;
-    });
-    return setFilteredInstruments(filtredInst);
-  }, [instruments, plays]);
+    console.log(instruments);
+    setFilteredInstruments(instrumentsData);
+    // if (!instruments[0]) return false;
+    // const filtredInst = instrumentsData.filter((inst) => {
+    //   const foundPlay = instruments.find((p) => p.instrument_id === inst.id);
+    //   if (foundPlay) return !foundPlay;
+    //   return inst;
+    // });
+    // return setFilteredInstruments(filtredInst);
+  }, [instruments]);
 
   return (
     <>
@@ -28,7 +29,7 @@ const Instruments = ({
           <div className="myprofile__instrument">
             <p className="myprofile__instrument--description">Mes instruments:</p>
             <ul className="myprofile__instrument--list">
-              {plays.map((play) => (
+              {instruments && instruments.map((play) => (
                 play.id && (
                 <li className="myprofile__instrument__tag" key={play.id}>
                   <span className="myprofile__instrument__tag--name">{play.instrument.instrument_name}</span>
@@ -42,7 +43,7 @@ const Instruments = ({
           <form type="submit" onSubmit={handleSubmitInstruments}>
             <div className="signup-submit__group">
               <span className="signup-submit__group__label">Choississez au moins un instrument et un niveau de pratique (optionel)</span>
-              {plays.map((play, index) => (
+              {instruments && instruments.map((play, index) => (
               // eslint-disable-next-line react/no-array-index-key
                 <div key={index} className="signup-submit__group--instruments">
                   <label htmlFor={`instrument${index}`} className="signup-submit__group--instruments__input-container">
@@ -104,7 +105,7 @@ const Instruments = ({
               </span>
             </p>
             <ul className="myprofile__instrument--list">
-              {plays[0] && plays.map((play) => (
+              {instruments && instruments.map((play) => (
                 play.id && (
                 <li className="myprofile__instrument__tag" key={play.id}>
                   <span className="myprofile__instrument__tag--name">{play.instrument.instrument_name}</span>
@@ -121,11 +122,6 @@ const Instruments = ({
 };
 Instruments.propTypes = {
   editInstruments: PropTypes.bool.isRequired,
-  plays: PropTypes.arrayOf(PropTypes.shape({
-    instrument: PropTypes.shape({
-      instrument_name: PropTypes.string,
-    }),
-  })),
   deleteInstrumentAssociation: PropTypes.func.isRequired,
   handleSubmitInstruments: PropTypes.func.isRequired,
   instrumentsData: PropTypes.arrayOf(
@@ -135,8 +131,8 @@ Instruments.propTypes = {
     PropTypes.shape().isRequired,
   ).isRequired,
   instruments: PropTypes.arrayOf(
-    PropTypes.shape().isRequired,
-  ).isRequired,
+    PropTypes.shape(),
+  ),
   addNewInstrument: PropTypes.func.isRequired,
   removeInstrument: PropTypes.func.isRequired,
   onSelectInput: PropTypes.func.isRequired,
@@ -144,7 +140,7 @@ Instruments.propTypes = {
 };
 
 Instruments.defaultProps = {
-  plays: [{
+  instruments: [{
     instrument: {
       instrument_name: '',
     },

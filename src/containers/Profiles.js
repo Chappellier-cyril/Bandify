@@ -25,7 +25,7 @@ const mapStateToProps = (state) => ({
   passwordShown: state.login.passwordShown,
   city: state.users.city,
   instrumentsData: state.settings.instruments,
-  instruments: state.users.instruments,
+  instruments: state.users.user.plays,
   levelsData: state.settings.levels,
   pendingInvitations: state.users.pendingInvitations,
   acceptedInvitations: state.users.acceptedInvitations,

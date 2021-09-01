@@ -195,7 +195,25 @@
       padding: 1rem;
       margin: 1rem;
     }
+    &__form {
+      width: 100%;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      &__button{
+        width: 80%;
+        background-color: vars.$thirdColor;
+        border: none;
+        border-radius: vars.$borderRadius;
+        color: vars.$fourthColor;
+        padding: 1rem;
+
+      }
+    }
   }
+
 }
 
 .fa-pen, .fa-times-circle {

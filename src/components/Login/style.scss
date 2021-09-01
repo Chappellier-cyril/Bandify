@@ -42,6 +42,9 @@
           color: vars.$thirdColor;
           font-size: 1.1rem;
           border: none;
+          &::placeholder{
+            font-size: 0.9rem;
+          }
         }
         &--eye {
           background-color: transparent;

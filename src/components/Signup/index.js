@@ -119,7 +119,6 @@ const Signup = ({
         </div>
         <div className="signup-submit__group">
           <label htmlFor="password">
-
             <input
               className="signup-submit__group__input"
               name="password"

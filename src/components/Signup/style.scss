@@ -83,6 +83,9 @@
             }
             &__input-container{
                 width: 85%;
+                &::placeholder{
+                    font-size: 0.9rem;
+                  }
             }
             &__button{
                 border: none;
@@ -113,6 +116,9 @@
             }
             &__input-container{
                 width: 85%;
+                &::placeholder{
+                    font-size: 0.9rem;
+                  }
             }
             &__button{
                 border: none;
@@ -136,6 +142,9 @@
             &:focus{
                 border: 2px solid vars.$thirdColor;
             }
+            &::placeholder{
+                font-size: 0.9rem;
+              }
             &--avatar{
                 position: absolute;
                 top: 0;
