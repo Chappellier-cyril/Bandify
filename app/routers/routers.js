@@ -15,6 +15,7 @@ const messageController = require('../controllers/messageController');
 const invitationController = require('../controllers/invitationController');
 const localisationController = require('../controllers/localisationController');
 const errorController = require('../controllers/errorController');
+const authController = require('../controllers/authController');
 
 // SEARCH Route
 router.route('/search')
@@ -30,6 +31,10 @@ router.route('/login')
 
 // TOKEN Verify
 router.post('/checkToken', memberController.verifyJWT);
+
+// PASSWORD verify
+router.route('/checkpassword/:id')
+    .post(authController.checkPassword)
 
 // MEMBERS Routes
 
