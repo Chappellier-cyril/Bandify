@@ -3,6 +3,7 @@
 //MOBILE 
 @media screen and (max-width: 700px) {
   .contact {
+
     &__form {
       display: flex;
       flex-direction: column;
@@ -10,6 +11,7 @@
       align-items: center;
       height: 65vh;
       width: 100vw;
+      margin-top: 8rem;
 
       &--title {
         color: vars.$fourthColor;
@@ -67,30 +69,33 @@
 
 
 // Just for the example DESKTOP
-.contact{
-  &__container{
-      width: 100%;
-      height: 70vh;
-      margin-top: 12rem;
-  }
-  &__title{
-    text-align: center;
-    font-size: 1.5rem;
-    color: rgb(245, 236, 236);
-  }
-  &__form{
-    display: flex;
-    flex-direction: column;
-    margin-top: 5rem;
-  }
-  &__group{
-    margin-bottom: 1rem;
-    &__message{
-      margin-top: 1rem;
+@media screen and (min-width: 700px) {
+  .contact{
+    &__container{
+        width: 100%;
+        height: 70vh;
+        margin-top: 12rem;
     }
+    &__title{
+      text-align: center;
+      font-size: 1.5rem;
+      color: rgb(245, 236, 236);
+    }
+    &__form{
+      display: flex;
+      flex-direction: column;
+      margin-top: 5rem;
+    }
+    &__group{
+      margin-bottom: 1rem;
+      &__message{
+        margin-top: 1rem;
+      }
+    }
+  
   }
-
 }
+
 
 
 

@@ -1,6 +1,8 @@
 // == Import
 import React, { useEffect } from 'react';
-import { Redirect, Route, Switch } from 'react-router-dom';
+import {
+  Redirect, Route, Switch, useLocation,
+} from 'react-router-dom';
 import PropTypes from 'prop-types';
 // connected components
 import Home from 'src/containers/Home';
@@ -68,6 +70,12 @@ export default function App({
       getMessages();
     }
   }, [isLogged]);
+
+  const location = useLocation();
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, [location]);
+
   return (
     <div className="app">
       <Navbar />
