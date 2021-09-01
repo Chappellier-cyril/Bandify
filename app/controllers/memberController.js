@@ -12,21 +12,7 @@ const memberController = {
     // Get all members
     getAllMembers: async (req, res, next) => {
         try {
-            const members = await Member.findAll({
-                include: [{
-                    association: 'city',
-                    include: {
-                        association: 'department',
-                        include: 'region',
-                    },
-                },{
-                    association: 'plays',
-                    include: ['instrument', 'level']
-            }, 'styles'],
-                attributes: {
-                    exclude: ['user_password']
-                }
-            });
+            const members = await Member.findAll();
 
             res.json(members);
             
@@ -41,21 +27,7 @@ const memberController = {
         try {
             const targetId = req.params.id;
 
-            const member = await Member.findByPk(targetId, {
-                include: [{
-                    association: 'city',
-                    include: {
-                        association: 'department',
-                        include: 'region',
-                    },
-                }, {
-                    association: 'plays',
-                    include: ['instrument', 'level']
-                }, 'styles'],
-                attributes: {
-                    exclude: ['user_password']
-                }
-                });
+            const member = await Member.findByPk(targetId);
 
             // Soit le membre existe : Soit il n'existe pas
             if (member) {
@@ -135,18 +107,7 @@ const memberController = {
 
             const targetId = req.params.id;
             // on passe par une instance
-            const memberToUpdate = await Member.findByPk(targetId, {
-                include: [{
-                    association: 'city',
-                    include: {
-                        association: 'department',
-                        include: 'region',
-                    },
-                }, {
-                    association: 'plays',
-                    include: ['instrument', 'level']
-            }, 'styles']
-            });
+            const memberToUpdate = await Member.findByPk(targetId);
             if (!memberToUpdate) {
 
                 return next(); // <= pas de liste, 404
@@ -180,18 +141,7 @@ const memberController = {
             // Et les nouvelles valeurs des props, dans le body
                 await memberToUpdate.update(req.body);
 
-                const member = await Member.findByPk(targetId, {
-                    include: [{
-                        association: 'city',
-                        include: {
-                            association: 'department',
-                            include: 'region',
-                        },
-                    }, {
-                        association: 'plays',
-                        include: ['instrument', 'level']
-                }, 'styles']
-                })
+                const member = await Member.findByPk(targetId)
 
                 return res.json(member);
             

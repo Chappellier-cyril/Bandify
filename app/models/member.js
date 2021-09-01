@@ -57,6 +57,21 @@ Member.init({
       }
  },
 }, {
+  defaultScope: {
+    attributes: {
+      exclude: ['user_password'],
+    },
+    include: [{
+      association: 'city',
+      include: {
+          association: 'department',
+          include: 'region',
+      },
+  },{
+      association: 'plays',
+      include: ['instrument', 'level']
+}, 'styles'],
+  },
   sequelize: database,
   tableName: "member"
   

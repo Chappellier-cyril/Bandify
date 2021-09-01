@@ -1,5 +1,5 @@
-const {Member} = require('../models')
-const bcrypt = require('bcrypt')
+const {Member} = require('../models');
+const bcrypt = require('bcrypt');
 
 const authController = {
 
@@ -18,16 +18,8 @@ try {
     if(!isPasswordValid) {
         res.json({error : 'Mot de passe incorrects!'});
     }else {
-
-           // JWT Config
-    const jwtSecret = process.env.TOKEN_SECRET;
-    const jwtContent = { memberId: member.id };
-    const jwtOptions = { 
-      algorithm: 'HS256', 
-      expiresIn: '3h' 
-        };
           
-    res.json({message: "Succes"});
+    res.json({message: "Success"});
     }
 
 } catch(error) {
