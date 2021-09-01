@@ -21,8 +21,10 @@ const mapDispatchToProps = (dispatch) => ({
   onAcceptInvitation: (id, futureFriend) => {
     dispatch({ type: 'ON_ACCEPT_INVITATION', id, futureFriend });
   },
-  onDenyInvitation: (id, refusedMember) => {
-    dispatch({ type: 'ON_DENY_INVITATION', id, refusedMember });
+  onDenyInvitation: (id, refusedMember, invitation) => {
+    dispatch({
+      type: 'ON_DENY_INVITATION', id, refusedMember, invitation,
+    });
   },
 });
 

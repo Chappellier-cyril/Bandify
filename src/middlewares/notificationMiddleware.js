@@ -8,10 +8,13 @@ const notificationMiddleware = (store) => (next) => (action) => {
       axios.get(`${process.env.BANDIFY_API_URL}/members/${memberId}/invitations`)
         .then((response) => {
           response.data.map((inv) => {
-            const notif = { notification: 'invitation', invitation: inv };
-            return (
-              store.dispatch({ type: 'GET_ALL_INVITATIONS_NOTIFS', notif, memberId: memberId })
-            );
+            if (inv.status === 0) {
+              const notif = { notification: 'invitation', invitation: inv };
+              return (
+                store.dispatch({ type: 'GET_ALL_INVITATIONS_NOTIFS', notif, memberId: memberId })
+              );
+            }
+            return null;
           });
         });
     }

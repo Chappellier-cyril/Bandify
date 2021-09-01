@@ -25,7 +25,7 @@ const OtherProfile = ({
   const foundUserToDelete = acceptedInvitations
     .find((acceptedInvitation) => acceptedInvitation.to === user.id
     || acceptedInvitation.from === user.id);
-
+  console.log(foundUserToDelete);
   return (
     <>
       {isDeleteFriendModalOpen && foundUserToDelete ? (

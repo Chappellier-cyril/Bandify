@@ -250,20 +250,50 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         acceptedInvitations: action.acceptedInvitations,
       };
-
-    case 'DELETE_FROM_FRIENDLIST_SUCCESS':
+    case 'REMOVE_FRIEND': {
+      const filteredFriends = state.friends.filter((f) => f.id === action.friend.id);
+      const filteredInvitations = state.acceptedInvitations.filter((inv) => (
+        inv.to !== action.friend.id || inv.from !== action.friend.id));
       return {
         ...state,
-        acceptedInvitations: [
-          ...state.acceptedInvitations.slice(0, action.indexAccepted),
-          ...state.acceptedInvitations.slice(action.indexAccepted + 1),
-        ],
-        friends: [
-          ...state.friends.slice(0, action.indexFriends),
-          ...state.friends.slice(action.indexFriends + 1),
-        ],
+        friends: filteredFriends,
+        acceptedInvitations: filteredInvitations,
       };
-    case 'ON_ACCEPT_INVITATION_SUCCESS':
+    }
+    case 'DELETE_FROM_FRIENDLIST_SUCCESS': {
+      let friendToDelete;
+      if (action.invitation.to !== action.userId) friendToDelete = action.invitation.toMember;
+      if (action.invitation.from !== action.userId) friendToDelete = action.invitation.fromMember;
+      const filteredFriends = state.friends.filter((f) => f.id !== friendToDelete.id);
+      const filteredInvitations = state.acceptedInvitations.filter((i) => (
+        i.id !== action.invitation.id));
+      return {
+        ...state,
+
+        acceptedInvitations: filteredInvitations,
+        friends: filteredFriends,
+      };
+    }
+    case 'INVITATION_ACCEPTED': {
+      const filteredPendingInvitations = state.pendingInvitations.filter((inv) => (
+        inv.id !== action.invitation.id));
+      return {
+        ...state,
+        friends: [
+          ...state.friends,
+          action.invitation.toMember,
+        ],
+        acceptedInvitations: [
+          ...state.acceptedInvitations,
+          // on ajoute l'invitation à notre tableau d'invitations accepétées
+          action.invitation,
+        ],
+        pendingInvitations: filteredPendingInvitations,
+      };
+    }
+    case 'ON_ACCEPT_INVITATION_SUCCESS': {
+      const filteredPendingInvitations = state.pendingInvitations.filter((inv) => (
+        inv.id !== action.invitation.id));
       return {
         ...state,
         friends: [
@@ -276,16 +306,36 @@ const reducer = (state = initialState, action = {}) => {
           // on ajoute l'invitation à notre tableau d'invitations accepétées
           action.invitation,
         ],
+        pendingInvitations: filteredPendingInvitations,
       };
-    case 'ON_DENY_INVITATION_SUCCESS':
+    }
+    case 'INVITATION_REFUSED': {
+      /* TODO RECUPERER L4INVITATION DANS LE DSIPATCH avant car ici pas d'accés
+      à l'invitation à retirer car j'ai besoin de fromMember */
+      const filteredInvitations = state.pendingInvitations.filter((inv) => {
+        console.log('dans le filtre de on deny success', inv.id, action.invitation.id);
+        return (
+          inv.id !== action.invitation.id
+        );
+      });
+      console.log('filtered pending invitations dans le reducer user final', filteredInvitations);
       return {
         ...state,
-        pendingInvitations: [
-          // on retire la pending invitation du tableau
-          ...state.pendingInvitations.slice(0, action.pendingInvIndex),
-          ...state.pendingInvitations.slice(action.pendingInvIndex + 1),
-        ],
+        pendingInvitations: filteredInvitations,
       };
+    }
+    case 'ON_DENY_INVITATION_SUCCESS': {
+      const filteredInvitations = state.pendingInvitations.filter((inv) => {
+        console.log('dans le filtre de on deny success', inv.id, action.invitation.id);
+        return (
+          inv.id !== action.invitation.id
+        );
+      });
+      return {
+        ...state,
+        pendingInvitations: filteredInvitations,
+      };
+    }
     default:
       return state;
   }

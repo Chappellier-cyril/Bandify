@@ -7,7 +7,7 @@ import { firstLetterToUpper, restToLower } from 'src/selectors/city';
 import './style.scss';
 
 const Home = ({
-  users, isLogged, getMembers, searchedUsers, /* searchMessage, */
+  users, isLogged, getMembers, searchedUsers, loginId, /* searchMessage, */
 }) => {
   useEffect(() => {
     if (isLogged) {
@@ -16,6 +16,9 @@ const Home = ({
       getMembers();
     }
   }, [isLogged]);
+
+  // TODO : filtrer pour ne plus avoir soi même dans les résultats
+  const usersWithoutMe = users.filter((user) => user.id !== loginId);
 
   return (
     <div className="main">
@@ -82,7 +85,7 @@ const Home = ({
               /* Option 2: on est loggué mais on a pas effectué de recherche,
              on affiche tous les membres */
             // On affiche uniquement les 5 premiers membres
-              users.slice(0, 5).map((user) => (
+              usersWithoutMe.slice(0, 5).map((user) => (
                 <Link to={`/member/${user.id}`} key={user.id} className="home__cards--users">
                   <div className="home__user--container">
                     {user.profil_image && <img className="home__user--picture" src={`${process.env.BANDIFY_API_URL}/avatar/${user.profil_image}`} alt="avatar du membre" />}
@@ -172,6 +175,7 @@ Home.propTypes = {
     PropTypes.object,
   ),
   isLogged: PropTypes.bool.isRequired,
+  loginId: PropTypes.number.isRequired,
   getMembers: PropTypes.func.isRequired,
   searchedUsers: PropTypes.array,
   // searchMessage: PropTypes.string,

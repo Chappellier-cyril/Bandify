@@ -81,7 +81,7 @@ const invitationMiddleware = (store) => (next) => (action) => {
     axios(options)
       .then(() => {
         store.dispatch({
-          type: 'DELETE_FROM_FRIENDLIST_SUCCESS', indexAccepted, indexFriends,
+          type: 'DELETE_FROM_FRIENDLIST_SUCCESS', indexAccepted, indexFriends, invitation: action.acceptedUser, userId: state.login.id,
         });
       })
       .catch((e) => {
@@ -143,7 +143,7 @@ const invitationMiddleware = (store) => (next) => (action) => {
     axios(options)
       .then(() => {
         store.dispatch({
-          type: 'ON_DENY_INVITATION_SUCCESS', invIndex, pendingInvIndex,
+          type: 'ON_DENY_INVITATION_SUCCESS', invIndex, pendingInvIndex, refusedMember: action.refusedMember, invitation: action.invitation,
         });
       })
       .catch((e) => {

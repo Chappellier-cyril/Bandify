@@ -8,6 +8,7 @@ const mapStateToProps = (state) => ({
   user: state.users.user,
   searchedUsers: state.users.searchedUsers,
   searchMessage: state.settings.searchMessage,
+  loginId: state.login.id,
 });
 
 const mapDispatchToProps = (dispatch) => ({

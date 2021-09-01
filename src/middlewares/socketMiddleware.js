@@ -23,13 +23,25 @@ const socketMiddleware = (store) => (next) => (action) => {
         console.log('je recois notif invitation', response);
         store.dispatch({ type: 'GET_NEW_INVITATION', invitation: response.invitation });
       }
+      if (response.notification === 'new-friend') {
+        console.log('je recois notif new-friend', response);
+        store.dispatch({ type: 'INVITATION_ACCEPTED', invitation: response.invitation });
+      }
+      if (response.notification === 'no-friend') {
+        // récuperer aussi invitation
+        console.log('je recois notif no-friend', response);
+        store.dispatch({ type: 'INVITATION_REFUSED', refusedMember: response.refusedMember, invitation: response.invitation });
+      }
+    });
+    socket.on('remove-friend', (friend) => {
+      console.log('jai une notif de remove-friend');
+      store.dispatch({ type: 'REMOVE_FRIEND', friend });
     });
     next(action);
   }
 
   if ((action.type === 'ADD_MESSAGE_SUCCESS') && socket) {
     socket.emit('sendMessage', action.message, () => {
-      console.log('je suis dans le callback de socket sendMessage dans ADD_MESSAGE_SUCCESS');
       socket.on('notifications', (response) => {
         if (response.notification === 'message') {
           const notif = { notification: 'message', messages: [response.message], sender: response.message.Sender };
@@ -50,6 +62,24 @@ const socketMiddleware = (store) => (next) => (action) => {
     });
     next(action);
   }
+  if ((action.type === 'ON_ACCEPT_INVITATION_SUCCESS') && socket) {
+    console.log('action.futureFriend socket emit', action);
+    socket.emit('invitationAccepted', { futureFriend: action.futureFriend, invitation: action.invitation });
+  }
+  if ((action.type === 'ON_DENY_INVITATION_SUCCESS') && socket) {
+    console.log('action.noFriend socket emit');
+    socket.emit('invitationRefused', { refusedMember: action.refusedMember, invitation: action.invitation });
+  }
+  if ((action.type === 'DELETE_FROM_FRIENDLIST_SUCCESS') && socket) {
+    const state = store.getState();
+    const friendEmit = state.users.users.find((u) => u.id === state.login.id);
+    let friendUser;
+    if (action.invitation.to !== friendEmit.id) friendUser = action.invitation.toMember;
+    if (action.invitation.from !== friendEmit.id) friendUser = action.invitation.fromMember;
+    console.log('action.delete from friends dans socket', action);
+    socket.emit('removeFromFriends', { friendEmit, friendOn: friendUser });
+  }
+  // ON DELETE_FRIEND FAIRE LA MEME CHOSE
   if (action.type === 'ON_LOGOUT') {
     socket.disconnect();
     next(action);
