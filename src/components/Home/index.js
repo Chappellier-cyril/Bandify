@@ -157,6 +157,7 @@ const Home = ({
             {users.map((user) => (
               <div className="home__cards--users" key={user.id}>
                 <img
+                  className="home__user--picture"
                   src={`${process.env.BANDIFY_API_URL}/avatar/${user.profil_image}`}
                   alt="avatr de membre"
                 />
