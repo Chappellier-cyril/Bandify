@@ -46,7 +46,7 @@ const Password = ({
       if (password.length < 6) return setErrorPassword('Le mot de passe doit contenir au moins 6 charactères');
       return setErrorPassword('');
     }
-    return setErrorPassword('');
+    return null;
   }, [password]);
   return (
     <>

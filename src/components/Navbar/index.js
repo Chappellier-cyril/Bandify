@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import './style.scss';
@@ -18,26 +18,26 @@ const Navbar = ({
     </button>
 
     <nav className="menu__nav">
-      <Link to="/" className="menu__nav--link" onClick={hideMenu}>
+      <NavLink exact to="/" className="menu__nav--link" onClick={hideMenu} activeClassName="menu__nav--link--is-active">
         Accueil
-      </Link>
+      </NavLink>
       {isLogged ? (
         <>
-          <Link to={`/member/${connectedUserId}`} className="menu__nav--link" onClick={hideMenu}>
+          <NavLink to={`/member/${connectedUserId}`} className="menu__nav--link" onClick={hideMenu} activeClassName="menu__nav--link--is-active">
             Mon profil
-          </Link>
-          <Link to="/" onClick={onLogout} className="menu__nav--link menu__nav--link--signup">
+          </NavLink>
+          <NavLink to="/" onClick={onLogout} className="menu__nav--link menu__nav--link--signup" activeClassName="menu__nav--link--is-active">
             Deconnexion
-          </Link>
+          </NavLink>
         </>
       ) : (
         <>
-          <Link to="/login" className="menu__nav--link" onClick={hideMenu}>
+          <NavLink to="/login" className="menu__nav--link" onClick={hideMenu} activeClassName="menu__nav--link--is-active">
             Connexion
-          </Link>
-          <Link to="/signup" className="menu__nav--link menu__nav--link--signup" onClick={hideMenu}>
+          </NavLink>
+          <NavLink to="/signup" className="menu__nav--link menu__nav--link--signup" onClick={hideMenu} activeClassName="menu__nav--link--is-active">
             Inscription
-          </Link>
+          </NavLink>
         </>
       )}
     </nav>

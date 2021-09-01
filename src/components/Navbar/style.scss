@@ -31,18 +31,37 @@
       &--link {
         font-size: 1.3rem;
         text-align: center;
-        &--signup {
-          background-color: vars.$thirdColor;
-          color: vars.$fourthColor;
-          border-radius: vars.$borderRadius;
-          padding: 1rem;
+        color: vars.$fourthColor;
+        background: linear-gradient(to right, rgba(29,162,242,1),rgba(255,254,254,1),rgba(29,162,242,1));
+        background-size: 200% 200%;
+        animation: moove 4s ease-in-out infinite;
+        background-clip: text;
+        -webkit-background-clip:text;
+        transition: color 0.4s ease-in-out;
+        &:hover{
+          color: rgba(0, 0, 0, 0);
+    
         }
+        &--is-active{
+          color: vars.$thirdColor;
+        }
+        // &--signup {
+        //   background-color: vars.$thirdColor;
+        //   color: vars.$fourthColor;
+        //   border-radius: vars.$borderRadius;
+        //   padding: 1rem;
+        // }
       }
     }
   }
-  .menu:hover {
-    color: vars.$thirdColor;
+  @keyframes moove { 
+    0%{background-position:left}
+    50%{background-position:right}
+    100%{background-position:left}
   }
+  // .menu:hover {
+  //   color: vars.$thirdColor;
+  // }
 
   .close-menu-btn {
     display: inline-block;

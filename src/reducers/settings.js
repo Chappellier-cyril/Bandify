@@ -9,7 +9,7 @@ export const initialState = {
   // SEARCH
   searchValue: '',
   searchMessage: '',
-  instruments: [{}],
+  instruments: [],
   levels: [{}],
   musicstyles: [{}],
   instrument: '',

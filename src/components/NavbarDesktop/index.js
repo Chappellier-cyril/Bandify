@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import './style.scss';
@@ -9,26 +9,26 @@ const NavbarDesktop = ({
 }) => (
 
   <nav className="desktop__nav">
-    <Link to="/" className="desktop__nav-link">
+    <NavLink exact to="/" className="desktop__nav-link" activeClassName="desktop__nav-link--is-active">
       Accueil
-    </Link>
+    </NavLink>
     {isLogged ? (
       <>
-        <Link to={`/member/${connectedUserId}`} className="desktop__nav-link">
+        <NavLink to={`/member/${connectedUserId}`} className="desktop__nav-link" activeClassName="desktop__nav-link--is-active">
           Mon profil
-        </Link>
-        <Link to="/" onClick={onLogout} className="desktop__nav-link">
+        </NavLink>
+        <NavLink exact to="/" onClick={onLogout} className="desktop__nav-link" activeClassName="desktop__nav-link--is-active">
           Deconnexion
-        </Link>
+        </NavLink>
       </>
     ) : (
       <>
-        <Link to="/login" className="desktop__nav-link">
+        <NavLink to="/login" className="desktop__nav-link" activeClassName="desktop__nav-link--is-active">
           Connexion
-        </Link>
-        <Link to="/signup" className="desktop__nav-link">
+        </NavLink>
+        <NavLink to="/signup" className="desktop__nav-link" activeClassName="desktop__nav-link--is-active">
           Inscription
-        </Link>
+        </NavLink>
       </>
     )}
   </nav>

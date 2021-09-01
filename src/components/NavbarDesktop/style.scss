@@ -8,11 +8,28 @@
   .desktop__nav-link {
     padding: 0 2rem;
     letter-spacing: 1.5px;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     color: vars.$fourthColor;
+    background: linear-gradient(to right, rgba(29,162,242,1),rgba(255,254,254,1),rgba(29,162,242,1));
+    background-size: 200% 200%;
+    animation: moove 4s ease-in-out infinite;
+    background-clip: text;
+    -webkit-background-clip:text;
+    transition: color 0.4s ease-in-out;
+    &:hover{
+      color: rgba(0, 0, 0, 0);
+
+    }
+    &--is-active{
+      color: vars.$thirdColor;
+    }
   }
 }
-
+@keyframes moove { 
+  0%{background-position:left}
+  50%{background-position:right}
+  100%{background-position:left}
+}
 @media screen and (max-width: 700px) {
   .desktop__nav {
     display: none;

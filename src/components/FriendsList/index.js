@@ -32,7 +32,9 @@ FriendsList.propTypes = {
   getCurrentUser: PropTypes.func.isRequired,
   friends: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   onlineUsers: PropTypes.arrayOf(PropTypes.shape()).isRequired,
-  myId: PropTypes.number.isRequired,
+  myId: PropTypes.number,
 };
-
+FriendsList.defaultProps = {
+  myId: null,
+};
 export default FriendsList;
