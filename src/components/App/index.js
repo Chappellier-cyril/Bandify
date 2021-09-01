@@ -1,6 +1,6 @@
 // == Import
 import React, { useEffect } from 'react';
-import { Redirect, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 // connected components
 import Home from 'src/containers/Home';
@@ -91,11 +91,10 @@ export default function App({
           <Route exact path="/about">
             <About />
           </Route>
-          <Route exact path="/profile" />
           <Route exact path="/search" component={Home} />
           {isLogged
             ? <Route exact path="/member/:profileId" component={Profiles} />
-            : <Redirect exact to="/" /> }
+            : <Route component={PageNotFound} /> }
           <Route component={PageNotFound} />
         </Switch>
       </div>
