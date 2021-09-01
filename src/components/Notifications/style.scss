@@ -19,6 +19,8 @@
     }
     &__ul{
         padding: .7rem 1rem;
+        display: flex;
+        flex-direction: column-reverse;
     }
     &__li{
         padding: 0.7rem 0.3rem;
@@ -60,6 +62,8 @@
     }
     &__ul{
       padding: .7rem 1rem;
+      display: flex;
+      flex-direction: column-reverse;
     }
     &__li{
         padding: 0.7rem 0.3rem;
