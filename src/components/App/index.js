@@ -99,11 +99,10 @@ export default function App({
           <Route exact path="/about">
             <About />
           </Route>
-          <Route exact path="/profile" />
           <Route exact path="/search" component={Home} />
           {isLogged
             ? <Route exact path="/member/:profileId" component={Profiles} />
-            : <Redirect exact to="/" /> }
+            : <Route component={PageNotFound} /> }
           <Route component={PageNotFound} />
         </Switch>
       </div>

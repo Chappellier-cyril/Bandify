@@ -9,7 +9,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      height: 65vh;
+      height: 70vh;
       width: 100vw;
       margin-top: 8rem;
 
@@ -17,13 +17,14 @@
         color: vars.$fourthColor;
         font-size: 1.7rem;
         margin-bottom: 2rem;
+        margin-top: 1.5rem;
       }
       &--submit {
         background-color: vars.$thirdColor;
         width: 50%;
         margin: 0.5rem 0;
         border: none;
-        padding: 1.5rem;
+        padding: 1rem;
         border-radius: vars.$borderRadius;
         color: vars.$fourthColor;
         font-size: 1.2rem;
@@ -68,13 +69,65 @@
 
 
 
-// Just for the example DESKTOP
+// DESKTOP
 @media screen and (min-width: 700px) {
-  .contact{
-    &__container{
-        width: 100%;
-        height: 70vh;
-        margin-top: 12rem;
+  .contact {
+    &__form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      width: 100%;
+      margin-top: 7rem;
+      &--title {
+        color: vars.$fourthColor;
+        font-size: 1.7rem;
+        margin-bottom: 2rem;
+      }
+      &--submit {
+              background-color: vars.$thirdColor;
+              width: 40%;
+              margin-top: 1.5em;
+              border: none;
+              padding: 1rem;
+              border-radius: vars.$borderRadius;
+              color: vars.$fourthColor;
+              font-size: 1.2rem;
+            }
+      &__container {
+        border: 2px solid vars.$thirdColor;
+        border-radius: vars.$borderRadius;
+        width: 50%;
+        margin: 0.5rem 0;
+        position: relative;
+        &--input {
+          width: 100%;
+          border-radius: vars.$borderRadius;
+          padding: 1rem;
+          color: vars.$thirdColor;
+          font-size: 1.1rem;
+          border: none;
+        }
+        &__message {
+          border: 2px solid vars.$thirdColor;
+          border-radius: vars.$borderRadius;
+          width: 50%;
+          height: 20%;
+          margin-top: 2.5rem;
+          margin-bottom: 1rem;
+          position: relative;
+          &--input {
+            width: 100%;
+            height: 100%;
+            border-radius: vars.$borderRadius;
+            padding: 1rem;
+            color: vars.$thirdColor;
+            font-size: 1.1rem;
+            border: none;
+          }
+        }
+      }
     }
     &__title{
       text-align: center;
@@ -96,6 +149,42 @@
   }
 }
 
+
+//     &__container {
+//       border: 2px solid vars.$thirdColor;
+//       border-radius: vars.$borderRadius;
+//       width: 80%;
+//       margin: 0.5rem 0;
+//       position: relative;
+//       &--input {
+//         width: 100%;
+//         border-radius: vars.$borderRadius;
+//         padding: 1rem;
+//         color: vars.$thirdColor;
+//         font-size: 1.1rem;
+//         border: none;
+//       }
+//       &__message {
+//         border: 2px solid vars.$thirdColor;
+//         border-radius: vars.$borderRadius;
+//         width: 80%;
+//         height: 25%;
+//         margin-top: 2.5rem;
+//         margin-bottom: 1rem;
+//         position: relative;
+//         &--input {
+//           width: 100%;
+//           height: 100%;
+//           border-radius: vars.$borderRadius;
+//           padding: 1rem;
+//           color: vars.$thirdColor;
+//           font-size: 1.1rem;
+//           border: none;
+//         }
+//       }
+//     }
+//   }
+// }
 
 
 
