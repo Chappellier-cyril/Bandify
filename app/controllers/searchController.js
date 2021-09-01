@@ -8,17 +8,7 @@ const searchController = {
         const { instrument, level, musicstyle, city, department, region, searchValue } = filteredQuery;
         //on récupère tous les mebres pour pouvoir filtrer en fonction des queries
         try {
-            const members = await Member.findAll({
-                include: [{
-                    association: 'city',
-                    include: {
-                        association: 'department',
-                        include: 'region',
-                    },
-                },{
-                    association: 'plays',
-                    include: ['instrument', 'level']
-            }, 'styles']});
+            const members = await Member.findAll();
             // on copie les members dans une variable pour récupérer les users filtrés après la recherche
             let membersToFilter = [...members];
 

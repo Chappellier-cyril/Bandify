@@ -175,13 +175,16 @@ const memberController = {
     },
 
     loginMember : async (req, res) => {
-
+        console.log('login Member', req.body);
         try {
             
           // On vérifie qu'un membre correspond au mail entré par l'utilisateur
           const member = await Member.findOne({
               where: {
                   email: req.body.email
+              },
+              attributes: {
+                include: ['user_password'],
               }
           });
 
@@ -192,7 +195,7 @@ const memberController = {
       
           // On compare avec bcrypt les mot de passes
           const passwordToCompare=member.user_password;
-  
+          console.log(passwordToCompare);
           const isPasswordValid = await bcrypt.compare(req.body.user_password, passwordToCompare);
   
           // Si le mot de passe n'est pas valide on passe dans le catch
