@@ -26,13 +26,19 @@ const invitationController = {
     // MODIFIER POUR NE PAS RENVOYER DEUX FOIS UNE INVITATION
     sendInvitation : async (req, res, next) => {
         try {
-            const newInvitation = await Invitation.create({
-               status: req.body.status,
-               from: req.body.from,
-               to: req.body.to
+            const [newInvitation, created] = await Invitation.findOrCreate({
+
+            where : {[Op.or]: [{ from: req.body.from, to: req.body.to }, { from: req.body.to, to: req.body.from }]},
+
+            defaults : {from: req.body.from, to: req.body.to, status: 0}
+            
             });
-            const invitation = await Invitation.findByPk(newInvitation.id, {include: ['fromMember', 'toMember'] })
-              res.json(invitation);
+            if (created) {
+                res.json(newInvitation)
+            }else {
+                res.json({message : 'invitation déja envoyé'})
+            }
+           
 
         } catch (error) {
             console.trace(error);
@@ -63,6 +69,7 @@ const invitationController = {
         }
     },
 
+    // A SUPPRIMER A VOIR 
     updateInvitation : async (req, res, next) => {
         try {
             
@@ -83,6 +90,7 @@ const invitationController = {
             res.status(500).json(error); 
         }
     },
+
 
     // We called "Friends" when the status is accepted ("1")
     getAllFriends: async (req, res, next) => {
