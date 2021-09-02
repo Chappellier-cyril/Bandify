@@ -1,6 +1,31 @@
 @use 'src/styles/vars';
 
-.footer {
+// MOBILE 
+@media screen and (max-width: 700px) {
+  .footer {
+    width: 100%;
+    padding: 1rem;
+    margin-top: 140px;
+    border-top: 1px solid vars.$thirdColor;
+    background-color: vars.$firstColor;
+    &__nav {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      &--button {
+        background-color: vars.$thirdColor;
+        color: vars.$fourthColor;
+        padding: 10px;
+        border-radius: vars.$borderRadius;
+        margin: 20px 15px 0px 15px;
+      }
+    }
+  }
+}
+
+// DESKTOP
+@media screen and (min-width: 700px) {
+  .footer {
     width: 100%;
     padding: 1rem;
     margin-top: 5%;
@@ -15,8 +40,10 @@
         color: vars.$fourthColor;
         padding: 7px;
         border-radius: vars.$borderRadius;
-        margin: 15px 0px 20px 15px;
+        margin: 15px 30px 20px 15px;
         list-style: none;
     }
     }
 }
+}
+
