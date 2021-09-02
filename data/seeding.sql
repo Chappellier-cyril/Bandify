@@ -45,7 +45,8 @@ INSERT INTO instrument ("instrument_name")VALUES
 ('Banjo'),
 ('Luth'),
 ('Flûte'),
-('Tuba');
+('Tuba'),
+('Chanteur(euse)');
 
 INSERT INTO music_style ("music_name") VALUES
 ('Rock'),
