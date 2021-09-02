@@ -17,7 +17,7 @@ const About = () => (
     <div className="about__container">
       L'idée du projet Bandify est parti d'un constat simple :
       Une difficulté dans le milieu de la musique à faire se reconcentrer des musiciens partageant
-      la même passion. <br/>
+      la même passion. 
       Peu importe où vous habitez en France, Bandify se charge de vous proposer
       des profils adaptés en fonction de votre recherche.
       Bandify a pour ambition de faciliter l'échange et le partage autour
@@ -38,10 +38,9 @@ const About = () => (
       tous issus de l'école O'Clock et réunis autour des mêmes passions.
     </div>
 
-    
-
-    <Link to="/contact" className="about__container--btn">Contactez-nous</Link>
-
+    <div className="about__button">
+    <Link to="/contact" className="about__button--btn">Contactez-nous</Link>
+    </div>
   </div>
 );
 
