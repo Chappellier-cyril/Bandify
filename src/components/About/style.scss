@@ -1,6 +1,6 @@
 @use 'src/styles/vars';
 
-// MOBILE
+// MOBILE LAYOUT
 @media screen and (max-width: 700px) {
   .about {
     display: flex;
@@ -102,7 +102,7 @@
 
 
 
-// DESKTOP
+// DESKTOP LAYOUT
 @media screen and (min-width: 700px) {
   .about {
     display: flex;
@@ -181,7 +181,11 @@
       padding-bottom: 1rem;
     }
     &--link{
-      font-size: 1rem;
+      font-size: 1.2rem;
+      background-color: vars.$thirdColor;
+      border-radius: vars.$borderRadius;
+      color: vars.$fourthColor;
+      padding: 0.8rem;
     }
     &__desc {
       color: vars.$fourthColor;
@@ -208,6 +212,7 @@
   }
 }
 
+// TABLET LAYOUT
 @media screen and (min-width: 1400px) {
   .about{
     &__container{
@@ -252,19 +257,22 @@
       text-align: center;
     }
     &--link{
-      font-size: 1rem;
+      background-color: vars.$thirdColor;
+      border-radius: vars.$borderRadius;
+      padding: 0.8rem;
+      font-size: 1.2rem;
       text-align: center;
       color: vars.$fourthColor;
-      background: linear-gradient(to right, rgba(29,162,242,1),rgba(255,254,254,1),rgba(29,162,242,1));
+      background: linear-gradient(to right, rgba(29,162,242,1),rgb(121, 116, 116),rgba(29,162,242,1));
       background-size: 200% 200%;
       animation: moove 4s ease-in-out infinite;
       background-clip: text;
       -webkit-background-clip:text;
       transition: color 0.4s ease-in-out;
-      &:hover{
-        color: rgba(0, 0, 0, 0);
+      // &:hover{
+      //   color: rgba(255, 254, 254, 0);
   
-      }
+      // }
     }
   }
 }
