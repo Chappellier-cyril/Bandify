@@ -29,7 +29,7 @@ const Avatar = ({
           </div>
           <button
             type="button"
-            className="myprofile__user--close-edit-photo"
+            className="myprofile__user--close-edit-btn"
             onClick={() => editFormToggle('editPhoto')}
           >
             <i className="fas fa-times-circle" />

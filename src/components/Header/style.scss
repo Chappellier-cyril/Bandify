@@ -18,7 +18,7 @@
     &__menu-buttons {
       display: flex;
       justify-content: space-around;
-      width: 40%;
+      width: 50%;
     }
 
     &__menu-buttons-btn--menu, 
@@ -59,12 +59,12 @@
 
       &__bandify {
         display: flex;
-        width: 60%;
+        width: 50%;
         &--logo {
           // width: 100px;
           // margin-top: 1rem;
           height: 50px;
-          margin-right: 1rem;
+          margin: 0 1rem;
         }
         &--title {
           color: vars.$thirdColor;

@@ -148,13 +148,13 @@ const Signup = ({
             {errorPasswordCheck && <p className="signup-submit__error">{errorPasswordCheck}</p>}
           </label>
         </div>
-        <div className="signup-submit__group">
+        <div className="signup-submit__group signup-submit__group--textarea">
           <label htmlFor="description">
             <span className="signup-submit__group__label">Description</span>
-            <textarea className="signup-submit__group__input" name="description" id="description" type="text" value={description} onChange={(e) => onChangeInput('description', e.target.value)} placeholder="Une petite présentation de vous, afin de permettre à nos membres de mieux vous connaître ... " />
+            <textarea className="signup-submit__group__input signup-submit__group__input--textarea" name="description" id="description" type="text" value={description} onChange={(e) => onChangeInput('description', e.target.value)} placeholder="Une petite présentation de vous, afin de permettre à nos membres de mieux vous connaître ... " />
           </label>
         </div>
-        <div className="signup-submit__group">
+        <div className="signup-submit__choose-file">
           <span className="signup-submit__group__label">Image de profil</span>
           <label htmlFor="avatar" className="signup-submit__group--avatar__container">
             <span className="signup-submit__group--avatar__container__label">Choisir un fichier</span>
@@ -165,7 +165,7 @@ const Signup = ({
             {avatar && <img className="signup-submit__show-avatar" src={URL.createObjectURL(avatar)} alt={`Votre fichier séléctionné est ${avatar.name}`} />}
           </div>
         </div>
-        <div className="signup-submit__group">
+        <div className="signup-submit__group signup-submit__group--inst-container">
           <span className="signup-submit__group__label">Choississez au moins un instrument et un niveau de pratique (optionel)</span>
           {// on boucle sur le tableau d'instruments
           instruments && instruments.map((instrument, index) => (
@@ -283,7 +283,7 @@ const Signup = ({
             || !email || !password || !passwordCheck || !instruments[0].instrument || !city
             || errorPasswordCheck || errorPassword || errorEmail || errorAge || errorAvatar
             || error}
-        >SUBMIT
+        >ENVOYER
         </button>
       </form>
     </div>

@@ -17,6 +17,11 @@
             color: vars.$thirdColor;
         }
     }
+    &__choose-file {
+      width: 80%;
+      margin: 1rem auto;
+      border-radius: vars.$borderRadius;
+    }
     &__error{
         color: vars.$fifthColor;
         font-size : 0.6rem;
@@ -46,6 +51,14 @@
       margin: 0.5rem 0;
       position: relative;
       margin: 1rem auto;
+
+      &--inst-container {
+        border: none;
+      }
+
+      &--textarea {
+        height: 200px;
+      }
 
         &__label{
             display: flex;
@@ -137,6 +150,7 @@
           border-radius: vars.$borderRadius;
           padding: 1rem;
           color: vars.$thirdColor;
+          background-color: vars.$seventhColor;
           font-size: 1.1rem;
           border: none;
             &::placeholder{
@@ -149,12 +163,15 @@
                 left: 0;
                 opacity: 0;
             }
+            &--textarea {
+              height: 100%;
+            }
         }
         &__select{
             width: 100%;
             padding: 1rem;
             margin:  0.2rem;
-            background-color: vars.$fourthColor;
+            background-color: vars.$seventhColor;
             border-radius: vars.$borderRadius;
             color: vars.$thirdColor;
             -webkit-appearance: none;
@@ -171,7 +188,8 @@
         display: flex;
         flex-direction: column;
         width: 630px;
-        background-color: vars.$fourthColor;
+        background-color: vars.$seventhColor;
+        border: 1px solid vars.$secondColor;
         padding: 1rem;
         border-radius: vars.$borderRadius;
         &__submit{
@@ -184,7 +202,7 @@
             width: 80%;
             margin: 0 auto;
             &:disabled{
-                background-color: vars.$secondColor;
+                background-color: vars.$seventhColor;
                 cursor: not-allowed;
             }
         }

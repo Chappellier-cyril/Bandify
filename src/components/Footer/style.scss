@@ -2,10 +2,12 @@
 
 .footer {
     width: 100%;
-    padding: 1rem;
-    margin-top: 5%;
+    height: 75px;
     border-top: 1px solid vars.$thirdColor;
     background-color: vars.$firstColor;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 
     &__nav {
       display: flex;
@@ -15,8 +17,8 @@
         color: vars.$fourthColor;
         padding: 7px;
         border-radius: vars.$borderRadius;
-        margin: 15px 0px 20px 15px;
         list-style: none;
+        margin-right: 1rem;
     }
     }
 }

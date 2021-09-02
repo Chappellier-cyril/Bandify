@@ -41,7 +41,7 @@ const Localisation = ({
           type="text"
           onChange={onChangeCity}
           onKeyUp={getCitiesFromAPI}
-          placeholder="ville"
+          placeholder="Ville"
           value={city}
           className="search__form-filters__select autocompletion-city__input"
         />

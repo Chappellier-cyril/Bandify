@@ -63,7 +63,7 @@ const Password = ({
                     type={passwordShown ? 'text' : 'password'}
                     value={password}
                     onChange={(e) => onChangeProfileInput('user_password', e.target.value)}
-                    placeholder="Verification votre mot de passe actuel*"
+                    placeholder="Mot de passe actuel*"
                     required
                   />
                   <button
@@ -81,6 +81,7 @@ const Password = ({
               {errorPassword && <p className="signup-submit__error">{errorPassword}</p>}
               <button
                 type="button"
+                className="myprofile__user--close-edit-btn"
                 onClick={() => editFormToggle('editPassword')}
               >
                 <i className="fas fa-times-circle" />

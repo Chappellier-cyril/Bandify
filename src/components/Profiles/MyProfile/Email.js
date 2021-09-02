@@ -14,17 +14,20 @@ const Email = ({
             value={emailInput.trim()}
             onChange={(e) => onChangeProfileInput('email', e.target.value)}
             placeholder="E-mail"
+            className="myprofile__user--edit-input"
             required
           />
         </div>
-        <button type="submit">Envoyer</button>
-        <button
-          type="button"
-          onClick={() => editFormToggle('editEmail')}
-          className="myprofile__user--close-edit-email"
-        >
-          <i className="fas fa-times-circle" />
-        </button>
+        <div className="myprofile__user--submit-container">
+          <button type="submit" className="myprofile__user--edit-submit-btn">Envoyer</button>
+          <button
+            type="button"
+            onClick={() => editFormToggle('editEmail')}
+            className="myprofile__user--close-edit-btn"
+          >
+            <i className="fas fa-times-circle" />
+          </button>
+        </div>
       </form>
     ) : (
       <div className="myprofile__user--email">
