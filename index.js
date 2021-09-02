@@ -11,6 +11,7 @@ const expressSwagger = require('express-swagger-generator')(app);
 const CLIENT_SIDE = process.env.CLIENT_SIDE;
 
 const { addMemberOnline, removeMemberOnline, findUserOnline} = require('./sockets/users');
+const { on } = require('events');
 
 let swaggerOptions = {
    swaggerDefinition: {
@@ -70,6 +71,18 @@ io.on('connect', (socket) => {
                 io.to(foundReiceverOnline.socketId).emit('notifications', {notification: 'message', message: message});
             }
         });
+        socket.on('isTyping', (payload) => {
+            const foundReceiverOnline = findUserOnline(payload.to);
+            if(foundReceiverOnline) {
+                io.to(foundReceiverOnline.socketId).emit('is-typing', payload);
+            }
+        });
+        socket.on('isNotTyping', (payload) => {
+            const foundReceiverOnline = findUserOnline(payload.to);
+            if(foundReceiverOnline) {
+                io.to(foundReceiverOnline.socketId).emit('is-not-typing', payload);
+            }
+        })
         socket.on('sendInvitation', (invitation) => {
             const foundReiceverOnline = findUserOnline(invitation.to);
             if(foundReiceverOnline) {
