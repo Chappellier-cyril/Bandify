@@ -151,8 +151,8 @@ const Signup = ({
         </div>
         <div className="signup-submit__group signup-submit__group--textarea">
           {/* <label htmlFor="description"> */}
-            {/* <span className="signup-submit__group__label">Description</span> */}
-            <textarea className="signup-submit__group__input signup-submit__group__input--textarea" name="description" id="description" type="text" value={DOMPurify.sanitize(description, { ALLOWED_TAGS: ['em', 'strong'] })} onChange={(e) => onChangeInput('description', e.target.value)} placeholder="Une petite présentation de vous, afin de permettre à nos membres de mieux vous connaître ... " />
+          {/* <span className="signup-submit__group__label">Description</span> */}
+          <textarea className="signup-submit__group__input signup-submit__group__input--textarea" style={{ resize: 'none' }} name="description" id="description" type="text" value={DOMPurify.sanitize(description, { ALLOWED_TAGS: ['em', 'strong'] })} onChange={(e) => onChangeInput('description', e.target.value)} placeholder="Une petite présentation de vous, afin de permettre à nos membres de mieux vous connaître ... " />
           {/* </label> */}
         </div>
         <div className="signup-submit__choose-file">
