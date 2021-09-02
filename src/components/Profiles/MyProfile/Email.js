@@ -1,4 +1,5 @@
 import React from 'react';
+import DOMPurify from 'dompurify';
 import PropTypes from 'prop-types';
 
 const Email = ({
@@ -11,7 +12,7 @@ const Email = ({
           <input
             name="email"
             type="text"
-            value={emailInput.trim()}
+            value={DOMPurify.sanitize(emailInput.trim(), { ALLOWED_TAGS: ['em', 'strong'] })}
             onChange={(e) => onChangeProfileInput('email', e.target.value)}
             placeholder="E-mail"
             required

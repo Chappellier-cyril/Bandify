@@ -1,4 +1,5 @@
 import React from 'react';
+import DOMPurify from 'dompurify';
 import PropTypes from 'prop-types';
 
 const Description = ({
@@ -10,7 +11,7 @@ const Description = ({
         <div>
           <label htmlFor="description">
             Description
-            <textarea name="description" id="description" type="text" value={description} onChange={(e) => onChangeProfileInput('user_description', e.target.value)} placeholder="Faire une courte description de vous" />
+            <textarea name="description" id="description" type="text" value={DOMPurify.sanitize(description.trim(), { ALLOWED_TAGS: ['em', 'strong'] })} onChange={(e) => onChangeProfileInput('user_description', e.target.value)} placeholder="Faire une courte description de vous" />
           </label>
         </div>
         <button type="submit">Envoyer</button>
