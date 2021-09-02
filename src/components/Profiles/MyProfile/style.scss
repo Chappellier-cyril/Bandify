@@ -9,6 +9,11 @@
   }
 
   .myprofile {
+    &__textarea {
+      &--container {
+        margin: 0 auto;
+      }
+    }
     &__desc {
       margin: 0 auto;
       padding: 2rem;
@@ -21,6 +26,14 @@
         margin: 2rem auto;
         text-align: center;
         font-size: 1.2rem;
+      }
+      &--textarea {
+        border: 1px solid vars.$thirdColor;
+        color: vars.$thirdColor;
+        background-color: vars.$seventhColor;
+        border-radius: vars.$borderRadius;
+        height: 200px;
+        width: 100%;
       }
     }
     &__delete-btn {
@@ -48,11 +61,11 @@
       &--users {
         width: 100%;
         height: auto;
-        margin-bottom: 0.5rem;
-        margin-top: 1rem;
+        margin: 1rem auto;
         padding: 1rem;
-        background-color: vars.$secondColor;
+        background-color: vars.$seventhColor;
         border-radius: vars.$borderRadius;
+        border: 1px solid vars.$secondColor;
       }
     }
     &__user {
@@ -61,13 +74,18 @@
         height: 150px;
         border-radius: 50%;
       }
+      &--submit-container {
+        display: flex;
+        justify-content: space-around;
+        margin: 1rem auto;
+      }
       &--delete-btn {
         background-color: vars.$fifthColor;
         border: none;
         border-radius: vars.$borderRadius;
         color: vars.$fourthColor;
-        padding: 1rem;
-        margin: 1rem;
+        padding: .5rem;
+        margin: 0 0 1rem 1rem;
         height: 50px;
         }
       &--picture-desc {
@@ -131,6 +149,26 @@
         background-color: transparent;
         border: none;
       }
+      &--edit-input {
+        background-color: vars.$seventhColor;
+        color: vars.$thirdColor;
+        border: none;
+        border: 1px solid vars.$thirdColor;
+        padding: 1rem;
+        margin-top: 1rem;
+        border-radius: vars.$borderRadius;
+      }
+      &--edit-submit-btn {
+        background-color: vars.$thirdColor;
+        padding: .5rem;
+        border-radius: vars.$borderRadius;
+        border: none;
+        color: vars.$fourthColor;
+      }
+      &--close-edit-btn {
+        background-color: transparent;
+        border: none;
+      }
     }
     &__instrument {
       color: vars.$fourthColor;
@@ -176,6 +214,7 @@
       margin-bottom: 1rem;
       padding: .5em 1em;
       border-radius: vars.$borderRadius;
+      border: 1px solid vars.$secondColor;
       &--description {
         margin: 1rem 0;
         font-weight: bold;
@@ -193,6 +232,11 @@
 
 .edit {
   &__password {
+    &__form {
+      &__button {
+        margin: 1rem auto;
+      }
+    }
     &--btn {
       background-color: vars.$thirdColor;
       border: none;
@@ -265,7 +309,7 @@
         margin-bottom: 0.5rem;
         margin-top: 1rem;
         padding: 1rem;
-        background-color: vars.$secondColor;
+        background-color: vars.$seventhColor;
         border-radius: vars.$borderRadius;
       }
     }

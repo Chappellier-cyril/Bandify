@@ -7,20 +7,29 @@ const Description = ({
   <>
     {editDescription ? (
       <form type="submit" onSubmit={handleSubmitDescription}>
-        <div>
+        <div className="myprofile__textarea--container">
           <label htmlFor="description">
-            Description
-            <textarea name="description" id="description" type="text" value={description} onChange={(e) => onChangeProfileInput('user_description', e.target.value)} placeholder="Faire une courte description de vous" />
+            <textarea
+              name="description"
+              id="description"
+              type="text"
+              value={description}
+              className="myprofile__desc--textarea"
+              onChange={(e) => onChangeProfileInput('user_description', e.target.value)}
+              placeholder="Faire une courte description de vous"
+            />
           </label>
         </div>
-        <button type="submit">Envoyer</button>
-        <button
-          type="button"
-          onClick={() => editFormToggle('editDescription')}
-          className="myprofile__user--close-edit-description"
-        >
-          <i className="fas fa-times-circle" />
-        </button>
+        <div className="myprofile__user--submit-container">
+          <button type="submit" className="myprofile__user--edit-submit-btn">Envoyer</button>
+          <button
+            type="button"
+            onClick={() => editFormToggle('editDescription')}
+            className="myprofile__user--close-edit-btn"
+          >
+            <i className="fas fa-times-circle" />
+          </button>
+        </div>
       </form>
     ) : (
       <div className="myprofile__user--description">

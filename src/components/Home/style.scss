@@ -95,8 +95,9 @@
         height: auto;
         margin: 1rem 0;
         padding: 1rem;
-        background-color: vars.$secondColor;
+        background-color: vars.$seventhColor;
         border-radius: vars.$borderRadius;
+        border: 1px solid vars.$secondColor;
       }
     }
     &__user {
@@ -270,7 +271,7 @@
       height: 400px;
       margin: 3rem 0;
       padding: .5rem 1rem;
-      background-color: vars.$secondColor;
+      background-color: vars.$seventhColor;
       border-radius: vars.$borderRadius;
     }
   }
