@@ -13,8 +13,8 @@ const Notifications = ({
   onDenyInvitation,
 }) => (
   <div className={`notifications__container ${!isNotificationsOpen && 'notifications__isHidden'}`}>
-    <div className="notifications__li">
-      <button type="button" onClick={toggleIsNotificationsOpen} className="close-menu-btn">
+    <div className="notifications__close-menu">
+      <button type="button" onClick={toggleIsNotificationsOpen} className="close-notif-btn">
         <i className="fas fa-times" />
       </button>
     </div>
@@ -35,7 +35,7 @@ const Notifications = ({
                 className="notifications__li"
                 key={n.invitation.id + n.invitation.fromMember.firstname}
               >
-                <p>Vous avez reçu une invitation de <Link to={`/member/${n.invitation.from}`}>{`${n.invitation.fromMember.firstname} ${n.invitation.fromMember.lastname}`}</Link></p>
+                <p className="notifications__title">Vous avez reçu une invitation de <Link to={`/member/${n.invitation.from}`}>{`${n.invitation.fromMember.firstname} ${n.invitation.fromMember.lastname}`}</Link></p>
                 <button type="button" onClick={() => onAcceptInvitation(n.invitation.id, n.invitation.fromMember)}>Accepter</button>
                 <button type="button" onClick={() => onDenyInvitation(n.invitation.id, n.invitation.fromMember, n.invitation)}>Refuser</button>
               </li>
@@ -48,8 +48,13 @@ const Notifications = ({
                 key={n.messages[0].id + n.sender.id}
                 title="Lire le message"
               >
-                <p onClick={() => getCurrentUser(n.sender.id, n.sender.firstname)} className="notifications__li--message">Vous avez reçu {n.messages.length} {n.messages.length > 1 ? 'messages' : 'message'} de {`${n.sender.firstname} ${n.sender.lastname}`}</p>
-                <button type="button" onClick={() => deleteMessagesNotification(i, n.messages)} className="notifications__li--delete">x</button>
+                <p onClick={() => getCurrentUser(n.sender.id, n.sender.firstname)} className="notifications__title">Vous avez reçu {n.messages.length} {n.messages.length > 1 ? 'messages' : 'message'} de {`${n.sender.firstname} ${n.sender.lastname}`}</p>
+                <button
+                  type="button"
+                  onClick={() => deleteMessagesNotification(i, n.messages)}
+                  className="close-one-notif-btn"
+                ><i className="fas fa-times" />
+                </button>
               </li>
             );
           }

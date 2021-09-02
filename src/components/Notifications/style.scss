@@ -3,42 +3,55 @@
 @media screen and (max-width: 700px) {
   .notifications{
     &__container{
-        position: absolute;
+        position: sticky;
         display: block;
-        width: 90%;
-        height: 250px;
-        margin: 0 auto;
-        top: 15%;
-        left: 0;
-        right: 0;
+        width: 80%;
+        height: auto;
+        top: 75px;
         z-index: 100;
         overflow-y: scroll;
         background-color: vars.$fourthColor;
         transition: 0.5s ease-in-out;
         border-radius: 7px;
+        border: 1px solid vars.$secondColor;
+    }
+    &__title {
+      width: 80%;
+      color: vars.$fourthColor;
+    }
+    &__close-menu {
+      background-color: vars.$firstColor;
+      height: 30px;
+      position: relative;
     }
     &__ul{
-        padding: .7rem 1rem;
         display: flex;
         flex-direction: column-reverse;
+        background-color: vars.$seventhColor;
     }
     &__li{
-        padding: 0.7rem 0.3rem;
+        padding: 1rem 0;
         display: flex;
         justify-content: space-around;
-        border-bottom: 1px solid vars.$seventhColor;
+        border-bottom: 1px solid vars.$secondColor;
+        width: 100%;
         &--message{
           cursor: pointer;
+          display: flex;
+          justify-content: space-around;
         }
         &--delete{
           border: none;
           background-color: vars.$thirdColor;
           color: vars.$fourthColor;
           border-radius: 50%;
+          width: 20px;
+          height: 20px;
         }
     }
     &__isHidden{
-        top: -100%;
+        position:relative;
+        top: -325px;
     }
   }
 }
@@ -86,14 +99,24 @@
 }
 
 .close-menu-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
   display: inline-block;
   border: none;
   cursor: pointer;
   background: none;
   appearance: none;
-  position: absolute;
-  top: 20px;
-  right: 20px;
+  color: vars.$thirdColor;
+  z-index: 1;
+}
+
+.close-one-notif-btn {
+  display: inline-block;
+  border: none;
+  cursor: pointer;
+  background: none;
+  appearance: none;
   color: vars.$thirdColor;
   z-index: 1;
 }

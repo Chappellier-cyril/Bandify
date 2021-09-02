@@ -11,8 +11,15 @@
     background-color: vars.$firstColor;
     transition: top 150ms ease-in-out;
 
+    &__close-menu {
+      width: 100%;
+      background-color: vars.$firstColor;
+      height: 30px;
+      position: relative;
+    }
+
     &--open {
-      top: 90px;
+      top: 75px;
     }
 
     &__nav {
@@ -43,15 +50,15 @@
     }
   }
 
-  .close-menu-btn {
+  .close-notif-btn {
     display: inline-block;
     border: none;
     cursor: pointer;
     background: none;
     appearance: none;
     position: absolute;
-    top: 60px;
-    right: 33px;
+    top: 5px;
+    right: 5px;
     color: vars.$thirdColor;
     z-index: 1;
   }
