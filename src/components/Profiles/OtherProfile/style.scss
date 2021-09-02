@@ -43,8 +43,9 @@
         margin-bottom: 0.5rem;
         margin-top: 1rem;
         padding: 1rem;
-        background-color: vars.$secondColor;
+        background-color: vars.$seventhColor;
         border-radius: vars.$borderRadius;
+        border: 1px solid vars.$secondColor;
       }
     }
     &__user {
@@ -191,7 +192,7 @@
         margin-bottom: 0.5rem;
         margin-top: 1rem;
         padding: 1em 2em;
-        background-color: vars.$secondColor;
+        background-color: vars.$seventhColor;
         border-radius: vars.$borderRadius;
       }
     }

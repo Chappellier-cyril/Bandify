@@ -11,23 +11,43 @@ const Name = ({
         <div>
           <label htmlFor="firstName">
             Prénom
-            <input name="firstName" id="firstName" type="text" value={DOMPurify.sanitize(firstName.trim(), { ALLOWED_TAGS: ['em', 'strong'] })} onChange={(e) => onChangeProfileInput('firstName', e.target.value)} placeholder="Prénom" required />
+            <input
+              name="firstName"
+              id="firstName"
+              type="text"
+              value={DOMPurify.sanitize(firstName.trim(), { ALLOWED_TAGS: ['em', 'strong'] })}
+              onChange={(e) => onChangeProfileInput('firstName', e.target.value)}
+              placeholder="Prénom"
+              className="myprofile__user--edit-input"
+              required
+            />
           </label>
         </div>
         <div>
           <label htmlFor="lastName">
             Nom
-            <input name="lastName" id="lastName" type="text" value={DOMPurify.sanitize(lastName.trim(), { ALLOWED_TAGS: ['em', 'strong'] })} onChange={(e) => onChangeProfileInput('lastName', e.target.value)} placeholder="Nom" required />
+            <input
+              name="lastName"
+              id="lastName"
+              type="text"
+              value={DOMPurify.sanitize(lastName.trim(), { ALLOWED_TAGS: ['em', 'strong'] })}
+              onChange={(e) => onChangeProfileInput('lastName', e.target.value)}
+              placeholder="Nom"
+              className="myprofile__user--edit-input"
+              required
+            />
           </label>
         </div>
-        <button type="submit">Envoyer</button>
-        <button
-          type="button"
-          onClick={() => editFormToggle('editName')}
-          className="myprofile__user--close-edit-name"
-        >
-          <i className="fas fa-times-circle" />
-        </button>
+        <div className="myprofile__user--submit-container">
+          <button type="submit" className="myprofile__user--edit-submit-btn">Envoyer</button>
+          <button
+            type="button"
+            onClick={() => editFormToggle('editName')}
+            className="myprofile__user--close-edit-btn"
+          >
+            <i className="fas fa-times-circle" />
+          </button>
+        </div>
       </form>
     ) : (
       <p className="myprofile__user--name">

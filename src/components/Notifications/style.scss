@@ -26,7 +26,7 @@
         padding: 0.7rem 0.3rem;
         display: flex;
         justify-content: space-around;
-        border-bottom: 1px solid vars.$secondColor;
+        border-bottom: 1px solid vars.$seventhColor;
         &--message{
           cursor: pointer;
         }
@@ -67,11 +67,11 @@
     }
     &__li{
         padding: 0.7rem 0.3rem;
-        border-bottom: 1px solid vars.$secondColor;
+        border-bottom: 1px solid vars.$seventhColor;
         transition: all 200ms ease;
 
         &:hover {
-          background-color: vars.$secondColor;
+          background-color: vars.$seventhColor;
           color: vars.$fourthColor;
         }
 
