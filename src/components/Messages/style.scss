@@ -34,24 +34,21 @@
       width: fit-content;
       max-width: 150px;
       word-wrap: break-word;
-      padding: 1.2rem;
-      margin-bottom: 1.2em;
-      background-color: white;
-      border-radius: 40px;
-      color: rgb(64, 126, 218);
-      
+      padding: 1rem;
+      background-color: vars.$fourthColor;
+      border-radius: 1rem;
+      color: vars.$thirdColor;   
     }
 
     &__content--mine {
       width: fit-content;
       max-width: 150px;
       word-wrap: break-word;
-      padding: 1.2rem;
+      padding: 1rem;
       margin-left: 60%;
-      text-align: right;
       background-color: vars.$thirdColor;
-      color: white;
-      border-radius: 40px;
+      color: vars.$fourthColor;
+      border-radius: 1rem;
       
     }
   }
@@ -92,9 +89,9 @@
       word-wrap: break-word;
       padding: 1.2rem;
       margin-bottom: 1.2em;
-      background-color: white;
+      background-color: vars.$fourthColor;
       border-radius: 40px;
-      color: rgb(64, 126, 218);
+      color: vars.$thirdColor;
       
     }
 
@@ -106,7 +103,7 @@
       margin-left: 70%;
       text-align: right;  
       background-color: vars.$thirdColor;
-      color: white;
+      color: vars.$fourthColor;
       border-radius: 40px;
       
     }
