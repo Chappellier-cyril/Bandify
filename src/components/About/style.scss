@@ -12,13 +12,14 @@
       color: vars.$fourthColor;
       font-size: 1.3rem;
       margin-top: 8rem;
+      margin-bottom: 1rem;
       font-style: italic;
       font-weight: bold;
     }
     &__us {
       color: vars.$secondColor;
       width: 85%;
-      // height: 10%;
+      margin-top: 1rem;
       &--title {
         font-style: italic;
         text-align: center;
@@ -35,6 +36,7 @@
         height: 75px;
         border-radius: 50%;
         margin-right: 20px;
+        margin-bottom: 5px;
         }
       }
     }
@@ -47,11 +49,11 @@
       font-size: 0.9rem;
       &--btn {
         height: fit-content;
-        padding: 1rem;
+        padding: 0.8rem;
         background-color: vars.$thirdColor;
         border-radius: vars.$borderRadius;
         color: vars.$fourthColor;
-        font-size: 1.1rem;
+        font-size: 1rem;
       }
     }
     &__desc {
