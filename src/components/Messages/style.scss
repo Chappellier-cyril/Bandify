@@ -1,5 +1,54 @@
 @use 'src/styles/vars';
 
+
+.isTyping{
+  color: transparent;
+  transition: color 0.4s ease-in-out;
+  margin-left: 1rem;
+  &--hiden{
+    color: transparent;
+  }
+  &--visible{
+    display: flex;
+    justify-content: baseline;
+    align-items: baseline;
+    color: vars.$fourthColor;
+  }
+  &__anim{
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: vars.$fourthColor;
+    transition: color 0.4s ease-in-out;
+    padding: 0.1rem;
+    margin: 0.2rem;
+    &--hiden{
+      background-color: transparent;
+    }
+    &--first{
+      animation: typing 1s infinite;
+    }
+    &--second{
+      animation: typing 2s infinite;
+    }
+    &--third{
+      animation: typing 3s infinite;
+    }
+  }
+}
+
+@keyframes typing {
+  0% { 
+    background-color: transparent; 
+  }
+  50%{
+    background-color: vars.$fourthColor; 
+  }
+  100% { 
+    background-color: transparent; 
+  } 
+}
+
 // MOBILE
 @media screen and (max-width: 700px) {
   .messages {

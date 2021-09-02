@@ -1,6 +1,7 @@
 export const initialState = {
   online: [],
   notifications: [],
+  isTyping: [],
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -49,6 +50,16 @@ const reducer = (state = initialState, action = {}) => {
         notifications: [...state.notifications, action.notif],
       };
     }
+    case 'FRIEND_IS_NOT_TYPPING':
+      return {
+        ...state,
+        isTyping: [action.friend, false],
+      };
+    case 'FRIEND_IS_TYPPING':
+      return {
+        ...state,
+        isTyping: [action.friend, true],
+      };
     case 'GET_NEW_MESSAGE': {
       /*
         A chaque nouveau message que je reçois via le socket 'new message'

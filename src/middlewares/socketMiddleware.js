@@ -3,6 +3,7 @@ import io from 'socket.io-client';
 let socket;
 
 const socketMiddleware = (store) => (next) => (action) => {
+  const state = store.getState();
   if ((action.type === 'ON_LOGIN_SUCCESS') || (action.type === 'RECONNECT_USER')) {
     console.log('je rentre dans l\'action');
     socket = io.connect(`${process.env.BANDIFY_API_URL}`);
@@ -11,7 +12,14 @@ const socketMiddleware = (store) => (next) => (action) => {
       store.dispatch({ type: 'GET_ONLINE_MEMBERS', online: members.online });
     });
     socket.emit('isOnline', { id: localStorage.getItem('userId') });
-
+    socket.on('is-typing', (response) => {
+      console.log(response);
+      store.dispatch({ type: 'FRIEND_IS_TYPPING', friend: response.from });
+    });
+    socket.on('is-not-typing', (response) => {
+      console.log(response);
+      store.dispatch({ type: 'FRIEND_IS_NOT_TYPPING', friend: response.from });
+    });
     socket.on('notifications', (response) => {
       (console.log('jai une notif'));
       if (response.notification === 'message') {
@@ -51,6 +59,14 @@ const socketMiddleware = (store) => (next) => (action) => {
     });
     next(action);
   }
+  if ((action.type === 'SEND_I_WRITE') && socket) {
+    socket.emit('isTyping', { from: state.login.id, to: state.settings.reicever_id });
+    next(action);
+  }
+  if ((action.type === 'SEND_NO_WRITE') && socket) {
+    socket.emit('isNotTyping', { from: state.login.id, to: state.settings.reicever_id });
+    next(action);
+  }
   if ((action.type === 'SEND_INVITATION_SUCCESS') && socket) {
     socket.emit('sendInvitation', action.invitation, () => {
       console.log('je suis dans le callback action socket sendInv dans SEND_INVITATIONS_SUCCESS');
@@ -71,7 +87,6 @@ const socketMiddleware = (store) => (next) => (action) => {
     socket.emit('invitationRefused', { refusedMember: action.refusedMember, invitation: action.invitation });
   }
   if ((action.type === 'DELETE_FROM_FRIENDLIST_SUCCESS') && socket) {
-    const state = store.getState();
     const friendEmit = state.users.users.find((u) => u.id === state.login.id);
     let friendUser;
     if (action.invitation.to !== friendEmit.id) friendUser = action.invitation.toMember;

@@ -6,6 +6,7 @@ const mapStateToProps = (state) => ({
   receiverName: state.settings.reicever_name,
   reicever: state.settings.reicever_id,
   sender: state.settings.sender_id,
+  isTyping: state.socket.isTyping,
 });
 
 const mapDispatchToProps = (dispatch) => ({
