@@ -1,21 +1,53 @@
 @use 'src/styles/vars';
 
 // MOBILE LAYOUT
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
   .main {
     height: auto;
     width: 100vw;
-    margin-top: 8rem !important;
+    margin-top: 5rem !important;
   }
 
   .home {
     &__desc {
-      margin: 0 auto;
-      padding: 2rem;
-      width: 100%;
-      font-size: 1.4rem;
-      color: vars.$fourthColor;
-      text-align: center;
+      &__container{
+        position: relative;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 2rem;
+      }
+      &__img{
+        width: 100%;
+        margin: auto;
+      }
+      &__text-container{
+        width: 80%;
+        margin: auto;
+        transform: translateY(-50%);
+        position: absolute;
+        top: 50%;
+        background-color: #32333abd;
+        padding-bottom: 1rem;
+      }
+      &__text{
+        margin: 0 auto;
+        padding: 0.3rem 2rem;
+        width: 100%;
+        font-size: 1rem;
+        color: vars.$fourthColor;
+        text-align: center;
+      }
+      &__title{
+        margin: 0 auto;
+        padding: 2rem;
+        width: 100%;
+        font-size: 1.4rem;
+        font-weight: bold;
+        color: vars.$fourthColor;
+        text-align: center;
+      }
       &--teasing {
         color: vars.$fourthColor;
         margin: 2rem auto;
@@ -25,8 +57,9 @@
     }
     &__signup {
       &--btn {
-        width: 60%;
+        width: 50%;
         margin: 0 auto;
+        text-align: center;
         background-color: vars.$thirdColor;
         color: vars.$fourthColor;
         padding: 1rem;
@@ -116,7 +149,7 @@
     width: 100%;
     align-items: center;
     justify-content: space-around;
-    padding: 3rem 0;
+    padding: 2rem 0;
     font-size: vars.$appFontSize;
     color: white;
   }
@@ -131,13 +164,47 @@
     }
   }
   &__desc {
-    padding: 2rem 3rem;
-    margin: 5rem auto;
-    width: 70%;
-    font-size: 1.5rem;
-    font-weight: bold;
-    line-height: 1.5;
-    text-align: center;
+    &__container{
+      position: relative;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+    &__img{
+      width: 100%;
+      max-height: 500px;
+      display: block;
+      object-fit: cover;
+      margin: auto;
+    }
+    &__text-container{
+      width: 60%;
+      margin: auto;
+      transform: translateY(-50%);
+      position: absolute;
+      top: 50%;
+      background-color: #627483bd;
+      padding-bottom: 1rem;
+    }
+    &__text{
+      margin: 0 auto;
+      padding: 0.3rem 2rem;
+      width: 100%;
+      font-size: 1rem;
+      color: vars.$fourthColor;
+      text-align: center;
+    }
+    &__title{
+      margin: 0 auto;
+      padding: 2rem;
+      width: 100%;
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: vars.$fourthColor;
+      text-align: center;
+    }
 
     &--teasing {
       margin: 2rem auto;
@@ -171,6 +238,54 @@
       display: flex;
     }
   }
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .home{
+    &__desc {
+      &__container{
+        position: relative;
+        width: 75%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 2rem;
+      }
+      &__img{
+        width: 100%;
+        max-height: 500px;
+        display: block;
+        object-fit: cover;
+        margin: auto;
+      }
+      &__text-container{
+        width: 60%;
+        margin: auto;
+        transform: translateY(-50%);
+        position: absolute;
+        top: 50%;
+        background-color: #627483bd;
+        padding-bottom: 1rem;
+      }
+      &__text{
+        margin: 0 auto;
+        padding: 0.3rem 2rem;
+        width: 100%;
+        font-size: 1rem;
+        color: vars.$fourthColor;
+        text-align: center;
+      }
+      &__title{
+        margin: 0 auto;
+        padding: 2rem;
+        width: 100%;
+        font-size: 1.4rem;
+        font-weight: bold;
+        color: vars.$fourthColor;
+        text-align: center;
+      }
+    }
   }
 }
 
