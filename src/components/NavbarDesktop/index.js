@@ -17,7 +17,7 @@ const NavbarDesktop = ({
         <NavLink to={`/member/${connectedUserId}`} className="desktop__nav-link" activeClassName="desktop__nav-link--is-active">
           Mon profil
         </NavLink>
-        <NavLink exact to="/logout" onClick={onLogout} className="desktop__nav-link" activeClassName="desktop__nav-link--is-active">
+        <NavLink exact to="/" onClick={onLogout} className="desktop__nav-link">
           Deconnexion
         </NavLink>
       </>
