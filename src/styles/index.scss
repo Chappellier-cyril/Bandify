@@ -2,7 +2,7 @@
 @use 'vars';
 
 body, html, #root, .app {
-  font-family: sans-serif;
+  font-family: 'Poppins', sans-serif;
   background-color: vars.$firstColor;
   width: 100vw;
   height: 100%;
