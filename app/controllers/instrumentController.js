@@ -5,7 +5,7 @@ const instrumentController = {
     // Get all instruments
     getAllInstruments: async (req, res, next) => {
         try {
-            const instruments = await Instrument.findAll();
+            const instruments = await Instrument.findAll({order: ['instrument_name']});
             res.json(instruments);
 
         } catch (error) {
