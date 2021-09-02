@@ -1,10 +1,13 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import Slider from 'react-slick';
 import PropTypes from 'prop-types';
 
 import Searchbar from 'src/containers/Searchbar';
 import { firstLetterToUpper, restToLower } from 'src/selectors/city';
 import './style.scss';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 const Home = ({
   users, isLogged, getMembers, searchedUsers, loginId, /* searchMessage, */
@@ -19,6 +22,40 @@ const Home = ({
 
   // TODO : filtrer pour ne plus avoir soi même dans les résultats
   const usersWithoutMe = users.filter((user) => user.id !== loginId);
+
+  const sliderSettings = {
+    dots: true,
+    infinite: true,
+    speed: 400,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    initialSlide: 0,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    className: 'center',
+    centerMode: true,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 700,
+        settings: {
+          vertical: true,
+          verticalSwiping: true,
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          autoplay: false,
+        },
+      },
+    ],
+  };
 
   return (
     <div className="main">
@@ -82,55 +119,57 @@ const Home = ({
                 </Link>
               ))
             ) : (
-              /* Option 2: on est loggué mais on a pas effectué de recherche,
+            /* Option 2: on est loggué mais on a pas effectué de recherche,
              on affiche tous les membres */
             // On affiche uniquement les 5 premiers membres
-              usersWithoutMe.slice(0, 5).map((user) => (
-                <Link to={`/member/${user.id}`} key={user.id} className="home__cards--users">
-                  <div className="home__user--container">
-                    {user.profil_image && <img className="home__user--picture" src={`${process.env.BANDIFY_API_URL}/avatar/${user.profil_image}`} alt="avatar du membre" />}
-                    <div className="home__user--short">
-                      <p className="home__user--name">{user.firstname} {user.lastname}</p>
-                      {user.city && (
-                      <p className="home__user--city">
-                        {firstLetterToUpper(restToLower(user.city.city_name))}
-                        ({user.city.department_code})
-                      </p>
-                      )}
+              <Slider {...sliderSettings}>
+                {usersWithoutMe.slice(0, 5).map((user) => (
+                  <Link to={`/member/${user.id}`} key={user.id} className="home__cards--users">
+                    <div className="home__user--container">
+                      {user.profil_image && <img className="home__user--picture" src={`${process.env.BANDIFY_API_URL}/avatar/${user.profil_image}`} alt="avatar du membre" />}
+                      <div className="home__user--short">
+                        <p className="home__user--name">{user.firstname} {user.lastname}</p>
+                        {user.city && (
+                        <p className="home__user--city">
+                          {firstLetterToUpper(restToLower(user.city.city_name))}
+                          ({user.city.department_code})
+                        </p>
+                        )}
+                      </div>
                     </div>
-                  </div>
-                  {user.plays && (
-                  <div className="home__instrument">
-                    <p className="home__instrument--description">Ses instruments:</p>
-                    <ul className="home__instrument--list">
-                      {user.plays.map((play) => (
-                        play.id && (
-                        <li className="home__instrument__tag" key={play.id}>
-                          <span className="home__instrument__tag--name">{play.instrument.instrument_name}</span>
-                          <span className="home__instrument__tag--level">{play.level && play.level.level_name}</span>
-                        </li>
-                        )
-                      ))}
-                    </ul>
-                  </div>
-                  )}
-                  {user.styles && (
-                  <div className="home__style">
-                    <p className="home__style--description">Ses goûts musicaux:</p>
-                    <ul className="home__style--list">
-                      {user.styles.map((musicStyle) => (
-                        musicStyle.id && (
-                        // Règle le souci musicStyle.id is undefined
-                        <li className="home__style__tag" key={musicStyle.id}>
-                          <span className="home__style__tag--name">{musicStyle.music_name}</span>
-                        </li>
-                        )
-                      ))}
-                    </ul>
-                  </div>
-                  )}
-                </Link>
-              ))
+                    {user.plays && (
+                    <div className="home__instrument">
+                      <p className="home__instrument--description">Ses instruments:</p>
+                      <ul className="home__instrument--list">
+                        {user.plays.map((play) => (
+                          play.id && (
+                          <li className="home__instrument__tag" key={play.id}>
+                            <span className="home__instrument__tag--name">{play.instrument.instrument_name}</span>
+                            <span className="home__instrument__tag--level">{play.level && play.level.level_name}</span>
+                          </li>
+                          )
+                        ))}
+                      </ul>
+                    </div>
+                    )}
+                    {user.styles && (
+                    <div className="home__style">
+                      <p className="home__style--description">Ses goûts musicaux:</p>
+                      <ul className="home__style--list">
+                        {user.styles.map((musicStyle) => (
+                          musicStyle.id && (
+                          // Règle le souci musicStyle.id is undefined
+                          <li className="home__style__tag" key={musicStyle.id}>
+                            <span className="home__style__tag--name">{musicStyle.music_name}</span>
+                          </li>
+                          )
+                        ))}
+                      </ul>
+                    </div>
+                    )}
+                  </Link>
+                ))}
+              </Slider>
             )}
           </div>
         </>
