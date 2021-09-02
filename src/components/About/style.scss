@@ -17,10 +17,11 @@
       font-weight: bold;
     }
     &__us {
-      color: vars.$seventhColor;
+      color: vars.$secondColor;
       width: 85%;
       margin-top: 0.5rem;
       &--title {
+        font-size: 1.1rem;
         font-style: italic;
         text-align: center;
         margin-bottom: 2.5rem;
@@ -93,7 +94,7 @@
     &__desc {
       color: vars.$fourthColor;
       width: 85%;
-      font-size: 0.9rem;
+      font-size: 0.8rem;
       text-align: center;
       margin-top: 1rem;
       margin-bottom: 1rem;

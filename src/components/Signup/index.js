@@ -150,15 +150,15 @@ const Signup = ({
           </label>
         </div>
         <div className="signup-submit__group signup-submit__group--textarea">
-          <label htmlFor="description">
-            <span className="signup-submit__group__label">Description</span>
-            <textarea className="signup-submit__group__input signup-submit__group__input--textarea" name="description" id="description" type="text" value={DOMPurify.sanitize(description, { ALLOWED_TAGS: ['em', 'strong'] })} onChange={(e) => onChangeInput('description', e.target.value)} placeholder="Une petite présentation de vous, afin de permettre à nos membres de mieux vous connaître ... " />
-          </label>
+          {/* <label htmlFor="description"> */}
+          {/* <span className="signup-submit__group__label">Description</span> */}
+          <textarea className="signup-submit__group__input signup-submit__group__input--textarea" style={{ resize: 'none' }} name="description" id="description" type="text" value={DOMPurify.sanitize(description, { ALLOWED_TAGS: ['em', 'strong'] })} onChange={(e) => onChangeInput('description', e.target.value)} placeholder="Une petite présentation de vous, afin de permettre à nos membres de mieux vous connaître ... " />
+          {/* </label> */}
         </div>
         <div className="signup-submit__choose-file">
-          <span className="signup-submit__group__label">Image de profil</span>
+          {/* <span className="signup-submit__group__label">Image de profil</span> */}
           <label htmlFor="avatar" className="signup-submit__group--avatar__container">
-            <span className="signup-submit__group--avatar__container__label">Choisir un fichier</span>
+            <span className="signup-submit__group--avatar__container__label">Choisir une image de profil</span>
             <input className="signup-submit__group__input--avatar" name="avatar" id="avatar" type="file" placeholder="Choisir une photo" onChange={(e) => setAvatar(e.target.files[0])} />
             {errorAvatar && <p className="signup-submit__error">{errorAvatar}</p>}
           </label>
@@ -268,7 +268,7 @@ const Signup = ({
           ))}
         </div>
         <div className="signup-submit__group--localisation">
-          <span className="signup-submit__group__label">Ville</span>
+          {/* <span className="signup-submit__group__label">Ville</span> */}
           <Localisation
             city={city}
             zipcode={code}
