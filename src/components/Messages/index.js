@@ -4,7 +4,7 @@ import Message from './Message';
 import './style.scss';
 
 const Messages = ({
-  messages, receiverName, reicever, sender,
+  messages, receiverName, reicever, sender, isTyping,
 }) => {
   // create messageRef
   const messageRef = useRef();
@@ -33,6 +33,19 @@ const Messages = ({
           sender={sender}
         />
       ))}
+      <span className={`isTyping ${isTyping[1] && (isTyping[0] === reicever)
+        ? 'isTyping--visible' : 'isTyping--hiden'}`}
+      >{receiverName} écrit
+        <div className={`isTyping__anim ${isTyping[1] && (isTyping[0] === reicever)
+          ? 'isTyping__anim--first' : 'isTyping__anim--hiden'}`}
+        />
+        <div className={`isTyping__anim ${isTyping[1] && (isTyping[0] === reicever)
+          ? 'isTyping__anim--second' : 'isTyping__anim--hiden'}`}
+        />
+        <div className={`isTyping__anim ${isTyping[1] && (isTyping[0] === reicever)
+          ? 'isTyping__anim--third' : 'isTyping__anim--hiden'}`}
+        />
+      </span>
     </div>
   );
 };
@@ -47,10 +60,12 @@ Messages.propTypes = {
   receiverName: PropTypes.string.isRequired,
   reicever: PropTypes.number,
   sender: PropTypes.number.isRequired,
+  isTyping: PropTypes.array,
 };
 
 Messages.defaultProps = {
   reicever: null,
+  isTyping: [false, 0],
 };
 
 export default Messages;

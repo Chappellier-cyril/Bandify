@@ -13,6 +13,12 @@ const mapDispatchToProps = (dispatch) => ({
     evt.preventDefault();
     dispatch({ type: 'ON_MESSAGE_SUBMIT' });
   },
+  sendTyping: () => {
+    dispatch({ type: 'SEND_I_WRITE' });
+  },
+  sendNoTyping: () => {
+    dispatch({ type: 'SEND_NO_WRITE' });
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChatForm);
