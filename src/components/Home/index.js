@@ -49,7 +49,7 @@ const Home = ({
         settings: {
           vertical: true,
           verticalSwiping: true,
-          slidesToShow: 1,
+          slidesToShow: 3,
           slidesToScroll: 1,
           autoplay: false,
         },

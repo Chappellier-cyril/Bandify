@@ -26,7 +26,7 @@ const Navbar = ({
           <NavLink to={`/member/${connectedUserId}`} className="menu__nav--link" onClick={hideMenu} activeClassName="menu__nav--link--is-active">
             Mon profil
           </NavLink>
-          <NavLink to="/logout" onClick={onLogout} className="menu__nav--link menu__nav--link--signup" activeClassName="menu__nav--link--is-active">
+          <NavLink from="/logout" to="/" onClick={onLogout} className="menu__nav--link menu__nav--link--signup">
             Deconnexion
           </NavLink>
         </>
