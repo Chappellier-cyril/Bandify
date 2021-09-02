@@ -12,12 +12,12 @@ const Header = ({
   notifications, hideAllWindows,
 }) => (
   <header className="header">
-    <div className="header__bandify">
-      <Link to="/" onClick={hideAllWindows}>
+    <Link to="/" onClick={hideAllWindows}>
+      <div className="header__bandify">
         <img src={logoBandify} alt="bandify" className="header__bandify--logo" />
-      </Link>
-      <h1 className="header__bandify--title">Bandify</h1>
-    </div>
+        <h1 className="header__bandify--title">Bandify</h1>
+      </div>
+    </Link>
 
     <div className="header__menu-buttons">
       {isLogged && (
