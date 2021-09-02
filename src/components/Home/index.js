@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
 import PropTypes from 'prop-types';
-
+import imageDescription from 'src/assets/images/bandify-desc.jpg';
 import Searchbar from 'src/containers/Searchbar';
 import { firstLetterToUpper, restToLower } from 'src/selectors/city';
 import './style.scss';
@@ -178,14 +178,23 @@ const Home = ({
           {/* SINON, on affiche la page d'accueil avec uniquement un aperçu du site :
           la description de Bandify, un boutton redirigeant vers l'inscription
            et des cartes de membres statiques */}
-          <p className="home__desc">
-            Bienvenue sur Bandify ! <br /> Le réseau social permettant de rencontrer des musiciens
-            autour de chez toi.
-            Il te suffit de t'inscrire, de renseigner ton/tes instrument(s) de prédilection,
-            les musiciens que tu recherches (bassiste, batteur...) et Bandify
-            se charge de te proposer des profils adaptés à des besoins !
-          </p>
-
+          <div className="home__desc__container">
+            <img src={imageDescription} alt="une batterie et un micro sur pied" className="home__desc__img" />
+            <div className="home__desc__text-container">
+              <h2 className="home__desc__title">Bienvenue sur Bandify !</h2>
+              <p className="home__desc__text">
+                Le réseau social permettant de rencontrer des musiciens
+                autour de chez toi.
+              </p>
+              <p className="home__desc__text">
+                Il te suffit de t'inscrire, de renseigner /tes instruments de prédilection,
+                les musiciens que tu recherches: bassiste, batteur...
+              </p>
+              <p className="home__desc__text">
+                Bandify se charge de te proposer des profils adaptés à des besoins !
+              </p>
+            </div>
+          </div>
           <p className="home__signup--btn">
             <Link to="/signup">Rejoindre la communauté</Link>
           </p>
@@ -215,7 +224,7 @@ Home.propTypes = {
     PropTypes.object,
   ),
   isLogged: PropTypes.bool.isRequired,
-  loginId: PropTypes.number.isRequired,
+  loginId: PropTypes.number,
   getMembers: PropTypes.func.isRequired,
   searchedUsers: PropTypes.array,
   // searchMessage: PropTypes.string,
@@ -225,6 +234,7 @@ Home.defaultProps = {
     id: null,
     firstname: '',
   }],
+  loginId: 0,
   searchedUsers: [],
   // searchMessage: '',
 };

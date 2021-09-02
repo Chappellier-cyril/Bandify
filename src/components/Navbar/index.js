@@ -35,7 +35,7 @@ const Navbar = ({
           <NavLink to="/login" className="menu__nav--link" onClick={hideMenu} activeClassName="menu__nav--link--is-active">
             Connexion
           </NavLink>
-          <NavLink to="/signup" className="menu__nav--link menu__nav--link--signup" onClick={hideMenu} activeClassName="menu__nav--link--is-active">
+          <NavLink exact to="/signup" className="menu__nav--link menu__nav--link--signup" onClick={hideMenu} activeClassName="menu__nav--link--is-active">
             Inscription
           </NavLink>
         </>
