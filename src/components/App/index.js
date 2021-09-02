@@ -100,6 +100,7 @@ export default function App({
             <About />
           </Route>
           <Route exact path="/search" component={Home} />
+          <Route to="/signup"> <Redirect exact to="/" /> </Route>
           {isLogged
             ? <Route exact path="/member/:profileId" component={Profiles} />
             : <Route component={PageNotFound} /> }
