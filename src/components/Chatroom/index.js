@@ -17,6 +17,11 @@ const Chatroom = ({
   friends,
 }) => (
   <div className={isChatroomOpen ? 'chatroom chatroom--open' : 'chatroom'}>
+    <div className="chatroom__close-menu">
+      <button type="button" onClick={toggleIsChatroomOpen} className="close-menu-btn">
+        <i className="fas fa-times" />
+      </button>
+    </div>
     <div className="chatroom__nav">
       <button
         type="button"
@@ -34,9 +39,6 @@ const Chatroom = ({
         Amis
       </button>
     </div>
-    <button type="button" onClick={toggleIsChatroomOpen} className="close-menu-btn">
-      <i className="fas fa-times" />
-    </button>
 
     {isMessagesOpen && (
     <div className="chatroom__discussion">

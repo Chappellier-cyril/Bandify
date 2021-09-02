@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
+import DOMPurify from 'dompurify';
 import './style.scss';
 import { getAge } from 'src/selectors/user';
 import Localisation from 'src/components/Localisation';
@@ -97,12 +98,12 @@ const Signup = ({
       <form type="submit" onSubmit={(e) => handleSubmitSignup(e, avatar)} autoComplete="off" className="signup-submit__form">
         <div className="signup-submit__group">
           <label htmlFor="firstName">
-            <input className="signup-submit__group__input" name="firstName" id="firstName" type="text" value={firstName} onChange={(e) => onChangeInput('firstName', e.target.value)} placeholder="Prénom*" required />
+            <input className="signup-submit__group__input" name="firstName" id="firstName" type="text" value={DOMPurify.sanitize(firstName, { ALLOWED_TAGS: ['em', 'strong'] })} onChange={(e) => onChangeInput('firstName', e.target.value)} placeholder="Prénom*" required />
           </label>
         </div>
         <div className="signup-submit__group">
           <label htmlFor="lastName">
-            <input className="signup-submit__group__input" name="lastName" id="lastName" type="text" value={lastName} onChange={(e) => onChangeInput('lastName', e.target.value)} placeholder="Nom*" required />
+            <input className="signup-submit__group__input" name="lastName" id="lastName" type="text" value={DOMPurify.sanitize(lastName, { ALLOWED_TAGS: ['em', 'strong'] })} onChange={(e) => onChangeInput('lastName', e.target.value)} placeholder="Nom*" required />
           </label>
         </div>
         <div className="signup-submit__group">
@@ -114,7 +115,7 @@ const Signup = ({
         </div>
         <div className="signup-submit__group">
           <label htmlFor="email">
-            <input className={`signup-submit__group__input ${errorEmail && 'signup-submit__error-border'}`} name="email" id="email" type="email" value={email} onChange={(e) => onChangeInput('email', e.target.value)} placeholder="Email*" required />
+            <input className={`signup-submit__group__input ${errorEmail && 'signup-submit__error-border'}`} name="email" id="email" type="email" value={DOMPurify.sanitize(email, { ALLOWED_TAGS: ['em', 'strong'] })} onChange={(e) => onChangeInput('email', e.target.value)} placeholder="Email*" required />
             {errorEmail && <p className="signup-submit__error">L'adresse email entrée n'est pas valide</p>}
           </label>
         </div>
@@ -125,7 +126,7 @@ const Signup = ({
               name="password"
               id="password"
               type="password"
-              value={password}
+              value={DOMPurify.sanitize(password, { ALLOWED_TAGS: ['em', 'strong'] })}
               onChange={(e) => onChangeInput('password', e.target.value)}
               placeholder="Mot de passe*"
               required
@@ -140,7 +141,7 @@ const Signup = ({
               name="password-confirm"
               id="password-confirm"
               type="password"
-              value={passwordCheck}
+              value={DOMPurify.sanitize(passwordCheck, { ALLOWED_TAGS: ['em', 'strong'] })}
               onChange={(e) => setPasswordCheck(e.target.value)}
               placeholder="Confirmez le mot de passe*"
               required
@@ -148,16 +149,16 @@ const Signup = ({
             {errorPasswordCheck && <p className="signup-submit__error">{errorPasswordCheck}</p>}
           </label>
         </div>
-        <div className="signup-submit__group">
-          <label htmlFor="description">
-            <span className="signup-submit__group__label">Description</span>
-            <textarea className="signup-submit__group__input" name="description" id="description" type="text" value={description} onChange={(e) => onChangeInput('description', e.target.value)} placeholder="Une petite présentation de vous, afin de permettre à nos membres de mieux vous connaître ... " />
-          </label>
+        <div className="signup-submit__group signup-submit__group--textarea">
+          {/* <label htmlFor="description"> */}
+          {/* <span className="signup-submit__group__label">Description</span> */}
+          <textarea className="signup-submit__group__input signup-submit__group__input--textarea" style={{ resize: 'none' }} name="description" id="description" type="text" value={DOMPurify.sanitize(description, { ALLOWED_TAGS: ['em', 'strong'] })} onChange={(e) => onChangeInput('description', e.target.value)} placeholder="Une petite présentation de vous, afin de permettre à nos membres de mieux vous connaître ... " />
+          {/* </label> */}
         </div>
-        <div className="signup-submit__group">
-          <span className="signup-submit__group__label">Image de profil</span>
+        <div className="signup-submit__choose-file">
+          {/* <span className="signup-submit__group__label">Image de profil</span> */}
           <label htmlFor="avatar" className="signup-submit__group--avatar__container">
-            <span className="signup-submit__group--avatar__container__label">Choisir un fichier</span>
+            <span className="signup-submit__group--avatar__container__label">Choisir une image de profil</span>
             <input className="signup-submit__group__input--avatar" name="avatar" id="avatar" type="file" placeholder="Choisir une photo" onChange={(e) => setAvatar(e.target.files[0])} />
             {errorAvatar && <p className="signup-submit__error">{errorAvatar}</p>}
           </label>
@@ -165,7 +166,7 @@ const Signup = ({
             {avatar && <img className="signup-submit__show-avatar" src={URL.createObjectURL(avatar)} alt={`Votre fichier séléctionné est ${avatar.name}`} />}
           </div>
         </div>
-        <div className="signup-submit__group">
+        <div className="signup-submit__group signup-submit__group--inst-container">
           <span className="signup-submit__group__label">Choississez au moins un instrument et un niveau de pratique (optionel)</span>
           {// on boucle sur le tableau d'instruments
           instruments && instruments.map((instrument, index) => (
@@ -267,7 +268,7 @@ const Signup = ({
           ))}
         </div>
         <div className="signup-submit__group--localisation">
-          <span className="signup-submit__group__label">Ville</span>
+          {/* <span className="signup-submit__group__label">Ville</span> */}
           <Localisation
             city={city}
             zipcode={code}
@@ -283,7 +284,7 @@ const Signup = ({
             || !email || !password || !passwordCheck || !instruments[0].instrument || !city
             || errorPasswordCheck || errorPassword || errorEmail || errorAge || errorAvatar
             || error}
-        >SUBMIT
+        >ENVOYER
         </button>
       </form>
     </div>

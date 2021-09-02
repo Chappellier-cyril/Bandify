@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 import React from 'react';
 import PropTypes, { shape } from 'prop-types';
-
+import DOMPurify from 'dompurify';
 import Localisation from 'src/components/Localisation';
 import './style.scss';
 
@@ -25,7 +25,7 @@ const Searchbar = ({
         id="searchBar"
         className="search__form__search-input"
         placeholder="Rechercher un membre"
-        value={searchValue}
+        value={DOMPurify.sanitize(searchValue.trim(), { ALLOWED_TAGS: ['em', 'strong'] })}
         onChange={(evt) => onSearchChange(evt.target.value)}
       />
 

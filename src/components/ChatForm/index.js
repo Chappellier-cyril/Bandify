@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import DOMPurify from 'dompurify';
 import './style.scss';
 
 const ChatForm = ({
@@ -13,13 +14,13 @@ const ChatForm = ({
       className="chatroom__form-input"
       type="text"
       placeholder="Saisir votre message..."
-      value={messageInputValue}
       onChange={(evt) => {
         onMessageInputChange(evt.target.value);
         sendTyping();
         setTimeout(sendNoTyping, 2000);
       }}
       onBlur={sendNoTyping}
+      value={DOMPurify.sanitize(messageInputValue, { ALLOWED_TAGS: ['em', 'strong'] })}
     />
     <button
       className="chatroom__form-button"

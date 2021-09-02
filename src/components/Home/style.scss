@@ -4,7 +4,7 @@
 @media screen and (max-width: 700px) {
   .main {
     height: auto;
-    width: 100vw;
+    width: 100% !important;
     margin-top: 5rem !important;
   }
 
@@ -83,17 +83,21 @@
       }
     }
     &__cards {
+      width: 90%;
       display: flex;
       // flex-direction: column;
-      width: 90%;
+      flex-wrap: wrap;
+      justify-content: center;
       margin: 0 auto;
+      
       &--users {
-        width: 100%;
+        width: 90%;
         height: auto;
-        margin-bottom: 1rem;
+        margin: 1rem 0;
         padding: 1rem;
-        background-color: vars.$secondColor;
+        background-color: vars.$seventhColor;
         border-radius: vars.$borderRadius;
+        border: 1px solid vars.$secondColor;
       }
     }
     &__user {
@@ -162,7 +166,7 @@
   .main {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 100% !important;
     align-items: center;
     justify-content: space-around;
     padding: 2rem 0;
@@ -267,7 +271,7 @@
       height: 400px;
       margin: 3rem 0;
       padding: .5rem 1rem;
-      background-color: vars.$secondColor;
+      background-color: vars.$seventhColor;
       border-radius: vars.$borderRadius;
     }
   }

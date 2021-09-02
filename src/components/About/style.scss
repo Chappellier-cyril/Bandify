@@ -1,6 +1,6 @@
 @use 'src/styles/vars';
 
-// MOBILE
+// MOBILE LAYOUT
 @media screen and (max-width: 700px) {
   .about {
     display: flex;
@@ -11,7 +11,7 @@
     &--title {
       color: vars.$fourthColor;
       font-size: 1.3rem;
-      margin-top: 8rem;
+      margin-top: 7rem;
       margin-bottom: 1rem;
       font-style: italic;
       font-weight: bold;
@@ -19,11 +19,12 @@
     &__us {
       color: vars.$secondColor;
       width: 85%;
-      margin-top: 1rem;
+      margin-top: 0.5rem;
       &--title {
+        font-size: 1.1rem;
         font-style: italic;
         text-align: center;
-        margin-bottom: 2rem;
+        margin-bottom: 2.5rem;
       }
       &__img {
        display: flex;
@@ -48,8 +49,7 @@
       position: relative;
       display: flex;
       word-break: break-word;
-      font-size: 0.9rem;
-      display: flex;
+      font-size: 0.7rem;
       justify-content: center;
       align-items: center;
       margin-bottom: 2rem;
@@ -63,34 +63,38 @@
       }
     }
     &__text{
-      margin: 0 auto;
       padding: 0.3rem 2rem;
       width: 100%;
-      font-size: 1rem;
+      font-size: 0.8rem;
       color: vars.$fourthColor;
       text-align: center;
     }
     &__img{
       width: 100%;
-      margin: auto;
+      // margin-bottom: 2rem;
     }
     &__text-container{
-      width: 80%;
-      margin: auto;
+      width: 85%;
       transform: translateY(-50%);
       position: absolute;
       top: 50%;
-      padding: 1rem;
-      background-color: #14171abf;
-      padding-bottom: 1rem;
+      background-color: rgba(124, 121, 121, 0.1);
+      padding-bottom: 1.5rem;
+      padding-top: 0.5rem;
     }
-    &--link{
-      font-size: 1rem;
+    &__button{
+      background-color: vars.$thirdColor;
+      border-radius: vars.$borderRadius;
+      color: vars.$fourthColor;
+      padding: 0.5rem;
+    }
+    &--link {
+      font-size: 0.9rem;
     }
     &__desc {
       color: vars.$fourthColor;
       width: 85%;
-      font-size: 0.9rem;
+      font-size: 0.8rem;
       text-align: center;
       margin-top: 1rem;
       margin-bottom: 1rem;
@@ -102,7 +106,7 @@
 
 
 
-// DESKTOP
+// DESKTOP LAYOUT
 @media screen and (min-width: 700px) {
   .about {
     display: flex;
@@ -181,7 +185,11 @@
       padding-bottom: 1rem;
     }
     &--link{
-      font-size: 1rem;
+      font-size: 1.2rem;
+      background-color: vars.$thirdColor;
+      border-radius: vars.$borderRadius;
+      color: vars.$fourthColor;
+      padding: 0.8rem;
     }
     &__desc {
       color: vars.$fourthColor;
@@ -208,6 +216,7 @@
   }
 }
 
+// TABLET LAYOUT
 @media screen and (min-width: 1400px) {
   .about{
     &__container{
@@ -252,19 +261,22 @@
       text-align: center;
     }
     &--link{
-      font-size: 1rem;
+      background-color: vars.$thirdColor;
+      border-radius: vars.$borderRadius;
+      padding: 0.8rem;
+      font-size: 1.2rem;
       text-align: center;
       color: vars.$fourthColor;
-      background: linear-gradient(to right, rgba(29,162,242,1),rgba(255,254,254,1),rgba(29,162,242,1));
+      background: linear-gradient(to right, rgba(29,162,242,1),rgb(121, 116, 116),rgba(29,162,242,1));
       background-size: 200% 200%;
       animation: moove 4s ease-in-out infinite;
       background-clip: text;
       -webkit-background-clip:text;
       transition: color 0.4s ease-in-out;
-      &:hover{
-        color: rgba(0, 0, 0, 0);
+      // &:hover{
+      //   color: rgba(255, 254, 254, 0);
   
-      }
+      // }
     }
   }
 }

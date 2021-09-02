@@ -1,7 +1,7 @@
 import React from 'react';
+import DOMPurify from 'dompurify';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
-
 import './style.scss';
 
 const Login = ({
@@ -33,7 +33,7 @@ const Login = ({
             className="login__form__container--input"
             name="email"
             type="text"
-            value={email.trim()}
+            value={DOMPurify.sanitize(email.trim(), { ALLOWED_TAGS: ['em', 'strong'] })}
             onChange={(e) => onChangeInput('email', e.target.value)}
             placeholder="E-mail"
             required
@@ -45,7 +45,7 @@ const Login = ({
             name="password"
             // Si l'oeil est cliqué on affiche le mot de passe sinon on laisse en type password
             type={passwordShown ? 'text' : 'password'}
-            value={password.trim()}
+            value={DOMPurify.sanitize(password.trim(), { ALLOWED_TAGS: ['em', 'strong'] })}
             onChange={(e) => onChangeInput('password', e.target.value)}
             placeholder="Mot de passe"
             required

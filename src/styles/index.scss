@@ -6,12 +6,32 @@ body, html, #root, .app {
   background-color: vars.$firstColor;
   // width: 100vw;
   height: 100%;
+  ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: vars.$thirdColor;
+    font-family: 'Poppins', sans-serif;
+    opacity: 1; /* Firefox */
+  }
+  
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: vars.$thirdColor;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  ::-ms-input-placeholder { /* Microsoft Edge */
+    color: vars.$thirdColor;
+    font-family: 'Poppins', sans-serif;
+  }
 }
 .main-container{
   position: relative;
   margin: 0;
   width: 100%;
-  height: 100%;
+  min-height: 100%;
+  margin-bottom: -75px; 
+}
+.main-container:after{
+  content: "";
+  display: block;
 }
 // fontawesome icons (menu burger, cross to close menu)
 .fas {

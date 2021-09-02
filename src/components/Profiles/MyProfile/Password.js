@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import DOMPurify from 'dompurify';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 
@@ -61,9 +62,9 @@ const Password = ({
                     name="password"
                     id="password"
                     type={passwordShown ? 'text' : 'password'}
-                    value={password}
+                    value={DOMPurify.sanitize(password.trim(), { ALLOWED_TAGS: ['em', 'strong'] })}
                     onChange={(e) => onChangeProfileInput('user_password', e.target.value)}
-                    placeholder="Verification votre mot de passe actuel*"
+                    placeholder="Mot de passe actuel*"
                     required
                   />
                   <button
@@ -81,6 +82,7 @@ const Password = ({
               {errorPassword && <p className="signup-submit__error">{errorPassword}</p>}
               <button
                 type="button"
+                className="myprofile__user--close-edit-btn"
                 onClick={() => editFormToggle('editPassword')}
               >
                 <i className="fas fa-times-circle" />
@@ -96,7 +98,7 @@ const Password = ({
                   name="password"
                   id="password"
                   type={passwordShown ? 'text' : 'password'}
-                  value={password}
+                  value={DOMPurify.sanitize(password.trim(), { ALLOWED_TAGS: ['em', 'strong'] })}
                   onChange={(e) => onChangeProfileInput('user_password', e.target.value)}
                   placeholder="Nouveau mot de passe*"
                   required
@@ -120,7 +122,7 @@ const Password = ({
                   name="password-confirm"
                   id="password-confirm"
                   type={passwordShown ? 'text' : 'password'}
-                  value={passwordCheck}
+                  value={DOMPurify.sanitize(passwordCheck.trim(), { ALLOWED_TAGS: ['em', 'strong'] })}
                   onChange={(e) => setPasswordCheck(e.target.value)}
                   placeholder="Confirmez le mot de passe*"
                   required

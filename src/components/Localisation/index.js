@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import DOMPurify from 'dompurify';
 import PropTypes from 'prop-types';
 import './Localisation.scss';
 
@@ -42,7 +43,7 @@ const Localisation = ({
           onChange={onChangeCity}
           onKeyUp={getCitiesFromAPI}
           placeholder="ville"
-          value={city}
+          value={DOMPurify.sanitize(city.trim(), { ALLOWED_TAGS: ['em', 'strong'] })}
           className="search__form-filters__select autocompletion-city__input"
         />
         <ul className="autocompletion-city__ul">

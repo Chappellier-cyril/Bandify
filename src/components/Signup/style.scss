@@ -17,6 +17,11 @@
             color: vars.$thirdColor;
         }
     }
+    &__choose-file {
+      width: 80%;
+      margin: 1rem auto;
+      border-radius: vars.$borderRadius;
+    }
     &__error{
         color: vars.$fifthColor;
         font-size : 0.6rem;
@@ -47,17 +52,26 @@
       position: relative;
       margin: 1rem auto;
 
+      &--inst-container {
+        border: none;
+      }
+
+      &--textarea {
+        height: 200px;
+      }
+
         &__label{
             display: flex;
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             padding: 0.2rem 0.6rem 0;
+            color: vars.$fourthColor;
         }
         &--avatar{
             &__container{
                 display: flex;
                 width: 100%;
                 // border: 1px solid black;
-                border-radius: 5px 5px 0 0;
+                border-radius: 5px 5px 5px 5px;
                 padding: 1rem;
                 background-color: vars.$thirdColor;
                 color: vars.$fourthColor;
@@ -137,6 +151,7 @@
           border-radius: vars.$borderRadius;
           padding: 1rem;
           color: vars.$thirdColor;
+          background-color: vars.$seventhColor;
           font-size: 1.1rem;
           border: none;
             &::placeholder{
@@ -149,12 +164,15 @@
                 left: 0;
                 opacity: 0;
             }
+            &--textarea {
+              height: 100%;
+            }
         }
         &__select{
             width: 100%;
             padding: 1rem;
             margin:  0.2rem;
-            background-color: vars.$fourthColor;
+            background-color: vars.$seventhColor;
             border-radius: vars.$borderRadius;
             color: vars.$thirdColor;
             -webkit-appearance: none;
@@ -171,7 +189,8 @@
         display: flex;
         flex-direction: column;
         width: 630px;
-        background-color: vars.$fourthColor;
+        background-color: vars.$seventhColor;
+        border: 1px solid vars.$secondColor;
         padding: 1rem;
         border-radius: vars.$borderRadius;
         &__submit{
@@ -184,7 +203,7 @@
             width: 80%;
             margin: 0 auto;
             &:disabled{
-                background-color: vars.$secondColor;
+                background-color: vars.$seventhColor;
                 cursor: not-allowed;
             }
         }

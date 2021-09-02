@@ -6,7 +6,7 @@
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
-    color: vars.$secondColor;
+    color: vars.$seventhColor;
     // height: 70vh;
     &--logo {
       width: 25%;
@@ -14,7 +14,7 @@
     }
   }
   &__btn {
-    background-color: vars.$secondColor;
+    background-color: vars.$seventhColor;
     color: vars.$fourthColor;
     text-align: center;
     width: 30%;
@@ -32,7 +32,7 @@
       flex-direction: column;
       justify-content: flex-end;
       align-items: center;
-      color: vars.$secondColor;
+      color: vars.$seventhColor;
       height: 70vh;
       &--logo {
         width: 100%;

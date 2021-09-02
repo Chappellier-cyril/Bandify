@@ -41,7 +41,7 @@ const Instruments = ({
             </ul>
           </div>
           <form type="submit" onSubmit={handleSubmitInstruments}>
-            <div className="signup-submit__group">
+            <div className="signup-submit__group signup-submit__group--edit">
               <span className="signup-submit__group__label">Choississez au moins un instrument et un niveau de pratique (optionel)</span>
               {instruments && instruments.map((play, index) => (
               // eslint-disable-next-line react/no-array-index-key
@@ -80,14 +80,16 @@ const Instruments = ({
                 </div>
               ))}
             </div>
-            <button type="submit">Envoyer</button>
-            <button
-              type="button"
-              onClick={() => editFormToggle('editInstruments')}
-              className="myprofile__user--close-edit-instruments"
-            >
-              <i className="fas fa-times-circle" />
-            </button>
+            <div className="myprofile__user--submit-container">
+              <button type="submit" className="myprofile__user--edit-submit-btn">Envoyer</button>
+              <button
+                type="button"
+                onClick={() => editFormToggle('editInstruments')}
+                className="myprofile__user--close-edit-btn"
+              >
+                <i className="fas fa-times-circle" />
+              </button>
+            </div>
           </form>
         </>
       ) : (
