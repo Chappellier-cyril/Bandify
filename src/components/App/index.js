@@ -1,7 +1,7 @@
 // == Import
 import React, { useEffect } from 'react';
 import {
-  Redirect, Route, Switch, useLocation,
+  Route, Switch, useLocation,
 } from 'react-router-dom';
 import PropTypes from 'prop-types';
 // connected components
@@ -102,7 +102,7 @@ export default function App({
           <Route exact path="/search" component={Home} />
           {isLogged
             ? <Route exact path="/member/:profileId" component={Profiles} />
-            : <Route component={PageNotFound} /> }
+            : <Route component={PageNotFound} />}
           <Route component={PageNotFound} />
         </Switch>
       </div>

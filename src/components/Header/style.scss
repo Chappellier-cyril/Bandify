@@ -67,10 +67,10 @@
           margin: 0 1rem;
         }
         &--title {
-          color: vars.$thirdColor;
           font-size: 1.5rem;
           margin: auto 0;
           font-weight: bold;
+          color: vars.$thirdColor;
         }
       }
     }
@@ -78,7 +78,6 @@
 
     
   }
-
 
 @media screen and (min-width: 700px) {
   

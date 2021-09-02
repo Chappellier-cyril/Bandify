@@ -1,10 +1,13 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import Slider from 'react-slick';
 import PropTypes from 'prop-types';
-
+import imageDescription from 'src/assets/images/bandify-desc.jpg';
 import Searchbar from 'src/containers/Searchbar';
 import { firstLetterToUpper, restToLower } from 'src/selectors/city';
 import './style.scss';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 const Home = ({
   users, isLogged, getMembers, searchedUsers, loginId, /* searchMessage, */
@@ -19,6 +22,40 @@ const Home = ({
 
   // TODO : filtrer pour ne plus avoir soi même dans les résultats
   const usersWithoutMe = users.filter((user) => user.id !== loginId);
+
+  const sliderSettings = {
+    dots: true,
+    infinite: true,
+    speed: 400,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    initialSlide: 0,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    className: 'center',
+    centerMode: true,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 700,
+        settings: {
+          vertical: true,
+          verticalSwiping: true,
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          autoplay: false,
+        },
+      },
+    ],
+  };
 
   return (
     <div className="main">
@@ -82,55 +119,57 @@ const Home = ({
                 </Link>
               ))
             ) : (
-              /* Option 2: on est loggué mais on a pas effectué de recherche,
+            /* Option 2: on est loggué mais on a pas effectué de recherche,
              on affiche tous les membres */
             // On affiche uniquement les 5 premiers membres
-              usersWithoutMe.slice(0, 5).map((user) => (
-                <Link to={`/member/${user.id}`} key={user.id} className="home__cards--users">
-                  <div className="home__user--container">
-                    {user.profil_image && <img className="home__user--picture" src={`${process.env.BANDIFY_API_URL}/avatar/${user.profil_image}`} alt="avatar du membre" />}
-                    <div className="home__user--short">
-                      <p className="home__user--name">{user.firstname} {user.lastname}</p>
-                      {user.city && (
-                      <p className="home__user--city">
-                        {firstLetterToUpper(restToLower(user.city.city_name))}
-                        ({user.city.department_code})
-                      </p>
-                      )}
+              <Slider {...sliderSettings}>
+                {usersWithoutMe.slice(0, 5).map((user) => (
+                  <Link to={`/member/${user.id}`} key={user.id} className="home__cards--users">
+                    <div className="home__user--container">
+                      {user.profil_image && <img className="home__user--picture" src={`${process.env.BANDIFY_API_URL}/avatar/${user.profil_image}`} alt="avatar du membre" />}
+                      <div className="home__user--short">
+                        <p className="home__user--name">{user.firstname} {user.lastname}</p>
+                        {user.city && (
+                        <p className="home__user--city">
+                          {firstLetterToUpper(restToLower(user.city.city_name))}
+                          ({user.city.department_code})
+                        </p>
+                        )}
+                      </div>
                     </div>
-                  </div>
-                  {user.plays && (
-                  <div className="home__instrument">
-                    <p className="home__instrument--description">Ses instruments:</p>
-                    <ul className="home__instrument--list">
-                      {user.plays.map((play) => (
-                        play.id && (
-                        <li className="home__instrument__tag" key={play.id}>
-                          <span className="home__instrument__tag--name">{play.instrument.instrument_name}</span>
-                          <span className="home__instrument__tag--level">{play.level && play.level.level_name}</span>
-                        </li>
-                        )
-                      ))}
-                    </ul>
-                  </div>
-                  )}
-                  {user.styles && (
-                  <div className="home__style">
-                    <p className="home__style--description">Ses goûts musicaux:</p>
-                    <ul className="home__style--list">
-                      {user.styles.map((musicStyle) => (
-                        musicStyle.id && (
-                        // Règle le souci musicStyle.id is undefined
-                        <li className="home__style__tag" key={musicStyle.id}>
-                          <span className="home__style__tag--name">{musicStyle.music_name}</span>
-                        </li>
-                        )
-                      ))}
-                    </ul>
-                  </div>
-                  )}
-                </Link>
-              ))
+                    {user.plays && (
+                    <div className="home__instrument">
+                      <p className="home__instrument--description">Ses instruments:</p>
+                      <ul className="home__instrument--list">
+                        {user.plays.map((play) => (
+                          play.id && (
+                          <li className="home__instrument__tag" key={play.id}>
+                            <span className="home__instrument__tag--name">{play.instrument.instrument_name}</span>
+                            <span className="home__instrument__tag--level">{play.level && play.level.level_name}</span>
+                          </li>
+                          )
+                        ))}
+                      </ul>
+                    </div>
+                    )}
+                    {user.styles && (
+                    <div className="home__style">
+                      <p className="home__style--description">Ses goûts musicaux:</p>
+                      <ul className="home__style--list">
+                        {user.styles.map((musicStyle) => (
+                          musicStyle.id && (
+                          // Règle le souci musicStyle.id is undefined
+                          <li className="home__style__tag" key={musicStyle.id}>
+                            <span className="home__style__tag--name">{musicStyle.music_name}</span>
+                          </li>
+                          )
+                        ))}
+                      </ul>
+                    </div>
+                    )}
+                  </Link>
+                ))}
+              </Slider>
             )}
           </div>
         </>
@@ -139,14 +178,23 @@ const Home = ({
           {/* SINON, on affiche la page d'accueil avec uniquement un aperçu du site :
           la description de Bandify, un boutton redirigeant vers l'inscription
            et des cartes de membres statiques */}
-          <p className="home__desc">
-            Bienvenue sur Bandify ! <br /> Le réseau social permettant de rencontrer des musiciens
-            autour de chez toi.
-            Il te suffit de t'inscrire, de renseigner ton/tes instrument(s) de prédilection,
-            les musiciens que tu recherches (bassiste, batteur...) et Bandify
-            se charge de te proposer des profils adaptés à des besoins !
-          </p>
-
+          <div className="home__desc__container">
+            <img src={imageDescription} alt="une batterie et un micro sur pied" className="home__desc__img" />
+            <div className="home__desc__text-container">
+              <h2 className="home__desc__title">Bienvenue sur Bandify !</h2>
+              <p className="home__desc__text">
+                Le réseau social permettant de rencontrer des musiciens
+                autour de chez toi.
+              </p>
+              <p className="home__desc__text">
+                Il te suffit de t'inscrire, de renseigner /tes instruments de prédilection,
+                les musiciens que tu recherches: bassiste, batteur...
+              </p>
+              <p className="home__desc__text">
+                Bandify se charge de te proposer des profils adaptés à des besoins !
+              </p>
+            </div>
+          </div>
           <p className="home__signup--btn">
             <Link to="/signup">Rejoindre la communauté</Link>
           </p>
@@ -176,7 +224,7 @@ Home.propTypes = {
     PropTypes.object,
   ),
   isLogged: PropTypes.bool.isRequired,
-  loginId: PropTypes.number.isRequired,
+  loginId: PropTypes.number,
   getMembers: PropTypes.func.isRequired,
   searchedUsers: PropTypes.array,
   // searchMessage: PropTypes.string,
@@ -186,6 +234,7 @@ Home.defaultProps = {
     id: null,
     firstname: '',
   }],
+  loginId: 0,
   searchedUsers: [],
   // searchMessage: '',
 };
