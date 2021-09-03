@@ -1,5 +1,6 @@
 const { Invitation, Member } = require('../models');
 const { Op } = require("sequelize");
+const { findByPk } = require('../models/sound');
 
 const invitationController = {
     // Get all invitations
@@ -34,7 +35,10 @@ const invitationController = {
             
             });
             if (created) {
-                res.json(newInvitation)
+                const invitation = await findByPk(newInvitation.id, {
+                    include: ['fromMember', 'toMember'], order: [['createdAt', 'ASC']] 
+                })
+                res.json(invitation);
             }else {
                 res.json({message : 'invitation déja envoyé'})
             }
@@ -82,8 +86,8 @@ const invitationController = {
             }
             
             await invitationUpdate.update(req.body);
-            
-            res.json(invitationUpdate);
+            const invit = await Invitation.findByPk(targetId, {include: ['fromMember', 'toMember'] });
+            res.json(invit);
             
         } catch (error) {
             console.trace(error);
