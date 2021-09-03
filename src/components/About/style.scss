@@ -78,9 +78,13 @@
       transform: translateY(-50%);
       position: absolute;
       top: 50%;
-      background-color: rgba(124, 121, 121, 0.1);
-      padding-bottom: 1.5rem;
-      padding-top: 0.5rem;
+      background-color: #14171abf;
+      padding: 1rem;
+      border-radius: 3px;
+      backdrop-filter: blur( 2.0px );
+      -webkit-backdrop-filter: blur( 2.0px );
+      -webkit-box-shadow: 7px 9px 32px -13px #1DA1F2; 
+      box-shadow: 7px 9px 32px -13px #1DA1F2;
     }
     &__button{
       background-color: vars.$thirdColor;
@@ -176,13 +180,18 @@
       margin: auto;
     }
     &__text-container{
-      width: 60%;
+      width: 600px;
       margin: auto;
       transform: translateY(-50%);
       position: absolute;
       top: 50%;
       background-color: #14171abf;
       padding-bottom: 1rem;
+      border-radius: 3px;
+      backdrop-filter: blur( 2.0px );
+      -webkit-backdrop-filter: blur( 2.0px );
+      -webkit-box-shadow: 7px 9px 32px -13px #1DA1F2; 
+      box-shadow: 7px 9px 32px -13px #1DA1F2;
     }
     &--link{
       font-size: 1.2rem;
@@ -221,7 +230,7 @@
   .about{
     &__container{
       position: relative;
-      width: 75%;
+      width: 85%;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -239,9 +248,13 @@
       margin: auto;
       transform: translateY(-50%);
       position: absolute;
-      top: 50%;
       background-color: #14171abf;
-      padding: 2rem;
+      padding-bottom: 1rem;
+      border-radius: 3px;
+      backdrop-filter: blur( 2.0px );
+      -webkit-backdrop-filter: blur( 2.0px );
+      -webkit-box-shadow: 7px 9px 32px -13px #1DA1F2; 
+      box-shadow: 7px 9px 32px -13px #1DA1F2;
     }
     &__text{
       margin: 0 auto;

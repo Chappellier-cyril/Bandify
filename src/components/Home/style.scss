@@ -45,7 +45,12 @@
         position: absolute;
         top: 50%;
         background-color: #14171abf;
+        border-radius: 3px;
+        backdrop-filter: blur( 2.0px );
+        -webkit-backdrop-filter: blur( 2.0px );
         padding-bottom: 1rem;
+        -webkit-box-shadow: 7px 9px 32px -13px #1DA1F2; 
+        box-shadow: 7px 9px 32px -13px #1DA1F2;
       }
       &__text{
         margin: 0 auto;
@@ -234,6 +239,11 @@
       top: 50%;
       background-color: #14171abf;
       padding-bottom: 1rem;
+      border-radius: 3px;
+      backdrop-filter: blur( 2.0px );
+      -webkit-backdrop-filter: blur( 2.0px );
+      -webkit-box-shadow: 7px 9px 32px -13px #1DA1F2; 
+      box-shadow: 7px 9px 32px -13px #1DA1F2; 
     }
     &__text{
       margin: 0 auto;
@@ -339,7 +349,7 @@
     &__desc {
       &__container{
         position: relative;
-        width: 75%;
+        width: 85%;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -347,7 +357,7 @@
       }
       &__img{
         width: 100%;
-        max-height: 300px;
+        max-height: 500px;
         display: block;
         object-fit: cover;
         margin: auto;
@@ -360,6 +370,11 @@
         top: 50%;
         background-color: #14171abf;
         padding-bottom: 1rem;
+        border-radius: 3px;
+        backdrop-filter: blur( 2.0px );
+        -webkit-backdrop-filter: blur( 2.0px );
+        -webkit-box-shadow: 7px 9px 32px -13px #1DA1F2; 
+        box-shadow: 7px 9px 32px -13px #1DA1F2;
       }
       &__text{
         margin: 0 auto;

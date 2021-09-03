@@ -58,6 +58,28 @@ const usersMiddleware = (store) => (next) => (action) => {
       });
   }
 
+  if (action.type === 'SUBMIT_SOUND') {
+    const form = new FormData();
+    form.append('file', action.sound);
+
+    const options = {
+      method: 'POST',
+      url: `${process.env.BANDIFY_API_URL}/members/${lastSegmentUrl}/sound`,
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        Accept: 'application/json',
+      },
+      data: form,
+    };
+    axios(options)
+      .then((response) => {
+        store.dispatch({ type: 'SOUND_ADDED_SUCCESS', sound: response.data });
+      })
+      .catch((e) => {
+        store.dispatch({ type: 'PHOTO_MODIFIED_ERROR', error: e.message });
+      });
+  }
+
   if (action.type === 'SUBMIT_MODIFIED_NAME') {
     const options = {
       method: 'PATCH',
