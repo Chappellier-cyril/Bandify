@@ -3,23 +3,23 @@
 // MOBILE 
 @media screen and (max-width: 700px) {
   .footer {
-    margin-top: 20%;
-    // width: 100%;
-    // padding: 1rem;
-    // height: 75px;
-    padding: 1rem 1.5rem;
+    height: 75px;
+    position: relative;
+    bottom: 0;
     border-top: 1px solid vars.$thirdColor;
     background-color: vars.$firstColor;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
     &__nav {
       display: flex;
       flex-direction: row;
-      justify-content: flex-end;
       &--button {
         background-color: vars.$thirdColor;
         color: vars.$fourthColor;
-        padding: 10px;
+        padding: .5rem;
         border-radius: vars.$borderRadius;
-        margin: 20px 15px 0px 15px;
+        margin-right: 20px;
       }
     }
   }
@@ -28,9 +28,9 @@
 // DESKTOP
 @media screen and (min-width: 700px) {
   .footer {
-    // width: 100%;
-    // height: 75px;
-    padding: 1rem 1.5rem;
+    height: 75px;
+    position: relative;
+    bottom: 0;
     border-top: 1px solid vars.$thirdColor;
     background-color: vars.$firstColor;
     display: flex;
@@ -46,7 +46,7 @@
         padding: 7px;
         border-radius: vars.$borderRadius;
         list-style: none;
-        margin-right: 1rem;
+        margin-right: 2rem;
     }
     }
 }

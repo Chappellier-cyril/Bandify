@@ -8,9 +8,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      height: 73vh;
-      width: 100vw;
-      margin-top: 1rem;
+      margin: auto;
 
       &-title {
         color: vars.$fourthColor;
@@ -71,8 +69,8 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      height: 73vh;
-      width: 550px;
+      height: calc(100vh -150px);
+      width: 25%;
       margin: 0 auto;
 
       &-title {

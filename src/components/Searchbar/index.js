@@ -12,6 +12,7 @@ const Searchbar = ({
   departement, region, departments, regions,
 }) => (
   <div className="search">
+    {console.log(musicstyles)}
     <div className="search__header">
       <h1 className="search__header--title">Recherche</h1>
       {/* vide la recherche et réinitialise => nouvelle requete getMembers */}

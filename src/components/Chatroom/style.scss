@@ -30,6 +30,16 @@
       &-link {
         width: 50%;
         padding: 1em 1.3em;
+        background-color: vars.$fourthColor;
+        border-top-left-radius: vars.$borderRadius;
+        border-top-right-radius: vars.$borderRadius;
+        border: 1px solid vars.$secondColor;
+        border-bottom: none;
+        color: vars.$firstColor;
+        &--active {
+          background-color: vars.$firstColor;
+          color: vars.$fourthColor;
+        }
       }
     }
 
@@ -42,7 +52,7 @@
     }
     &__form {
       position: absolute;
-      bottom: 90px;
+      bottom: 70px;
       &-input {
         background-color: vars.$seventhColor;
         color: vars.$fourthColor;
@@ -70,14 +80,16 @@
     position: fixed;
     top: 10%;
     right: -100%;
-    width: 30%;
+    width: 20%;
     height: 90%;
     z-index: 99;
     transition: right 150ms ease-in-out;
-    background-color: vars.$firstColor;
+    background-color: vars.$seventhColor;
 
     &--open {
       right: 0;
+      border-top: 1px solid vars.$secondColor;
+      border-left: 1px solid vars.$secondColor;
     }
 
     &__nav {
@@ -88,12 +100,22 @@
       &-link {
         width: 50%;
         padding: 1em 1.3em;
-       font-size: 1.1em;
+        font-size: 1.1em;
+        background-color: vars.$fourthColor;
+        border-top-left-radius: vars.$borderRadius;
+        border-top-right-radius: vars.$borderRadius;
+        border: 1px solid vars.$secondColor;
+        border-bottom: none;
+        color: vars.$firstColor;
+        &--active {
+          background-color: vars.$firstColor;
+          color: vars.$fourthColor;
+        }
       }
     }
 
     &__discussion {
-      height: 80%;
+      height: 100%;
       width: 100%;
       display: flex;
       flex-direction: column;
@@ -104,6 +126,25 @@
       position: absolute;
       bottom: 0;
     }
+    &__close-menu {
+      width: 100%;
+      background-color: vars.$firstColor;
+      height: 30px;
+      position: relative;
+    }
+  }
+
+  .close-notif-btn {
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+    background: none;
+    appearance: none;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    color: vars.$thirdColor;
+    z-index: 1;
   }
 
   .close-menu-btn {

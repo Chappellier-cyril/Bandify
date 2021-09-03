@@ -3,32 +3,31 @@
 //MOBILE 
 @media screen and (max-width: 700px) {
   .contact {
-
     &__form {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      height: 70vh;
-      width: 100vw;
-      margin-top: 8rem;
-
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      top: 50%; /* poussé de la moitié de hauteur du référent */
+      transform: translateY(-50%); /* tiré de la moitié de sa propre hauteur */
       &--title {
         color: vars.$fourthColor;
         font-size: 1.7rem;
         margin-bottom: 2rem;
-        margin-top: 1.5rem;
       }
       &--submit {
-        background-color: vars.$thirdColor;
-        width: 50%;
-        margin: 0.5rem 0;
-        border: none;
-        padding: 1rem;
-        border-radius: vars.$borderRadius;
-        color: vars.$fourthColor;
-        font-size: 1.2rem;
-      }
+              background-color: vars.$thirdColor;
+              width: 30%;
+              margin-top: 1.5em;
+              border: none;
+              padding: 1rem;
+              border-radius: vars.$borderRadius;
+              color: vars.$fourthColor;
+              font-size: 1.2rem;
+            }
       &__container {
         border: 2px solid vars.$thirdColor;
         border-radius: vars.$borderRadius;
@@ -36,35 +35,52 @@
         margin: 0.5rem 0;
         position: relative;
         &--input {
+          background-color: vars.$seventhColor;
           width: 100%;
           border-radius: vars.$borderRadius;
           padding: 1rem;
           color: vars.$thirdColor;
           font-size: 1.1rem;
           border: none;
-          background-color: vars.$seventhColor;
         }
         &__message {
           border: 2px solid vars.$thirdColor;
           border-radius: vars.$borderRadius;
           width: 80%;
-          height: 25%;
+          height: 20%;
           margin-top: 2.5rem;
           margin-bottom: 1rem;
           position: relative;
           &--input {
             width: 100%;
             height: 100%;
+            background-color: vars.$seventhColor;
             border-radius: vars.$borderRadius;
             padding: 1rem;
             color: vars.$thirdColor;
-            background-color: vars.$seventhColor;
             font-size: 1.1rem;
             border: none;
           }
         }
       }
     }
+    &__title{
+      text-align: center;
+      font-size: 1.5rem;
+      color: vars.$fourthColor;
+    }
+    &__form{
+      display: flex;
+      flex-direction: column;
+      margin: auto;
+    }
+    &__group{
+      margin-bottom: 1rem;
+      &__message{
+        margin-top: 1rem;
+      }
+    }
+  
   }
   
 }
@@ -79,9 +95,10 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      height: 100%;
       width: 100%;
-      margin-top: 7rem;
+      position: absolute;
+      top: 50%; /* poussé de la moitié de hauteur du référent */
+      transform: translateY(-50%); /* tiré de la moitié de sa propre hauteur */
       &--title {
         color: vars.$fourthColor;
         font-size: 1.7rem;
@@ -137,11 +154,6 @@
       text-align: center;
       font-size: 1.5rem;
       color: vars.$fourthColor;
-    }
-    &__form{
-      display: flex;
-      flex-direction: column;
-      margin-top: 5rem;
     }
     &__group{
       margin-bottom: 1rem;
