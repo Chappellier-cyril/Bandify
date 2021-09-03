@@ -52,6 +52,7 @@ const Home = ({
           slidesToShow: 3,
           slidesToScroll: 1,
           autoplay: false,
+          dots: false,
         },
       },
     ],
@@ -123,6 +124,7 @@ const Home = ({
              on affiche tous les membres */
             // On affiche uniquement les 5 premiers membres
               <Slider {...sliderSettings}>
+                {/* <p>Glissez déposez ye ye yeah</p> */}
                 {usersWithoutMe.slice(0, 5).map((user) => (
                   <Link to={`/member/${user.id}`} key={user.id} className="home__cards--users">
                     <div className="home__user--container">
