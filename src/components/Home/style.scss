@@ -11,6 +11,7 @@
   /* Slider */
   .slick-slider {
     width: 100%;
+    margin-top: 5rem;
   }
   .slick-list {
     padding: 0 !important;
@@ -19,8 +20,19 @@
     width: 100%;
     height: 100%;
   }
-  .slick-arrow {
-    display: none !important;
+  .slick-arrow.slick-prev::before,
+  .slick-arrow.slick-next::before {
+    font-size: 2rem;
+  }
+  .slick-arrow.slick-prev {
+    top: -25px;
+    left: 45%;
+    transform: rotate(270deg);
+  }
+  .slick-arrow.slick-next {
+    right: 47%;
+    top: 102%;
+    transform: rotate(270deg);
   }
   /* Slider */
 
