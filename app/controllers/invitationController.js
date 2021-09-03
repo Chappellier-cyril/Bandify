@@ -32,13 +32,14 @@ const invitationController = {
             defaults : {from: req.body.from, to: req.body.to, status: 0}
             
             });
+            console.log(newInvitation);
             if (created) {
                 const invitation = await findByPk(newInvitation.id, {
                     include: ['fromMember', 'toMember'], order: [['createdAt', 'ASC']] 
                 })
                 res.json(invitation);
             }else {
-                res.json({message : 'invitation déja envoyé'})
+                res.json({error : 'invitation déja envoyé'})
             }
            
 
