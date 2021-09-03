@@ -3,7 +3,7 @@ import App from 'src/components/App';
 
 const mapStateToProps = (state) => ({
   isLogged: state.login.isLogged,
-
+  isLoading: state.settings.isLoading,
 });
 
 // On créer une action 'RECONNECT_USER', en lui envoyer dans le payload

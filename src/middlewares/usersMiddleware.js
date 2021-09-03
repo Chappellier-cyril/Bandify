@@ -8,6 +8,8 @@ const usersMiddleware = (store) => (next) => (action) => {
   const state = store.getState();
 
   if (action.type === 'GET_MEMBERS') {
+    state.settings.isLoading = true;
+
     const options = {
       method: 'GET',
       url: `${process.env.BANDIFY_API_URL}/members`,
