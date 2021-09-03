@@ -3,6 +3,7 @@ import React from 'react';
 import PropTypes, { shape } from 'prop-types';
 import Sounds from 'src/containers/Sounds';
 import ProfileMenu from 'src/containers/ProfileMenu';
+import Loader from 'src/components/Loader';
 import Avatar from './Avatar';
 import Name from './Name';
 import City from './City';
@@ -61,18 +62,21 @@ const MyProfile = ({
   isProfileMenuOpen,
   toggleProfileMenuOpen,
 
+  isLoading,
 }) => {
   const {
     plays, styles, profil_image, email,
   } = user;
   return (
-    <>
-      <div className="myprofile__cards">
-        {isDeleteModalClosed && (
-        <div className="myprofile__cards--users">
-          <button type="button" onClick={toggleProfileMenuOpen}>...</button>
-          {isProfileMenuOpen && <ProfileMenu />}
-          <>
+    isLoading ? (
+      <Loader />
+    ) : (
+      <>
+        <div className="myprofile__cards">
+          {isDeleteModalClosed && (
+          <div className="myprofile__cards--users">
+            <button type="button" onClick={toggleProfileMenuOpen}>...</button>
+            {isProfileMenuOpen && <ProfileMenu />}
             <div className="myprofile__user--container">
               <Avatar
                 editPhoto={editPhoto}
@@ -127,8 +131,8 @@ const MyProfile = ({
                   editFormToggle={editFormToggle}
                   user={user}
                   description={description}
-                  onChangeProfileInput={onChangeProfileInput}
                   isEditing={isEditing}
+                  onChangeProfileInput={onChangeProfileInput}
                 />
                 <Instruments
                   editInstruments={editInstruments}
@@ -153,34 +157,35 @@ const MyProfile = ({
                 />
               </div>
               {friends
-                && (
-                <div className="user__friends">
-                  <p className="myprofile__friend--description">Mes amis:</p>
-                  <Friends friends={friends} />
-                </div>
-                )}
+              && (
+              <div className="user__friends">
+                <p className="myprofile__friend--description">Mes amis:</p>
+                <Friends friends={friends} />
+              </div>
+              )}
             </div>
-          </>
+          </div>
+          )}
+          {!isDeleteModalClosed && (
+          <div className="myprofile">
+            <p>Êtes-vous sûr(e) de vouloir supprimer votre profil?</p>
+            <button
+              type="button"
+              onClick={onDeleteProfile}
+            >Oui
+            </button>
+            {/* //TODO => repasser onWishToDeleteProfile à
+            false si on clique ailleurs que sur Non */}
+            <button
+              type="button"
+              onClick={onWishToDeleteProfile}
+            >Non
+            </button>
+          </div>
+          )}
         </div>
-        )}
-        {!isDeleteModalClosed && (
-        <div className="myprofile">
-          <p>Êtes-vous sûr(e) de vouloir supprimer votre profil?</p>
-          <button
-            type="button"
-            onClick={onDeleteProfile}
-          >Oui
-          </button>
-          {/* //TODO => repasser onWishToDeleteProfile à false si on clique ailleurs que sur Non */}
-          <button
-            type="button"
-            onClick={onWishToDeleteProfile}
-          >Non
-          </button>
-        </div>
-        )}
-      </div>
-    </>
+      </>
+    )
   );
 };
 
@@ -256,6 +261,7 @@ MyProfile.propTypes = {
   deleteInstrumentAssociation: PropTypes.func.isRequired,
   isProfileMenuOpen: PropTypes.bool.isRequired,
   toggleProfileMenuOpen: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool.isRequired,
 };
 
 MyProfile.defaultProps = {

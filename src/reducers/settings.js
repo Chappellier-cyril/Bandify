@@ -1,4 +1,5 @@
 export const initialState = {
+  isLoading: false,
   isMenuOpen: false,
   isProfileMenuOpen: false,
   isFiltersOpen: false,
@@ -170,7 +171,10 @@ const reducer = (state = initialState, action = {}) => {
         city: '',
         department: '',
         region: '',
+        isLoading: false,
       };
+    case 'GET_ONE_MEMBER_SUCCESS':
+      return { ...state, isLoading: false };
     case 'GET_DEPARTMENTS_SUCCESS':
       return {
         ...state,

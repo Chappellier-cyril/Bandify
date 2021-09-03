@@ -61,6 +61,7 @@ const Profiles = ({
   deleteFromFriendList,
   isProfileMenuOpen,
   toggleProfileMenuOpen,
+  isLoading,
 }) => {
   const url = window.location.href;
   // pour avoir le dernier segment de l'url
@@ -128,6 +129,7 @@ const Profiles = ({
           friends={friends}
           isProfileMenuOpen={isProfileMenuOpen}
           toggleProfileMenuOpen={toggleProfileMenuOpen}
+          isLoading={isLoading}
         />
       ) : (
         <OtherProfile
@@ -139,6 +141,7 @@ const Profiles = ({
           wishToDeleteFriend={wishToDeleteFriend}
           isDeleteFriendModalOpen={isDeleteFriendModalOpen}
           deleteFromFriendList={deleteFromFriendList}
+          isLoading={isLoading}
         />
       )
   );
@@ -211,6 +214,7 @@ Profiles.propTypes = {
   isDeleteFriendModalOpen: PropTypes.bool.isRequired,
   isProfileMenuOpen: PropTypes.bool.isRequired,
   toggleProfileMenuOpen: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool.isRequired,
 };
 
 Profiles.defaultProps = {

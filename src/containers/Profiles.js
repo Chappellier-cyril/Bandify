@@ -33,6 +33,7 @@ const mapStateToProps = (state) => ({
   isDeleteFriendModalOpen: state.settings.isDeleteFriendModalOpen,
   isEditing: state.users.isEditing,
   isProfileMenuOpen: state.settings.isProfileMenuOpen,
+  isLoading: state.settings.isLoading,
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -18,14 +18,14 @@ import Contact from 'src/components/Contact';
 import About from 'src/components/About';
 import Footer from 'src/components/Footer';
 import PageNotFound from 'src/components/PageNotFound';
-import Loader from 'src/components/Loader';
+// import Loader from 'src/components/Loader';
 // == Import
 import './style.scss';
 import axios from 'axios';
 
 // == Composant
 export default function App({
-  isLogged, setReconnect, getInstruments,
+  isLoading, isLogged, setReconnect, getInstruments,
   getLevels, getMusicStyles, getDepartments,
   getRegions, getMessages, getFriends, getPendingInvitations, getAcceptedInvitations,
 }) {
@@ -77,12 +77,15 @@ export default function App({
     window.scroll(0, 0);
   }, [location]);
 
+  // if (isLoading) {
+  //   return <Loader />;
+  // }
+
   return (
     <div className="app">
       <Navbar />
       <Chatroom />
       <Header />
-      {/* <Loader /> */}
       <div className="maincontainer">
         <Notifications />
         <Switch>
