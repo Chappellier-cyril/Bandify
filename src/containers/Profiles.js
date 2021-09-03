@@ -31,6 +31,8 @@ const mapStateToProps = (state) => ({
   acceptedInvitations: state.users.acceptedInvitations,
   friends: state.users.friends,
   isDeleteFriendModalOpen: state.settings.isDeleteFriendModalOpen,
+  isEditing: state.users.isEditing,
+  isProfileMenuOpen: state.settings.isProfileMenuOpen,
   isLoading: state.settings.isLoading,
 });
 
@@ -38,17 +40,20 @@ const mapDispatchToProps = (dispatch) => ({
   getOneMember: () => {
     dispatch({ type: 'GET_ONE_MEMBER' });
   },
-  onWishToDeleteProfile: () => {
-    dispatch({ type: 'DELETE_PROFILE_WISH' });
-  },
   onDeleteProfile: () => {
     dispatch({ type: 'SAID_YES_TO_DELETE_PROFILE' });
+  },
+  onWishToDeleteProfile: () => {
+    dispatch({ type: 'DELETE_PROFILE_WISH' });
   },
   editFormToggle: (key) => {
     dispatch({
       type: 'EDIT_FORM_TOGGLE',
       key,
     });
+  },
+  toggleProfileMenuOpen: () => {
+    dispatch({ type: 'TOGGLE_PROFILE_MENU' });
   },
   togglePasswordVisibility: () => {
     dispatch({ type: 'ON_PASSWORD_TOGGLE' });
@@ -79,10 +84,6 @@ const mapDispatchToProps = (dispatch) => ({
   handleSubmitDescription: (e) => {
     e.preventDefault();
     dispatch({ type: 'SUBMIT_MODIFIED_DESCRIPTION' });
-  },
-  handleSubmitPassword: (e) => {
-    e.preventDefault();
-    dispatch({ type: 'SUBMIT_MODIFIED_PASSWORD' });
   },
   handleSubmitCity: (e) => {
     e.preventDefault();
@@ -137,7 +138,6 @@ const mapDispatchToProps = (dispatch) => ({
   },
   deleteFromFriendList: (accepted,
     friends, acceptedUser, foundUser) => {
-    console.log('acceptedUser', acceptedUser);
     dispatch({
       type: 'DELETE_FROM_FRIENDLIST', accepted, friends, acceptedUser, foundUser,
     });

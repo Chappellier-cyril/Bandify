@@ -1,6 +1,7 @@
 export const initialState = {
   isLoading: false,
   isMenuOpen: false,
+  isProfileMenuOpen: false,
   isFiltersOpen: false,
   isChatroomOpen: false,
   isNotificationsOpen: false,
@@ -71,6 +72,11 @@ const reducer = (state = initialState, action = {}) => {
         isNotificationsOpen: !state.isNotificationsOpen,
         // isChatroomOpen: false,
         isMenuOpen: false,
+      };
+    case 'TOGGLE_PROFILE_MENU':
+      return {
+        ...state,
+        isProfileMenuOpen: !state.isProfileMenuOpen,
       };
     case 'SET_IS_FILTERS_OPEN':
       return {

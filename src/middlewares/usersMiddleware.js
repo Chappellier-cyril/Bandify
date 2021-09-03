@@ -81,7 +81,11 @@ const usersMiddleware = (store) => (next) => (action) => {
       })
       .catch((e) => {
         store.dispatch({ type: 'PHOTO_MODIFIED_ERROR', error: e.message });
-      });
+      })
+      .then(store.dispatch({
+        type: 'EDIT_FORM_TOGGLE',
+        key: 'editSound',
+      }));
   }
 
   if (action.type === 'SUBMIT_MODIFIED_NAME') {

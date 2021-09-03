@@ -32,8 +32,8 @@ export const initialState = {
   friends: [],
   pendingInvitations: [],
   acceptedInvitations: [],
+  isEditing: false,
   editPhoto: false,
-  editSound: false,
   editName: false,
   editCity: false,
   editBirthdate: false,
@@ -90,6 +90,11 @@ const reducer = (state = initialState, action = {}) => {
           user_password: '',
         },
       };
+    case 'TOGGLE_IS_EDITING':
+      return {
+        ...state,
+        isEditing: !state.isEditing,
+      };
     case 'CHANGE_INPUT_MODIFY_PROFILE':
       return {
         ...state,
@@ -116,6 +121,7 @@ const reducer = (state = initialState, action = {}) => {
             ...state.user.sounds, action.sound,
           ],
         },
+        editSound: false,
       };
     case 'NAME_MODIFIED_SUCCESS':
       return {

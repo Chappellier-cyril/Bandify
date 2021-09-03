@@ -50,6 +50,8 @@ const Profiles = ({
   addNewInstrument,
   removeInstrument,
   deleteInstrumentAssociation,
+  isEditing,
+  toggleIsEditing,
   sendInvitation,
   pendingInvitations,
   friends,
@@ -57,6 +59,8 @@ const Profiles = ({
   wishToDeleteFriend,
   isDeleteFriendModalOpen,
   deleteFromFriendList,
+  isProfileMenuOpen,
+  toggleProfileMenuOpen,
   isLoading,
 }) => {
   const url = window.location.href;
@@ -83,6 +87,8 @@ const Profiles = ({
           onWishToDeleteProfile={onWishToDeleteProfile}
           isDeleteModalClosed={isDeleteModalClosed}
           onDeleteProfile={onDeleteProfile}
+          isEditing={isEditing}
+          toggleIsEditing={toggleIsEditing}
           editFormToggle={editFormToggle}
           editPhoto={editPhoto}
           editName={editName}
@@ -121,6 +127,8 @@ const Profiles = ({
           removeInstrument={removeInstrument}
           deleteInstrumentAssociation={deleteInstrumentAssociation}
           friends={friends}
+          isProfileMenuOpen={isProfileMenuOpen}
+          toggleProfileMenuOpen={toggleProfileMenuOpen}
           isLoading={isLoading}
         />
       ) : (
@@ -147,6 +155,8 @@ Profiles.propTypes = {
   getOneMember: PropTypes.func.isRequired,
   onWishToDeleteProfile: PropTypes.func,
   onDeleteProfile: PropTypes.func,
+  isEditing: PropTypes.bool.isRequired,
+  toggleIsEditing: PropTypes.func.isRequired,
   isDeleteModalClosed: PropTypes.bool.isRequired,
   editFormToggle: PropTypes.func,
   editPhoto: PropTypes.bool.isRequired,
@@ -202,6 +212,8 @@ Profiles.propTypes = {
   wishToDeleteFriend: PropTypes.func.isRequired,
   deleteFromFriendList: PropTypes.func.isRequired,
   isDeleteFriendModalOpen: PropTypes.bool.isRequired,
+  isProfileMenuOpen: PropTypes.bool.isRequired,
+  toggleProfileMenuOpen: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,
 };
 
