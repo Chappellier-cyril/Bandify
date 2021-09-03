@@ -31,6 +31,7 @@ const mapStateToProps = (state) => ({
   acceptedInvitations: state.users.acceptedInvitations,
   friends: state.users.friends,
   isDeleteFriendModalOpen: state.settings.isDeleteFriendModalOpen,
+  isLoading: state.settings.isLoading,
 });
 
 const mapDispatchToProps = (dispatch) => ({

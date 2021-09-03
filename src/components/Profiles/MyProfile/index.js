@@ -2,6 +2,7 @@
 import React from 'react';
 import PropTypes, { shape } from 'prop-types';
 import Sounds from 'src/containers/Sounds';
+import Loader from 'src/components/Loader';
 import Avatar from './Avatar';
 import Name from './Name';
 import City from './City';
@@ -61,134 +62,138 @@ const MyProfile = ({
   removeInstrument,
   deleteInstrumentAssociation,
   friends,
-
+  isLoading,
 }) => {
   const {
     plays, styles, profil_image, email,
   } = user;
   return (
-    <>
-      <div className="myprofile__cards">
-        {isDeleteModalClosed && (
-        <div className="myprofile__cards--users">
-          <>
-            <div className="myprofile__user--container">
-              <div className="myprofile__delete-btn--container">
-                <Avatar
-                  editPhoto={editPhoto}
-                  handleSubmitPhoto={handleSubmitPhoto}
-                  profil_image={profil_image}
-                  editFormToggle={editFormToggle}
-                />
-                <button
-                  type="button"
-                  onClick={onWishToDeleteProfile}
-                  className="myprofile__user--delete-btn"
-                >Supprimer mon profil
-                </button>
-              </div>
-              <Name
-                editName={editName}
-                handleSubmitName={handleSubmitName}
-                firstName={firstName}
-                lastName={lastName}
-                user={user}
-                editFormToggle={editFormToggle}
-                onChangeProfileInput={onChangeProfileInput}
-              />
-              <City
-                editCity={editCity}
-                handleSubmitCity={handleSubmitCity}
-                onCityChange={onCityChange}
-                city={city}
-                editFormToggle={editFormToggle}
-                user={user}
-              />
-              <Birthdate
-                editBirthdate={editBirthdate}
-                handleSubmitBirthdate={handleSubmitBirthdate}
-                dateOfBirth={dateOfBirth}
-                editFormToggle={editFormToggle}
-                user={user}
-                onChangeProfileInput={onChangeProfileInput}
-              />
-              <Email
-                editEmail={editEmail}
-                handleSubmitEmail={handleSubmitEmail}
-                emailInput={emailInput}
-                onChangeProfileInput={onChangeProfileInput}
-                editFormToggle={editFormToggle}
-                email={email}
-              />
-              <Password
-                editPassword={editPassword}
-                handleSubmitPassword={handleSubmitPassword}
-                passwordShown={passwordShown}
-                password={password}
-                togglePasswordVisibility={togglePasswordVisibility}
-                editFormToggle={editFormToggle}
-                onChangeProfileInput={onChangeProfileInput}
-                myId={user.id}
-              />
-              <Sounds />
-              <div className="user__hobbies">
-                <Description
-                  editDescription={editDescription}
-                  handleSubmitDescription={handleSubmitDescription}
-                  editFormToggle={editFormToggle}
+    isLoading ? (
+      <Loader />
+    ) : (
+      <>
+        <div className="myprofile__cards">
+          {isDeleteModalClosed && (
+          <div className="myprofile__cards--users">
+            <>
+              <div className="myprofile__user--container">
+                <div className="myprofile__delete-btn--container">
+                  <Avatar
+                    editPhoto={editPhoto}
+                    handleSubmitPhoto={handleSubmitPhoto}
+                    profil_image={profil_image}
+                    editFormToggle={editFormToggle}
+                  />
+                  <button
+                    type="button"
+                    onClick={onWishToDeleteProfile}
+                    className="myprofile__user--delete-btn"
+                  >Supprimer mon profil
+                  </button>
+                </div>
+                <Name
+                  editName={editName}
+                  handleSubmitName={handleSubmitName}
+                  firstName={firstName}
+                  lastName={lastName}
                   user={user}
-                  description={description}
+                  editFormToggle={editFormToggle}
                   onChangeProfileInput={onChangeProfileInput}
                 />
-                <Instruments
-                  editInstruments={editInstruments}
-                  plays={plays}
-                  deleteInstrumentAssociation={deleteInstrumentAssociation}
-                  handleSubmitInstruments={handleSubmitInstruments}
-                  instrumentsData={instrumentsData}
-                  levelsData={levelsData}
-                  instruments={instruments}
-                  addNewInstrument={addNewInstrument}
-                  removeInstrument={removeInstrument}
-                  onSelectInput={onSelectInput}
+                <City
+                  editCity={editCity}
+                  handleSubmitCity={handleSubmitCity}
+                  onCityChange={onCityChange}
+                  city={city}
                   editFormToggle={editFormToggle}
+                  user={user}
                 />
-                <Styles
+                <Birthdate
+                  editBirthdate={editBirthdate}
+                  handleSubmitBirthdate={handleSubmitBirthdate}
+                  dateOfBirth={dateOfBirth}
                   editFormToggle={editFormToggle}
-                  styles={styles}
-                  editStyles={editStyles}
-                  handleSubmitStyles={handleSubmitStyles}
+                  user={user}
+                  onChangeProfileInput={onChangeProfileInput}
                 />
-              </div>
-              {friends
+                <Email
+                  editEmail={editEmail}
+                  handleSubmitEmail={handleSubmitEmail}
+                  emailInput={emailInput}
+                  onChangeProfileInput={onChangeProfileInput}
+                  editFormToggle={editFormToggle}
+                  email={email}
+                />
+                <Password
+                  editPassword={editPassword}
+                  handleSubmitPassword={handleSubmitPassword}
+                  passwordShown={passwordShown}
+                  password={password}
+                  togglePasswordVisibility={togglePasswordVisibility}
+                  editFormToggle={editFormToggle}
+                  onChangeProfileInput={onChangeProfileInput}
+                  myId={user.id}
+                />
+                <Sounds />
+                <div className="user__hobbies">
+                  <Description
+                    editDescription={editDescription}
+                    handleSubmitDescription={handleSubmitDescription}
+                    editFormToggle={editFormToggle}
+                    user={user}
+                    description={description}
+                    onChangeProfileInput={onChangeProfileInput}
+                  />
+                  <Instruments
+                    editInstruments={editInstruments}
+                    plays={plays}
+                    deleteInstrumentAssociation={deleteInstrumentAssociation}
+                    handleSubmitInstruments={handleSubmitInstruments}
+                    instrumentsData={instrumentsData}
+                    levelsData={levelsData}
+                    instruments={instruments}
+                    addNewInstrument={addNewInstrument}
+                    removeInstrument={removeInstrument}
+                    onSelectInput={onSelectInput}
+                    editFormToggle={editFormToggle}
+                  />
+                  <Styles
+                    editFormToggle={editFormToggle}
+                    styles={styles}
+                    editStyles={editStyles}
+                    handleSubmitStyles={handleSubmitStyles}
+                  />
+                </div>
+                {friends
                 && (
                 <div className="user__friends">
                   <p className="myprofile__friend--description">Mes amis:</p>
                   <Friends friends={friends} />
                 </div>
                 )}
-            </div>
-          </>
+              </div>
+            </>
+          </div>
+          )}
+          {!isDeleteModalClosed && (
+          <div className="myprofile">
+            <p>Êtes-vous sûr(e) de vouloir supprimer votre profil?</p>
+            <button
+              type="button"
+              onClick={onDeleteProfile}
+            >Oui
+            </button>
+            {/* //TODO => repasser onWishToDeleteProfile à false si on clique ailleurs que sur Non */}
+            <button
+              type="button"
+              onClick={onWishToDeleteProfile}
+            >Non
+            </button>
+          </div>
+          )}
         </div>
-        )}
-        {!isDeleteModalClosed && (
-        <div className="myprofile">
-          <p>Êtes-vous sûr(e) de vouloir supprimer votre profil?</p>
-          <button
-            type="button"
-            onClick={onDeleteProfile}
-          >Oui
-          </button>
-          {/* //TODO => repasser onWishToDeleteProfile à false si on clique ailleurs que sur Non */}
-          <button
-            type="button"
-            onClick={onWishToDeleteProfile}
-          >Non
-          </button>
-        </div>
-        )}
-      </div>
-    </>
+      </>
+    )
   );
 };
 
@@ -265,6 +270,7 @@ MyProfile.propTypes = {
   addNewInstrument: PropTypes.func.isRequired,
   removeInstrument: PropTypes.func.isRequired,
   deleteInstrumentAssociation: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool.isRequired,
 };
 
 MyProfile.defaultProps = {
