@@ -87,6 +87,15 @@ CREATE TABLE "invitation" (
  
 );
 
+CREATE TABLE "sound" (
+    "id" int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    "key" text NOT NULL,
+    "name" text,
+    "member_id" INT NOT NULL REFERENCES "member"("id") ON DELETE CASCADE,
+    "score" INT,
+    "createdAt" Timestamptz NOT NULL default now(),
+    "updatedAt" Timestamptz NOT NULL default now()
+);
 
 
 

@@ -70,7 +70,7 @@ Member.init({
   },{
       association: 'plays',
       include: ['instrument', 'level']
-}, 'styles'],
+}, 'styles', 'sounds'],
   },
   sequelize: database,
   tableName: "member"

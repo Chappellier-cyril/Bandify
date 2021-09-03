@@ -8,6 +8,7 @@ const Level = require('./level');
 const Message = require('./message');
 const Invitation = require('./invitation');
 const Play = require('./play');
+const Sound = require('./sound');
 
 // 1,N entre member et message
 Member.hasMany(Message, {
@@ -154,6 +155,17 @@ Member.belongsToMany(MusicStyle, {
     onDelete: 'CASCADE'
 });
 
+Sound.belongsTo(Member, {
+    foreignKey: "member_id",
+    as: 'member',
+    onDelete: 'CASCADE'
+});
+
+Member.hasMany(Sound, {
+    foreignKey: 'member_id',
+    as: 'sounds',
+})
+
 module.exports = { 
     Member,
     Department, 
@@ -164,5 +176,6 @@ module.exports = {
     Level, 
     Message, 
     Invitation,
-    Play
+    Play,
+    Sound
 };

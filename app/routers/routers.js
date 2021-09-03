@@ -16,6 +16,7 @@ const invitationController = require('../controllers/invitationController');
 const localisationController = require('../controllers/localisationController');
 const errorController = require('../controllers/errorController');
 const authController = require('../controllers/authController');
+const soundController = require('../controllers/soundController');
 
 // SEARCH Route
 router.route('/search')
@@ -247,6 +248,16 @@ router.route('/members/:id/add_musicstyle')
 
 // Route qui permet de stream les fichiers d'images des membres
 router.get('/avatar/:key', memberController.streamMemberAvatar);
+
+// Route qui permet de stream les fichiers sons des membres
+router.get('/sound/:key', soundController.streamSound);
+
+// Route pour créer /update / delete les sons d'un membre
+router.route('/members/:id/sound')
+    .post(upload.single('file'), soundController.createSound)
+    .patch(soundController.patchSoundName)
+    .delete(soundController.deleteSound);
+
 
 router.route('/error')
     .get(errorController.notFound);
