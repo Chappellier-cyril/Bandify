@@ -290,7 +290,7 @@
   
     &--users {
       width: 250px;
-      height: 400px;
+      height: 350px;
       margin: 3rem 0;
       padding: .5rem 1rem;
       background-color: vars.$seventhColor;
@@ -299,8 +299,8 @@
   }
   &__user {
     &--picture {
-      width:200px;
-      height: 200px;
+      width: 130px;
+      height: 130px;
       border-radius: 50%;
     }
     &--container {
@@ -308,6 +308,7 @@
     }
     &--name {
       color: vars.$fourthColor;
+      margin-top: 1.5rem;
     }
     &--short {
       color: vars.$fourthColor;
