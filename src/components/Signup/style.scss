@@ -110,7 +110,9 @@
                 color: vars.$fourthColor;
                 padding: 0.2rem 0.3rem;
                 &:disabled{
-                    background-color: vars.$fourthColor;
+                    background-color: vars.$seventhColor;
+                    color: vars.$seventhColor;
+                    cursor: not allowed;
                 }
             }
         }
@@ -142,7 +144,9 @@
                 background-color: vars.$thirdColor;
                 color: vars.$fourthColor;
                 &:disabled{
-                    background-color: vars.$fourthColor;
+                    background-color: vars.$seventhColor;
+                    color: vars.$seventhColor;
+                    cursor: not allowed;
                 }
             }
         }
