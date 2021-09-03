@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Password from './Password';
 // TODO faire le container pour soulager le composant myProfile
 const ProfileMenu = ({
-  onWishToDeleteProfile, toggleIsEditing, editPassword, handleSubmitPassword,
+  onWishToDeleteProfile, editPassword, handleSubmitPassword, toggleIsEditing,
   passwordShown, password, togglePasswordVisibility, editFormToggle, onChangeProfileInput, userId,
   handleSubmitSound,
 }) => {
@@ -94,7 +94,6 @@ ProfileMenu.propTypes = {
   onChangeProfileInput: PropTypes.func.isRequired,
   userId: PropTypes.number,
   handleSubmitSound: PropTypes.func.isRequired,
-  isProfileMenuOpen: PropTypes.bool.isRequired,
 };
 
 ProfileMenu.defaultProps = {

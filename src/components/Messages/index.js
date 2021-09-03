@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import Message from './Message';
 import './style.scss';
@@ -6,17 +6,17 @@ import './style.scss';
 const Messages = ({
   messages, receiverName, reicever, sender, isTyping,
 }) => {
+  const [filteredMessages, setFilteredMessages] = useState([]);
   // create messageRef
   const messageRef = useRef();
-  // useEffect(() => {
-  //   getMessages();
-  // }, []);
-  // UseEffect à chaque chagement du state de messages
   useEffect(() => {
-    /* scroll de toute la hauteur de scroll disponible /
-    Quand le tableau de message change on appel cet effet */
+    const filtmess = messages.filter((message) => (message.sender_id === sender
+      && message.reicever_id === reicever)
+      || (message.sender_id === reicever && message.reicever_id === sender));
+    setFilteredMessages(filtmess);
     messageRef.current.scrollTop = messageRef.current.scrollHeight;
   }, [messages]);
+  // UseEffect à chaque chagement du state de messages
 
   return (
     <div
@@ -25,7 +25,7 @@ const Messages = ({
       className="messages"
     >
       <p className="messages__author">{receiverName}</p>
-      {messages.map((message) => (
+      {filteredMessages.map((message) => (
         <Message
           key={message.id}
           {...message}

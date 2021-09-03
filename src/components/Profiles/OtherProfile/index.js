@@ -141,7 +141,7 @@ const OtherProfile = ({
 
 OtherProfile.propTypes = {
   user: PropTypes.shape({
-    id: PropTypes.number.isRequired,
+    id: PropTypes.number,
     firstname: PropTypes.string,
     lastname: PropTypes.string,
     birthdate: PropTypes.string,
@@ -181,6 +181,7 @@ OtherProfile.propTypes = {
 
 OtherProfile.defaultProps = {
   user: {
+    id: 0,
     firstname: '',
     lastname: '',
     birthdate: '',

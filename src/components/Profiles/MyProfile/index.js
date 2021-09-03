@@ -191,7 +191,7 @@ const MyProfile = ({
 
 MyProfile.propTypes = {
   user: PropTypes.shape({
-    id: PropTypes.number.isRequired,
+    id: PropTypes.number,
     firstname: PropTypes.string,
     lastname: PropTypes.string,
     birthdate: PropTypes.string,
@@ -218,7 +218,6 @@ MyProfile.propTypes = {
   friends: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   onWishToDeleteProfile: PropTypes.func.isRequired,
   isEditing: PropTypes.bool.isRequired,
-  toggleIsEditing: PropTypes.func.isRequired,
   onDeleteProfile: PropTypes.func.isRequired,
   isDeleteModalClosed: PropTypes.bool.isRequired,
   editFormToggle: PropTypes.func.isRequired,

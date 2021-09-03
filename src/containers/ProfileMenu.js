@@ -2,7 +2,6 @@ import { connect } from 'react-redux';
 import ProfileMenu from 'src/components/Profiles/MyProfile/ProfileMenu';
 
 const mapStateToProps = (state) => ({
-
   editPassword: state.users.editPassword,
   passwordShown: state.login.passwordShown,
   password: state.users.user.user_password,

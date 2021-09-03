@@ -192,6 +192,10 @@ const reducer = (state = initialState, action = {}) => {
       };
     case 'GET_MESSAGES_SUCCESS':
     {
+      const filteredMessages = action.messages
+        .filter((message) => (message.sender_id === state.sender_id
+          && message.reicever_id === state.reicever_id)
+          || (message.sender_id === state.reicever_id && message.reicever_id === state.sender_id));
       return {
         ...state,
         messages: action.messages,
