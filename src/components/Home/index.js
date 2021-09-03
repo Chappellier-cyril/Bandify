@@ -37,7 +37,7 @@ const Home = ({
     centerMode: true,
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 1400,
         settings: {
           slidesToShow: 3,
           slidesToScroll: 1,
