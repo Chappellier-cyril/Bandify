@@ -109,10 +109,11 @@
                 background-color: vars.$thirdColor;
                 color: vars.$fourthColor;
                 padding: 0.2rem 0.3rem;
+                transition: 0.2s ease-in-out;
                 &:disabled{
                     background-color: vars.$seventhColor;
                     color: vars.$seventhColor;
-                    cursor: not allowed;
+                    cursor: not-allowed;
                 }
             }
         }
@@ -143,10 +144,11 @@
                 border-radius: 50%;
                 background-color: vars.$thirdColor;
                 color: vars.$fourthColor;
+                transition: 0.2s ease-in-out;
                 &:disabled{
                     background-color: vars.$seventhColor;
                     color: vars.$seventhColor;
-                    cursor: not allowed;
+                    cursor: not-allowed;
                 }
             }
         }
