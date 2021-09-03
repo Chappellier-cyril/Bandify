@@ -81,7 +81,7 @@
         margin-bottom: 2rem;
       }
       &__error {
-        color: rgb(168, 29, 29);
+        color: vars.$fifthColor;
       }
       &--submit {
         background-color: vars.$thirdColor;
