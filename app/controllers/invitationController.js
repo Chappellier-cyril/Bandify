@@ -3,14 +3,13 @@ const { Op } = require("sequelize");
 const { findByPk } = require('../models/sound');
 
 const invitationController = {
-    // Get all invitations
 
     // Requete qui permet de voir la liste des invitations en attente de réponse de la part d' un membre
 
     getAllInvitations: async (req, res, next) => {
         try {
             const targetId = req.params.id;
-            
+             
             
             const invitations = await Invitation.findAll({ where: { to: targetId } , include: ['fromMember', 'toMember'], order: [['createdAt', 'ASC']] });
             res.json(invitations);
@@ -22,9 +21,8 @@ const invitationController = {
         }
     },
 
-    // Create an invitation
+    // Envoyer une invitation a un membre
 
-    // MODIFIER POUR NE PAS RENVOYER DEUX FOIS UNE INVITATION
     sendInvitation : async (req, res, next) => {
         try {
             const [newInvitation, created] = await Invitation.findOrCreate({
@@ -50,6 +48,8 @@ const invitationController = {
         }
     },
 
+    // Refuser une invitation
+
     deleteInvitation: async (req, res, next) => {
         try {
             const targetId = req.params.id;
@@ -73,7 +73,8 @@ const invitationController = {
         }
     },
 
-    // A SUPPRIMER A VOIR 
+    // Accepter une invitation
+
     updateInvitation : async (req, res, next) => {
         try {
             
@@ -96,7 +97,8 @@ const invitationController = {
     },
 
 
-    // We called "Friends" when the status is accepted ("1")
+    // Nous appelons "Friends" quand le statut est a "1"
+
     getAllFriends: async (req, res, next) => {
         try {
             const targetId = req.params.id;
@@ -134,7 +136,8 @@ const invitationController = {
         }
     },
 
-    // We called "PendingInvitations" when the status is "0"
+    // Non l'appelons "PendingInvitations" quand le statut est "0"
+
     getPendingInvitations: async (req, res, next) => {
         try {
             const targetId = req.params.id;

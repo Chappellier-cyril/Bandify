@@ -4,24 +4,61 @@ GET http://localhost:3000/sqdsqd
 ### Récupération de la liste des membres
 GET http://localhost:3000/members
 
-### Récupération de la liste des instruments
-GET http://localhost:3000/instruments
-
-### Récupération de la liste des levels
-GET http://localhost:3000/levels
-
-### Récupération de la liste des styles de musique
-GET http://localhost:3000/musicstyles
-
 ### Récupération d'un membre en fonction de son id
 GET http://localhost:3000/members/1
+
+
+### Récupération de la liste des instruments
+GET http://localhost:3000/instruments
 
 ### Récupération d'un instrument en fonction de son id
 GET http://localhost:3000/instruments/1
 
-### Récupération d'un post en fonction de son id
+
+### Récupération de la liste des niveaux
+GET http://localhost:3000/levels
+
+### Récupération d'un niveau en fonction de son id
 GET http://localhost:3000/levels/1
+
+
+### Récupération de la liste des styles de musique
+GET http://localhost:3000/musicstyles
 
 ### Récupération d'un style de musiquer en fonction de son id
 GET http://localhost:3000/musicstyles/1
 
+
+### Récupération de la liste de toutes les villes
+GET http://localhost:3000/cities
+
+### Récupération d' une ville selon son ocde
+GET http://localhost:3000/city/44133
+
+
+### Récupération de la liste de tout les départements
+GET http://localhost:3000/departments
+
+### Récupération d' un département selon son codde
+GET http://localhost:3000/department/93
+
+
+### Récupération de la liste de toutes les régions
+GET http://localhost:3000/regions
+
+### Récupération d' une région selon son codde
+GET http://localhost:3000/region/44
+
+
+### Récupération de tout les amis d' un membre selon son id
+GET http://localhost:3000/members/2/Friends
+
+### Récupération de toutes les invitations en attente de réponse pour un membre
+GET http://localhost:3000/members/3/inviations
+
+
+### Récuperer la liste des messages d' un membre connecté selon son id
+GET http://localhost:3000/members/3/messages
+
+### Récupération un message crée
+GET http://localhost:3000/messages/3

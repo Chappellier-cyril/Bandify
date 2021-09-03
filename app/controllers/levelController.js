@@ -1,7 +1,8 @@
 const { Level } = require('../models');
 
 const levelController = {
-    // Get all levels
+
+    // Récuperer tout les niveaux
 
     getAllLevel: async (req, res, next) => {
         try {
@@ -13,7 +14,8 @@ const levelController = {
         }
     },
 
-    // Get one Level
+    // Récuperer un niveau
+    
     getOneLevel : async (req, res, next) => {
         try {
             const targetId = req.params.id;

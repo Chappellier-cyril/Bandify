@@ -13,10 +13,12 @@ const CLIENT_SIDE = process.env.CLIENT_SIDE;
 const { addMemberOnline, removeMemberOnline, findUserOnline} = require('./sockets/users');
 const { on } = require('events');
 
+// Création du module Swagger 
+
 let swaggerOptions = {
    swaggerDefinition: {
        info: {
-           description: 'This is Bandify API',
+           description: `API du l'application Bandify`,
            title: 'Bandify API',
            version: '1.0.0',
        },
@@ -33,6 +35,8 @@ let swaggerOptions = {
 };
 expressSwagger(swaggerOptions);
 
+// Création du module Socket.io
+
 const io = socketio(server, {
     cors: {
         origin: CLIENT_SIDE,
@@ -43,11 +47,11 @@ const io = socketio(server, {
 app.use(express.json());
 app.use(express.static('upload'));
 
-// A Modifier pour la sécurité a voir pour la suite
 app.use( cors('*') );
 app.use(express.urlencoded({extended: true})); 
 
 // ajout d' une méthode pour vérifier les données d'un formulaire avec sanitizer
+
 app.use( (req, res, next) => {
     if (req.body) {
         for (let prop in req.body) {

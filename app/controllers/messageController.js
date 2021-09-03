@@ -2,7 +2,9 @@ const { Message } = require('../models');
 const { Op } = require("sequelize");
 
 const messageController = {
-    // Get all messages
+    
+    // Récuperer tout les messages
+
     getAllMessages: async (req, res, next) => {
 
         const targetId = req.params.id;
@@ -16,7 +18,8 @@ const messageController = {
         }
     },
     
-    // Create a message
+    // Envoyer un message entre deux membres
+
     sendMessage: async (req, res, next) => {
         try {
             const newMessage = await Message.create({
@@ -34,7 +37,8 @@ const messageController = {
         }
     },
 
-    // Read message
+    // Lire un message envoyé d' un membre a un autre selon l' id
+
     readMessage: async (req, res, next) => {
         try {
             const messageTarget = req.params.id;

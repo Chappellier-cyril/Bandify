@@ -2,7 +2,8 @@ const { MusicStyle } = require('../models');
 
 const musicStylesController = {
 
-    // Get all music styles
+    // Récuperer la liste de tout les styles musicaux par odre alphabétique
+
     getAllMusicStyles: async (req, res, next) => {
         try {
             const musicStyles = await MusicStyle.findAll({
@@ -16,7 +17,8 @@ const musicStylesController = {
         }
     },
 
-    // Get one music style
+    // Récuperer un style de musique selon son id
+    
     getOneMusicStyle: async (req, res, next) => {
         try {
             const targetId = req.params.id;

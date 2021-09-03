@@ -18,7 +18,7 @@ try {
     console.log(memberPassword);
     const isPasswordValid = await bcrypt.compare(req.body.user_password, memberPassword);
     console.log(isPasswordValid);
-      // Si le mot de passe n'est pas valide on passe dans le catch
+    // Si le mot de passe n'est pas valide on passe dans le catch
     if(!isPasswordValid) {
         res.json({error : 'Mot de passe incorrect!'});
     }else {

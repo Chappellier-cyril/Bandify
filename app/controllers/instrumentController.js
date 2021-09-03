@@ -2,7 +2,8 @@ const { Instrument } = require('../models');
 
 const instrumentController = {
     
-    // Get all instruments
+    // Récuperer tout les instruments par odre alphabétique
+
     getAllInstruments: async (req, res, next) => {
         try {
             const instruments = await Instrument.findAll({order: ['instrument_name']});
@@ -14,7 +15,8 @@ const instrumentController = {
         }
     },
     
-    // Get one instrument
+    // Récupere un instrument selon son Id
+    
     getOneInstrument: async (req, res, next) => {
         try {
             const targetId = req.params.id;
