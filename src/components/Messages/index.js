@@ -8,16 +8,13 @@ const Messages = ({
 }) => {
   // create messageRef
   const messageRef = useRef();
-  // useEffect(() => {
-  //   getMessages();
-  // }, []);
   // UseEffect à chaque chagement du state de messages
   useEffect(() => {
     /* scroll de toute la hauteur de scroll disponible /
     Quand le tableau de message change on appel cet effet */
     messageRef.current.scrollTop = messageRef.current.scrollHeight;
   }, [messages]);
-
+  console.log('messages dans composant Messages: ', messages);
   return (
     <div
     // On y pose la ref ici
@@ -56,7 +53,6 @@ Messages.propTypes = {
     content: PropTypes.string.isRequired,
     status: PropTypes.bool.isRequired,
   })).isRequired,
-  getMessages: PropTypes.func.isRequired,
   receiverName: PropTypes.string.isRequired,
   reicever: PropTypes.number,
   sender: PropTypes.number.isRequired,
