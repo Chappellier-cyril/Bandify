@@ -1,6 +1,7 @@
 /* eslint-disable camelcase */
 import React from 'react';
 import PropTypes, { shape } from 'prop-types';
+import Sounds from 'src/containers/Sounds';
 import Avatar from './Avatar';
 import Name from './Name';
 import City from './City';
@@ -11,6 +12,7 @@ import Description from './Description';
 import Instruments from './Instruments';
 import Styles from './Styles';
 import Friends from './Friends';
+
 // == Import : local
 import 'src/components/Profiles/style.scss';
 
@@ -128,7 +130,7 @@ const MyProfile = ({
                 onChangeProfileInput={onChangeProfileInput}
                 myId={user.id}
               />
-
+              <Sounds />
               <div className="user__hobbies">
                 <Description
                   editDescription={editDescription}

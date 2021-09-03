@@ -25,6 +25,7 @@ export const initialState = {
       nom: '',
     },
     instruments: [{}],
+    sounds: [],
     styles: [{}],
     profil_image: '',
   },
@@ -32,6 +33,7 @@ export const initialState = {
   pendingInvitations: [],
   acceptedInvitations: [],
   editPhoto: false,
+  editSound: false,
   editName: false,
   editCity: false,
   editBirthdate: false,
@@ -104,6 +106,16 @@ const reducer = (state = initialState, action = {}) => {
           profil_image: action.user.profil_image,
         },
         editPhoto: false,
+      };
+    case 'SOUND_ADDED_SUCCESS':
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          sounds: [
+            ...state.user.sounds, action.sound,
+          ],
+        },
       };
     case 'NAME_MODIFIED_SUCCESS':
       return {
