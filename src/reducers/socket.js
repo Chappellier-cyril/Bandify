@@ -105,7 +105,6 @@ const reducer = (state = initialState, action = {}) => {
     }
     case 'UPDATE_MESSAGES_NOTIFICATIONS': {
       const filteredNotif = state.notifications.filter((n, i) => i !== action.index);
-      console.log(filteredNotif);
       return {
         ...state,
         notifications: filteredNotif,
@@ -126,7 +125,6 @@ const reducer = (state = initialState, action = {}) => {
     case 'ON_ACCEPT_INVITATION_SUCCESS': {
       const filteredNotifications = state.notifications.filter((notif, index) => (
         index !== action.invIndex));
-      console.log(filteredNotifications);
       return {
         ...state,
         notifications: filteredNotifications,
@@ -135,7 +133,6 @@ const reducer = (state = initialState, action = {}) => {
     case 'ON_DENY_INVITATION_SUCCESS': {
       const filteredNotifications = state.notifications.filter((notif, index) => (
         index !== action.invIndex));
-      console.log(filteredNotifications);
       return {
         ...state,
         notifications: filteredNotifications,

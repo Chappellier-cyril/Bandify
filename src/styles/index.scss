@@ -4,7 +4,6 @@
 body, html, #root, .app {
   font-family: 'Poppins', sans-serif;
   background-color: vars.$firstColor;
-  // width: 100vw;
   height: 100%;
   ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: vars.$thirdColor;
@@ -22,16 +21,17 @@ body, html, #root, .app {
     font-family: 'Poppins', sans-serif;
   }
 }
-.main-container{
-  position: relative;
-  margin: 0;
-  width: 100%;
+.maincontainer{
+  margin: 0 auto;
+  width: 100vw;
   min-height: 100%;
-  margin-bottom: -75px; 
+  margin-bottom: -75px;
+  position: relative;
 }
-.main-container:after{
+.maincontainer:after{
   content: "";
   display: block;
+  height: 75px;
 }
 // fontawesome icons (menu burger, cross to close menu)
 .fas {

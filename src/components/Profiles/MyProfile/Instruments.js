@@ -11,7 +11,6 @@ const Instruments = ({
   const [filtredInstruments, setFilteredInstruments] = useState(instrumentsData);
 
   useEffect(() => {
-    console.log(instruments);
     setFilteredInstruments(instrumentsData);
     // if (!instruments[0]) return false;
     // const filtredInst = instrumentsData.filter((inst) => {

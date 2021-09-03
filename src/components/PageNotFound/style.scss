@@ -1,5 +1,7 @@
 @use 'src/styles/vars';
 
+// DESKTOP
+@media screen and (min-width: 700px) {
 .notFound {
   &__container {
     display: flex;
@@ -7,14 +9,14 @@
     justify-content: flex-end;
     align-items: center;
     color: vars.$seventhColor;
-    // height: 70vh;
+    height: 100%;
     &--logo {
       width: 25%;
       height: 70%;
     }
   }
   &__btn {
-    background-color: vars.$seventhColor;
+    background-color: vars.$thirdColor;
     color: vars.$fourthColor;
     text-align: center;
     width: 30%;
@@ -22,6 +24,7 @@
     border-radius: vars.$borderRadius;
     margin: 40px 0px 20px 0px;
   }
+}
 }
 
 // MOBILE
@@ -33,10 +36,9 @@
       justify-content: flex-end;
       align-items: center;
       color: vars.$seventhColor;
-      height: 70vh;
+      height: 100%;
       &--logo {
         width: 100%;
-        height: 70%;
       }
     }
     &__btn {

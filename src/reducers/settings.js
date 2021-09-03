@@ -190,12 +190,7 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         messageInputValue: action.messageInputValue,
       };
-    case 'GET_MESSAGES_SUCCESS':
-    {
-      const filteredMessages = action.messages
-        .filter((message) => (message.sender_id === state.sender_id
-          && message.reicever_id === state.reicever_id)
-          || (message.sender_id === state.reicever_id && message.reicever_id === state.sender_id));
+    case 'GET_MESSAGES_SUCCESS': {
       return {
         ...state,
         messages: action.messages,
@@ -241,6 +236,7 @@ const reducer = (state = initialState, action = {}) => {
         reicever_name: action.name,
         isChatroomOpen: true,
         isMessagesOpen: true,
+        isFriendsListOpen: false,
         isNotificationsOpen: false,
       };
     }

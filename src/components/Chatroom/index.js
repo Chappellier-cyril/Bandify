@@ -25,7 +25,7 @@ const Chatroom = ({
     <div className="chatroom__nav">
       <button
         type="button"
-        className="chatroom__nav-link"
+        className={`${isMessagesOpen ? 'chatroom__nav-link chatroom__nav-link--active' : 'chatroom__nav-link'}`}
         onClick={toggleIsMessagesOpen}
         disabled={friends.length === 0}
       >
@@ -33,7 +33,7 @@ const Chatroom = ({
       </button>
       <button
         type="button"
-        className="chatroom__nav-link"
+        className={`${isFriendsListOpen ? 'chatroom__nav-link chatroom__nav-link--active' : 'chatroom__nav-link'}`}
         onClick={toggleIsFriendsListOpen}
       >
         Amis

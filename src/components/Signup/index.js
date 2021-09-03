@@ -21,7 +21,6 @@ const Signup = ({
   onChangeInput, onSelectInput, addNewInputInstrument, removeInputInstrument,
   onStyleInput, addNewStyle, removeStyle, handleSubmitSignup,
 }) => {
-  console.log(instrumentsData);
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [error]);

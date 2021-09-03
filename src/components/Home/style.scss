@@ -3,9 +3,13 @@
 // MOBILE LAYOUT
 @media screen and (max-width: 700px) {
   .main {
-    height: auto;
+    display: flex;
+    flex-direction: column;
     width: 100% !important;
-    margin-top: 5rem !important;
+    align-items: center;
+    justify-content: space-around;
+    font-size: vars.$appFontSize;
+    color: vars.$fourthColor;
   }
 
   /* Slider */
@@ -110,7 +114,7 @@
       &--users {
         width: 90%;
         height: auto;
-        margin: 1rem 0;
+        margin-bottom: 2rem;
         padding: 1rem;
         background-color: vars.$seventhColor;
         border-radius: vars.$borderRadius;
@@ -185,10 +189,12 @@
     flex-direction: column;
     width: 100% !important;
     align-items: center;
-    justify-content: space-around;
-    padding: 2rem 0;
+    justify-content: space-between;
     font-size: vars.$appFontSize;
     color: white;
+    position: absolute;
+    top: 50%; /* poussé de la moitié de hauteur du référent */
+    transform: translateY(-50%); /* tiré de la moitié de sa propre hauteur */
   }
 
   /* Slider */
@@ -488,8 +494,6 @@
     justify-content: space-around;
     width: 80%;
     height: auto;
-    margin: 3rem auto 0;
-    
   
     &--users {
       width: 250px;

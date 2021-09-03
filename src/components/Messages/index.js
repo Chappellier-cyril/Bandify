@@ -9,6 +9,7 @@ const Messages = ({
   const [filteredMessages, setFilteredMessages] = useState([]);
   // create messageRef
   const messageRef = useRef();
+  // UseEffect à chaque chagement du state de messages
   useEffect(() => {
     const filtmess = messages.filter((message) => (message.sender_id === sender
       && message.reicever_id === reicever)
@@ -18,6 +19,7 @@ const Messages = ({
   }, [messages]);
   // UseEffect à chaque chagement du state de messages
 
+  console.log('messages dans composant Messages: ', messages);
   return (
     <div
     // On y pose la ref ici
@@ -56,7 +58,6 @@ Messages.propTypes = {
     content: PropTypes.string.isRequired,
     status: PropTypes.bool.isRequired,
   })).isRequired,
-  getMessages: PropTypes.func.isRequired,
   receiverName: PropTypes.string.isRequired,
   reicever: PropTypes.number,
   sender: PropTypes.number.isRequired,

@@ -91,7 +91,6 @@ const OtherProfile = ({
                   className="profile__user--delete-btn"
                   onClick={wishToDeleteFriend}
                 >
-                  {console.log(foundFriend)}
                   Supprimer
                 </button>
                 )}
