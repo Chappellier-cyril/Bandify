@@ -25,7 +25,6 @@ const MyProfile = ({
   onDeleteProfile,
   isDeleteModalClosed,
   isEditing,
-  toggleIsEditing,
   editFormToggle,
   editPhoto,
   editName,
@@ -84,7 +83,6 @@ const MyProfile = ({
                 profil_image={profil_image}
                 editFormToggle={editFormToggle}
                 isEditing={isEditing}
-                toggleIsEditing={toggleIsEditing}
               />
               <Name
                 editName={editName}

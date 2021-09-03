@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 import { firstLetterToUpper, restToLower } from 'src/selectors/city';
 
 const Friends = ({ friends }) => (
-  friends.map((friend) => (
-    <div className="myprofile__friend">
-      <Link to={`/member/${friend.id}`} key={friend.id}>
+  friends && friends.map((friend) => (
+    <div className="myprofile__friend" key={friend.id}>
+      <Link to={`/member/${friend.id}`}>
         <div className="myprofile__user--container">
           {/* <p className="myprofile__friend--description">Mes amis:</p> */}
           {friend.profil_image && <img className="myprofile__friend--picture" src={`${process.env.BANDIFY_API_URL}/avatar/${friend.profil_image}`} alt="avatar du membre" />}
