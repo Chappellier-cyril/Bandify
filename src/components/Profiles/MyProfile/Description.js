@@ -3,10 +3,11 @@ import DOMPurify from 'dompurify';
 import PropTypes from 'prop-types';
 
 const Description = ({
-  editDescription, handleSubmitDescription, editFormToggle, user, description, onChangeProfileInput,
+  editDescription, handleSubmitDescription, editFormToggle, user,
+  description, onChangeProfileInput, isEditing,
 }) => (
   <>
-    {editDescription ? (
+    {isEditing && editDescription ? (
       <form type="submit" onSubmit={handleSubmitDescription}>
         <div className="myprofile__textarea--container">
           <label htmlFor="description">
@@ -36,15 +37,19 @@ const Description = ({
     ) : (
       <div className="myprofile__user--description">
         Description
-        <span>
-          <button
-            type="button"
-            onClick={() => editFormToggle('editDescription')}
-            className="myprofile__user--edit-description"
-          >
-            <i className="fas fa-pen" />
-          </button>
-        </span>
+        {
+          isEditing && (
+            <span>
+              <button
+                type="button"
+                onClick={() => editFormToggle('editDescription')}
+                className="myprofile__user--edit-description"
+              >
+                <i className="fas fa-pen" />
+              </button>
+            </span>
+          )
+        }
         <p className="myprofile__user--description-details">{user.user_description}</p>
       </div>
     )}
@@ -55,6 +60,7 @@ Description.propTypes = {
   editFormToggle: PropTypes.func.isRequired,
   description: PropTypes.string.isRequired,
   editDescription: PropTypes.bool.isRequired,
+  isEditing: PropTypes.bool.isRequired,
   handleSubmitDescription: PropTypes.func.isRequired,
   onChangeProfileInput: PropTypes.func.isRequired,
   user: PropTypes.shape({

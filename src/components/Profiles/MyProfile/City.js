@@ -4,10 +4,10 @@ import Localisation from 'src/components/Localisation';
 import { firstLetterToUpper, restToLower } from 'src/selectors/city';
 
 const City = ({
-  editCity, handleSubmitCity, onCityChange, city, editFormToggle, user,
+  editCity, handleSubmitCity, onCityChange, city, editFormToggle, user, isEditing,
 }) => (
   <>
-    {editCity ? (
+    {isEditing && editCity ? (
       <form type="submit" onSubmit={handleSubmitCity}>
         <Localisation
           city={city}
@@ -31,6 +31,7 @@ const City = ({
           {firstLetterToUpper(restToLower(user.city.city_name))} ({user.city.department_code})
         </span>
         )}
+        {isEditing && (
         <span>
           <button
             type="button"
@@ -40,6 +41,7 @@ const City = ({
             <i className="fas fa-pen" />
           </button>
         </span>
+        )}
       </p>
     )}
   </>
@@ -53,6 +55,7 @@ City.propTypes = {
     }),
   }),
   editCity: PropTypes.bool.isRequired,
+  isEditing: PropTypes.bool.isRequired,
   handleSubmitCity: PropTypes.func.isRequired,
   onCityChange: PropTypes.func.isRequired,
   city: PropTypes.string.isRequired,

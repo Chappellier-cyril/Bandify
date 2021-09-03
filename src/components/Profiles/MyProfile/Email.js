@@ -3,10 +3,10 @@ import DOMPurify from 'dompurify';
 import PropTypes from 'prop-types';
 
 const Email = ({
-  editEmail, handleSubmitEmail, emailInput, onChangeProfileInput, editFormToggle, email,
+  editEmail, handleSubmitEmail, emailInput, onChangeProfileInput, editFormToggle, email, isEditing,
 }) => (
   <>
-    {editEmail ? (
+    {isEditing && editEmail ? (
       <form type="submit" onSubmit={handleSubmitEmail}>
         <div>
           <input
@@ -33,15 +33,17 @@ const Email = ({
     ) : (
       <div className="myprofile__user--email">
         Email: {email}
-        <span>
-          <button
-            type="button"
-            onClick={() => editFormToggle('editEmail')}
-            className="myprofile__user--edit-email"
-          >
-            <i className="fas fa-pen" />
-          </button>
-        </span>
+        {isEditing && (
+          <span>
+            <button
+              type="button"
+              onClick={() => editFormToggle('editEmail')}
+              className="myprofile__user--edit-email"
+            >
+              <i className="fas fa-pen" />
+            </button>
+          </span>
+        )}
       </div>
     )}
   </>
@@ -49,6 +51,7 @@ const Email = ({
 
 Email.propTypes = {
   editEmail: PropTypes.bool.isRequired,
+  isEditing: PropTypes.bool.isRequired,
   handleSubmitEmail: PropTypes.func.isRequired,
   emailInput: PropTypes.string.isRequired,
   onChangeProfileInput: PropTypes.func.isRequired,

@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 const Avatar = ({
-  editPhoto, handleSubmitPhoto, profil_image, editFormToggle,
+  editPhoto, handleSubmitPhoto, profil_image, editFormToggle, isEditing,
 }) => {
   const [avatar, setAvatar] = useState();
   const [errorAvatar, setErrorAvatar] = useState('');
@@ -20,7 +20,7 @@ const Avatar = ({
   }, [avatar]);
   return (
     <>
-      {editPhoto ? (
+      {isEditing && editPhoto ? (
         <form
           className="myprofile__user--picture-form"
           type="submit"
@@ -56,13 +56,17 @@ const Avatar = ({
       ) : (
         <div className="myprofile__user--avatar">
           {profil_image && <img className="myprofile__user--picture" src={`${process.env.BANDIFY_API_URL}/avatar/${profil_image}`} alt="avatar du membre" />}
-          <button
-            type="button"
-            onClick={() => editFormToggle('editPhoto')}
-            className="myprofile__user--edit-photo"
-          >
-            <i className="fas fa-pen" />
-          </button>
+          {
+            isEditing && (
+              <button
+                type="button"
+                onClick={() => editFormToggle('editPhoto')}
+                className="myprofile__user--edit-photo"
+              >
+                <i className="fas fa-pen" />
+              </button>
+            )
+          }
         </div>
       )}
     </>
@@ -73,6 +77,7 @@ Avatar.propTypes = {
   profil_image: PropTypes.string,
   editFormToggle: PropTypes.func.isRequired,
   editPhoto: PropTypes.bool.isRequired,
+  isEditing: PropTypes.bool.isRequired,
   handleSubmitPhoto: PropTypes.func.isRequired,
 };
 Avatar.defaultProps = {
