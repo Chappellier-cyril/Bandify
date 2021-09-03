@@ -35,12 +35,21 @@
   
     &__form {
       width: 100%;
+      position: relative;
       margin: 1rem 0;
   
       &__search-input {
         width: 100%;
         padding: 1em 1.5em;
         margin: 1rem 0;
+      }
+
+      // search icon
+      .fas.fa-search {
+        position: absolute;
+        right: 5%;
+        top: 30px;
+        color: vars.$fourthColor;
       }
   
       &-filters {
@@ -116,6 +125,7 @@
       &--title {
         font-size: 1.5rem;
         color: vars.$fourthColor;
+        font-weight: bold;
       }
     }
   
@@ -128,11 +138,18 @@
     &__form {
       width: 100%;
       margin: 1rem 0;
+      position: relative;
   
       &__search-input {
         width: 80%;
         padding: 1em 1.5em;
         margin: 1rem 15% 1rem 10%;
+      }
+      // search icon
+      .fas.fa-search {
+        position: absolute;
+        right: 15%;
+        top: 30px;
       }
   
       &-filters {
@@ -166,8 +183,12 @@
     &__button {
       padding: 0 1em;
       margin: 0 1rem;
-      border: none;
       width: 20%;
+      transition: background-color 100ms ease-out;
+      &:hover {
+        background-color: vars.$fourthColor;
+        border: none !important;
+      }
       &__container {
         display: flex;
         justify-content: space-around;
@@ -182,6 +203,10 @@
         padding: 0 1em;
         border: none;
         margin: 1rem auto;
+        transition: background-color 100ms ease-out;
+        &:hover {
+          background-color: rgba(29, 161, 242, .8);
+        }
       }
     }
   }
@@ -190,7 +215,7 @@
   .search__form-filters__select,
   .search__button {
     height: 45px;
-    font-size: 1.2rem;
+    font-size: 1rem;
     border-radius: vars.$borderRadius;
     background-color: vars.$seventhColor;
     border: solid 1px vars.$thirdColor;

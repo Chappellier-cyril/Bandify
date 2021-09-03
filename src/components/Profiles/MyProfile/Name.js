@@ -3,10 +3,11 @@ import DOMPurify from 'dompurify';
 import PropTypes from 'prop-types';
 
 const Name = ({
-  editName, handleSubmitName, firstName, lastName, user, editFormToggle, onChangeProfileInput,
+  editName, handleSubmitName, firstName, lastName, user, editFormToggle,
+  onChangeProfileInput, isEditing,
 }) => (
   <>
-    {editName ? (
+    {isEditing && editName ? (
       <form type="submit" onSubmit={handleSubmitName}>
         <div>
           <label htmlFor="firstName">
@@ -52,15 +53,19 @@ const Name = ({
     ) : (
       <p className="myprofile__user--name">
         {user.firstname} {user.lastname}
-        <span>
-          <button
-            type="button"
-            onClick={() => editFormToggle('editName')}
-            className="myprofile__user--edit-name"
-          >
-            <i className="fas fa-pen" />
-          </button>
-        </span>
+        {
+          isEditing && (
+            <span>
+              <button
+                type="button"
+                onClick={() => editFormToggle('editName')}
+                className="myprofile__user--edit-name"
+              >
+                <i className="fas fa-pen" />
+              </button>
+            </span>
+          )
+        }
       </p>
     )}
   </>
@@ -75,6 +80,7 @@ Name.propTypes = {
   lastName: PropTypes.string.isRequired,
   editFormToggle: PropTypes.func.isRequired,
   editName: PropTypes.bool.isRequired,
+  isEditing: PropTypes.bool.isRequired,
   handleSubmitName: PropTypes.func.isRequired,
   onChangeProfileInput: PropTypes.func.isRequired,
 };

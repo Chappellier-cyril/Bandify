@@ -164,6 +164,10 @@
         background-color: transparent;
         border: none;
       }
+      &--sounds {
+        color: vars.$fourthColor;
+        font-weight: 700;
+      }
     }
     &__instrument {
       color: vars.$fourthColor;
@@ -379,6 +383,10 @@
       &--edit-age, &--edit-city, &--edit-email, &--edit-name, &--edit-description, &--edit-instruments, &--edit-styles {
         background-color: transparent;
         border: none;
+      }
+      &--sounds {
+        color: vars.$fourthColor;
+        font-weight: 700;
       }
     }
     &__instrument {

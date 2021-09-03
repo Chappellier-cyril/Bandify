@@ -9,6 +9,7 @@ const mapStateToProps = (state) => ({
   searchedUsers: state.users.searchedUsers,
   searchMessage: state.settings.searchMessage,
   loginId: state.login.id,
+  isLoading: state.settings.isLoading,
 });
 
 const mapDispatchToProps = (dispatch) => ({

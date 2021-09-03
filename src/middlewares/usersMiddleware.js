@@ -8,6 +8,8 @@ const usersMiddleware = (store) => (next) => (action) => {
   const state = store.getState();
 
   if (action.type === 'GET_MEMBERS') {
+    state.settings.isLoading = true;
+
     const options = {
       method: 'GET',
       url: `${process.env.BANDIFY_API_URL}/members`,
@@ -23,6 +25,8 @@ const usersMiddleware = (store) => (next) => (action) => {
   }
 
   if (action.type === 'GET_ONE_MEMBER') {
+    state.settings.isLoading = true;
+
     axios.get(`${process.env.BANDIFY_API_URL}/members/${lastSegmentUrl}`)
       .then((response) => {
         store.dispatch({ type: 'GET_ONE_MEMBER_SUCCESS', user: response.data });
@@ -77,7 +81,11 @@ const usersMiddleware = (store) => (next) => (action) => {
       })
       .catch((e) => {
         store.dispatch({ type: 'PHOTO_MODIFIED_ERROR', error: e.message });
-      });
+      })
+      .then(store.dispatch({
+        type: 'EDIT_FORM_TOGGLE',
+        key: 'editSound',
+      }));
   }
 
   if (action.type === 'SUBMIT_MODIFIED_NAME') {

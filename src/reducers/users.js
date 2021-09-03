@@ -32,8 +32,8 @@ export const initialState = {
   friends: [],
   pendingInvitations: [],
   acceptedInvitations: [],
+  isEditing: false,
   editPhoto: false,
-  editSound: false,
   editName: false,
   editCity: false,
   editBirthdate: false,
@@ -90,6 +90,11 @@ const reducer = (state = initialState, action = {}) => {
           user_password: '',
         },
       };
+    case 'TOGGLE_IS_EDITING':
+      return {
+        ...state,
+        isEditing: !state.isEditing,
+      };
     case 'CHANGE_INPUT_MODIFY_PROFILE':
       return {
         ...state,
@@ -116,6 +121,7 @@ const reducer = (state = initialState, action = {}) => {
             ...state.user.sounds, action.sound,
           ],
         },
+        editSound: false,
       };
     case 'NAME_MODIFIED_SUCCESS':
       return {
@@ -324,25 +330,18 @@ const reducer = (state = initialState, action = {}) => {
     case 'INVITATION_REFUSED': {
       /* TODO RECUPERER L4INVITATION DANS LE DSIPATCH avant car ici pas d'accés
       à l'invitation à retirer car j'ai besoin de fromMember */
-      const filteredInvitations = state.pendingInvitations.filter((inv) => {
-        console.log('dans le filtre de on deny success', inv.id, action.invitation.id);
-        return (
-          inv.id !== action.invitation.id
-        );
-      });
-      console.log('filtered pending invitations dans le reducer user final', filteredInvitations);
+      const filteredInvitations = state.pendingInvitations.filter((inv) => (
+        inv.id !== action.invitation.id
+      ));
       return {
         ...state,
         pendingInvitations: filteredInvitations,
       };
     }
     case 'ON_DENY_INVITATION_SUCCESS': {
-      const filteredInvitations = state.pendingInvitations.filter((inv) => {
-        console.log('dans le filtre de on deny success', inv.id, action.invitation.id);
-        return (
-          inv.id !== action.invitation.id
-        );
-      });
+      const filteredInvitations = state.pendingInvitations.filter((inv) => (
+        inv.id !== action.invitation.id
+      ));
       return {
         ...state,
         pendingInvitations: filteredInvitations,

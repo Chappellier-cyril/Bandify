@@ -5,13 +5,12 @@ import PropTypes from 'prop-types';
 const Instruments = ({
   editInstruments, deleteInstrumentAssociation, handleSubmitInstruments,
   instrumentsData, levelsData, instruments, addNewInstrument, removeInstrument,
-  onSelectInput, editFormToggle,
+  onSelectInput, editFormToggle, isEditing,
 }) => {
   // On récupère un tableau filtré sans les instrument que l'utilisateur à déjà choisi
   const [filtredInstruments, setFilteredInstruments] = useState(instrumentsData);
 
   useEffect(() => {
-    console.log(instruments);
     setFilteredInstruments(instrumentsData);
     // if (!instruments[0]) return false;
     // const filtredInst = instrumentsData.filter((inst) => {
@@ -24,7 +23,7 @@ const Instruments = ({
 
   return (
     <>
-      {editInstruments ? (
+      {isEditing && editInstruments ? (
         <>
           <div className="myprofile__instrument">
             <p className="myprofile__instrument--description">Mes instruments:</p>
@@ -96,15 +95,19 @@ const Instruments = ({
         <>
           <div className="myprofile__instrument">
             <p className="myprofile__instrument--description">Mes instruments:
-              <span>
-                <button
-                  type="button"
-                  onClick={() => editFormToggle('editInstruments')}
-                  className="myprofile__user--edit-instruments"
-                >
-                  <i className="fas fa-pen" />
-                </button>
-              </span>
+              {
+                isEditing && (
+                  <span>
+                    <button
+                      type="button"
+                      onClick={() => editFormToggle('editInstruments')}
+                      className="myprofile__user--edit-instruments"
+                    >
+                      <i className="fas fa-pen" />
+                    </button>
+                  </span>
+                )
+              }
             </p>
             <ul className="myprofile__instrument--list">
               {instruments && instruments.map((play) => (
@@ -124,6 +127,7 @@ const Instruments = ({
 };
 Instruments.propTypes = {
   editInstruments: PropTypes.bool.isRequired,
+  isEditing: PropTypes.bool.isRequired,
   deleteInstrumentAssociation: PropTypes.func.isRequired,
   handleSubmitInstruments: PropTypes.func.isRequired,
   instrumentsData: PropTypes.arrayOf(

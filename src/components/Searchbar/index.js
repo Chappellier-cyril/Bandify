@@ -12,7 +12,6 @@ const Searchbar = ({
   departement, region, departments, regions,
 }) => (
   <div className="search">
-    {console.log(musicstyles)}
     <div className="search__header">
       <h1 className="search__header--title">Recherche</h1>
       {/* vide la recherche et réinitialise => nouvelle requete getMembers */}
@@ -29,7 +28,7 @@ const Searchbar = ({
         value={DOMPurify.sanitize(searchValue.trim(), { ALLOWED_TAGS: ['em', 'strong'] })}
         onChange={(evt) => onSearchChange(evt.target.value)}
       />
-
+      <i className="fas fa-search" />
       {/* SI isFiltersOpen === true, on affiche la div search__form-filters */}
       {isFiltersOpen && (
         <div className="search__form-filters">
@@ -157,7 +156,7 @@ const Searchbar = ({
         <button type="button" onClick={toggleIsFiltersOpen} className="search__button">
           {isFiltersOpen ? 'Masquer' : 'Filtres'}
         </button>
-        <button type="button" onClick={onResetFilters} className="search__button">Réinitialiser</button>
+        <button type="button" onClick={onResetFilters} className="search__button">Reset</button>
         {/* Appelle onSearchSubmit */}
       </div>
       <div className="search__launch">
