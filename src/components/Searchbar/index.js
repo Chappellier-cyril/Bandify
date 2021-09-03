@@ -28,7 +28,7 @@ const Searchbar = ({
         value={DOMPurify.sanitize(searchValue.trim(), { ALLOWED_TAGS: ['em', 'strong'] })}
         onChange={(evt) => onSearchChange(evt.target.value)}
       />
-
+      <i className="fas fa-search" />
       {/* SI isFiltersOpen === true, on affiche la div search__form-filters */}
       {isFiltersOpen && (
         <div className="search__form-filters">

@@ -35,12 +35,21 @@
   
     &__form {
       width: 100%;
+      position: relative;
       margin: 1rem 0;
   
       &__search-input {
         width: 100%;
         padding: 1em 1.5em;
         margin: 1rem 0;
+      }
+
+      // search icon
+      .fas.fa-search {
+        position: absolute;
+        right: 5%;
+        top: 30px;
+        color: vars.$fourthColor;
       }
   
       &-filters {
@@ -131,11 +140,18 @@
     &__form {
       width: 100%;
       margin: 1rem 0;
+      position: relative;
   
       &__search-input {
         width: 80%;
         padding: 1em 1.5em;
         margin: 1rem 15% 1rem 10%;
+      }
+      // search icon
+      .fas.fa-search {
+        position: absolute;
+        right: 15%;
+        top: 30px;
       }
   
       &-filters {
