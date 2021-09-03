@@ -1,4 +1,5 @@
 export const initialState = {
+  isLoading: false,
   isMenuOpen: false,
   isFiltersOpen: false,
   isChatroomOpen: false,
@@ -164,6 +165,7 @@ const reducer = (state = initialState, action = {}) => {
         city: '',
         department: '',
         region: '',
+        isLoading: false,
       };
     case 'GET_DEPARTMENTS_SUCCESS':
       return {
