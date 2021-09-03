@@ -9,10 +9,4 @@ const mapStateToProps = (state) => ({
   isTyping: state.socket.isTyping,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  getMessages: () => {
-    dispatch({ type: 'GET_MESSAGES' });
-  },
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Messages);
+export default connect(mapStateToProps, null)(Messages);

@@ -184,8 +184,7 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         messageInputValue: action.messageInputValue,
       };
-    case 'GET_MESSAGES_SUCCESS':
-    {
+    case 'GET_MESSAGES_SUCCESS': {
       return {
         ...state,
         messages: action.messages,
