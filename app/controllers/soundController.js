@@ -60,6 +60,9 @@ const soundController = {
             res.status(500).json(error); 
         }
     },
+
+    // Supprimer un son pour un membre
+    
     deleteSound: async (req, res, next) => {
         try {
             const targetId = req.params.id;

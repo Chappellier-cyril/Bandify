@@ -1,10 +1,11 @@
-// MODULES EXPRESS
+// Importation des modules express et autres utilitaires
 const express = require('express');
 const router = express.Router();
 const multer = require('multer');
 const upload = multer({dest: 'upload/'});
 
-//CONTROLLERS
+// Importation de tout les controllers 
+
 const memberController = require('../controllers/memberController');
 const instrumentController = require('../controllers/instrumentController');
 const levelController = require('../controllers/levelController');
@@ -16,7 +17,6 @@ const invitationController = require('../controllers/invitationController');
 const localisationController = require('../controllers/localisationController');
 const authController = require('../controllers/authController');
 const soundController = require('../controllers/soundController');
-const validate = require('../validations/validate');
 const schema = require('../validations/schema');
 
 // Route de recherche d' un membre
@@ -163,14 +163,47 @@ router.route('/members/:id/sound')
 module.exports = router;
 
 
-// SWAGGER sur : http://localhost:3000/api-docs
+// SWAGGER API DOCS sur : http://localhost:3000/api-docs
 
+ /**
+ * Permet de créer un utilisateur
+ * @route POST /signup
+ * @group Signup
+ * @param {string} firstname.query.required - prénom du membre
+ * @param {string} lastname.query.required - nom de famille du membre
+ * @param {enum} birthdate.query.required - date de naissance du membre
+ * @param {string} email.query.required - email du membre
+ * @param {string} password.query.required - mot de passe du membre
+ * @param {string} user_description.query - description du membre
+ * @param {string} profil_image.query - image de profil du membre
+ * @param {string} instruments.query.required - instruments du membre
+ * @param {string} level.query.required - niveau de l' instrument
+ * @param {string} musicstyles.query.required - styles de musique du membre
+ * @operationId retrieveFooInfo
+ * @returns {objet} 200 - Tableau des informations du membre
+ */
+
+ /**
+ * Route de recherche d' un membre
+ * @route Post /login
+ * @group Login
+ * @returns {object} 200
+ */
+
+
+/**
+ * Route de recherche d' un membre
+ * @route GET /search
+ * @group Search
+ * @returns {object} 200
+ */
 
 // MEMBRES
 
 /**
- * Récuperer la liste de tout les membres
+ * Récuperer la liste de tout les membres avec leurs associations
  * @route GET /members
+ * @group Members
  * @returns {object} 200 - Tableau de tout les membres récupéré
  */
 
@@ -178,7 +211,15 @@ module.exports = router;
  * Récuperer un membre par l' id
  * @route GET /members/2
  * @route patch /members/2
+ * @group Members
  * @returns {object} 200 - Tableau d' un membre récuperé
+ */
+
+/**
+ * Supprimer un membre avec toutes ses asssociations selon son id
+ * @route DELETE /members/2
+ * @group Members
+ * @returns {object} 200
  */
 
 // INSTRUMENTS
@@ -186,12 +227,14 @@ module.exports = router;
 /**
  * Récuperer toute la liste des instruments
  * @route GET /instruments
+ * @group Instruments
  * @returns {object} 200 - Tableau de tout les instruments
  */
 
 /**
  * Récuperer un instrument par l' id
  * @route GET /instruments/1
+ * @group Instruments
  * @returns {object} 200 - Tableau d' un instrument récupéré
  */  
 
@@ -199,12 +242,14 @@ module.exports = router;
 /**
  * Récuperer la liste des levels
  * @route GET /levels
+ * @group Levels
  * @returns {object} 200 - Tableau de tout les levels
  */
 
 /**
  * Récuperer un level par l' id
  * @route GET /levels/2
+ * @group Levels
  * @returns {object} 200 - Tableau d' un level récupéré
  */   
 
@@ -212,12 +257,14 @@ module.exports = router;
 /**
  * Récuperer la liste des styles de musiques
  * @route GET /musicstyles
+ * @group Music Styles
  * @returns {object} 200 - Tableau de tout les styles de musiques
  */        
 
 /**
  * Récuperer un style de musique par son id
  * @route GET /musicstyles/3
+ * @group Music Styles
  * @returns {object} 200 - Tableau d' un style de musique récupéré
  */  
 
@@ -225,11 +272,13 @@ module.exports = router;
 /**
  * Récuperer la liste de toutes les villes
  * @route GET /cities
+ * @group Cities
  * @returns {object} 200 - Tableau de toutes les villes
 
 /**
  * Récuperer la liste d' une ville selon son code
  * @route GET /city/01034
+ * @group Cities
  * @returns {object} 200 - Tableau d' une ville récupéré
  */
 
@@ -238,34 +287,39 @@ module.exports = router;
 /**
  * Récuperer la liste de tout les départements
  * @route GET /departments
+ * @group Departements
  * @returns {object} 200 - Tableau de tout les départements
  */
 
 /**
  * Récuperer la liste d'un département selon son code
  * @route GET /department/93
+ * @group Departements
  * @returns {object} 200 - Tableau d'un département récupéré
  */
 
-//REGIONS
 
+//REGIONS
 /**
  * Récuperer la liste de toutes les régions
  * @route GET /regions
+ * @group Regions
  * @returns {object} 200 - Tableau de toutes les régions
  */   
 
 /**
  * Récuperer la liste d' une région selon son code
  * @route GET /region/44
+ * @group Regions
  * @returns {object} 200 - Tableau d' une région récupéré
  */ 
 
 
 // FRIENDS
 /**
- * Récupere toutes les amis d' un membre selon son id
+ * Récupere toutes les amis d' un membre selon son id avec tout ses associations
  * @route GET /members/2/friends
+ * @group Friends
  * @returns {object} 200 - Tableau des amis d' un membre
  */  
 
@@ -274,30 +328,69 @@ module.exports = router;
 /**
  * Récupere toutes les invitations en attente de réponse pour un membre
  * @route GET /members/2/invitations
+ * @group Invitations
  * @returns {object} 200 - Tableau de des invitations en attente
  */  
+
+/**
+ * Supprimer une invitation selon son id
+ * @route DELETE /invitation/2
+ * @group Invitations
+ * @returns {object} 200
+ */
+
+/**
+ * Accepter une invitation selon son id
+ * @route PATCH /invitation/2
+ * @group Invitations
+ * @returns {object} 200
+ */
+
+// SOUND
+/**
+ * Ajouter un son pour un membre
+ * @route POST /members/2/sound
+ * @group SOUND
+ * @returns {object} 200
+ */
+
+/**
+ * Mettre a jour un son pour un membre
+ * @route PATCH /members/2/sound
+ * @group SOUND
+ * @returns {object} 200
+ */
+
+/**
+ * Supprimer un son pour un membre
+ * @route DELETE /members/2/sound
+ * @group SOUND
+ * @returns {object} 200
+ */
 
 // MESSAGES
 
 /**
  * Récuperer la liste des messages d' un membre connecté selon son id
  * @route GET /members/2/messages
+ * @group Message
  * @returns {object} 200 - Tableau de tout les messages d' un membre
  */   
 
 /**
  * Envoyer un message
  * @route POST /messages
+ * @group Message
  * @returns {object} 200 - Tableau du message envoyé
  */   
 
 /**
  * Récupere un message 
  * @route GET /messages/3
+ * @group Message
  * @returns {object} 200 - Tableau du message recu
  */   
 
- 
 
  
 

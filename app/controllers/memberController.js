@@ -1,6 +1,7 @@
 const { Member, Play } = require('../models');
 const bcrypt = require('bcrypt');
 const jsonwebtoken = require('jsonwebtoken');
+// const memberSchema = require('../validations/schema')
 
 const { uploadFile, getFileStream } = require('../../s3');
 /* Mise en place de Multer qui nous permets de récupérer un multipart form-data depuis le front
@@ -9,7 +10,8 @@ const { uploadFile, getFileStream } = require('../../s3');
 */
 
 const memberController = {
-    // Get all members
+
+    // Récuperer la liste de tout les membres
     getAllMembers: async (req, res, next) => {
         try {
             const members = await Member.findAll();
@@ -22,7 +24,8 @@ const memberController = {
         }
     },
 
-    // Get one member
+    // Récuperer un membre selon son Id
+
     getOneMember: async (req, res, next) => {
         try {
             const targetId = req.params.id;
@@ -41,7 +44,8 @@ const memberController = {
         }
     },
 
-    // Create a member
+    // Créer un membre a l' inscription
+
     createMember: async (req, res) => {
         try {
             const file = req.file;
@@ -78,10 +82,14 @@ const memberController = {
                     city_code: req.body.city_code,
                     profil_image: file ? `${result.key}`: null,
                     })
+            
                  // Si le membre à séléctionné des styles, on boucle dessus pour associer chaque style au member
                 if(styles) {
                     styles.map(async (style)=> await member.addStyle(Number(style))) 
                 }
+
+                // const result = await memberSchema.validateAsync(req.body);
+
                  // On boucle sur chaque objet instruments pour créer l'association
                 instruments.map(async (play) => play.instrument && await Play.create({
                   instrument_id: play.instrument,
@@ -100,6 +108,8 @@ const memberController = {
             });
         }
     },
+
+    // Mettre a jour les infos d' un membre
 
     updateOneMember: async (req, res, next) => {
         try {
@@ -151,6 +161,8 @@ const memberController = {
         }
     },
 
+    // Supprimer un membre
+
     deleteOneMember: async (req, res, next) => {
         try {
             const targetId = req.params.id;
@@ -173,6 +185,8 @@ const memberController = {
             res.status(500).json(error);
         }
     },
+
+    // Se connecter pour un membre
 
     loginMember : async (req, res) => {
         console.log('login Member', req.body);
@@ -240,7 +254,7 @@ const memberController = {
     // "Middleware" qui vérifie si notre token est bon
     verifyJWT: (req, res, next) => {
         const token = req.headers["x-acces-token"] || req.body.headers["x-acces-token"];
-        // console.log(token);
+        
         const url =  req.route.path;
         if(!token) {
             res.status(401).send("Token needed");

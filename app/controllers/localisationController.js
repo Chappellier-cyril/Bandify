@@ -3,7 +3,9 @@ const { City, Department, Region } = require('../models');
 const { Op } = require('sequelize');
 
 const localisationController = {
-    // Get all members
+
+    // Récuperer la liste de toutes les Villes
+
     getAllCities: async (req, res, next) => {
         try {
             const cities = await City.findAll({
@@ -38,6 +40,9 @@ const localisationController = {
             res.status(500).json(error);
         }
     },
+
+    // Récuperer une ville
+
     getOneCity: async (req, res, next) => {
         const id = req.params.id;
         try {
@@ -49,6 +54,9 @@ const localisationController = {
             res.status(500).json(error);
         }
     },
+
+    // Récuperer la liste de tout les départements
+
     getAllDepartments: async (req, res, next) => {
         try {
             const departments = await Department.findAll({
@@ -59,6 +67,9 @@ const localisationController = {
             res.status(500).json(error);
         }
     },
+
+    // Récuperer un département
+
     getOneDepartment: async (req, res, next) => {
         const id = req.params.id;
         try {
@@ -70,6 +81,9 @@ const localisationController = {
             res.status(500).json(error);
         }
     },
+
+    // Récuperer la liste de toutes les régions
+
     getAllRegions: async (req, res, next) => {
         try {
             const regions = await Region.findAll({
@@ -80,6 +94,9 @@ const localisationController = {
             res.status(500).json(error);
         }
     },
+
+    // Récuperer une région
+
     getOneRegion: async (req, res, next) => {
         const id = req.params.id;
         try {
