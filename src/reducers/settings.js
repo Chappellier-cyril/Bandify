@@ -167,6 +167,8 @@ const reducer = (state = initialState, action = {}) => {
         region: '',
         isLoading: false,
       };
+    case 'GET_ONE_MEMBER_SUCCESS':
+      return { ...state, isLoading: false };
     case 'GET_DEPARTMENTS_SUCCESS':
       return {
         ...state,
