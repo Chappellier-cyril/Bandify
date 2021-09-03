@@ -185,8 +185,12 @@
     &__button {
       padding: 0 1em;
       margin: 0 1rem;
-      border: none;
       width: 20%;
+      transition: background-color 100ms ease-out;
+      &:hover {
+        background-color: vars.$fourthColor;
+        border: none !important;
+      }
       &__container {
         display: flex;
         justify-content: space-around;
@@ -201,6 +205,10 @@
         padding: 0 1em;
         border: none;
         margin: 1rem auto;
+        transition: background-color 100ms ease-out;
+        &:hover {
+          background-color: rgba(29, 161, 242, .8);
+        }
       }
     }
   }
