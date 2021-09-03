@@ -110,13 +110,6 @@ INSERT INTO member ("firstname", "lastname", "email", "birthdate" , "user_passwo
 ('Baptiste', 'Champbenoit', 'baptiste-c@gmail.com','1993-02-10' , '$2b$10$79fDqa0fB.yd2H0eB8c5b./Mr.IuefSR9nvKFP0PP0tFkGJl4Rs6i', 'Dj, je cherche des samples pour composition de musique electro', 'baptiste.png', '33063'),
 ('Amaury', 'Delaroque', 'amaury-d@gmail.com','1986-02-10' , '$2b$10$79fDqa0fB.yd2H0eB8c5b./Mr.IuefSR9nvKFP0PP0tFkGJl4Rs6i', 'Dj et guitariste, je cherche des samples pour composition de musique hip-hop', 'amaury.png', '31555');
 
-INSERT INTO message ("content", "status", "sender_id", "reicever_id") VALUES
-('Hello', false, 1, 2),
-('Good', true, 2, 3),
-('Comment ça va la famille', false, 3, 2),
-('Yo yo yo', true, 3, 1),
-('Whatsup', false, 4, 2),
-('Sampler un son', true, 3, 2);
 
 INSERT INTO invitation ("status", "from", "to") VALUES
 (2, 3, 2),

@@ -9,6 +9,7 @@ const musicStylesController = {
                 order: ['music_name'],
                 include: ['members']
             });
+            res.json(musicStyles);
         } catch (error) {
             console.trace(error);
             res.status(500).json(error);

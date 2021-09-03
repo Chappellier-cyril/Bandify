@@ -109,7 +109,7 @@ router.route('/levels/:id')
  */   
 
  router.route('/musicstyles')
- .get(musicStyleController.getAllMusicStyles);
+    .get(musicStyleController.getAllMusicStyles);
 
 router.route('/musicstyles/:id')
     .get(musicStyleController.getOneMusicStyle);

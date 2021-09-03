@@ -164,6 +164,7 @@ Sound.belongsTo(Member, {
 Member.hasMany(Sound, {
     foreignKey: 'member_id',
     as: 'sounds',
+    onDelete: 'CASCADE'
 })
 
 module.exports = { 
