@@ -21,41 +21,18 @@ import PageNotFound from 'src/components/PageNotFound';
 // import Loader from 'src/components/Loader';
 // == Import
 import './style.scss';
-import axios from 'axios';
 
 // == Composant
 export default function App({
-  isLoading, isLogged, setReconnect, getInstruments,
+  isLoading, isLogged, getInstruments,
   getLevels, getMusicStyles, getDepartments,
-  getRegions, getMessages, getFriends, getPendingInvitations, getAcceptedInvitations,
+  getRegions, getMessages, getFriends, getPendingInvitations, getAcceptedInvitations, getInit,
 }) {
   // AU premier rendu, je veux recupérer mon token
   useEffect(() => {
-    // On récupère notre token
-    const token = localStorage.getItem('token');
-    // Si on en a un, on fait une requête vers le serveur
-    // En y emporter au passage, le "timbre" (headers : x-acces-token)
-    if (token && token !== undefined) {
-      axios.post(`${process.env.BANDIFY_API_URL}/checkToken`, {
-        headers: {
-          'x-acces-token': localStorage.getItem('token'),
-        },
-      })
-        .then((response) => {
-        // On crée un objet user en réponse, pour rester logger
-          if (response) {
-            const user = {
-              id: localStorage.getItem('userId'),
-              email: localStorage.getItem('userEmail'),
-              token: localStorage.getItem('token'),
-            };
-            setReconnect(user);
-          }
-        })
-        .catch(() => {
-          localStorage.clear();
-        });
-    }
+    /* LA GESTION DU TOKEN EST déplacé  DANS LE MIDDLEWARE D'AUTHENTIFICATION
+    de gestion du TOKEN avec l'action 'GET_INIT' */
+    getInit();
     getInstruments();
     getLevels();
     getMusicStyles();
@@ -118,7 +95,6 @@ export default function App({
 
 App.propTypes = {
   isLogged: PropTypes.bool.isRequired,
-  setReconnect: PropTypes.func.isRequired,
   getInstruments: PropTypes.func.isRequired,
   getLevels: PropTypes.func.isRequired,
   getMusicStyles: PropTypes.func.isRequired,
@@ -128,6 +104,7 @@ App.propTypes = {
   getMessages: PropTypes.func.isRequired,
   getPendingInvitations: PropTypes.func.isRequired,
   getAcceptedInvitations: PropTypes.func.isRequired,
+  getInit: PropTypes.func.isRequired,
 };
 
 // == Export

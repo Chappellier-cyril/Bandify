@@ -176,7 +176,7 @@ const Signup = ({
                   <option value="">Choisir un instrument</option>
                   {
                     instrumentsData && instrumentsData.map(({ instrument_name, id }) => (
-                      <option value={id} key={instrument_name}>{instrument_name}</option>))
+                      <option value={id} key={`${instrument_name} + ${id}`}>{instrument_name}</option>))
                   }
                 </select>
                 <select className="signup-submit__group__select" name={`level${index}`} id={`level${index}`} onChange={(e) => onSelectInput(e, index, 'level')} disabled={!instrument.instrument}>

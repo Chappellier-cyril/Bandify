@@ -38,6 +38,7 @@ export const initialState = {
   reicever_name: '',
   from: null,
   isDeleteFriendModalOpen: false,
+  init: 0,
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -264,7 +265,11 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         isDeleteFriendModalOpen: false,
       };
-
+    case 'SET_INIT':
+      return {
+        ...state,
+        init: 1,
+      };
     default:
       return state;
   }

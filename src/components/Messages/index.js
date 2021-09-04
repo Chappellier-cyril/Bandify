@@ -15,10 +15,11 @@ const Messages = ({
       && message.reicever_id === reicever)
       || (message.sender_id === reicever && message.reicever_id === sender));
     setFilteredMessages(filtmess);
-    messageRef.current.scrollTop = messageRef.current.scrollHeight;
   }, [messages]);
-  // UseEffect à chaque chagement du state de messages
-
+  // UseEffect à chaque rendu
+  useEffect(() => {
+    messageRef.current.scrollTop = messageRef.current.scrollHeight;
+  });
   console.log('messages dans composant Messages: ', messages);
   return (
     <div
@@ -35,8 +36,9 @@ const Messages = ({
           sender={sender}
         />
       ))}
-      <span className={`isTyping ${isTyping[1] && (isTyping[0] === reicever)
-        ? 'isTyping--visible' : 'isTyping--hiden'}`}
+      <span
+        className={`isTyping ${isTyping[1] && (isTyping[0] === reicever)
+          ? 'isTyping--visible' : 'isTyping--hiden'}`}
       >{receiverName} écrit
         <div className={`isTyping__anim ${isTyping[1] && (isTyping[0] === reicever)
           ? 'isTyping__anim--first' : 'isTyping__anim--hiden'}`}

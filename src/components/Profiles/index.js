@@ -72,7 +72,7 @@ const Profiles = ({
       // qui passe dans le userMiddleware
       getOneMember();
     }
-  }, [lastSegmentUrl]);
+  }, [lastSegmentUrl, isLogged]);
 
   return (
     (foundMember && (foundMember.id === connectedUserId))

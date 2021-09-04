@@ -82,6 +82,7 @@
     top: 10%;
     right: -100%;
     width: 20%;
+    min-width: 450px;
     height: 90%;
     z-index: 99;
     transition: right 150ms ease-in-out;
@@ -126,6 +127,10 @@
     &__form {
       position: absolute;
       bottom: 0;
+      &-input {
+        background-color: vars.$seventhColor;
+        color: vars.$fourthColor;
+      }
     }
     &__close-menu {
       width: 100%;

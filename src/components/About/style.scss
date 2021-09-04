@@ -67,6 +67,8 @@
       font-size: 0.8rem;
       color: vars.$fourthColor;
       text-align: center;
+      backdrop-filter: blur( 0 );
+      -webkit-backdrop-filter: blur( 0 );
     }
     &__img{
       width: 100%;

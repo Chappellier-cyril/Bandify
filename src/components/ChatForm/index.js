@@ -17,7 +17,7 @@ const ChatForm = ({
       onChange={(evt) => {
         onMessageInputChange(evt.target.value);
         sendTyping();
-        setTimeout(sendNoTyping, 2000);
+        setTimeout(sendNoTyping, 3000);
       }}
       onBlur={sendNoTyping}
       value={DOMPurify.sanitize(messageInputValue, { ALLOWED_TAGS: ['em', 'strong'] })}

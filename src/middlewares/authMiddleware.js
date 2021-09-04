@@ -1,10 +1,43 @@
 import axios from 'axios';
 
 const authMiddleware = (store) => (next) => (action) => {
+  const state = store.getState();
+  if (action.type === 'GET_INIT') {
+    console.log(action.type);
+    // On récupère notre token
+    const token = localStorage.getItem('token');
+    // Si on en a un, on fait une requête vers le serveur
+    // En y emporter au passage, le "timbre" (headers : x-acces-token)
+    if (token && token !== undefined) {
+      axios.post(`${process.env.BANDIFY_API_URL}/checkToken`, {
+        headers: {
+          'x-acces-token': localStorage.getItem('token'),
+        },
+      })
+        .then((response) => {
+          // On crée un objet user en réponse, pour rester logger
+          if (response) {
+            const user = {
+              id: localStorage.getItem('userId'),
+              email: localStorage.getItem('userEmail'),
+              token: localStorage.getItem('token'),
+            };
+            store.dispatch({ type: 'RECONNECT_USER', user });
+            store.dispatch({ type: 'SET_INIT' });
+          }
+        })
+        .catch(() => {
+          localStorage.clear();
+          store.dispatch({ type: 'SET_INIT' });
+        }).then(() => {
+          store.dispatch({ type: 'SET_INIT' });
+        });
+    }
+  }
   if (action.type === 'ON_LOGIN_SUBMIT') {
     // on commence par récupérer un instantané du state
     // dans lequel nous viendrons piocher email et password
-    const state = store.getState();
+
     const options = {
       method: 'POST',
       url: `${process.env.BANDIFY_API_URL}/login`,

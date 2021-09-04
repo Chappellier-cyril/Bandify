@@ -192,9 +192,9 @@
     justify-content: space-between;
     font-size: vars.$appFontSize;
     color: white;
-    position: absolute;
-    top: 50%; /* poussé de la moitié de hauteur du référent */
-    transform: translateY(-50%); /* tiré de la moitié de sa propre hauteur */
+    // position: absolute;
+    // top: 50%; /* poussé de la moitié de hauteur du référent */
+    // transform: translateY(-50%); /* tiré de la moitié de sa propre hauteur */
   }
 
   /* Slider */
@@ -240,7 +240,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-bottom: 5rem;
+      margin-bottom: 5rem auto;
     }
     &__img{
       width: 100%;

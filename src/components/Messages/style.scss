@@ -5,13 +5,15 @@
   color: transparent;
   transition: color 0.4s ease-in-out;
   margin-left: 1rem;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: baseline;
+  font-size: 0.8rem;
+  align-items: baseline;
   &--hiden{
     color: transparent;
   }
   &--visible{
-    display: flex;
-    justify-content: baseline;
-    align-items: baseline;
     color: vars.$fourthColor;
   }
   &__anim{
@@ -19,7 +21,7 @@
     height: 4px;
     border-radius: 50%;
     background-color: vars.$fourthColor;
-    transition: color 0.4s ease-in-out;
+    transition: color 0.2s ease-in-out;
     padding: 0.1rem;
     margin: 0.2rem;
     &--hiden{
