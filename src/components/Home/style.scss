@@ -175,22 +175,6 @@
 
 
 @media screen and (min-width: 700px) {
-<<<<<<< HEAD
-  .main {
-    display: flex;
-    flex-direction: column;
-    width: 100% !important;
-    align-items: center;
-    justify-content: space-between;
-    font-size: vars.$appFontSize;
-    color: white;
-    // position: absolute;
-    // top: 50%; /* poussé de la moitié de hauteur du référent */
-    // transform: translateY(-50%); /* tiré de la moitié de sa propre hauteur */
-  }
-=======
->>>>>>> afaf3af8c0e09ff4b8f952b21a8f7a522656a54a
-
   /* Slider */
   .slick-slider {
     width: 90%;
