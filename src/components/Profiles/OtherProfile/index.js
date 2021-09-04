@@ -35,25 +35,30 @@ const OtherProfile = ({
       <>
         {isDeleteFriendModalOpen && foundUserToDelete ? (
           <div className="profile">
-            <p>Êtes-vous sûr(e) de vouloir supprimer
-              {user.firstname} {user.lastname} de vos amis?
-            </p>
-            <button
-              type="button"
-              onClick={
+            <div className="profile__delete__container">
+              <p className="profile__delete__message">Êtes-vous sûr(e) de vouloir supprimer
+                {user.firstname} {user.lastname} de vos amis?
+              </p>
+              <div className="profile__delete__answer-container">
+                <button
+                  type="button"
+                  className="profile__delete__answer--yes"
+                  onClick={
               () => deleteFromFriendList(
                 acceptedInvitations,
                 friends, foundUserToDelete, foundFriend,
               )
 }
-            >Oui
-            </button>
-            {/* //TODO => repasser wishToDeleteFriend à false si on clique ailleurs que sur Non */}
-            <button
-              type="button"
-              onClick={wishToDeleteFriend}
-            >Non
-            </button>
+                >Oui
+                </button>
+                <button
+                  type="button"
+                  className="profile__delete__answer--no"
+                  onClick={wishToDeleteFriend}
+                >Non
+                </button>
+              </div>
+            </div>
           </div>
         ) : (
           <div className="profile__cards">

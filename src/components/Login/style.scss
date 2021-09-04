@@ -8,8 +8,11 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      margin: auto;
-
+      position: absolute;
+      top: 50%; /* poussé de la moitié de hauteur du référent */
+      transform: translateY(-50%); /* tiré de la moitié de sa propre hauteur */
+      width: 100%;
+      margin: 0 auto;
       &-title {
         color: vars.$fourthColor;
         font-size: 1.7rem;
@@ -28,7 +31,7 @@
         font-size: 1.1rem;
       }
       &__container {
-        border: 2px solid vars.$thirdColor;
+        border: 1px solid vars.$thirdColor;
         border-radius: vars.$borderRadius;
         width: 80%;
         margin: .5rem 0;
@@ -61,7 +64,7 @@
   }
 }
 
-// DESKTOP
+// TABLET
 @media screen and (min-width: 700px) {
   .login {
     &__form {
@@ -69,10 +72,11 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      height: calc(100vh -150px);
-      width: 25%;
+      position: absolute;
+      top: 50%; /* poussé de la moitié de hauteur du référent */
+      transform: translateY(-50%); /* tiré de la moitié de sa propre hauteur */
+      width: 100%;
       margin: 0 auto;
-
       &-title {
         color: vars.$fourthColor;
         font-size: 1.7rem;
@@ -84,7 +88,6 @@
       &--submit {
         background-color: vars.$thirdColor;
         margin: 0.5rem 0;
-        width: 40%;
         border: none;
         padding: 1rem;
         border-radius: vars.$borderRadius;
@@ -92,10 +95,10 @@
         font-size: 1.1rem;
       }
       &__container {
-        border: 2px solid vars.$thirdColor;
+        border: 1px solid vars.$thirdColor;
         border-radius: vars.$borderRadius;
-        width: 80%;
-        margin: 0.5rem 0;
+        width: 50%;
+        margin: .5rem 0;
         position: relative;
         &--input {
           width: 100%;
@@ -105,6 +108,73 @@
           color: vars.$thirdColor;
           font-size: 1.1rem;
           border: none;
+          &::placeholder{
+            font-size: 0.9rem;
+          }
+        }
+        &--eye {
+          background-color: transparent;
+          border: none;
+          position: absolute;
+          right: 5%;
+          top: 33%;
+        }
+      }
+    }
+  }
+  
+  .login__form .fa-eye-slash, .fa-eye {
+    color: #1DA1F2;
+  }
+}
+
+// DESKTOP
+@media screen and (min-width: 1024px) {
+  .login {
+    &__form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 50%; /* poussé de la moitié de hauteur du référent */
+      transform: translateY(-50%); /* tiré de la moitié de sa propre hauteur */
+      width: 100%;
+      margin: 0 auto;
+      &-title {
+        color: vars.$fourthColor;
+        font-size: 1.7rem;
+        margin-bottom: 2rem;
+      }
+      &__error {
+        color: vars.$fifthColor;
+      }
+      &--submit {
+        background-color: vars.$thirdColor;
+        margin: 0.5rem 0;
+        border: none;
+        padding: 1rem;
+        border-radius: vars.$borderRadius;
+        color: vars.$fourthColor;
+        font-size: 1.1rem;
+      }
+      &__container {
+        border: 1px solid vars.$thirdColor;
+        border-radius: vars.$borderRadius;
+        width: 40%;
+        margin: .5rem 0;
+        position: relative;
+        &--input {
+          width: 100%;
+          border-radius: vars.$borderRadius;
+          padding: 1rem;
+          background-color: vars.$seventhColor;
+          color: vars.$thirdColor;
+          font-size: 1.1rem;
+          border: none;
+          &::placeholder{
+            font-size: 0.9rem;
+          }
         }
         &--eye {
           background-color: transparent;

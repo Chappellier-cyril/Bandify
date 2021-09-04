@@ -1,6 +1,32 @@
 @use 'src/styles/vars';
 
-@media screen and (min-width: 750px) {
+@media screen and (min-width: 700px) {
+  .desktop__nav {
+    width: auto;
+    display: flex;
+  }
+  .desktop__nav-link {
+    margin: .5rem;
+    letter-spacing: 1.5px;
+    font-size: 1rem;
+    color: vars.$fourthColor;
+    background: linear-gradient(to right, rgba(29,162,242,1),rgba(255,254,254,1),rgba(29,162,242,1));
+    background-size: 200% 200%;
+    animation: moove 4s ease-in-out infinite;
+    background-clip: text;
+    -webkit-background-clip:text;
+    transition: color 0.4s ease-in-out;
+    &:hover{
+      color: rgba(0, 0, 0, 0);
+
+    }
+    &--is-active{
+      color: vars.$thirdColor;
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
   .desktop__nav {
     width: auto;
     display: flex;
@@ -25,6 +51,7 @@
     }
   }
 }
+
 @keyframes moove { 
   0%{background-position:left}
   50%{background-position:right}

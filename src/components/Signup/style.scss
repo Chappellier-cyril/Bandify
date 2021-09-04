@@ -7,7 +7,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        margin-bottom: 4rem;
+        margin: 4rem 0;
         &__title{
             margin-top: 1rem;
             font-size: 1.3rem;
@@ -25,7 +25,7 @@
         font-size : 0.6rem;
         padding: 0.2rem 0.3rem;
         &-border{
-            border: 2px solid vars.$fifthColor;
+            border: 1px solid vars.$fifthColor;
         }
     }
     &__container-shown-avatar{
@@ -43,7 +43,7 @@
         object-fit: cover;
     }
     &__group{
-      border: 2px solid vars.$thirdColor;
+      border: 1px solid vars.$thirdColor;
       border-radius: vars.$borderRadius;
       width: 80%;
       margin: 0.5rem 0;
@@ -182,10 +182,10 @@
             -webkit-appearance: none;
             -moz-appearance: none;
             appearance: none;
-            border: 2px solid vars.$thirdColor;
+            border: 1px solid vars.$thirdColor;
 
             &:focus{
-                border: 2px solid vars.$thirdColor;
+                border: 1px solid vars.$thirdColor;
             }
         }
     }
@@ -224,6 +224,9 @@
         }
         &__form{
             width: 90%;
+        }
+        &__container {
+          margin: 2rem 0;
         }
     }
 

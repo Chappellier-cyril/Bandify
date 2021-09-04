@@ -166,19 +166,23 @@ const MyProfile = ({
           )}
           {!isDeleteModalClosed && (
           <div className="myprofile">
-            <p>Êtes-vous sûr(e) de vouloir supprimer votre profil?</p>
-            <button
-              type="button"
-              onClick={onDeleteProfile}
-            >Oui
-            </button>
-            {/* //TODO => repasser onWishToDeleteProfile à
-            false si on clique ailleurs que sur Non */}
-            <button
-              type="button"
-              onClick={onWishToDeleteProfile}
-            >Non
-            </button>
+            <div className="profile__delete__container">
+              <p className="profile__delete__message">Êtes-vous sûr(e) de vouloir supprimer votre profil?</p>
+              <div className="profile__delete__answer-container">
+                <button
+                  className="profile__delete__answer--yes"
+                  type="button"
+                  onClick={onDeleteProfile}
+                >Oui
+                </button>
+                <button
+                  className="profile__delete__answer--no"
+                  type="button"
+                  onClick={onWishToDeleteProfile}
+                >Non
+                </button>
+              </div>
+            </div>
           </div>
           )}
         </div>

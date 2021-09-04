@@ -75,13 +75,100 @@
   }
 }
 
-// DESKTOP
+// TABLET
 @media screen and (min-width: 700px) {
   .chatroom {
     position: fixed;
     top: 10%;
     right: -100%;
-    width: 20%;
+    width: 50%;
+    height: 90%;
+    z-index: 99;
+    transition: right 150ms ease-in-out;
+    background-color: vars.$seventhColor;
+
+    &--open {
+      right: 0;
+      border-top: 1px solid vars.$secondColor;
+      border-left: 1px solid vars.$secondColor;
+    }
+
+    &__nav {
+      display: inline-block;
+      width: 100%;
+     
+
+      &-link {
+        width: 50%;
+        padding: 1em 1.3em;
+        font-size: 1.1em;
+        background-color: vars.$fourthColor;
+        border-top-left-radius: vars.$borderRadius;
+        border-top-right-radius: vars.$borderRadius;
+        border: 1px solid vars.$secondColor;
+        border-bottom: none;
+        color: vars.$firstColor;
+        &--active {
+          background-color: vars.$firstColor;
+          color: vars.$fourthColor;
+        }
+      }
+    }
+
+    &__discussion {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      // background-color: vars.$seventhColor !important;
+    }
+    &__form {
+      position: absolute;
+      bottom: 0;
+    }
+    &__close-menu {
+      width: 100%;
+      background-color: vars.$firstColor;
+      height: 30px;
+      position: relative;
+    }
+  }
+
+  .close-notif-btn {
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+    background: none;
+    appearance: none;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    color: vars.$thirdColor;
+    z-index: 1;
+  }
+
+  .close-menu-btn {
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+    background: none;
+    appearance: none;
+    position: absolute;
+    top: 80px;
+    right: 33px;
+    color: vars.$thirdColor;
+    z-index: 1;
+  }
+}
+
+// DESKTOP
+@media screen and (min-width: 1024px) {
+  .chatroom {
+    position: fixed;
+    top: 10%;
+    right: -100%;
+    width: 30%;
     height: 90%;
     z-index: 99;
     transition: right 150ms ease-in-out;

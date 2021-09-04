@@ -5,7 +5,7 @@
     &__container{
         position: sticky;
         display: block;
-        width: 80%;
+        width: 100%;
         height: auto;
         top: 75px;
         z-index: 100;
@@ -14,6 +14,19 @@
         transition: 0.5s ease-in-out;
         border-radius: vars.$borderRadius;
         border: 1px solid vars.$secondColor;
+    }
+    &__accept-btn {
+      background-color: vars.$thirdColor;
+      border: none;
+      border-radius: vars.$borderRadius;
+      color: vars.$fourthColor;
+      margin-right: .5rem;
+    }
+    &__refuse-btn {
+      background-color: vars.$fifthColor;
+      border: none;
+      border-radius: vars.$borderRadius;
+      color: vars.$fourthColor;
     }
     &__title {
       width: 80%;
@@ -30,7 +43,7 @@
         background-color: vars.$fourthColor;
     }
     &__li{
-        padding: 1rem 0;
+        padding: .5rem;
         display: flex;
         justify-content: space-around;
         border-bottom: 1px solid vars.$secondColor;
@@ -57,7 +70,7 @@
 }
 
 
-// DESKTOP
+// TABLET
 @media screen and (min-width: 700px) {
   .notifications{
     &__container{
@@ -72,6 +85,19 @@
         transition: 0.5s ease-in-out;
         border-radius: vars.$borderRadius;
         border: 1px solid vars.$secondColor;
+    }
+    &__accept-btn {
+      background-color: vars.$thirdColor;
+      border: none;
+      border-radius: vars.$borderRadius;
+      color: vars.$fourthColor;
+      margin-right: .5rem;
+    }
+    &__refuse-btn {
+      background-color: vars.$fifthColor;
+      border: none;
+      border-radius: vars.$borderRadius;
+      color: vars.$fourthColor;
     }
     &__title {
       width: 80%;
@@ -88,7 +114,100 @@
         background-color: vars.$fourthColor;
     }
     &__li{
-        padding: 1rem 0;
+        padding: 1rem;
+        display: flex;
+        justify-content: space-around;
+        border-bottom: 1px solid vars.$secondColor;
+        width: 100%;
+        &--message{
+          cursor: pointer;
+          display: flex;
+          justify-content: space-around;
+        }
+        &--delete{
+          border: none;
+          background-color: vars.$thirdColor;
+          color: vars.$fourthColor;
+          border-radius: 50%;
+          width: 20px;
+          height: 20px;
+        }
+    }
+    &__isHidden{
+        position:relative;
+        top: -325px;
+    }
+  }
+}
+
+.close-menu-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  display: inline-block;
+  border: none;
+  cursor: pointer;
+  background: none;
+  appearance: none;
+  color: vars.$thirdColor;
+  z-index: 1;
+}
+
+.close-one-notif-btn {
+  display: inline-block;
+  border: none;
+  cursor: pointer;
+  background: none;
+  appearance: none;
+  color: vars.$thirdColor;
+  z-index: 1;
+}
+
+// DESKTOP
+@media screen and (min-width: 1024px) {
+  .notifications{
+    &__container{
+        position: sticky;
+        display: block;
+        width: 36.5%;
+        height: auto;
+        top: 75px;
+        z-index: 100;
+        overflow-y: scroll;
+        background-color: vars.$fourthColor;
+        transition: 0.5s ease-in-out;
+        border-radius: vars.$borderRadius;
+        border: 1px solid vars.$secondColor;
+    }
+    &__accept-btn {
+      background-color: vars.$thirdColor;
+      border: none;
+      border-radius: vars.$borderRadius;
+      color: vars.$fourthColor;
+      margin-right: .5rem;
+    }
+    &__refuse-btn {
+      background-color: vars.$fifthColor;
+      border: none;
+      border-radius: vars.$borderRadius;
+      color: vars.$fourthColor;
+    }
+    &__title {
+      width: 80%;
+      color: vars.$seventhColor;
+    }
+    &__close-menu {
+      background-color: vars.$firstColor;
+      height: 30px;
+      position: relative;
+    }
+    &__ul{
+        display: flex;
+        flex-direction: column-reverse;
+        background-color: vars.$fourthColor;
+    }
+    &__li{
+        padding: 1rem;
         display: flex;
         justify-content: space-around;
         border-bottom: 1px solid vars.$secondColor;
