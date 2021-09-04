@@ -82,7 +82,7 @@
     top: 75px;
     right: -100%;
     width: 50%;
-    height: 90%;
+    height: calc(100vh-75px);;
     z-index: 99;
     transition: right 150ms ease-in-out;
     background-color: vars.$seventhColor;
@@ -169,7 +169,7 @@
     top: 75px;
     right: -100%;
     width: 30%;
-    height: 90%;
+    height: calc(100vh-75px);
     z-index: 99;
     transition: right 150ms ease-in-out;
     background-color: vars.$seventhColor;
