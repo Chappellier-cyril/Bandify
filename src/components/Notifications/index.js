@@ -37,8 +37,8 @@ const Notifications = ({
                 key={n.invitation.id + n.invitation.fromMember.firstname}
               >
                 <p className="notifications__title">Vous avez reçu une invitation de <Link to={`/member/${n.invitation.from}`}>{`${n.invitation.fromMember.firstname} ${n.invitation.fromMember.lastname}`}</Link></p>
-                <button type="button" onClick={() => onAcceptInvitation(n.invitation.id, n.invitation.fromMember)}>Accepter</button>
-                <button type="button" onClick={() => onDenyInvitation(n.invitation.id, n.invitation.fromMember, n.invitation)}>Refuser</button>
+                <button className="notifications__accept-btn" type="button" onClick={() => onAcceptInvitation(n.invitation.id, n.invitation.fromMember)}>Accepter</button>
+                <button className="notifications__refuse-btn" type="button" onClick={() => onDenyInvitation(n.invitation.id, n.invitation.fromMember, n.invitation)}>Refuser</button>
               </li>
             );
           }

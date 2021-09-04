@@ -1,18 +1,21 @@
 @use 'src/styles/vars';
 
 // DESKTOP
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 1024px) {
 .notFound {
   &__container {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
     color: vars.$seventhColor;
-    height: 100%;
+    position: absolute;
+    top: 50%; /* poussé de la moitié de hauteur du référent */
+    transform: translateY(-50%); /* tiré de la moitié de sa propre hauteur */
+    width: 100%;
+    margin: 0 auto;
     &--logo {
-      width: 25%;
-      height: 70%;
+      width: 45%;
     }
   }
   &__btn {
@@ -27,16 +30,48 @@
 }
 }
 
+// TABLET
+@media screen and (max-width: 1023px) {
+  .notFound {
+    &__container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: vars.$seventhColor;
+      position: absolute;
+      top: 50%; /* poussé de la moitié de hauteur du référent */
+      transform: translateY(-50%); /* tiré de la moitié de sa propre hauteur */
+      width: 100%;
+      margin: 0 auto;
+      &--logo {
+        width: 80%;
+      }
+    }
+    &__btn {
+      background-color: vars.$thirdColor;
+      color: vars.$fourthColor;
+      text-align: center;
+      width: 60%;
+      padding: 10px;
+      border-radius: vars.$borderRadius;
+      margin: 40px 0px 20px 0px;
+    }
+  }
+}
+
 // MOBILE
 @media screen and (max-width: 700px) {
   .notFound {
     &__container {
       display: flex;
       flex-direction: column;
-      justify-content: flex-end;
+      justify-content: center;
       align-items: center;
       color: vars.$seventhColor;
-      height: 100%;
+      position: absolute;
+      top: 50%; /* poussé de la moitié de hauteur du référent */
+      transform: translateY(-50%); /* tiré de la moitié de sa propre hauteur */
       &--logo {
         width: 100%;
       }
