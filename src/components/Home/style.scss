@@ -2,15 +2,6 @@
 
 // MOBILE LAYOUT
 @media screen and (max-width: 700px) {
-  .main {
-    display: flex;
-    flex-direction: column;
-    width: 100% !important;
-    align-items: center;
-    justify-content: space-around;
-    font-size: vars.$appFontSize;
-    color: vars.$fourthColor;
-  }
 
   /* Slider */
   .slick-slider {
@@ -184,18 +175,6 @@
 
 
 @media screen and (min-width: 700px) {
-  .main {
-    display: flex;
-    flex-direction: column;
-    width: 100% !important;
-    align-items: center;
-    justify-content: space-between;
-    font-size: vars.$appFontSize;
-    color: white;
-    position: absolute;
-    top: 50%; /* poussé de la moitié de hauteur du référent */
-    transform: translateY(-50%); /* tiré de la moitié de sa propre hauteur */
-  }
 
   /* Slider */
   .slick-slider {
@@ -389,16 +368,6 @@
 // ------------------------------------------------------------
 // DESKTOP LAYOUT
 @media screen and (min-width: 1400px) {
-  .main {
-    display: flex;
-    flex-direction: column;
-    width: 100% !important;
-    align-items: center;
-    justify-content: space-around;
-    padding: 2rem 0;
-    font-size: vars.$appFontSize;
-    color: white;
-  }
 
   /* Slider */
   .slick-slider {
@@ -443,7 +412,6 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-bottom: 5rem;
     }
     &__img{
       width: 100%;
@@ -493,7 +461,7 @@
     flex-wrap: wrap;
     justify-content: space-around;
     width: 80%;
-    height: auto;
+    margin-bottom: 4rem;
   
     &--users {
       width: 250px;
@@ -571,16 +539,30 @@
 }
 
 // No connected user
-@media screen and (min-width: 1400px) {
+@media screen and (min-width: 1024px) {
   .home{
+    &__signup {
+      &--btn {
+        width: 15%;
+        margin: 0 auto;
+        text-align: center;
+        font-size: 1.2rem;
+        padding: .5rem;
+      }
+    }
     &__desc {
+      &--teasing {
+        color: vars.$fourthColor;
+        font-size: 1.2rem;
+        text-align: center;
+      }
       &__container{
         position: relative;
         width: 85%;
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-bottom: 5rem;
+        margin: 4rem auto;
       }
       &__img{
         width: 100%;
@@ -624,3 +606,70 @@
   }
 }
 
+// No connected user
+@media screen and (min-width: 768px) {
+  .home{
+    &__signup {
+      &--btn {
+        width: 25%;
+        margin: 0 auto;
+        text-align: center;
+        font-size: 1.2rem;
+        padding: .5rem;
+      }
+    }
+    &__desc {
+      &--teasing {
+        color: vars.$fourthColor;
+        font-size: 1.2rem;
+        text-align: center;
+      }
+      &__container{
+        position: relative;
+        width: 85%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 4rem auto;
+      }
+      &__img{
+        width: 100%;
+        max-height: 500px;
+        display: block;
+        object-fit: cover;
+        margin: auto;
+      }
+      &__text-container{
+        width: 60%;
+        margin: auto;
+        transform: translateY(-50%);
+        position: absolute;
+        top: 50%;
+        background-color: #14171abf;
+        padding-bottom: 1rem;
+        border-radius: 3px;
+        backdrop-filter: blur( 2.0px );
+        -webkit-backdrop-filter: blur( 2.0px );
+        -webkit-box-shadow: 7px 9px 32px -13px #1DA1F2; 
+        box-shadow: 7px 9px 32px -13px #1DA1F2;
+      }
+      &__text{
+        margin: 0 auto;
+        padding: 0.3rem 2rem;
+        width: 100%;
+        font-size: 1rem;
+        color: vars.$fourthColor;
+        text-align: center;
+      }
+      &__title{
+        margin: 0 auto;
+        padding: 2rem;
+        width: 100%;
+        font-size: 1.4rem;
+        font-weight: bold;
+        color: vars.$fourthColor;
+        text-align: center;
+      }
+    }
+  }
+}
