@@ -60,7 +60,7 @@ const Home = ({
   };
 
   return (
-    <div className="main">
+    <>
       {/* SI on est connecté, on affiche la page d'accueil avec la recherche
       et les cartes des membres sont cliquablent */}
       {isLogged ? (
@@ -222,7 +222,7 @@ const Home = ({
           </div>
         </>
       )}
-    </div>
+    </>
   );
 };
 
