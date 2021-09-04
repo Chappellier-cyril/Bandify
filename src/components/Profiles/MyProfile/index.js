@@ -60,7 +60,6 @@ const MyProfile = ({
   friends,
   isProfileMenuOpen,
   toggleProfileMenuOpen,
-
   isLoading,
 }) => {
   const {
@@ -121,7 +120,7 @@ const MyProfile = ({
                 email={email}
                 isEditing={isEditing}
               />
-              <Sounds />
+              {user.sounds[0] && <Sounds />}
               <div className="user__hobbies">
                 <Description
                   editDescription={editDescription}
@@ -216,6 +215,7 @@ MyProfile.propTypes = {
     styles: PropTypes.arrayOf(shape({
       music_name: PropTypes.string,
     })),
+    sounds: PropTypes.array.isRequired,
   }),
   friends: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   onWishToDeleteProfile: PropTypes.func.isRequired,

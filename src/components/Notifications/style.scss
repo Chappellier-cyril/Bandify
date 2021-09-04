@@ -61,6 +61,11 @@
           width: 20px;
           height: 20px;
         }
+        &--friend{
+          cursor: pointer;
+          display: flex;
+          justify-content: space-around;
+        }
     }
     &__isHidden{
         position:relative;

@@ -11,6 +11,7 @@ const Notifications = ({
   deleteMessagesNotification,
   onAcceptInvitation,
   onDenyInvitation,
+  deleteFriendNotification,
 }) => (
   <div className={`notifications__container ${!isNotificationsOpen && 'notifications__isHidden'}`}>
     <div className="notifications__close-menu">
@@ -48,22 +49,24 @@ const Notifications = ({
                 key={n.messages[0].id + n.sender.id}
                 title="Lire le message"
               >
-                <p onClick={() => getCurrentUser(n.sender.id, n.sender.firstname)} className="notifications__title">Vous avez reçu {n.messages.length} {n.messages.length > 1 ? 'messages' : 'message'} de {`${n.sender.firstname} ${n.sender.lastname}`}</p>
-                <button
-                  type="button"
-                  onClick={() => deleteMessagesNotification(i, n.messages)}
-                  className="close-one-notif-btn"
-                ><i className="fas fa-times" />
-                </button>
+                <p
+                  onClick={() => {
+                    getCurrentUser(n.sender.id, n.sender.firstname);
+                    deleteMessagesNotification(i, n.messages);
+                  }}
+                  className="notifications__title"
+                >Vous avez reçu {n.messages.length} {n.messages.length > 1 ? 'messages' : 'message'} de {`${n.sender.firstname} ${n.sender.lastname}`}
+                </p>
               </li>
             );
           }
           if (n.notification === 'new-friend') {
             return (
               <li
+                onClick={() => deleteFriendNotification(i, n.invitation)}
                 className="notifications__li notifications__li--friend"
                 key={n.notification + n.invitation.id + n.invitation.toMember.firstname}
-              ><Link to={`/member/${n.invitation.toMember.id}`}>{`${n.invitation.toMember.firstname} ${n.invitation.toMember.lastname}`}</Link>  a accepté votre demande d'ajout.
+              ><Link to={`/member/${n.invitation.toMember.id}`}>{`${n.invitation.toMember.firstname} ${n.invitation.toMember.lastname} `}</Link>  a accepté votre demande d'ajout.
               </li>
             );
           }
@@ -82,6 +85,7 @@ Notifications.propTypes = {
   deleteMessagesNotification: PropTypes.func.isRequired,
   onAcceptInvitation: PropTypes.func.isRequired,
   onDenyInvitation: PropTypes.func.isRequired,
+  deleteFriendNotification: PropTypes.func.isRequired,
 };
 
 export default Notifications;

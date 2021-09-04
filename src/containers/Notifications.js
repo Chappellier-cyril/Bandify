@@ -12,6 +12,9 @@ const mapDispatchToProps = (dispatch) => ({
   deleteMessagesNotification: (index, messages) => {
     dispatch({ type: 'DELETE_MESSAGES_NOTIFICATION', index, messages });
   },
+  deleteFriendNotification: (index, invitation) => {
+    dispatch({ type: 'DELETE_FRIEND_NOTIFICATION', index, invitation });
+  },
   toggleIsNotificationsOpen: () => {
     dispatch({ type: 'SET_IS_OPEN_NOTIF' });
   },

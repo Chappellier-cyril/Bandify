@@ -110,6 +110,13 @@ const reducer = (state = initialState, action = {}) => {
         notifications: filteredNotif,
       };
     }
+    case 'DELETE_FRIEND_NOTIFICATION': {
+      const filteredNotif = state.notifications.filter((n, i) => i !== action.index);
+      return {
+        state,
+        notifications: filteredNotif,
+      };
+    }
     case 'INVITATION_ACCEPTED': {
       return {
         ...state,

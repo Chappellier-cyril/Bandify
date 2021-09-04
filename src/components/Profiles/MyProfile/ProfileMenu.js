@@ -22,8 +22,7 @@ const ProfileMenu = ({
     return null;
   }, [sound]);
   return (
-    <div>
-      <h2>Menu</h2>
+    <div className="profile-menu__container">
       <Password
         editPassword={editPassword}
         handleSubmitPassword={handleSubmitPassword}
@@ -34,49 +33,43 @@ const ProfileMenu = ({
         onChangeProfileInput={onChangeProfileInput}
         myId={userId}
       />
-      <div className="myprofile__delete-btn--container">
-        <div className="myprofile__delete-btn--container">
-          <button
-            type="button"
-            onClick={toggleIsEditing}
-            className="myprofile__user--delete-btn"
-          >Editer mon profil
-          </button>
-        </div>
+      <div className="profile-menu__button-container">
+        <button
+          type="button"
+          onClick={toggleIsEditing}
+          className="profile-menu__button profile-menu__button--edit-profile"
+        >Editer mon profil
+        </button>
+      </div>
+      <div className="profile-menu__button-container">
         <button
           type="button"
           onClick={onWishToDeleteProfile}
-          className="myprofile__user--delete-btn"
+          className="profile-menu__button profile-menu__button--delete-profile"
         >Supprimer mon profil
         </button>
       </div>
-      <form
-        className="myprofile__user--picture-form"
-        type="submit"
-        onSubmit={(e) => handleSubmitSound(e, sound)}
-      >
-        <div className="myprofile__user--sound-desc">
+
+      <div>
+        <form
+          type="submit"
+          onSubmit={(e) => handleSubmitSound(e, sound)}
+        >
           <p>Ajouter un son</p>
-          <label htmlFor="new-sound" className="myprofile__user--sound-file">
+          <label htmlFor="new-sound" className="profile-menu__label profile-menu__label--sound-file">
             <input
               name="new-sound"
               id="new-sound"
               type="file"
               placeholder="Ajouter un son"
               onChange={(e) => setSound(e.target.files[0])}
+              className="profile-menu__button profile-menu__button--input-sound"
             />
+            <button type="submit" disabled={errorSound} className="profile-menu__button profile-menu__button--send-sound">Ajouter</button>
+            {errorSound && <p className="signup-submit__error">{errorSound}</p>}
           </label>
-          <button type="submit" disabled={errorSound}>Ajouter</button>
-        </div>
-        <button
-          type="button"
-          className="myprofile__user--close-edit-btn"
-          onClick={() => editFormToggle('editSound')}
-        >
-          <i className="fas fa-times-circle" />
-        </button>
-        {errorSound && <p className="signup-submit__error">{errorSound}</p>}
-      </form>
+        </form>
+      </div>
       <div />
     </div>
   );

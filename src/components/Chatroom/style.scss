@@ -79,7 +79,7 @@
 @media screen and (min-width: 700px) {
   .chatroom {
     position: fixed;
-    top: 10%;
+    top: 75px;
     right: -100%;
     width: 50%;
     height: 90%;
@@ -166,7 +166,7 @@
 @media screen and (min-width: 1024px) {
   .chatroom {
     position: fixed;
-    top: 10%;
+    top: 75px;
     right: -100%;
     width: 30%;
     height: 90%;
@@ -213,6 +213,10 @@
     &__form {
       position: absolute;
       bottom: 0;
+      &-input {
+        background-color: vars.$seventhColor;
+        color: vars.$fourthColor;
+      }
     }
     &__close-menu {
       width: 100%;

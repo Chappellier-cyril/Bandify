@@ -112,7 +112,7 @@ const OtherProfile = ({
                     play.id && (
                     <li className="profile__instrument__tag" key={play.id}>
                       <span className="profile__instrument__tag--name">{play.instrument.instrument_name}</span>
-                      <span className="profile__instrument__tag--level">{play.level && play.level.level_name}</span>
+                      {play.level && <span className="myprofile__instrument__tag--level">{play.level && play.level.level_name}</span>}
                     </li>
                     )
                   ))}

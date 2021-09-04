@@ -41,6 +41,7 @@ const notificationMiddleware = (store) => (next) => (action) => {
     ));
     store.dispatch({ type: 'UPDATE_MESSAGES_NOTIFICATIONS', index: action.index });
   }
+
   next(action);
 };
 
