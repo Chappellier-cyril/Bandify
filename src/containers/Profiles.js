@@ -32,7 +32,6 @@ const mapStateToProps = (state) => ({
   friends: state.users.friends,
   isDeleteFriendModalOpen: state.settings.isDeleteFriendModalOpen,
   isEditing: state.users.isEditing,
-  isProfileMenuOpen: state.settings.isProfileMenuOpen,
   isLoading: state.settings.isLoading,
 });
 
@@ -51,9 +50,6 @@ const mapDispatchToProps = (dispatch) => ({
       type: 'EDIT_FORM_TOGGLE',
       key,
     });
-  },
-  toggleProfileMenuOpen: () => {
-    dispatch({ type: 'TOGGLE_PROFILE_MENU' });
   },
   togglePasswordVisibility: () => {
     dispatch({ type: 'ON_PASSWORD_TOGGLE' });

@@ -5,7 +5,7 @@ import axios from 'axios';
 
 const Password = ({
   editPassword, handleSubmitPassword, passwordShown, password, myId,
-  togglePasswordVisibility, editFormToggle, onChangeProfileInput, isEditing,
+  togglePasswordVisibility, editFormToggle, onChangeProfileInput,
 }) => {
   const [passwordCheck, setPasswordCheck] = useState('');
   const [errorPassword, setErrorPassword] = useState('');
@@ -168,7 +168,7 @@ const Password = ({
             <button
               type="button"
               onClick={() => editFormToggle('editPassword')}
-              className="edit__password--btn"
+              className="profile-menu__button profile-menu__button--password"
             >
               Modifier mon mot de passe
             </button>
@@ -179,7 +179,6 @@ const Password = ({
   );
 };
 Password.propTypes = {
-  isEditing: PropTypes.bool.isRequired,
   myId: PropTypes.number.isRequired,
   editPassword: PropTypes.bool.isRequired,
   handleSubmitPassword: PropTypes.func.isRequired,

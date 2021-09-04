@@ -6,10 +6,14 @@ const mapStateToProps = (state) => ({
   passwordShown: state.login.passwordShown,
   password: state.users.user.user_password,
   userId: state.login.id,
-  isProfileMenuOpen: state.users.isProfileMenuOpen,
+  isProfileMenuOpen: state.settings.isProfileMenuOpen,
+  isEditing: state.users.isEditing,
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  toggleProfileMenuOpen: () => {
+    dispatch({ type: 'TOGGLE_PROFILE_MENU' });
+  },
   onWishToDeleteProfile: () => {
     dispatch({ type: 'DELETE_PROFILE_WISH' });
   },

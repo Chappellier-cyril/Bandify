@@ -9,7 +9,7 @@
       justify-content: center;
       align-items: center;
       margin: auto;
-
+      height: calc(100vh -150px);
       &-title {
         color: vars.$fourthColor;
         font-size: 1.7rem;
@@ -71,6 +71,7 @@
       align-items: center;
       height: calc(100vh -150px);
       width: 25%;
+      min-width: 400px;
       margin: 0 auto;
 
       &-title {

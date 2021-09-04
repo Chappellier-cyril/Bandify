@@ -58,8 +58,6 @@ const MyProfile = ({
   removeInstrument,
   deleteInstrumentAssociation,
   friends,
-  isProfileMenuOpen,
-  toggleProfileMenuOpen,
   isLoading,
 }) => {
   const {
@@ -73,8 +71,7 @@ const MyProfile = ({
         <div className="myprofile__cards">
           {isDeleteModalClosed && (
           <div className="myprofile__cards--users">
-            <button type="button" onClick={toggleProfileMenuOpen}>...</button>
-            {isProfileMenuOpen && <ProfileMenu />}
+            <ProfileMenu />
             <div className="myprofile__user--container">
               <Avatar
                 editPhoto={editPhoto}
@@ -256,8 +253,6 @@ MyProfile.propTypes = {
   addNewInstrument: PropTypes.func.isRequired,
   removeInstrument: PropTypes.func.isRequired,
   deleteInstrumentAssociation: PropTypes.func.isRequired,
-  isProfileMenuOpen: PropTypes.bool.isRequired,
-  toggleProfileMenuOpen: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,
 };
 
