@@ -110,11 +110,6 @@ INSERT INTO "member" ("firstname", "lastname", "email", "birthdate" , "user_pass
 ('Amaury', 'Delaroque', 'amaury-d@gmail.com','1986-02-10' , '$2b$10$79fDqa0fB.yd2H0eB8c5b./Mr.IuefSR9nvKFP0PP0tFkGJl4Rs6i', 'Dj et guitariste, je cherche des samples pour composition de musique hip-hop', 'amaury.png', '31555');
 
 
-INSERT INTO "invitation" ("status", "from", "to") VALUES
-(2, 3, 2),
-(1, 1, 2),
-(0, 4, 1);
-
 INSERT INTO "user_has_instrument_level" ("instrument_id", "level_id", "member_id") VALUES
 (1, 3, 1),
 (3, 1, 2),
