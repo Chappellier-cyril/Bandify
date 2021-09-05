@@ -33,6 +33,7 @@ const mapStateToProps = (state) => ({
   isDeleteFriendModalOpen: state.settings.isDeleteFriendModalOpen,
   isEditing: state.users.isEditing,
   isLoading: state.settings.isLoading,
+  isProfileMenuOpen: state.settings.isProfileMenuOpen,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -137,6 +138,9 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch({
       type: 'DELETE_FROM_FRIENDLIST', accepted, friends, acceptedUser, foundUser,
     });
+  },
+  toggleProfileMenuOpen: () => {
+    dispatch({ type: 'TOGGLE_PROFILE_MENU' });
   },
 });
 
