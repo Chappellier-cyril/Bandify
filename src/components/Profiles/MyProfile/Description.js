@@ -35,7 +35,7 @@ const Description = ({
       </form>
     ) : (
       <div className="myprofile__user--description">
-        Description
+        Description :
         {
           isEditing && (
             <span>

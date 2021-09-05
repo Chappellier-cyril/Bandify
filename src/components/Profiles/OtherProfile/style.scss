@@ -1,7 +1,7 @@
 @use 'src/styles/vars';
 
 // MOBILE LAYOUT
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
 
   .profile {
     &__desc {
@@ -70,6 +70,8 @@
         color: vars.$fourthColor;
       }
       &--short {
+        width: 40%;
+        justify-self: left;
         color: vars.$fourthColor;
         margin: auto .5rem;
         font-weight: bold;
@@ -96,7 +98,7 @@
       }
       &--invitation-status {
         background-color: vars.$thirdColor;
-        padding: .5rem;
+        padding: .4rem;
         border-radius: vars.$borderRadius;
         color: vars.$fourthColor;
         width: 35%;
@@ -197,8 +199,8 @@
     }
     &__user {
       &--picture {
-        width: 150px;
-        height: 150px;
+        width: 100px;
+        height: 100px;
         border-radius: 50%;
       }
       &--delete-btn {
@@ -216,8 +218,10 @@
         color: vars.$fourthColor;
       }
       &--short {
+        width: 70%;
+        justify-self: left;
         color: vars.$fourthColor;
-        margin: auto 0 auto -250px;
+        margin: auto 0;
         font-weight: bold;
       }
       &--description {
@@ -246,6 +250,7 @@
         border-radius: vars.$borderRadius;
         color: vars.$fourthColor;
         width: 35%;
+        max-width: 185px;
         height: 10%;
       }
     }
@@ -332,6 +337,7 @@
       margin: 0 auto;
       &--users {
         width: 90%;
+        max-width: 1000px;
         height: auto;
         margin-bottom: 0.5rem;
         margin-top: 1rem;
@@ -350,9 +356,9 @@
       &--delete-btn {
         background-color: vars.$fifthColor;
         border: none;
+        width: 15%;
         border-radius: vars.$borderRadius;
         color: vars.$fourthColor;
-        height: 50px;
       }
       &--container {
         display: flex;
@@ -362,9 +368,13 @@
         color: vars.$fourthColor;
       }
       &--short {
+        width: 60%;
+        line-height: 30px;
+        justify-self: left;
         color: vars.$fourthColor;
-        margin: auto 0 auto -500px;
+        margin: auto 0;
         font-weight: bold;
+        font-size: 1.2rem;
       }
       &--description {
         color: vars.$fourthColor;
@@ -388,7 +398,7 @@
       }
       &--invitation-status {
         background-color: vars.$thirdColor;
-        padding: .5rem;
+        padding: 0.8rem 0.5rem 0.8rem 0.5rem;
         border-radius: vars.$borderRadius;
         color: vars.$fourthColor;
         width: 35%;

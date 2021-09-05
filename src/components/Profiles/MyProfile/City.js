@@ -25,7 +25,7 @@ const City = ({
         </div>
       </form>
     ) : (
-      <p className="myprofile__user--name">Ville:
+      <p className="myprofile__user--name">
         {user.city && (
         <span>
           {firstLetterToUpper(restToLower(user.city.city_name))} ({user.city.department_code})

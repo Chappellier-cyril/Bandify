@@ -153,7 +153,7 @@ const MyProfile = ({
               {friends
               && (
               <div className="user__friends">
-                <p className="myprofile__friend--description">Mes amis:</p>
+                <p className="myprofile__friend--description">Mes amis</p>
                 <Friends friends={friends} />
               </div>
               )}
@@ -163,7 +163,7 @@ const MyProfile = ({
           {!isDeleteModalClosed && (
           <div className="myprofile">
             <div className="profile__delete__container">
-              <p className="profile__delete__message">Êtes-vous sûr(e) de vouloir supprimer votre profil?</p>
+              <p className="profile__delete__message">Êtes-vous sûr(e) de vouloir supprimer votre profil ?</p>
               <div className="profile__delete__answer-container">
                 <button
                   className="profile__delete__answer--yes"

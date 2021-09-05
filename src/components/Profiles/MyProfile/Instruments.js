@@ -85,7 +85,7 @@ const Instruments = ({
       ) : (
         <>
           <div className="myprofile__instrument">
-            <p className="myprofile__instrument--description">Mes instruments:
+            <p className="myprofile__instrument--description">Mes instruments :
               {
                 isEditing && (
                   <span>
