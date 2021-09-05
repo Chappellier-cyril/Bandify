@@ -398,10 +398,15 @@
   .home {
   &__signup {
     &--btn {
+      width: 25%;
+      height: 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       background-color: vars.$thirdColor;
       color: vars.$fourthColor;
       border-radius: vars.$borderRadius;
-      padding: 1rem 1.5rem;
     }
   }
   &__desc {
@@ -463,12 +468,15 @@
     margin-bottom: 4rem;
   
     &--users {
+      text-align: center;
       width: 250px;
-      height: 350px;
+      height: 300px;
+      font-weight: bold;
       margin: 3rem 0;
       padding: .5rem 1rem;
       background-color: vars.$seventhColor;
       border-radius: vars.$borderRadius;
+      border: 1px solid #657786;
     }
   }
   &__user {
@@ -481,9 +489,9 @@
       display: flex;
     }
     &--name {
-      font-size: 1rem;
+      font-size: 1.2rem;
       color: vars.$fourthColor;
-      margin-top: 1rem;
+      margin-top: 2rem;
       margin-bottom: 0.5rem;
     }
     &--short {

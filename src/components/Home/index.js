@@ -194,8 +194,8 @@ const Home = ({
                 autour de chez toi.
               </p>
               <p className="home__desc__text">
-                Il te suffit de t'inscrire, de renseigner /tes instruments de prédilection,
-                les musiciens que tu recherches: bassiste, batteur...
+                Il te suffit de t'inscrire, de renseigner ta ville, ton / tes instruments de prédilection,
+                les musiciens que tu recherches :
               </p>
               <p className="home__desc__text">
                 Bandify se charge de te proposer des profils adaptés à des besoins !

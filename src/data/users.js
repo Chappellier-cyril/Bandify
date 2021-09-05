@@ -2,8 +2,8 @@ export default [
   {
     id: 1,
     mail: 'toto@oclock.io',
-    firstname: 'Toto',
-    lastname: 'Le boss',
+    firstname: 'Alain',
+    lastname: 'Verse',
     age: 36,
     password: '12345',
     description: 'J\'ai une super description et j\'en suis fier',
@@ -12,8 +12,8 @@ export default [
   {
     id: 2,
     mail: 'tata@oclock.io',
-    firstname: 'Tata',
-    lastname: 'La meilleure',
+    firstname: 'Cécile',
+    lastname: 'Hon',
     age: 25,
     password: '12345',
     description: 'Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum',
@@ -22,8 +22,8 @@ export default [
   {
     id: 3,
     mail: 'Amaury@oclock.io',
-    firstname: 'Amaury',
-    lastname: 'Delaroque',
+    firstname: 'Anna',
+    lastname: 'Tomie',
     age: 34,
     password: '12345',
     description: 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old',
@@ -32,8 +32,8 @@ export default [
   {
     id: 4,
     mail: 'Jeremy@oclock.io',
-    firstname: 'Jeremy',
-    lastname: 'Marques',
+    firstname: 'Guy',
+    lastname: 'Tar',
     age: 29,
     password: '12345',
     description: 'Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old',
