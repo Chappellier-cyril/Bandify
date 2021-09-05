@@ -17,6 +17,22 @@ const associationController = {
       res.status(500).json(error);
     }
   },
+  createAssociation: async (req, res, next) => {
+    try{
+      const memberId = req.params.id;
+      const {instrument_id, level_id} = req.body;
+      const newAssociation = await Play.create({
+        member_id: memberId,
+        instrument_id: instrument_id,
+        level_id: level_id,
+      });
+      const newPlay = await Play.findByPk(newAssociation.id, {include: ['instrument', 'level']});
+      res.json(newPlay);
+    }catch(error){
+      console.trace(error);
+      res.status(500).json(error);
+    }
+  },
   updateMemberInstruments: async (req, res, next) => {
         try {
           //Je récupère les paramètres de la requête PATCH, ici l'id du membre 
@@ -101,9 +117,8 @@ const associationController = {
     try {
       //Je récupère les paramètres de la requête DELETE, ici l'id du membre 
       const memberId = Number(req.params.id);
-      //Je récupère les paramètres du body, un instrument_id et/ou un level 
+      //Je récupère les paramètres du body, un instrument_id
       const instrumentId = Number(req.body.instrument_id);
-      const levelId = Number(req.body.level_id) || null;
       //Je vérifie que le membre et l'instrument sont bien des numbers et qu'ils existe bien en BDD, sinon je sort
       if(memberId === NaN || instrumentId === NaN) return next();
       const member = await Member.findByPk(memberId);
@@ -115,17 +130,11 @@ const associationController = {
         member_id : memberId,
         instrument_id: instrumentId,
       }});
-      if(alreadyExist && !levelId) {
+      if(alreadyExist) {
         alreadyExist.destroy();
         return res.json({message : 'Delete Association Member Instruments Successfull'})
-      }
-      if(alreadyExist && (levelId !== alreadyExist.level_id )) {
-        return next();
-      }
-      if(alreadyExist && (levelId ===  alreadyExist.level_id)) {
-        alreadyExist.destroy();
-        return res.json({message : 'Delete Association Member Instruments Successfull'})
-      }
+      };
+      // Si il n'y a rien a supprimer on next jsuqu'a la 404
       next();
     } catch(error) {
       console.trace(error);
@@ -188,9 +197,9 @@ const associationController = {
       if (!member || !musicStyle) {
           return next();
       }
-      const filteredStyles = member.styles.found((style) => style.id === musicStyleId);
+      const filteredStyles = member.styles.find((style) => style.id === musicStyleId);
       if(filteredStyles){
-        await member.removeStyles(musicStyleId);
+        await member.removeStyle(musicStyleId);
         const memberUpdated = await Member.findByPk(memberId, {
           include: 'styles'
         });
@@ -201,6 +210,19 @@ const associationController = {
       console.trace(error);
       res.status(500).json(error);
     }
+  },
+  addMemberMusicStyle: async (req, res, next) => {
+    try{
+      const memberId = req.params.id;
+      const musicstyleId = req.body.musicstyle_id;
+      const member = await Member.findByPk(memberId);
+      await member.addStyle(Number(musicstyleId));
+      return res.json({message: 'Successfull add style'});
+    } catch(error) {
+      console.trace(error);
+      res.status(500).json(error);
+    }
+
   },
 };
 

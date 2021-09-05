@@ -66,7 +66,6 @@ axios.request(optionsRegions).then(function (regions) {
     // CREATE ALL CITIES
     axios.request(optionsCities).then(function (cities) {
       const filteredCities = cities.data.filter((c) => c.population > 4000);
-      console.log(filteredCities.length);
       filteredCities.map(async(city) => createCity(city.nom.toUpperCase(), city.code, city.codeDepartement))
     }).catch(function (error) {
       console.error(error);

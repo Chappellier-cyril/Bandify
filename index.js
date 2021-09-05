@@ -100,7 +100,6 @@ io.on('connect', (socket) => {
                 ...payload.invitation,
                 status: 1
             }
-            console.log('invitation', invitation)
             if(foundReiceverOnline) {
                 io.to(foundReiceverOnline.socketId).emit('notifications', {notification: 'new-friend', futureFriend: payload.futureFriend, invitation} )
             }
@@ -112,7 +111,6 @@ io.on('connect', (socket) => {
                 ...payload.invitation,
                 status: 2
             }
-            console.log(invitation);
             if (foundReceiverOnline) {
                 io.to(foundReceiverOnline.socketId).emit('notifications', {notification: 'no-friend', refusedMember: payload.refusedMember, invitation});
             }
@@ -120,15 +118,12 @@ io.on('connect', (socket) => {
         socket.on('removeFromFriends', (payload) => {
             const foundReceiverOnline = findUserOnline(payload.friendOn.id);
             if(foundReceiverOnline) {
-                console.log(payload.friendEmit);
                 io.to(foundReceiverOnline.socketId).emit('remove-friend', {friend: payload.friendEmit })
             }
         })
     })
     socket.on('disconnect', () => {
-        console.log('A member left', socket.id);
-        const newOnlineMembers =  removeMemberOnline(socket.id);
-        console.log(newOnlineMembers);
+        const newOnlineMembers =  removeMemberOnline(socket.id);;
         io.emit('online-members', {online: newOnlineMembers});
     });
 });

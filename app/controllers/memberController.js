@@ -146,7 +146,6 @@ const memberController = {
             if(file) {
                 result = await uploadFile(file);
                 req.body.profil_image = result.key;
-                console.log('req.body.profil_image', req.body.profil_image)
             } 
             // Et les nouvelles valeurs des props, dans le body
                 await memberToUpdate.update(req.body);
@@ -189,7 +188,6 @@ const memberController = {
     // Se connecter pour un membre
 
     loginMember : async (req, res) => {
-        console.log('login Member', req.body);
         try {
             
           // On vérifie qu'un membre correspond au mail entré par l'utilisateur
@@ -209,7 +207,6 @@ const memberController = {
       
           // On compare avec bcrypt les mot de passes
           const passwordToCompare=member.user_password;
-          console.log(passwordToCompare);
           const isPasswordValid = await bcrypt.compare(req.body.user_password, passwordToCompare);
   
           // Si le mot de passe n'est pas valide on passe dans le catch

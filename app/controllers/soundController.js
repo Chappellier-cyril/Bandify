@@ -6,7 +6,6 @@ const soundController = {
         try{
             const memberId = req.params.id;
             const file = req.file;
-            console.log(file);
             let result;
             if(file) result = await uploadFile(file);
             if(result){

@@ -65,7 +65,6 @@ const messageController = {
         try {
             
             const targetId = req.params.id;
-            console.log(targetId)
             
             const updateStatus = await Message.findByPk(targetId);
             

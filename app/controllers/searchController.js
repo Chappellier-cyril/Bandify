@@ -70,13 +70,11 @@ const searchController = {
             // On filtre la recherche par Département si on a pas de ville
             //Pour éviter à l'utilisateur d'envoyé une requête incohérente entre dpt et ville
             if (department && !city) membersToFilter = membersToFilter.filter((member) => {
-                console.log('je passe dans department');
                 return member.city.department.department_name === department;
             }) 
             // On filtre la recherche par Région si on a pas de ville ET si on a pas de département
             //Pour éviter à l'utilisateur d'envoyé une requête incohérente entre region et dpt et ville
             if (region && !city && !department) membersToFilter = membersToFilter.filter((member) => {
-                console.log('je passe dans region');
                 return member.city.department.region.region_name === region;
             }) 
             // On envoi le résultat de la recherche de l'utilisateur  contenu dans la variable membersToFilter

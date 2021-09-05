@@ -133,6 +133,7 @@ router.get('/region/:id', localisationController.getOneRegion);
 // Routes de relations MEMBER HAS INSTRUMENT
 
 router.route('/members/:id/add_instrument')
+    .post(associationController.createAssociation)
     .get(associationController.getMemberInstruments)
     .patch(associationController.updateMemberInstruments)
     .delete(associationController.deleteMemberInstruments)
@@ -141,7 +142,7 @@ router.route('/members/:id/add_instrument')
 
 router.route('/members/:id/add_musicstyle')
     .get(associationController.getMemberMusicStyles)
-    .patch(associationController.updateMemberMusicStyles)
+    .post(associationController.addMemberMusicStyle)
     .delete(associationController.deleteMemberMusicStyles);
 
 // Route qui permet de stream les fichiers d'images des membres

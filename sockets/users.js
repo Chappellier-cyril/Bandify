@@ -11,7 +11,6 @@ const addMemberOnline = (userId, socketId) => {
             socketId: socketId,
         }
         membersOnline.push(member);
-        console.log('addNewMember', membersOnline);
         return membersOnline;
 
 
@@ -25,7 +24,6 @@ const removeMemberOnline = (socketId) => {
 
 const findUserOnline = (userId) => {
     const foundUser = membersOnline.find((m) => Number(m.id) === userId);
-    console.log('foundUsr du finduseronline', foundUser);
     if(foundUser) return foundUser;
     return;
 }

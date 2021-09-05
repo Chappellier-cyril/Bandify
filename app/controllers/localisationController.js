@@ -20,7 +20,6 @@ const localisationController = {
     autocompleteCities: async (req, res, next) => {
         try {
             const search = req.params.search;
-            console.log('params', search);
 
             const cities = await City.findAll({
                 where: {
