@@ -26,7 +26,7 @@ const Instruments = ({
       {isEditing && editInstruments ? (
         <>
           <div className="myprofile__instrument">
-            <p className="myprofile__instrument--description">Mes instruments:</p>
+            <p className="myprofile__instrument--description">Mes instruments :</p>
             <ul className="myprofile__instrument--list">
               {instruments && instruments.map((play) => (
                 play.id && (
@@ -94,7 +94,7 @@ const Instruments = ({
       ) : (
         <>
           <div className="myprofile__instrument">
-            <p className="myprofile__instrument--description">Mes instruments:
+            <p className="myprofile__instrument--description">Mes instruments :
               {
                 isEditing && (
                   <span>

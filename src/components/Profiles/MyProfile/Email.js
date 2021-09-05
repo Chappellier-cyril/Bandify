@@ -32,7 +32,7 @@ const Email = ({
       </form>
     ) : (
       <div className="myprofile__user--email">
-        Email: {email}
+        Email : {email}
         {isEditing && (
           <span>
             <button

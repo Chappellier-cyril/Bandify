@@ -8,7 +8,7 @@ const Styles = ({
     {/* //TODO => edit */}
     {styles && (
     <div className="myprofile__style">
-      <p className="myprofile__style--description">Mes goûts musicaux:
+      <p className="myprofile__style--description">Mes goûts musicaux :
         {
           isEditing && (
             <span>
