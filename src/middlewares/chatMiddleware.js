@@ -23,9 +23,6 @@ const chatMiddleware = (store) => (next) => (action) => {
     axios(options)
       .then((response) => {
         store.dispatch({ type: 'ADD_MESSAGE_SUCCESS', message: response.data });
-      })
-      .catch((e) => {
-        console.log(e);
       });
   }
   next(action);

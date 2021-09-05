@@ -12,12 +12,6 @@ const Localisation = ({
     axios.get(`${process.env.BANDIFY_API_URL}/autocomplete/${city}`)
       .then((response) => {
         setCities(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      })
-      .then(() => {
-
       });
   };
   const onChangeCity = (e) => {

@@ -11,7 +11,6 @@ const Description = ({
       <form type="submit" onSubmit={handleSubmitDescription}>
         <div className="myprofile__textarea--container">
           <label htmlFor="description">
-            Description
             <textarea
               name="description"
               id="description"

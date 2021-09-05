@@ -54,11 +54,11 @@ const MyProfile = ({
   instrumentsData,
   levelsData,
   onSelectInput,
-  addNewInstrument,
-  removeInstrument,
   deleteInstrumentAssociation,
   friends,
   isLoading,
+  deleteStyle,
+  stylesData,
 }) => {
   const {
     plays, styles, profil_image, email,
@@ -136,8 +136,6 @@ const MyProfile = ({
                   instrumentsData={instrumentsData}
                   levelsData={levelsData}
                   instruments={instruments}
-                  addNewInstrument={addNewInstrument}
-                  removeInstrument={removeInstrument}
                   onSelectInput={onSelectInput}
                   editFormToggle={editFormToggle}
                   isEditing={isEditing}
@@ -147,7 +145,9 @@ const MyProfile = ({
                   styles={styles}
                   editStyles={editStyles}
                   handleSubmitStyles={handleSubmitStyles}
+                  deleteStyle={deleteStyle}
                   isEditing={isEditing}
+                  stylesData={stylesData}
                 />
               </div>
               {friends
@@ -242,6 +242,8 @@ MyProfile.propTypes = {
   handleSubmitCity: PropTypes.func.isRequired,
   handleSubmitStyles: PropTypes.func.isRequired,
   handleSubmitInstruments: PropTypes.func.isRequired,
+  deleteStyle: PropTypes.func.isRequired,
+  stylesData: PropTypes.array.isRequired,
   city: PropTypes.string,
   onCityChange: PropTypes.func.isRequired,
   instrumentsData: PropTypes.arrayOf(
@@ -254,8 +256,6 @@ MyProfile.propTypes = {
     PropTypes.shape().isRequired,
   ).isRequired,
   onSelectInput: PropTypes.func.isRequired,
-  addNewInstrument: PropTypes.func.isRequired,
-  removeInstrument: PropTypes.func.isRequired,
   deleteInstrumentAssociation: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,
 };

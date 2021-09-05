@@ -26,9 +26,10 @@ const Avatar = ({
           type="submit"
           onSubmit={(e) => handleSubmitPhoto(e, avatar)}
         >
+
           <div className="myprofile__user--picture-desc">
             <p>Image de profil</p>
-            <label htmlFor="avatar" className="signup-submit__group--avatar__container">
+            <label htmlFor="avatar" className="signup-submit__group--avatar__container edit-profile__avatar-container">
               <span className="signup-submit__group--avatar__container__label">Choisir une photo</span>
               <input
                 name="avatar"
@@ -38,12 +39,12 @@ const Avatar = ({
                 className="signup-submit__group__input--avatar"
                 onChange={(e) => setAvatar(e.target.files[0])}
               />
-              {errorAvatar && <p className="signup-submit__error">{errorAvatar}</p>}
-              <div className="signup-submit__container-shown-avatar">
-                {avatar && <img className="signup-submit__show-avatar" src={URL.createObjectURL(avatar)} alt={`Votre fichier séléctionné est ${avatar.name}`} />}
-              </div>
             </label>
-            <button type="submit" disabled={errorAvatar}>Envoyer</button>
+            <div className="signup-submit__container-shown-avatar">
+              {avatar && <img className="signup-submit__show-avatar" src={URL.createObjectURL(avatar)} alt={`Votre fichier séléctionné est ${avatar.name}`} />}
+            </div>
+            {errorAvatar && <p className="signup-submit__error">{errorAvatar}</p>}
+            <button className="myprofile__user--edit-submit-btn" type="submit" disabled={errorAvatar}>Envoyer</button>
           </div>
           <button
             type="button"
@@ -58,13 +59,16 @@ const Avatar = ({
           {profil_image && <img className="myprofile__user--picture" src={`${process.env.BANDIFY_API_URL}/avatar/${profil_image}`} alt="avatar du membre" />}
           {
             isEditing && (
-              <button
-                type="button"
-                onClick={() => editFormToggle('editPhoto')}
-                className="myprofile__user--edit-photo"
-              >
-                <i className="fas fa-pen" />
-              </button>
+              <>
+                {!profil_image && <p className="myprofile__user--name">Ajouter une photo de profil </p>}
+                <button
+                  type="button"
+                  onClick={() => editFormToggle('editPhoto')}
+                  className="myprofile__user--edit-photo"
+                >
+                  <i className="fas fa-pen" />
+                </button>
+              </>
             )
           }
         </div>

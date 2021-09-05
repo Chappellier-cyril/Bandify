@@ -3,7 +3,6 @@ import axios from 'axios';
 const authMiddleware = (store) => (next) => (action) => {
   const state = store.getState();
   if (action.type === 'GET_INIT') {
-    console.log(action.type);
     // On récupère notre token
     const token = localStorage.getItem('token');
     // Si on en a un, on fait une requête vers le serveur
@@ -62,8 +61,7 @@ const authMiddleware = (store) => (next) => (action) => {
         store.dispatch({ type: 'ON_LOGIN_SUCCESS', data: response.data });
       })
       .catch((e) => {
-        console.log(e);
-        store.dispatch({ type: 'ON_LOGIN_ERROR' });
+        store.dispatch({ type: 'ON_LOGIN_ERROR', e });
       });
   }
 

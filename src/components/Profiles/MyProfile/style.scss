@@ -373,6 +373,7 @@
       }
       &--avatar {
         position: relative;
+        z-index: 0;
       }
       &--edit-photo {
         background-color: transparent;
@@ -501,10 +502,11 @@
     display: flex;
     flex-direction: column;
     position: relative;
-    z-index: 2;
+    overflow-x: clip;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    z-index: 1;
   }
   &__toggler{
     width: 30px;
@@ -611,9 +613,25 @@
   }
 }
 
+.edit-profile{
+  &__avatar-container{
+    display: flex;
+    flex-direction: column;
+  }
+}
 .fa-pen, .fa-times-circle {
   color: #1DA1F2;
   background-color: transparent;
   padding: .5rem;
   border-radius: 50%;
+}
+.delete--association {
+  color: vars.$firstColor;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  &:disabled{
+    color: #1DA1F2;
+    cursor: not-allowed;
+  }
 }

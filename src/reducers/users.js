@@ -200,7 +200,56 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         users: usersData,
       };
-
+    case 'DELETE_INSTRUMENT_ASSOCIATION_SUCCESS': {
+      const filteredPlays = state.user.plays.filter((statePlay) => statePlay.id !== action.play.id);
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          plays: filteredPlays,
+        },
+      };
+    }
+    case 'DELETE_STYLE_SUCCESS': {
+      const filteredStyles = state.user.styles.filter((stateStyle) => (
+        stateStyle.id !== action.style.id));
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          styles: filteredStyles,
+        },
+      };
+    }
+    case 'ADD_NEW_STYLE_SUCCESS': {
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          styles: [
+            ...state.user.styles,
+            action.style,
+          ],
+        },
+      }; }
+    case 'ADD_INSTRUMENT_ASSOCIATION_SUCCESS': {
+      /* ICI on rajoute la nouvelle association d'instrument/level au member en la
+      rajoutant dans ses plays */
+      return {
+        ...state,
+      };
+    }
+    case 'ADD_NEW_INSTRUMENT_SUCCESS':
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          plays: [
+            ...state.user.plays, action.play,
+          ]
+          ,
+        },
+      };
     case 'CHANGE_INSTRUMENT_LEVEL_ON_PROFILE': {
       // const copyInstruments = [...state.instruments];
       // const instrumentAlreadyChoose = copyInstruments.find(

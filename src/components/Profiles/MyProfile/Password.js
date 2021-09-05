@@ -25,10 +25,8 @@ const Password = ({
   const getPasswordVerification = (e) => {
     e.preventDefault();
     axios(options).then((response) => {
-      console.log(response);
       if (response.data.error) {
         setIsPasswordVerify(false);
-        console.log(response.data.error);
         setErrorPassword(response.data.error);
       }
       if (response.data.message) return setIsPasswordVerify(true);

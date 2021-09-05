@@ -26,6 +26,7 @@ const mapStateToProps = (state) => ({
   city: state.users.city,
   instrumentsData: state.settings.instruments,
   instruments: state.users.user.plays,
+  stylesData: state.settings.musicstyles,
   levelsData: state.settings.levels,
   pendingInvitations: state.users.pendingInvitations,
   acceptedInvitations: state.users.acceptedInvitations,
@@ -33,6 +34,7 @@ const mapStateToProps = (state) => ({
   isDeleteFriendModalOpen: state.settings.isDeleteFriendModalOpen,
   isEditing: state.users.isEditing,
   isLoading: state.settings.isLoading,
+  isProfileMenuOpen: state.settings.isProfileMenuOpen,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -85,13 +87,16 @@ const mapDispatchToProps = (dispatch) => ({
     e.preventDefault();
     dispatch({ type: 'SUBMIT_MODIFIED_CITY' });
   },
-  handleSubmitStyles: (e) => {
+  handleSubmitStyles: (e, style) => {
     e.preventDefault();
-    dispatch({ type: 'SUBMIT_MODIFIED_STYLES' });
+    dispatch({ type: 'SUBMIT_NEW_STYLE', style });
   },
-  handleSubmitInstruments: (e) => {
+  deleteStyle: (style) => {
+    dispatch({ type: 'WISH_TO_DELETE_STYLE', style });
+  },
+  handleSubmitInstruments: (e, play) => {
     e.preventDefault();
-    dispatch({ type: 'SUBMIT_MODIFIED_INSTRUMENTS' });
+    dispatch({ type: 'SUBMIT_NEW_INSTRUMENT', play });
   },
   onCityChange: (key, value) => {
     dispatch({
@@ -108,20 +113,10 @@ const mapDispatchToProps = (dispatch) => ({
       value: e.target.value,
     });
   },
-  addNewInstrument: () => {
+
+  deleteInstrumentAssociation: (play) => {
     dispatch({
-      type: 'ADD_NEW_INSTRUMENT_INPUT_PROFILE',
-    });
-  },
-  removeInstrument: (index) => {
-    dispatch({
-      type: 'REMOVE_INSTRUMENT_INPUT_PROFILE',
-      index,
-    });
-  },
-  deleteInstrumentAssociation: () => {
-    dispatch({
-      type: 'WISH_TO_DELETE_INSTRUMENT_ASSOCIATION',
+      type: 'WISH_TO_DELETE_INSTRUMENT_ASSOCIATION', play,
     });
   },
   sendInvitation: (id) => {
@@ -137,6 +132,9 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch({
       type: 'DELETE_FROM_FRIENDLIST', accepted, friends, acceptedUser, foundUser,
     });
+  },
+  toggleProfileMenuOpen: () => {
+    dispatch({ type: 'TOGGLE_PROFILE_MENU' });
   },
 });
 

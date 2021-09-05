@@ -5,7 +5,6 @@ let socket;
 const socketMiddleware = (store) => (next) => (action) => {
   const state = store.getState();
   if (((action.type === 'ON_LOGIN_SUCCESS') || (action.type === 'RECONNECT_USER'))) {
-    console.log('je passe dans les sockets');
     socket = io.connect(`${process.env.BANDIFY_API_URL}`);
     socket.on('online-members', (members) => {
       store.dispatch({ type: 'GET_ONLINE_MEMBERS', online: members.online });

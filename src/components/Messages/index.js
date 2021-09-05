@@ -20,7 +20,6 @@ const Messages = ({
   useEffect(() => {
     messageRef.current.scrollTop = messageRef.current.scrollHeight;
   });
-  console.log('messages dans composant Messages: ', messages);
   return (
     <div
     // On y pose la ref ici

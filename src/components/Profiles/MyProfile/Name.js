@@ -11,7 +11,6 @@ const Name = ({
       <form type="submit" onSubmit={handleSubmitName}>
         <div>
           <label htmlFor="firstName">
-            Prénom
             <input
               name="firstName"
               id="firstName"
@@ -26,7 +25,6 @@ const Name = ({
         </div>
         <div>
           <label htmlFor="lastName">
-            Nom
             <input
               name="lastName"
               id="lastName"

@@ -42,6 +42,7 @@ const Profiles = ({
   instruments,
   instrumentsData,
   levelsData,
+  stylesData,
   onSelectInput,
   addNewInstrument,
   removeInstrument,
@@ -57,6 +58,7 @@ const Profiles = ({
   isProfileMenuOpen,
   toggleProfileMenuOpen,
   isLoading,
+  deleteStyle,
 }) => {
   const url = window.location.href;
   // pour avoir le dernier segment de l'url
@@ -120,6 +122,8 @@ const Profiles = ({
           isProfileMenuOpen={isProfileMenuOpen}
           toggleProfileMenuOpen={toggleProfileMenuOpen}
           isLoading={isLoading}
+          deleteStyle={deleteStyle}
+          stylesData={stylesData}
         />
       ) : (
         <OtherProfile
@@ -169,6 +173,8 @@ Profiles.propTypes = {
   handleSubmitBirthdate: PropTypes.func.isRequired,
   handleSubmitDescription: PropTypes.func.isRequired,
   handleSubmitCity: PropTypes.func.isRequired,
+  deleteStyle: PropTypes.func.isRequired,
+  stylesData: PropTypes.array.isRequired,
   handleSubmitStyles: PropTypes.func.isRequired,
   handleSubmitInstruments: PropTypes.func.isRequired,
   city: PropTypes.string,

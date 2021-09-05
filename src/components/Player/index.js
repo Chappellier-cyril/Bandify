@@ -27,9 +27,17 @@ const useAudio = (url) => {
 const AudioPlayer = ({ url }) => {
   const [playing, toggle] = useAudio(url);
   return (
-    <button type="button" onClick={toggle}>
-      <i className={playing ? 'fal fa-pause-circle' : 'fal fa-play-circle'} />
-    </button>
+    <div className="profile__player__container">
+      <div>
+        <button type="button" onClick={toggle} className="">
+          <i className={playing ? 'fal fa-pause-circle' : 'fal fa-play-circle'} />
+        </button>
+        <button type="button" onClick={toggle} className="">
+          <i className={playing ? 'fal fa-pause-circle' : 'fal fa-play-circle'} />
+        </button>
+      </div>
+    </div>
+
   );
 };
 
