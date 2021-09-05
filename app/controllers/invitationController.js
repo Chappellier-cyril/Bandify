@@ -25,18 +25,14 @@ const invitationController = {
 
     sendInvitation : async (req, res, next) => {
         try {
+            
             const [newInvitation, created] = await Invitation.findOrCreate({
-
             where : {[Op.or]: [{ from: req.body.from, to: req.body.to }, { from: req.body.to, to: req.body.from }]},
-
-            defaults : {from: req.body.from, to: req.body.to, status: 0}
+            defaults : {from: req.body.from, to: req.body.to, status: 0},
             
             });
-            console.log(newInvitation);
             if (created) {
-                const invitation = await findByPk(newInvitation.id, {
-                    include: ['fromMember', 'toMember'], order: [['createdAt', 'ASC']] 
-                })
+                const invitation = await Invitation.findOne({where: {from: req.body.from, to: req.body.to, status: 0}, include: ['fromMember', 'toMember']})
                 res.json(invitation);
             }else {
                 res.json({error : 'invitation déja envoyé'})
