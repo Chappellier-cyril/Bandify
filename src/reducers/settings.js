@@ -10,7 +10,8 @@ export const initialState = {
   isProfileDeleted: false,
   // SEARCH
   searchValue: '',
-  searchMessage: '',
+  resultsMessage: '',
+  searchErrorMessage: '',
   instruments: [],
   levels: [{}],
   musicstyles: [{}],
@@ -153,25 +154,33 @@ const reducer = (state = initialState, action = {}) => {
         searchValue: '',
         // users searched from searchbar
         searchedUsers: [],
-        searchMessage: '',
+        resultsMessage: '',
       };
     case 'ON_SEARCH_SUBMIT_SUCCESS':
       return {
         ...state,
-        searchMessage: action.searchMessage,
+        resultsMessage: action.resultsMessage,
         searchValue: '',
+      };
+    case 'ON_SEARCH_SUBMIT_ERROR':
+      return {
+        ...state,
+        searchErrorMessage: action.searchErrorMessage,
       };
     case 'GET_MEMBERS_SUCCESS':
       // Lors d'une action ON_RESET_FILTERS, on vide les filtres
       return {
         ...state,
-        // searchMessage: '',
+        searchValue: '',
+        resultsMessage: '',
+        searchErrorMessage: '',
         instrument: '',
         level: '',
         musicstyle: '',
         city: '',
         department: '',
         region: '',
+        searchedUsers: [],
         isLoading: false,
       };
     case 'GET_ONE_MEMBER_SUCCESS':
