@@ -79,6 +79,12 @@ const searchMiddleware = (store) => (next) => (action) => {
           }
           if (searchValue) {
             store.dispatch({ type: 'ON_SEARCH_SUBMIT_ERROR', searchErrorMessage: `${baseError} ${searchValue}` });
+            if (searchValue.trim() === '') {
+              store.dispatch({
+                type: 'ON_SEARCH_SUBMIT_ERROR',
+                searchErrorMessage: 'Renseignez un prénom, un nom ou les deux pour lancer la recherche',
+              });
+            }
           }
         }
         // On a des résultats, on dispatch le tableau de users en fonction de la recherche filtée

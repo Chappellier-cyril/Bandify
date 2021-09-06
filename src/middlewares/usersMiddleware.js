@@ -7,7 +7,7 @@ const usersMiddleware = (store) => (next) => (action) => {
 
   const state = store.getState();
 
-  if (action.type === 'GET_MEMBERS') {
+  if (action.type === 'GET_MEMBERS' || (state.login.isLogged === true && action.type === 'HIDE_ALL_WINDOWS')) {
     state.settings.isLoading = true;
 
     const options = {
