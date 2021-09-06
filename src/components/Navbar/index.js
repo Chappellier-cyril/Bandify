@@ -11,7 +11,7 @@ const Navbar = ({
 
     <button
       type="button"
-      className="close-menu-btn"
+      className="close-main-menu-btn"
       onClick={hideMenu}
     >
       <i className="fas fa-times" />

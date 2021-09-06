@@ -115,6 +115,7 @@
     align-items: center;
     background-color: vars.$seventhColor;
     border-radius: vars.$borderRadius;
+    border: 1px solid vars.$secondColor;
   
     &__header {
       display: flex;

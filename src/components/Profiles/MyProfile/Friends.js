@@ -23,7 +23,7 @@ const Friends = ({ friends }) => (
         </div>
         {friend.plays && (
         <div className="myprofile__instrument">
-          <p className="myprofile__instrument--description">Ses instruments :</p>
+          <p className="myprofile__instrument--description">Instruments :</p>
           <ul className="myprofile__instrument--list">
             {friend.plays.map((play) => (
               play.id && (
@@ -38,7 +38,7 @@ const Friends = ({ friends }) => (
         )}
         {friend.styles && (
         <div className="myprofile__style">
-          <p className="myprofile__style--description">Ses goûts musicaux :</p>
+          <p className="myprofile__style--description">Goûts musicaux :</p>
           <ul className="myprofile__style--list">
             {friend.styles.map((musicStyle) => (
               musicStyle.id && (

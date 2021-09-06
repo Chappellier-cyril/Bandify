@@ -17,8 +17,8 @@ const About = () => (
       <img className="about__img" src={imageBandify} alt="doigt sur les cordes de'une guitare" />
       <div className="about__text-container">
         <p className="about__text">
-          L'idée du projet Bandify est parti d'un constat simple :
-          Une difficulté dans le milieu de la musique à faire se reconcentrer des musiciens
+          L'idée du projet Bandify est partie d'un constat simple :
+          Une difficulté dans le milieu de la musique à faire se rencontrer des musiciens
           partageant la même passion.
         </p>
         <p className="about__text">
@@ -43,7 +43,7 @@ const About = () => (
     </div>
     <div className="about__desc">
       Bandify a été crée par une équipe de 5 développeurs,
-      tous issus de l'école O'Clock et réunis autour des mêmes passions.
+      tous issus de l'école O'Clock et réunis autour d'une même passion.
     </div>
 
     <div className="about__button">

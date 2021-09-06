@@ -4,7 +4,7 @@ import AudioPlayer from 'src/components/Player';
 
 const Sounds = ({ sounds }) => (
   <div className="profile__player">
-    <h2 className="profile__player__title">Mes sons</h2>
+    <h2 className="profile__player__title">Sons</h2>
     <ul className="profile__player__sounds-list">
       {
       sounds.map((s) => (

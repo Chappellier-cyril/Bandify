@@ -36,7 +36,7 @@ const Localisation = ({
           type="text"
           onChange={onChangeCity}
           onKeyUp={getCitiesFromAPI}
-          placeholder="ville"
+          placeholder="Ville"
           value={DOMPurify.sanitize(city.trim(), { ALLOWED_TAGS: ['em', 'strong'] })}
           className="search__form-filters__select autocompletion-city__input"
         />

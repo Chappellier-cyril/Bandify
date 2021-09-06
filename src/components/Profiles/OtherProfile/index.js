@@ -103,13 +103,13 @@ const OtherProfile = ({
                 )}
               </div>
               <div className="profile__user--description">
-                <p className="profile__user--description-title">Sa description:</p>
+                <p className="profile__user--description-title">Description :</p>
                 <p className="profile__user--description-content">{user.user_description}</p>
               </div>
               {user.sounds[0] && <Sounds />}
               {plays && (
               <div className="profile__instrument">
-                <p className="profile__instrument--description">Ses instruments:</p>
+                <p className="profile__instrument--description">Instruments :</p>
                 <ul className="profile__instrument--list">
                   {plays.map((play) => (
                     play.id && (
@@ -124,7 +124,7 @@ const OtherProfile = ({
               )}
               {styles && (
               <div className="profile__style">
-                <p className="profile__style--description">Ses goûts musicaux:</p>
+                <p className="profile__style--description">Goûts musicaux :</p>
                 <ul className="profile__style--list">
                   {styles.map((musicStyle) => (
                     musicStyle.id && (

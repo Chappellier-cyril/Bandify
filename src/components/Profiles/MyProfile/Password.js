@@ -149,6 +149,7 @@ const Password = ({
             >Envoyer
             </button>
             <button
+              className="myprofile__user--close-edit-btn"
               type="button"
               onClick={() => {
                 editFormToggle('editPassword');

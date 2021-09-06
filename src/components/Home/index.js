@@ -96,7 +96,7 @@ const Home = ({
                     </div>
                     {searchedUser.plays && (
                       <div className="home__instrument">
-                        <p className="home__instrument--description">Ses instruments:</p>
+                        <p className="home__instrument--description">Instruments :</p>
                         <ul className="home__instrument--list">
                           {searchedUser.plays.map((play) => (
                             play.id && (
@@ -111,7 +111,7 @@ const Home = ({
                     )}
                     {searchedUser.styles && (
                       <div className="home__style">
-                        <p className="home__style--description">Ses goûts musicaux:</p>
+                        <p className="home__style--description">Goûts musicaux :</p>
                         <ul className="home__style--list">
                           {searchedUser.styles.map((musicStyle) => (
                             musicStyle.id && (
@@ -149,7 +149,7 @@ const Home = ({
                         </div>
                         {user.plays && (
                         <div className="home__instrument">
-                          <p className="home__instrument--description">Ses instruments:</p>
+                          <p className="home__instrument--description">Instruments :</p>
                           <ul className="home__instrument--list">
                             {user.plays.map((play) => (
                               play.id && (
@@ -164,7 +164,7 @@ const Home = ({
                         )}
                         {user.styles && (
                         <div className="home__style">
-                          <p className="home__style--description">Ses goûts musicaux:</p>
+                          <p className="home__style--description">Goûts musicaux :</p>
                           <ul className="home__style--list">
                             {user.styles.map((musicStyle) => (
                               musicStyle.id && (
@@ -204,7 +204,7 @@ const Home = ({
                 les musiciens que tu recherches :
               </p>
               <p className="home__desc__text">
-                Bandify se charge de te proposer des profils adaptés à des besoins !
+                Bandify se charge de te proposer des profils adaptés à tes besoins !
               </p>
             </div>
           </div>

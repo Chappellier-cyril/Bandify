@@ -153,7 +153,7 @@ const MyProfile = ({
               {friends
               && (
               <div className="user__friends">
-                <p className="myprofile__friend--description">Mes amis</p>
+                <p className="myprofile__friend--description">Amis</p>
                 <Friends friends={friends} />
               </div>
               )}

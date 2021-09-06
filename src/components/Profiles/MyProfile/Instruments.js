@@ -27,7 +27,7 @@ const Instruments = ({
       {isEditing && editInstruments ? (
         <>
           <div className="myprofile__instrument">
-            <p className="myprofile__instrument--description">Mes instruments:</p>
+            <p className="myprofile__instrument--description">Instruments :</p>
             {instruments.length <= 1 && <p className="signup-submit__error">Vous devez garder au moins un instrument</p>}
             {instruments.length > 3 && <p className="signup-submit__error">Vous avez atteint le nombre maximum d'instrument</p>}
             <ul className="myprofile__instrument--list">
@@ -87,7 +87,7 @@ const Instruments = ({
       ) : (
         <>
           <div className="myprofile__instrument">
-            <p className="myprofile__instrument--description">Mes instruments :
+            <p className="myprofile__instrument--description">Instruments :
               {
                 isEditing && (
                   <span>
