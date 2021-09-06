@@ -7,8 +7,8 @@ import Searchbar from 'src/containers/Searchbar';
 import Loader from 'src/components/Loader';
 import { firstLetterToUpper, restToLower } from 'src/selectors/city';
 import './style.scss';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+// import 'slick-carousel/slick/slick.css';
+// import 'slick-carousel/slick/slick-theme.css';
 
 const Home = ({
   users, isLogged, getMembers, searchedUsers, loginId, isLoading, /* searchMessage, */
