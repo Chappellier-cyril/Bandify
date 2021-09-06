@@ -82,6 +82,7 @@ const Home = ({
                 searchedUsers.map((searchedUser) => (
                   <Link to={`/member/${searchedUser.id}`} key={searchedUser.id} className="home__cards--users">
                     <div className="home__user--container">
+                      {!searchedUser.profil_image && <img className="friends-list__member--picture" src={`${process.env.BANDIFY_API_URL}/avatar/avatar.png`} alt="avatar du membre" />}
                       {searchedUser.profil_image && <img className="home__user--picture" src={`${process.env.BANDIFY_API_URL}/avatar/${searchedUser.profil_image}`} alt="avatar du membre" />}
                       <div className="home__user--short">
                         <p className="home__user--name">{searchedUser.firstname} {searchedUser.lastname}</p>
@@ -134,6 +135,7 @@ const Home = ({
                     {usersWithoutMe.slice(0, 5).map((user) => (
                       <Link to={`/member/${user.id}`} key={user.id} className="home__cards--users">
                         <div className="home__user--container">
+                          {!user.profil_image && <img className="friends-list__member--picture" src={`${process.env.BANDIFY_API_URL}/avatar/avatar.png`} alt="avatar du membre" />}
                           {user.profil_image && <img className="home__user--picture" src={`${process.env.BANDIFY_API_URL}/avatar/${user.profil_image}`} alt="avatar du membre" />}
                           <div className="home__user--short">
                             <p className="home__user--name">{user.firstname} {user.lastname}</p>

@@ -9,6 +9,7 @@ const Friends = ({ friends }) => (
       <Link to={`/member/${friend.id}`}>
         <div className="myprofile__user--container">
           {/* <p className="myprofile__friend--description">Mes amis:</p> */}
+          {!friend.profil_image && <img className="friends-list__member--picture" src={`${process.env.BANDIFY_API_URL}/avatar/avatar.png`} alt="avatar du membre" />}
           {friend.profil_image && <img className="myprofile__friend--picture" src={`${process.env.BANDIFY_API_URL}/avatar/${friend.profil_image}`} alt="avatar du membre" />}
           <div className="myprofile__user--short">
             <p className="myprofile__user--name">{friend.firstname} {friend.lastname}</p>
