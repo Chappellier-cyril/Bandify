@@ -8,6 +8,7 @@ import Loader from 'src/components/Loader';
 import 'src/components/Profiles/style.scss';
 import { firstLetterToUpper, restToLower } from 'src/selectors/city';
 import './style.scss';
+import Sounds from 'src/containers/Sounds';
 
 const OtherProfile = ({
   user, sendInvitation, pendingInvitations,
@@ -104,6 +105,7 @@ const OtherProfile = ({
                 <p className="profile__user--description-title">Sa description:</p>
                 <p className="profile__user--description-content">{user.user_description}</p>
               </div>
+              {user.sounds[0] && <Sounds />}
               {plays && (
               <div className="profile__instrument">
                 <p className="profile__instrument--description">Ses instruments:</p>
@@ -145,6 +147,7 @@ const OtherProfile = ({
 
 OtherProfile.propTypes = {
   user: PropTypes.shape({
+    sounds: PropTypes.array.isRequired,
     id: PropTypes.number,
     firstname: PropTypes.string,
     lastname: PropTypes.string,
