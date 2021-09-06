@@ -528,11 +528,12 @@
     border-radius: vars.$borderRadius;
     transition: 0.3s ease-in-out;
     position: absolute;
-    right:-150%;
     opacity: 0;
     top: 30px;
+    display: none;
     &--is-open{
-      right: 0px;
+      display:block;
+      right: 0;
       opacity: 1;
     }
   }

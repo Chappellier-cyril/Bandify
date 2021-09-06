@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
+import './style.scss';
+
 const useAudio = (url) => {
   const [playing, setPlaying] = useState(false);
   const [audio] = useState(new Audio(url));
@@ -27,17 +29,9 @@ const useAudio = (url) => {
 const AudioPlayer = ({ url }) => {
   const [playing, toggle] = useAudio(url);
   return (
-    <div className="profile__player__container">
-      <div>
-        <button type="button" onClick={toggle} className="">
-          <i className={playing ? 'fal fa-pause-circle' : 'fal fa-play-circle'} />
-        </button>
-        <button type="button" onClick={toggle} className="">
-          <i className={playing ? 'fal fa-pause-circle' : 'fal fa-play-circle'} />
-        </button>
-      </div>
-    </div>
-
+    <button type="button" onClick={toggle} className="profile__player__button">
+      <i className={playing ? 'fal fa-pause-circle' : 'fal fa-play-circle'} />
+    </button>
   );
 };
 
