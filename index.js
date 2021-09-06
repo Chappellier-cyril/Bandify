@@ -11,7 +11,6 @@ const expressSwagger = require('express-swagger-generator')(app);
 const CLIENT_SIDE = process.env.CLIENT_SIDE;
 
 const { addMemberOnline, removeMemberOnline, findUserOnline} = require('./sockets/users');
-const { on } = require('events');
 
 // Création du module Swagger 
 
@@ -65,6 +64,9 @@ app.use(router);
 
 //TESTS SOCKETS => CREER UN TABLEAU DE MEMBER ONLINE ET LE RENVOYER AU FRONT
 io.on('connect', (socket) => {
+    socket.on('newMember', (newMember)=> {
+        io.emit('new-member', newMember);
+    });
     socket.on('isOnline', (member) => {
         const onlineMembers = addMemberOnline(member.id, socket.id);
         io.emit('online-members', {online: onlineMembers});

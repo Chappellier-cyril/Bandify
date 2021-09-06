@@ -96,9 +96,10 @@ const memberController = {
                   member_id: member.id,
                   level_id: play.level
                 }));
+                const newMember = await Member.findByPk(member.id);
                 // Envoi de la réponse au front si tout est ok
                 res.json({
-                    success : 'New Member added'
+                    success : 'New Member added', member: newMember
                 });
             })
         }catch(error) {
