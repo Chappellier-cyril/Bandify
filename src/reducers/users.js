@@ -69,6 +69,11 @@ const reducer = (state = initialState, action = {}) => {
         // les users deviennent filtrés en fonction de la query de searchBar
         searchedUsers: action.searchedUsers,
       };
+    case 'ON_SEARCH_SUBMIT_ERROR':
+      return {
+        ...state,
+        searchedUsers: action.searchedUsers,
+      };
     case 'ON_DELETE_PROFILE_SUCCESS':
     {
       // On clear le localStorage lors d'une suppression d'un profil

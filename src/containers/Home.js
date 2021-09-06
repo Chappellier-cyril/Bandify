@@ -7,7 +7,8 @@ const mapStateToProps = (state) => ({
   searchValue: state.users.searchValue,
   user: state.users.user,
   searchedUsers: state.users.searchedUsers,
-  searchMessage: state.settings.searchMessage,
+  resultsMessage: state.settings.resultsMessage,
+  searchErrorMessage: state.settings.searchErrorMessage,
   loginId: state.login.id,
   isLoading: state.settings.isLoading,
 });

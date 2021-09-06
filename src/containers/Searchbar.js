@@ -10,10 +10,6 @@ const mapStateToProps = (state) => ({
   city: state.settings.city,
   departments: state.settings.departments,
   regions: state.settings.regions,
-  // city: state.signup.city,
-  // code: state.signup.code,
-  // departement: state.signup.departement,
-  // region: state.signup.region,
 });
 
 const mapDispatchToProps = (dispatch) => ({
