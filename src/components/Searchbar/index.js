@@ -25,7 +25,7 @@ const Searchbar = ({
         id="searchBar"
         className="search__form__search-input"
         placeholder="Rechercher un membre"
-        value={DOMPurify.sanitize(searchValue.trim(), { ALLOWED_TAGS: ['em', 'strong'] })}
+        value={DOMPurify.sanitize(searchValue, { ALLOWED_TAGS: ['em', 'strong'] })}
         onChange={(evt) => onSearchChange(evt.target.value)}
       />
       <i className="fas fa-search" />
