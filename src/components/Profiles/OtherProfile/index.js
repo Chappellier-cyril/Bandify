@@ -65,6 +65,7 @@ const OtherProfile = ({
           <div className="profile__cards">
             <div className="profile__cards--users">
               <div className="profile__user--container">
+                {!profil_image && <img className="friends-list__member--picture" src={`${process.env.BANDIFY_API_URL}/avatar/avatar.png`} alt="avatar du membre" />}
                 {profil_image && <img className="profile__user--picture" src={`${process.env.BANDIFY_API_URL}/avatar/${profil_image}`} alt="avatar du membre" />}
                 <div className="profile__user--short">
                   <p className="profile__user--name">{user.firstname} {user.lastname}</p>
