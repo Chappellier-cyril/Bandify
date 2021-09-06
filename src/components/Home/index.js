@@ -99,7 +99,7 @@ const Home = ({
                             play.id && (
                             <li className="home__instrument__tag" key={play.id}>
                               <span className="home__instrument__tag--name">{play.instrument.instrument_name}</span>
-                              <span className="home__instrument__tag--level">{play.level && play.level.level_name}</span>
+                              {play.level && <span className="home__instrument__tag--level">{play.level && play.level.level_name}</span>}
                             </li>
                             )
                           ))}
