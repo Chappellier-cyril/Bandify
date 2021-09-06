@@ -912,7 +912,7 @@
     border-radius: vars.$borderRadius;
     transition: 0.3s ease-in-out;
     position: absolute;
-    right: 0;
+    right:-150%;
     opacity: 0;
     top: 30px;
     &--is-open{
