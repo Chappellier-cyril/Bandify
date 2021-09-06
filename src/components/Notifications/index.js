@@ -66,7 +66,7 @@ const Notifications = ({
                 onClick={() => deleteFriendNotification(i, n.invitation)}
                 className="notifications__li notifications__li--friend"
                 key={n.notification + n.invitation.id + n.invitation.toMember.firstname}
-              ><Link to={`/member/${n.invitation.toMember.id}`}>{`${n.invitation.toMember.firstname} ${n.invitation.toMember.lastname} `}</Link>  a accepté votre demande d'ajout.
+              >{`${n.invitation.toMember.firstname} ${n.invitation.toMember.lastname}`} a accepté votre demande d'ajout.
               </li>
             );
           }

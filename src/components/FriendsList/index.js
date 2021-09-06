@@ -1,16 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import './style.scss';
 
 const FriendsList = ({
   getCurrentUser, friends, onlineUsers, myId,
 }) => {
-  const [onlineUsersWithoutMe, setonlineUsersWithoutMe] = useState();
-  useEffect(() => {
-    if (onlineUsers) {
-      setonlineUsersWithoutMe(onlineUsers.filter((onlineUser) => Number(onlineUser.id) !== myId));
-    }
-  }, [onlineUsers]);
+  const onlineUsersWithoutMe = onlineUsers.filter((onlineUser) => Number(onlineUser.id) !== myId);
 
   return (
     <div className="friends">
