@@ -145,6 +145,11 @@ const reducer = (state = initialState, action = {}) => {
         notifications: filteredNotifications,
       };
     }
+    case 'ON_LOGOUT':
+      return {
+        ...state,
+        notifications: [],
+      };
     default:
       return state;
   }

@@ -3,18 +3,20 @@ import PropTypes from 'prop-types';
 import AudioPlayer from 'src/components/Player';
 
 const Sounds = ({ sounds }) => (
-  <div className="myprofile__user--sounds">
-    <h2>Mes sons</h2>
-    {
+  <div className="profile__player">
+    <h2 className="profile__player__title">Mes sons</h2>
+    <ul className="profile__player__sounds-list">
+      {
       sounds.map((s) => (
-        <div key={s.key}>
+        <li key={s.key} className="profile__player__li">
           <p>{s.name}</p>
           <AudioPlayer
             url={`${process.env.BANDIFY_API_URL}/sound/${s.key}`}
           />
-        </div>
+        </li>
       ))
     }
+    </ul>
   </div>
 );
 

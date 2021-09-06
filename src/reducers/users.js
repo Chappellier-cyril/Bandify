@@ -81,6 +81,14 @@ const reducer = (state = initialState, action = {}) => {
         },
       };
     }
+    case 'ADD_NEW_MEMBER':
+      return {
+        ...state,
+        users: [
+          ...state.users,
+          action.newMember,
+        ],
+      };
     case 'EDIT_FORM_TOGGLE':
       return {
         ...state,

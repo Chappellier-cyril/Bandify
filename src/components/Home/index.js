@@ -7,8 +7,8 @@ import Searchbar from 'src/containers/Searchbar';
 import Loader from 'src/components/Loader';
 import { firstLetterToUpper, restToLower } from 'src/selectors/city';
 import './style.scss';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+// import 'slick-carousel/slick/slick.css';
+// import 'slick-carousel/slick/slick-theme.css';
 
 const Home = ({
   users, isLogged, getMembers, searchedUsers, loginId, isLoading, /* searchMessage, */
@@ -99,7 +99,7 @@ const Home = ({
                             play.id && (
                             <li className="home__instrument__tag" key={play.id}>
                               <span className="home__instrument__tag--name">{play.instrument.instrument_name}</span>
-                              <span className="home__instrument__tag--level">{play.level && play.level.level_name}</span>
+                              {play.level && <span className="home__instrument__tag--level">{play.level && play.level.level_name}</span>}
                             </li>
                             )
                           ))}
@@ -194,7 +194,8 @@ const Home = ({
                 autour de chez toi.
               </p>
               <p className="home__desc__text">
-                Il te suffit de t'inscrire, de renseigner ta ville, ton / tes instruments de prédilection,
+                Il te suffit de t'inscrire, de renseigner ta ville, ton / tes instruments de
+                prédilection,
                 les musiciens que tu recherches :
               </p>
               <p className="home__desc__text">

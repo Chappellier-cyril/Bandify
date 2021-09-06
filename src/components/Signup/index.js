@@ -309,15 +309,13 @@ Signup.propTypes = {
   email: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
   city: PropTypes.string.isRequired,
-  departement: PropTypes.shape().isRequired,
+  departement: PropTypes.shape(),
   region: PropTypes.shape().isRequired,
   code: PropTypes.string.isRequired,
   instruments: PropTypes.arrayOf(
     PropTypes.shape().isRequired,
   ).isRequired,
-  styles: PropTypes.arrayOf(
-    PropTypes.number.isRequired,
-  ).isRequired,
+  styles: PropTypes.array,
   onChangeInput: PropTypes.func.isRequired,
   onSelectInput: PropTypes.func.isRequired,
   addNewInputInstrument: PropTypes.func.isRequired,
@@ -326,6 +324,10 @@ Signup.propTypes = {
   addNewStyle: PropTypes.func.isRequired,
   removeStyle: PropTypes.func.isRequired,
   handleSubmitSignup: PropTypes.func.isRequired,
+};
+Signup.defaultProps = {
+  departement: {},
+  styles: [],
 };
 
 export default Signup;
