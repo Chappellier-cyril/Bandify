@@ -51,6 +51,8 @@ const reducer = (state = initialState, action = {}) => {
         isChatroomOpen: false,
         isNotificationsOpen: false,
         isFiltersOpen: false,
+        resultsMessage: '',
+        searchErrorMessage: '',
       };
     case 'SET_IS_OPEN_MENU':
       return {
