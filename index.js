@@ -47,6 +47,7 @@ app.use(express.json());
 app.use(express.static('upload'));
 
 app.use( cors('https://bandify.netlify.app/') );
+
 app.use(express.urlencoded({extended: true})); 
 
 // ajout d' une méthode pour vérifier les données d'un formulaire avec sanitizer
