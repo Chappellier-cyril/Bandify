@@ -1,3 +1,10 @@
 .app {
   min-height: 100vh;
 }
+
+@media screen and (max-width: 700px) {
+  .maincontainer {
+    margin-top: 3rem;
+  }
+}
+
