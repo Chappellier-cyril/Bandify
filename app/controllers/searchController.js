@@ -15,11 +15,13 @@ const searchController = {
             // Si ma recherche contient un champs searchValue (barre de recherche), je filtre les members par leur noms/prénoms/les deux
             if (searchValue) membersToFilter = membersToFilter.filter((member) => {
                 const memberFullName = member.firstname + ' ' + member.lastname;
+                const reverseFullName = member.lastname + ' ' + member.firstname;
 
                 if (member.firstname || member.lastname || memberFullName) {
                     return member.firstname.toLowerCase() === searchValue.toLowerCase() 
                     || member.lastname.toLowerCase() === searchValue.toLowerCase()
-                    || memberFullName.toLowerCase() === searchValue.toLowerCase();
+                    || memberFullName.toLowerCase() === searchValue.toLowerCase()
+                    || reverseFullName.toLowerCase() === searchValue.toLowerCase();
                 } 
             })
             
