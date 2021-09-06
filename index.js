@@ -21,7 +21,7 @@ let swaggerOptions = {
            title: 'Bandify API',
            version: '1.0.0',
        },
-       host: 'localhost:3000',
+       host: 'https://bandifyback.herokuapp.com',
        basePath: '/',
        produces: [
            "application/json"
