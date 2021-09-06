@@ -194,7 +194,8 @@ const Home = ({
                 autour de chez toi.
               </p>
               <p className="home__desc__text">
-                Il te suffit de t'inscrire, de renseigner ta ville, ton / tes instruments de prédilection,
+                Il te suffit de t'inscrire, de renseigner ta ville, ton / tes instruments de
+                prédilection,
                 les musiciens que tu recherches :
               </p>
               <p className="home__desc__text">

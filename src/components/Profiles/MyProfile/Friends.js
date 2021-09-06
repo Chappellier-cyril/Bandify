@@ -28,7 +28,7 @@ const Friends = ({ friends }) => (
               play.id && (
               <li className="myprofile__instrument__tag" key={play.id}>
                 <span className="myprofile__instrument__tag--name">{play.instrument.instrument_name}</span>
-                <span className="myprofile__instrument__tag--level">{play.level && play.level.level_name}</span>
+                {play.level && <span className="myprofile__instrument__tag--level">{play.level && play.level.level_name}</span>}
               </li>
               )
             ))}
