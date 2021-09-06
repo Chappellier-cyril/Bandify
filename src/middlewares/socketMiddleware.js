@@ -9,6 +9,9 @@ const socketMiddleware = (store) => (next) => (action) => {
     socket.on('online-members', (members) => {
       store.dispatch({ type: 'GET_ONLINE_MEMBERS', online: members.online });
     });
+    socket.on('new-member', (newMember) => {
+      store.dispatch({ type: 'ADD_NEW_MEMBER', newMember: newMember.newMember });
+    });
     socket.emit('isOnline', { id: localStorage.getItem('userId') });
     socket.on('is-typing', (response) => {
       store.dispatch({ type: 'FRIEND_IS_TYPPING', friend: response.from });
@@ -79,6 +82,11 @@ const socketMiddleware = (store) => (next) => (action) => {
     if (action.invitation.to !== friendEmit.id) friendUser = action.invitation.toMember;
     if (action.invitation.from !== friendEmit.id) friendUser = action.invitation.fromMember;
     socket.emit('removeFromFriends', { friendEmit, friendOn: friendUser });
+  }
+  if (action.type === 'SUBMIT_SUCCESS') {
+    console.log('action submit-success');
+    socket = io.connect(`${process.env.BANDIFY_API_URL}`);
+    socket.emit('newMember', { newMember: action.newMember });
   }
   if (action.type === 'ON_LOGOUT') {
     socket.disconnect();

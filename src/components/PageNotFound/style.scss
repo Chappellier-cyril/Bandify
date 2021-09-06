@@ -15,7 +15,8 @@
     width: 100%;
     margin: 0 auto;
     &--logo {
-      width: 45%;
+      width: 80%;
+      max-width: 600px;
     }
   }
   &__btn {
@@ -31,7 +32,7 @@
 }
 
 // TABLET
-@media screen and (max-width: 1023px) {
+@media screen and (max-width: 1024px) {
   .notFound {
     &__container {
       display: flex;
@@ -46,6 +47,7 @@
       margin: 0 auto;
       &--logo {
         width: 80%;
+        max-width: 600px;
       }
     }
     &__btn {
@@ -74,6 +76,7 @@
       transform: translateY(-50%); /* tiré de la moitié de sa propre hauteur */
       &--logo {
         width: 100%;
+        max-width: 600px;
       }
     }
     &__btn {

@@ -12,9 +12,9 @@ const FriendsList = ({
       <ul className="friends-list">
         {friends.map((friend) => (
           <li className="friends-list__member" onClick={() => getCurrentUser(friend.id, friend.firstname)} key={friend.id}>
-            <img className="friends-list__member--picture" src={`${process.env.BANDIFY_API_URL}/avatar/${friend.profil_image}`} alt="avatar du membre" />
+            {friend.profil_image && <img className="friends-list__member--picture" src={`${process.env.BANDIFY_API_URL}/avatar/${friend.profil_image}`} alt="avatar du membre" />}
             <p className="friends-list__member--name">{friend.firstname} {friend.lastname}</p>
-            {onlineUsersWithoutMe[0]
+            {onlineUsersWithoutMe
           && onlineUsersWithoutMe
             .find((onlineUserWithoutMe) => Number(onlineUserWithoutMe.id) === friend.id)
           && <div className="friends-list__member--online-led" />}
@@ -31,10 +31,11 @@ const FriendsList = ({
 FriendsList.propTypes = {
   getCurrentUser: PropTypes.func.isRequired,
   friends: PropTypes.arrayOf(PropTypes.shape()).isRequired,
-  onlineUsers: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  onlineUsers: PropTypes.array,
   myId: PropTypes.number,
 };
 FriendsList.defaultProps = {
   myId: null,
+  onlineUsers: [],
 };
 export default FriendsList;
