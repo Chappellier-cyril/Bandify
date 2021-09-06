@@ -61,26 +61,28 @@ const Instruments = ({
                       <option value={id} key={level_name + id}>{level_name}</option>))
                   }
                 </select>
-                <button
-                  type="submit"
-                  className="myprofile__user--edit-submit-btn"
-                  onClick={(e) => {
-                    handleSubmitInstruments(e, newPlay);
-                    setNewPlay({ instrument_id: 0, level_id: 0 });
-                  }}
-                  disabled={!newPlay.instrument_id}
-                >Ajouter un Instrument
-                </button>
               </label>
             </div>
           )}
-          <button
-            type="button"
-            className="myprofile__user--close-edit-btn"
-            onClick={() => editFormToggle('editInstruments')}
-          >
-            <i className="fas fa-times-circle" />
-          </button>
+          <div className="myprofile__user--submit-container">
+            <button
+              type="submit"
+              className="myprofile__user--edit-submit-btn"
+              onClick={(e) => {
+                handleSubmitInstruments(e, newPlay);
+                setNewPlay({ instrument_id: 0, level_id: 0 });
+              }}
+              disabled={!newPlay.instrument_id}
+            >Ajouter un Instrument
+            </button>
+            <button
+              type="button"
+              className="myprofile__user--close-edit-btn"
+              onClick={() => editFormToggle('editInstruments')}
+            >
+              <i className="fas fa-times-circle" />
+            </button>
+          </div>
         </>
       ) : (
         <>

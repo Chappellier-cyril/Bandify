@@ -3,6 +3,20 @@
 // MOBILE LAYOUT
 @media screen and (max-width: 700px) {
 
+  .user__hobbies > .signup-submit__group--instruments > .signup-submit__group--instruments__input-container {
+    width: 100%;
+    margin: 1rem 0;
+  }
+
+  .myprofile__style > .signup-submit__group--styles__container > .signup-submit__group--styles__input-container {
+    width: 100%;
+    margin: 1rem 0;
+  }
+
+  .myprofile__user--container > form > .signup__localisation > .autocompletion-city > .autocompletion-city__input {
+    width: 100%;
+  }
+
   .myprofile {
     &__textarea {
       &--container {
@@ -68,6 +82,10 @@
         width: 150px;
         height: 150px;
         border-radius: 50%;
+      }
+      &--picture-title {
+        text-align: center;
+        margin-bottom: 1rem;
       }
       &--submit-container {
         display: flex;
@@ -218,6 +236,7 @@
         margin: 1rem 0;
         font-weight: bold;
         color: vars.$fourthColor;
+        text-align: center;
       }
       &--picture {
         width:75px;
@@ -257,6 +276,20 @@
 //TABLET LAYOUT 
 @media screen and (min-width: 700px) {
 
+  .user__hobbies > .signup-submit__group--instruments > .signup-submit__group--instruments__input-container {
+    width: 100%;
+    margin: 1rem 0;
+  }
+
+  .myprofile__style > .signup-submit__group--styles__container > .signup-submit__group--styles__input-container {
+    width: 100%;
+    margin: 1rem 0;
+  }
+
+  .myprofile__user--container > form > .signup__localisation > .autocompletion-city > .autocompletion-city__input {
+    width: 100%;
+  }
+
   .myprofile {
     font-size: 1.3rem !important;
     margin: 0 auto;
@@ -272,6 +305,14 @@
         margin: 2rem auto;
         text-align: center;
         font-size: 1.2rem;
+      }
+      &--textarea {
+        border: 1px solid vars.$thirdColor;
+        color: vars.$thirdColor;
+        background-color: vars.$seventhColor;
+        border-radius: vars.$borderRadius;
+        height: 200px;
+        width: 100%;
       }
     }
     &__delete-btn {
@@ -313,6 +354,15 @@
         width: 150px;
         height: 150px;
         border-radius: 50%;
+      }
+      &--picture-title {
+        text-align: center;
+        margin-bottom: 1rem;
+      }
+      &--submit-container {
+        display: flex;
+        justify-content: space-around;
+        margin: 1rem auto;
       }
       &--delete-btn {
         background-color: vars.$fifthColor;
@@ -386,6 +436,26 @@
         background-color: transparent;
         border: none;
       }
+      &--edit-input {
+        background-color: vars.$seventhColor;
+        color: vars.$thirdColor;
+        border: none;
+        border: 1px solid vars.$thirdColor;
+        padding: 1rem;
+        margin-top: 1rem;
+        border-radius: vars.$borderRadius;
+      }
+      &--edit-submit-btn {
+        background-color: vars.$thirdColor;
+        padding: .5rem;
+        border-radius: vars.$borderRadius;
+        border: none;
+        color: vars.$fourthColor;
+      }
+      &--close-edit-btn {
+        background-color: transparent;
+        border: none;
+      }
       &--sounds {
         color: vars.$fourthColor;
         font-weight: 700;
@@ -432,14 +502,16 @@
     &__friend {
       background-color: vars.$firstColor;
       color: vars.$fourthColor;
-      margin: 0 1rem;
+      margin: 2rem 1rem;
       padding: .5em 1em;
       border-radius: vars.$borderRadius;
+      border: 1px solid vars.$secondColor;
 
       &--description {
         margin: 1rem 0;
         font-weight: bold;
         color: vars.$fourthColor;
+        text-align: center;
       }
       &--picture {
         width:75px;
@@ -449,12 +521,6 @@
       }
     }
     }
-    .user__friends {
-      display: flex;
-      justify-content: space-around;
-      width: 80%;
-      margin: 2rem 0;
-    } 
 }
 
 .edit {
@@ -627,6 +693,20 @@
 // DESKTOP LAYOUT
 @media screen and (min-width: 1024px) {
 
+  .user__hobbies > .signup-submit__group--instruments > .signup-submit__group--instruments__input-container {
+    width: 100%;
+    margin: 1rem 0;
+  }
+
+  .myprofile__style > .signup-submit__group--styles__container > .signup-submit__group--styles__input-container {
+    width: 100%;
+    margin: 1rem 0;
+  }
+
+  .myprofile__user--container > form > .signup__localisation > .autocompletion-city > .autocompletion-city__input {
+    width: 100%;
+  }
+
   .myprofile {
     font-size: 1.3rem !important;
     margin: 0 auto;
@@ -642,6 +722,14 @@
         margin: 2rem auto;
         text-align: center;
         font-size: 1.2rem;
+      }
+      &--textarea {
+        border: 1px solid vars.$thirdColor;
+        color: vars.$thirdColor;
+        background-color: vars.$seventhColor;
+        border-radius: vars.$borderRadius;
+        height: 200px;
+        width: 100%;
       }
     }
     &__delete-btn {
@@ -686,6 +774,15 @@
         height: 150px;
         border-radius: 50%;
         margin-bottom: 1rem;
+      }
+      &--picture-title {
+        text-align: center;
+        margin-bottom: 1rem;
+      }
+      &--submit-container {
+        display: flex;
+        justify-content: space-around;
+        margin: 1rem auto;
       }
       &--delete-btn {
         background-color: vars.$fifthColor;
@@ -762,6 +859,26 @@
         background-color: transparent;
         border: none;
       }
+      &--edit-input {
+        background-color: vars.$seventhColor;
+        color: vars.$thirdColor;
+        border: none;
+        border: 1px solid vars.$thirdColor;
+        padding: 1rem;
+        margin-top: 1rem;
+        border-radius: vars.$borderRadius;
+      }
+      &--edit-submit-btn {
+        background-color: vars.$thirdColor;
+        padding: .5rem;
+        border-radius: vars.$borderRadius;
+        border: none;
+        color: vars.$fourthColor;
+      }
+      &--close-edit-btn {
+        background-color: transparent;
+        border: none;
+      }
       &--sounds {
         color: vars.$fourthColor;
         font-weight: 700;
@@ -813,15 +930,16 @@
     &__friend {
       background-color: vars.$firstColor;
       color: vars.$fourthColor;
+      margin: 2rem 1rem;
+      padding: .5em 1em;
       border-radius: vars.$borderRadius;
-      width: 40%;
-      font-size: 1.2rem;
-      margin-bottom: 1rem;
+      border: 1px solid vars.$secondColor;
 
       &--description {
+        margin: 1rem 0;
         font-weight: bold;
         color: vars.$fourthColor;
-        font-size: 1.4rem;
+        text-align: center;
       }
       &--picture {
         width:75px;
@@ -830,11 +948,6 @@
         margin-bottom: 1rem;
       }
     }
-    }
-    .user__friends {
-      display: flex;
-      flex-direction: row;
-      width: 90%;
     }
     .user__hobbies {
       width: 90%;
@@ -1011,7 +1124,7 @@
   border-radius: 50%;
 }
 .delete--association {
-  color: vars.$firstColor;
+  color: vars.$fourthColor;
   background-color: transparent;
   border: none;
   cursor: pointer;
