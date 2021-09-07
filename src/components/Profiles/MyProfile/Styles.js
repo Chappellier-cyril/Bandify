@@ -67,7 +67,7 @@ const Styles = ({
                         <select className="signup-submit__group__select" name="musicStyle" id="musicStyle" onChange={(e) => setNewStyle(e.target.value)}>
                           <option value="">Choisir un style de musique</option>
                           {
-                    stylesData && filteredStyles.map((style) => (
+                    stylesData && filteredStyles && filteredStyles.map((style) => (
                       <option value={style.id} key={style.music_name}>
                         {style.music_name}
                       </option>

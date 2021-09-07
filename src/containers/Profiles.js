@@ -113,7 +113,6 @@ const mapDispatchToProps = (dispatch) => ({
       value: e.target.value,
     });
   },
-
   deleteInstrumentAssociation: (play) => {
     dispatch({
       type: 'WISH_TO_DELETE_INSTRUMENT_ASSOCIATION', play,
@@ -135,6 +134,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   toggleProfileMenuOpen: () => {
     dispatch({ type: 'TOGGLE_PROFILE_MENU' });
+  },
+  closeProfileMenu: () => {
+    dispatch({ type: 'CLOSE_PROFILE_MENU' });
   },
 });
 
