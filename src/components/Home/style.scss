@@ -282,12 +282,16 @@
     margin: 3rem auto 0;
   
     &--users {
+      display: flex !important;
+      flex-direction: column;
+      justify-content: space-around;
       width: 250px;
       height: 350px;
       margin: 3rem 0;
       padding: .5rem 1rem;
       background-color: vars.$seventhColor;
       border-radius: vars.$borderRadius;
+      border: 1px solid vars.$secondColor;
     }
   }
   &__user {
@@ -380,7 +384,7 @@
   /* Slider */
   .slick-slider {
     margin-top: 2rem;
-    width: 70%;
+    width: 80%;
   }
   .slick-slide {
     padding: 0 1rem;
@@ -491,9 +495,12 @@
     }
   
     &--users {
+      display: flex !important;
+      flex-direction: column;
+      justify-content: space-around;
+      height: 525px;
       text-align: center;
       width: 250px;
-      height: 400px;
       font-weight: bold;
       margin: 3rem 0;
       padding: .5rem 1rem;

@@ -133,52 +133,53 @@ const Home = ({
                   {/* // On affiche uniquement les 5 premiers membres */}
                   <Slider {...sliderSettings}>
                     {usersWithoutMe.slice(0, 5).map((user) => (
-                      <Link to={`/member/${user.id}`} key={user.id} className="home__cards--users">
-                        <div className="home__user--container">
-                          {!user.profil_image && <img className="friends-list__member--picture" src={`${process.env.BANDIFY_API_URL}/avatar/avatar.png`} alt="avatar du membre" />}
-                          {user.profil_image && <img className="home__user--picture" src={`${process.env.BANDIFY_API_URL}/avatar/${user.profil_image}`} alt="avatar du membre" />}
-                          <div className="home__user--short">
-                            <p className="home__user--name">{user.firstname} {user.lastname}</p>
-                            {user.city && (
-                            <p className="home__user--city">
-                              {firstLetterToUpper(restToLower(user.city.city_name))}
-                              ({user.city.department_code})
-                            </p>
-                            )}
+                      usersWithoutMe[0] && (
+                        <Link to={`/member/${user.id}`} key={user.id} className="home__cards--users">
+                          <div className="home__user--container">
+                            {!user.profil_image && <img className="friends-list__member--picture" src={`${process.env.BANDIFY_API_URL}/avatar/avatar.png`} alt="avatar du membre" />}
+                            {user.profil_image && <img className="home__user--picture" src={`${process.env.BANDIFY_API_URL}/avatar/${user.profil_image}`} alt="avatar du membre" />}
+                            <div className="home__user--short">
+                              <p className="home__user--name">{user.firstname} {user.lastname}</p>
+                              {user.city && (
+                              <p className="home__user--city">
+                                {firstLetterToUpper(restToLower(user.city.city_name))}
+                                ({user.city.department_code})
+                              </p>
+                              )}
+                            </div>
                           </div>
-                        </div>
-                        {user.plays && (
-                        <div className="home__instrument">
-                          <p className="home__instrument--description">Instruments :</p>
-                          <ul className="home__instrument--list">
-                            {user.plays.map((play) => (
-                              play.id && (
-                              <li className="home__instrument__tag" key={play.id}>
-                                <span className="home__instrument__tag--name">{play.instrument.instrument_name}</span>
-                                {play.level && <span className="home__instrument__tag--level">{play.level && play.level.level_name}</span>}
-                              </li>
-                              )
-                            ))}
-                          </ul>
-                        </div>
-                        )}
-                        {user.styles && (
-                        <div className="home__style">
-                          <p className="home__style--description">Goûts musicaux :</p>
-                          <ul className="home__style--list">
-                            {user.styles.map((musicStyle) => (
-                              musicStyle.id && (
-                              // Règle le souci musicStyle.id is undefined
-                              <li className="home__style__tag" key={musicStyle.id}>
-                                <span className="home__style__tag--name">{musicStyle.music_name}</span>
-                              </li>
-                              )
-                            ))}
-                          </ul>
-                        </div>
-                        )}
-                      </Link>
-                    ))}
+                          {user.plays && (
+                          <div className="home__instrument">
+                            <p className="home__instrument--description">Instruments :</p>
+                            <ul className="home__instrument--list">
+                              {user.plays.map((play) => (
+                                play.id && (
+                                <li className="home__instrument__tag" key={play.id}>
+                                  <span className="home__instrument__tag--name">{play.instrument.instrument_name}</span>
+                                  {play.level && <span className="home__instrument__tag--level">{play.level && play.level.level_name}</span>}
+                                </li>
+                                )
+                              ))}
+                            </ul>
+                          </div>
+                          )}
+                          {user.styles && (
+                          <div className="home__style">
+                            <p className="home__style--description">Goûts musicaux :</p>
+                            <ul className="home__style--list">
+                              {user.styles.map((musicStyle) => (
+                                musicStyle.id && (
+                                // Règle le souci musicStyle.id is undefined
+                                <li className="home__style__tag" key={musicStyle.id}>
+                                  <span className="home__style__tag--name">{musicStyle.music_name}</span>
+                                </li>
+                                )
+                              ))}
+                            </ul>
+                          </div>
+                          )}
+                        </Link>
+                      )))}
                   </Slider>
                 </>
               )}

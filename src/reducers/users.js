@@ -81,7 +81,7 @@ const reducer = (state = initialState, action = {}) => {
       localStorage.clear();
       return {
         ...state,
-        users: usersData,
+        fakeUsers: usersData,
         user: {
           ...initialState.user,
         },
@@ -239,7 +239,7 @@ const reducer = (state = initialState, action = {}) => {
     case 'ON_LOGOUT':
       return {
         ...state,
-        users: usersData,
+        fakeUsers: usersData,
       };
     case 'DELETE_INSTRUMENT_ASSOCIATION_SUCCESS': {
       const filteredPlays = state.user.plays.filter((statePlay) => statePlay.id !== action.play.id);
