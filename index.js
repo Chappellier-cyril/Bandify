@@ -46,7 +46,7 @@ const io = socketio(server, {
 app.use(express.json());
 app.use(express.static('upload'));
 
-app.use( cors('https://bandify.fr') );
+app.use( cors('https://www.bandify.fr') );
 
 app.use(express.urlencoded({extended: true})); 
 
