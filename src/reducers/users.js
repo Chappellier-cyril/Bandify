@@ -108,6 +108,33 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         isEditing: !state.isEditing,
       };
+    case 'TOGGLE_PROFILE_MENU':
+      return {
+        ...state,
+        editPhoto: false,
+        editName: false,
+        editCity: false,
+        editBirthdate: false,
+        editInstruments: false,
+        editStyles: false,
+        editEmail: false,
+        editPassword: false,
+        editDescription: false,
+      };
+    case 'CLOSE_PROFILE_MENU':
+      return {
+        ...state,
+        isEditing: false,
+        editPhoto: false,
+        editName: false,
+        editCity: false,
+        editBirthdate: false,
+        editInstruments: false,
+        editStyles: false,
+        editEmail: false,
+        editPassword: false,
+        editDescription: false,
+      };
     case 'CHANGE_INPUT_MODIFY_PROFILE':
       return {
         ...state,

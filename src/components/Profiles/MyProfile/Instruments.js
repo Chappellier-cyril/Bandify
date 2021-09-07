@@ -50,8 +50,9 @@ const Instruments = ({
                 <select className="signup-submit__group__select" name="instrument" id="instrument" onChange={(e) => setNewPlay({ ...newPlay, instrument_id: e.target.value })} required>
                   <option value="">Choisir un instrument</option>
                   {
-                    instrumentsData && filteredInst.map(({ instrument_name, id }) => (
-                      <option value={id} key={`${instrument_name} + ${id}`}>{instrument_name}</option>))
+                    instrumentsData
+                      && filteredInst && filteredInst.map(({ instrument_name, id }) => (
+                        <option value={id} key={`${instrument_name} + ${id}`}>{instrument_name}</option>))
                   }
                 </select>
                 <select className="signup-submit__group__select" name="level" id="level" onChange={(e) => setNewPlay({ ...newPlay, level_id: e.target.value })} disabled={!newPlay.instrument_id}>

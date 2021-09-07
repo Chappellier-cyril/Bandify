@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import PropTypes, { shape } from 'prop-types';
+import { useLocation } from 'react-router-dom';
 import MyProfile from './MyProfile';
 import OtherProfile from './OtherProfile';
 import './style.scss';
@@ -59,6 +60,7 @@ const Profiles = ({
   toggleProfileMenuOpen,
   isLoading,
   deleteStyle,
+  closeProfileMenu,
 }) => {
   const url = window.location.href;
   // pour avoir le dernier segment de l'url
@@ -67,7 +69,7 @@ const Profiles = ({
   const queryId = parseInt(lastSegmentUrl, 10);
   // on cherche si l'id de la query existe dans la table user
   const foundMember = users.find((member) => member.id === queryId);
-
+  const location = useLocation();
   useEffect(() => {
     if (isLogged) {
       // on est connecté, on récupère les membres de la bdd via la requête à l'api
@@ -75,7 +77,9 @@ const Profiles = ({
       getOneMember();
     }
   }, [lastSegmentUrl, isLogged]);
-
+  useEffect(() => {
+    closeProfileMenu();
+  }, [location]);
   return (
     (foundMember && (foundMember.id === connectedUserId))
       ? (
@@ -203,6 +207,7 @@ Profiles.propTypes = {
   isDeleteFriendModalOpen: PropTypes.bool.isRequired,
   isProfileMenuOpen: PropTypes.bool.isRequired,
   toggleProfileMenuOpen: PropTypes.func.isRequired,
+  closeProfileMenu: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,
 };
 

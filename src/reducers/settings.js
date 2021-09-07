@@ -44,6 +44,11 @@ export const initialState = {
 
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
+    case 'CLOSE_PROFILE_MENU':
+      return {
+        ...state,
+        isProfileMenuOpen: false,
+      };
     case 'HIDE_ALL_WINDOWS':
       return {
         ...state,
