@@ -3,6 +3,7 @@ import Home from 'src/components/Home';
 
 const mapStateToProps = (state) => ({
   users: state.users.users,
+  fakeUsers: state.users.fakeUsers,
   isLogged: state.login.isLogged,
   searchValue: state.users.searchValue,
   user: state.users.user,

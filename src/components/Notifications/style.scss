@@ -183,6 +183,7 @@
         transition: 0.5s ease-in-out;
         border-radius: vars.$borderRadius;
         border: 1px solid vars.$secondColor;
+        overflow-y: hidden;
     }
     &__accept-btn {
       background-color: vars.$thirdColor;

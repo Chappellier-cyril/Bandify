@@ -2,7 +2,8 @@ import usersData from 'src/data/users';
 
 export const initialState = {
   // users = ARRAY
-  users: usersData,
+  fakeUsers: usersData,
+  users: [],
   // user = OBJECT
   user: {
     firstName: '',

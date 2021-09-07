@@ -11,7 +11,7 @@ import './style.scss';
 // import 'slick-carousel/slick/slick-theme.css';
 
 const Home = ({
-  users, isLogged, getMembers, searchedUsers, loginId, isLoading,
+  users, fakeUsers, isLogged, getMembers, searchedUsers, loginId, isLoading,
   resultsMessage, searchErrorMessage,
 }) => {
   useEffect(() => {
@@ -215,16 +215,42 @@ const Home = ({
           <p className="home__desc--teasing">Ils ont déjà rejoint !</p>
           <div className="home__cards">
             {/* fakes members */}
-            {users.map((user) => (
-              <div className="home__cards--users" key={user.id}>
-                <img
-                  className="home__user--picture"
-                  src={`${process.env.BANDIFY_API_URL}/avatar/${user.profil_image}`}
-                  alt="avatr de membre"
-                />
-                <p className="home__user--name">{user.firstname} {user.lastname}</p>
-              </div>
-            ))}
+            {
+              fakeUsers.map((fakeUser) => (
+                <div className="home__cards--users" key={fakeUser.id}>
+                  <div className="home__user--container">
+                    <img className="home__user--picture" src={`${process.env.BANDIFY_API_URL}/avatar/${fakeUser.profil_image}`} alt="avatar du membre" />
+                    <div className="home__user--short">
+                      <p className="home__user--name">{fakeUser.firstname} {fakeUser.lastname}</p>
+                      <p className="home__user--city">
+                        {fakeUser.city}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="home__instrument">
+                    <p className="home__instrument--description">Instruments :</p>
+                    <ul className="home__instrument--list">
+                      {fakeUser.plays.map((play) => (
+                        <li className="home__instrument__tag" key={play.id}>
+                          <span className="home__instrument__tag--name">{play.instrument}</span>
+                          <span className="home__instrument__tag--level">{play.level}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="home__style">
+                    <p className="home__style--description">Goûts musicaux :</p>
+                    <ul className="home__style--list">
+                      {fakeUser.styles.map((musicStyle) => (
+                        <li className="home__style__tag" key={musicStyle.id}>
+                          <span className="home__style__tag--name">{musicStyle.music_name}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              ))
+            }
           </div>
         </>
       )}
@@ -234,6 +260,9 @@ const Home = ({
 
 Home.propTypes = {
   users: PropTypes.arrayOf(
+    PropTypes.object,
+  ),
+  fakeUsers: PropTypes.arrayOf(
     PropTypes.object,
   ),
   isLogged: PropTypes.bool.isRequired,
@@ -249,6 +278,7 @@ Home.defaultProps = {
     id: null,
     firstname: '',
   }],
+  fakeUsers: [],
   loginId: 0,
   searchedUsers: [],
   resultsMessage: '',
