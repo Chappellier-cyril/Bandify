@@ -1,0 +1,1266 @@
+@use 'src/styles/vars';
+
+// MOBILE LAYOUT
+@media screen and (max-width: 700px) {
+
+  .user__hobbies > .signup-submit__group--instruments > .signup-submit__group--instruments__input-container {
+    width: 100%;
+    margin: 1rem 0;
+  }
+
+  .myprofile__style > .signup-submit__group--styles__container > .signup-submit__group--styles__input-container {
+    width: 100%;
+    margin: 1rem 0;
+  }
+
+  .myprofile__user--container > form > .signup__localisation > .autocompletion-city > .autocompletion-city__input {
+    width: 100%;
+  }
+
+  .myprofile {
+    &__textarea {
+      &--container {
+        margin: 0 auto;
+      }
+    }
+    &__desc {
+      margin: 0 auto;
+      padding: 2rem;
+      width: 100%;
+      font-size: 1.4rem;
+      color: vars.$thirdColor;
+      text-align: center;
+      &--teasing {
+        color: vars.$thirdColor;
+        margin: 2rem auto;
+        text-align: center;
+        font-size: 1.2rem;
+      }
+      &--textarea {
+        border: 1px solid vars.$thirdColor;
+        color: vars.$thirdColor;
+        background-color: vars.$seventhColor;
+        border-radius: vars.$borderRadius;
+        height: 200px;
+        width: 100%;
+      }
+    }
+    &__delete-btn {
+      &--container {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+      }
+    }
+    &__signup {
+      &--btn {
+        width: 60%;
+        margin: 0 auto;
+        background-color: vars.$thirdColor;
+        color: vars.$fourthColor;
+        padding: 1rem;
+        border-radius: vars.$borderRadius;
+      }
+    }
+    &__cards {
+      display: flex;
+      flex-direction: column;
+      width: 90%;
+      margin: 2rem auto;
+      &--users {
+        width: 100%;
+        height: auto;
+        margin: 1rem auto;
+        padding: 1rem;
+        background-color: vars.$seventhColor;
+        border-radius: vars.$borderRadius;
+        border: 1px solid vars.$secondColor;
+      }
+    }
+    &__user {
+      &--picture {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+      }
+      &--picture-title {
+        text-align: center;
+        margin-bottom: 1rem;
+      }
+      &--submit-container {
+        display: flex;
+        justify-content: space-around;
+        margin: 1rem auto;
+      }
+      &--delete-btn {
+        background-color: vars.$fifthColor;
+        border: none;
+        border-radius: vars.$borderRadius;
+        color: vars.$fourthColor;
+        padding: .5rem;
+        margin: 0 0 1rem 1rem;
+        height: 50px;
+        }
+      &--picture-desc {
+        color: vars.$fourthColor;
+        margin: 1rem;
+        font-weight: bold;
+      }
+      &--picture-form {
+        width: 200px;
+        margin: 1rem;
+      }
+      &--container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      &--name, &--age, &--email, &--description {
+        color: vars.$fourthColor;
+        font-weight: bold;
+      }
+      &--description-details {
+        font-weight: normal;
+      }
+      &--short {
+        color: vars.$fourthColor;
+        margin: auto 1rem;
+        font-weight: bold;
+      }
+      &--description {
+        color: vars.$fourthColor;
+        margin: 1rem 0;
+        font-weight: bold;
+        text-align: left;
+      }
+      &--description-title {
+        margin-bottom: 1rem;
+      }
+      &--description-content {
+        font-weight: normal;
+      }
+      &--add-btn {
+        background-color: vars.$thirdColor;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: none;
+      color: vars.$fourthColor;
+      }
+      &--avatar {
+        position: relative;
+      }
+      &--edit-photo {
+        background-color: transparent;
+        border: none;
+        position: absolute;
+        left: 70%;
+        top: 0%;
+      }
+      &--edit-age, &--edit-city, &--edit-email, &--edit-name, &--edit-description, &--edit-instruments, &--edit-styles {
+        background-color: transparent;
+        border: none;
+      }
+      &--edit-input {
+        background-color: vars.$seventhColor;
+        color: vars.$thirdColor;
+        border: none;
+        border: 1px solid vars.$thirdColor;
+        padding: 1rem;
+        margin-top: 1rem;
+        border-radius: vars.$borderRadius;
+      }
+      &--edit-submit-btn {
+        background-color: vars.$thirdColor;
+        padding: .5rem;
+        border-radius: vars.$borderRadius;
+        border: none;
+        color: vars.$fourthColor;
+      }
+      &--close-edit-btn {
+        background-color: transparent;
+        border: none;
+      }
+      &--sounds {
+        color: vars.$fourthColor;
+        font-weight: 700;
+      }
+    }
+    &__instrument {
+      color: vars.$fourthColor;
+      &--description {
+        margin: 1rem auto;
+        font-weight: bold;
+      }
+      &__tag {
+        background-color: vars.$thirdColor;
+        display: inline-block;
+        padding: 0.3rem;
+        margin: 0.3rem 0.3rem 0.3rem 0;
+        border-radius: vars.$borderRadius;
+        &--name {
+          padding-right: 0.3rem;
+        }
+        &--level {
+          background-color: vars.$fourthColor;
+          color: vars.$thirdColor;
+          font-size: 0.8rem;
+          padding: 0.2rem;
+          border-radius: vars.$borderRadius;
+        }
+      }
+    }
+    &__style {
+      color: vars.$fourthColor;
+      &--description {
+        margin: 1rem 0;
+        font-weight: bold;
+      }
+      &__tag {
+        background-color: vars.$thirdColor;
+        display: inline-block;
+        padding: 0.3rem;
+        margin: 0.3rem 0.3rem 0.3rem 0;
+        border-radius: vars.$borderRadius;
+      }
+    }
+    &__friend {
+      background-color: vars.$firstColor;
+      color: vars.$fourthColor;
+      margin-bottom: 1rem;
+      padding: .5em 1em;
+      border-radius: vars.$borderRadius;
+      border: 1px solid vars.$secondColor;
+      &--description {
+        margin: 1rem 0;
+        font-weight: bold;
+        color: vars.$fourthColor;
+        text-align: center;
+      }
+      &--picture {
+        width:75px;
+        height: 75px;
+        border-radius: 50%;
+        margin-bottom: 1rem;
+      }
+    }
+    } 
+}
+
+.edit {
+  &__password {
+    &__form {
+      &__button {
+        margin: 1rem auto;
+      }
+    }
+    &--btn {
+      background-color: vars.$thirdColor;
+      border: none;
+      border-radius: vars.$borderRadius;
+      color: vars.$fourthColor;
+      padding: 1rem;
+      margin: 1rem;
+    }
+  }
+}
+
+.fa-pen, .fa-times-circle {
+  color: #1DA1F2;
+  background-color: vars.$firstColor;
+  padding: .5rem;
+  border-radius: 50%;
+}
+
+//TABLET LAYOUT 
+@media screen and (min-width: 700px) {
+
+  .user__hobbies > .signup-submit__group--instruments > .signup-submit__group--instruments__input-container {
+    width: 100%;
+    margin: 1rem 0;
+  }
+
+  .myprofile__style > .signup-submit__group--styles__container > .signup-submit__group--styles__input-container {
+    width: 100%;
+    margin: 1rem 0;
+  }
+
+  .myprofile__user--container > form > .signup__localisation > .autocompletion-city > .autocompletion-city__input {
+    width: 100%;
+  }
+
+  .myprofile {
+    font-size: 1.3rem !important;
+    margin: 0 auto;
+    &__desc {
+      margin: 0 auto;
+      padding: 2rem;
+      width: 100%;
+      font-size: 1.4rem;
+      color: vars.$thirdColor;
+      text-align: center;
+      &--teasing {
+        color: vars.$thirdColor;
+        margin: 2rem auto;
+        text-align: center;
+        font-size: 1.2rem;
+      }
+      &--textarea {
+        border: 1px solid vars.$thirdColor;
+        color: vars.$thirdColor;
+        background-color: vars.$seventhColor;
+        border-radius: vars.$borderRadius;
+        height: 200px;
+        width: 100%;
+      }
+    }
+    &__delete-btn {
+      &--container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+        width: 100%;
+      }
+    }
+    &__signup {
+      &--btn {
+        width: 60%;
+        margin: 0 auto;
+        background-color: vars.$thirdColor;
+        color: vars.$fourthColor;
+        padding: 1rem;
+        border-radius: vars.$borderRadius;
+      }
+    }
+    &__cards {
+      display: flex;
+      flex-direction: column;
+      width: 60%;
+      margin: 2rem auto;
+      &--users {
+        width: 100%;
+        height: auto;
+        margin-bottom: 0.5rem;
+        margin-top: 1rem;
+        padding: 1rem;
+        background-color: vars.$seventhColor;
+        border-radius: vars.$borderRadius;
+        border: 1px solid vars.$secondColor;
+      }
+    }
+    &__user {
+      &--picture {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+      }
+      &--picture-title {
+        text-align: center;
+        margin-bottom: 1rem;
+      }
+      &--submit-container {
+        display: flex;
+        justify-content: space-around;
+        margin: 1rem auto;
+      }
+      &--delete-btn {
+        background-color: vars.$fifthColor;
+        border: none;
+        border-radius: vars.$borderRadius;
+        color: vars.$fourthColor;
+        padding: 1rem;
+        margin: 1rem;
+        height: 50px;
+        }
+      &--picture-desc {
+        color: vars.$fourthColor;
+        margin: 1rem;
+        font-weight: bold;
+      }
+      &--picture-form {
+        width: 200px;
+        margin: 1rem;
+      }
+      &--container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.5rem;
+      }
+      &--name, &--age, &--email, &--description {
+        color: vars.$fourthColor;
+        font-weight: bold;
+      }
+      &--description-details {
+        font-weight: normal;
+      }
+      &--short {
+        color: vars.$fourthColor;
+        margin: auto 1rem;
+        font-weight: bold;
+      }
+      &--description {
+        color: vars.$fourthColor;
+        margin: 1rem 0;
+        font-weight: bold;
+        text-align: left;
+      }
+      &--description-title {
+        margin-bottom: 1rem;
+      }
+      &--description-content {
+        font-weight: normal;
+      }
+      &--add-btn {
+        background-color: vars.$thirdColor;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: none;
+      color: vars.$fourthColor;
+      }
+      &--avatar {
+        position: relative;
+        z-index: 0;
+      }
+      &--edit-photo {
+        background-color: transparent;
+        border: none;
+        position: absolute;
+        left: 70%;
+        top: 0%;
+      }
+      &--edit-age, &--edit-city, &--edit-email, &--edit-name, &--edit-description, &--edit-instruments, &--edit-styles {
+        background-color: transparent;
+        border: none;
+      }
+      &--edit-input {
+        background-color: vars.$seventhColor;
+        color: vars.$thirdColor;
+        border: none;
+        border: 1px solid vars.$thirdColor;
+        padding: 1rem;
+        margin-top: 1rem;
+        border-radius: vars.$borderRadius;
+      }
+      &--edit-submit-btn {
+        background-color: vars.$thirdColor;
+        padding: .5rem;
+        border-radius: vars.$borderRadius;
+        border: none;
+        color: vars.$fourthColor;
+      }
+      &--close-edit-btn {
+        background-color: transparent;
+        border: none;
+      }
+      &--sounds {
+        color: vars.$fourthColor;
+        font-weight: 700;
+      }
+    }
+    &__instrument {
+      color: vars.$fourthColor;
+      &--description {
+        margin: 1rem auto;
+        font-weight: bold;
+      }
+      &__tag {
+        background-color: vars.$thirdColor;
+        display: inline-block;
+        padding: 0.3rem;
+        margin: 0.3rem 0.3rem 0.3rem 0;
+        border-radius: vars.$borderRadius;
+        &--name {
+          padding-right: 0.3rem;
+        }
+        &--level {
+          background-color: vars.$fourthColor;
+          color: vars.$thirdColor;
+          font-size: 0.8rem;
+          padding: 0.2rem;
+          border-radius: vars.$borderRadius;
+        }
+      }
+    }
+    &__style {
+      color: vars.$fourthColor;
+      &--description {
+        margin: 1rem 0;
+        font-weight: bold;
+      }
+      &__tag {
+        background-color: vars.$thirdColor;
+        display: inline-block;
+        padding: 0.3rem;
+        margin: 0.3rem 0.3rem 0.3rem 0;
+        border-radius: vars.$borderRadius;
+      }
+    }
+    &__friend {
+      background-color: vars.$firstColor;
+      color: vars.$fourthColor;
+      margin: 2rem 1rem;
+      padding: .5em 1em;
+      border-radius: vars.$borderRadius;
+      border: 1px solid vars.$secondColor;
+
+      &--description {
+        margin: 1rem 0;
+        font-weight: bold;
+        color: vars.$fourthColor;
+        text-align: center;
+      }
+      &--picture {
+        width:75px;
+        height: 75px;
+        border-radius: 50%;
+        margin-bottom: 1rem;
+      }
+    }
+    }
+}
+
+.edit {
+  &__password {
+    &--btn {
+      background-color: vars.$thirdColor;
+      border: none;
+      border-radius: vars.$borderRadius;
+      color: vars.$fourthColor;
+      padding: 1rem;
+      margin: 1rem;
+    }
+    &__form {
+      width: 100%;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      &__button{
+        width: 80%;
+        background-color: vars.$thirdColor;
+        border: none;
+        border-radius: vars.$borderRadius;
+        color: vars.$fourthColor;
+        padding: 1rem;
+
+      }
+    }
+  }
+
+}
+
+.profile-menu{
+  &__icone{
+    transform: rotate(0deg);
+    transition: 0.5s ease-in-out;
+    color: vars.$secondColor;
+    width: 100%;
+    &--is-open{
+      transform: rotate(-90deg);
+    }
+  }
+  &__container{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow-x: clip;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    z-index: 1;
+    overflow-x: clip;
+  }
+  &__toggler{
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: 1px solid vars.$secondColor;
+    background: vars.$seventhColor;
+  }
+  &__menu{
+    width: 40%;
+    height: auto;
+    min-width: 400px;
+    border: 1px solid vars.$secondColor;
+    background: vars.$seventhColor;
+    border-radius: vars.$borderRadius;
+    transition: 0.3s ease-in-out;
+    position: absolute;
+    opacity: 0;
+    top: 30px;
+    display: none;
+    &--is-open{
+      display:block;
+      right: 0;
+      opacity: 1;
+    }
+  }
+  &__button-container{
+    width: 100%;
+  }
+  &__button{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    border: none;
+    color: white;
+    background: none;
+    padding: 1rem;
+    border:1px solid vars.$secondColor;
+    font-weight: none;
+    box-shadow: none;
+    transition: 0.3s ease-in-out;
+    font-family: 'Poppins', sans-serif;
+    &--password{
+      border-radius:vars.$borderRadius vars.$borderRadius 0 0;
+      &:hover{
+        background-color: vars.$thirdColor;
+      }
+    }
+    &--edit-profile{
+      &:hover{
+        background-color: vars.$thirdColor;
+      }
+    }
+    &--delete-profile{
+      border-radius:0 0 vars.$borderRadius vars.$borderRadius;
+      &:hover{
+        background-color: vars.$fifthColor;
+      }
+    }
+    &--input-sound{
+      position: absolute;
+      width: 0;
+      top: 0;
+      left: 0;
+      opacity: 0;
+    }
+    &--send-sound{
+      width: 100%;
+      border: 1px solid vars.$secondColor;
+      border-radius: vars.$borderRadius;
+      background-color: vars.$seventhColor;
+      
+      &:hover{
+        background-color: vars.$sixthColor;
+      }
+    }
+  }
+  &__label{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0.7rem;
+    border:1px solid vars.$secondColor;
+    color: vars.$fourthColor;
+    text-align: center;
+    transition: 0.3s ease-in-out;
+    &:hover{
+      background-color: vars.$thirdColor;
+    }
+    & p{
+      font-size: 0.8rem;
+      padding: 0.5rem;
+      color: vars.$fourthColor;
+    }
+    
+    &--sound-file{
+      width: 80%;
+      display: block;
+      width: 100%;
+      text-align: center;
+    }
+  }
+}
+
+.fa-pen, .fa-times-circle {
+  color: #1DA1F2;
+  background-color: transparent;
+  padding: .5rem;
+  border-radius: 50%;
+}
+
+
+// ----------------------------------------------------------------------
+// DESKTOP LAYOUT
+@media screen and (min-width: 1024px) {
+
+  .user__hobbies > .signup-submit__group--instruments > .signup-submit__group--instruments__input-container {
+    width: 100%;
+    margin: 1rem 0;
+  }
+
+  .myprofile__style > .signup-submit__group--styles__container > .signup-submit__group--styles__input-container {
+    width: 100%;
+    margin: 1rem 0;
+  }
+
+  .myprofile__user--container > form > .signup__localisation > .autocompletion-city > .autocompletion-city__input {
+    width: 100%;
+  }
+
+  .myprofile {
+    font-size: 1.3rem !important;
+    margin: 0 auto;
+    &__desc {
+      margin: 0 auto;
+      padding: 2rem;
+      width: 100%;
+      font-size: 1.4rem;
+      color: vars.$thirdColor;
+      text-align: center;
+      &--teasing {
+        color: vars.$thirdColor;
+        margin: 2rem auto;
+        text-align: center;
+        font-size: 1.2rem;
+      }
+      &--textarea {
+        border: 1px solid vars.$thirdColor;
+        color: vars.$thirdColor;
+        background-color: vars.$seventhColor;
+        border-radius: vars.$borderRadius;
+        height: 200px;
+        width: 100%;
+      }
+    }
+    &__delete-btn {
+      &--container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+        width: 100%;
+      }
+    }
+    &__signup {
+      &--btn {
+        width: 60%;
+        margin: 0 auto;
+        background-color: vars.$thirdColor;
+        color: vars.$fourthColor;
+        padding: 1rem;
+        border-radius: vars.$borderRadius;
+      }
+    }
+    &__cards {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 60%;
+      margin: 2rem auto;
+      &--users {
+        width: 100%;
+        max-width: 880px;
+        height: auto;
+        margin-bottom: 0.5rem;
+        margin-top: 1rem;
+        padding: 1rem;
+        background-color: vars.$seventhColor;
+        border-radius: vars.$borderRadius;
+        border: 1px solid vars.$secondColor;
+      }
+    }
+    &__user {
+      &--picture {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        margin-bottom: 1rem;
+      }
+      &--picture-title {
+        text-align: center;
+        margin-bottom: 1rem;
+      }
+      &--submit-container {
+        display: flex;
+        justify-content: space-around;
+        margin: 1rem auto;
+      }
+      &--delete-btn {
+        background-color: vars.$fifthColor;
+        border: none;
+        border-radius: vars.$borderRadius;
+        color: vars.$fourthColor;
+        padding: 1rem;
+        margin: 1rem;
+        height: 50px;
+        }
+      &--picture-desc {
+        color: vars.$fourthColor;
+        margin: 1rem;
+        font-weight: bold;
+      }
+      &--picture-form {
+        width: 200px;
+        margin: 1rem;
+      }
+      &--container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.3rem;
+      }
+      &--name, &--age, &--email {
+        margin-bottom: 0.7rem;
+        color: vars.$fourthColor;
+        font-weight: bold;
+      }
+      &--description-details {
+        font-weight: normal;
+        margin-top: 1rem;
+      }
+      &--short {
+        color: vars.$fourthColor;
+        margin: auto 1rem;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+      &--description {
+        color: vars.$fourthColor;
+        margin-bottom: 3rem;
+        font-weight: bold;
+        text-align: left;
+      }
+      &--description-title {
+        margin-bottom: 1rem;
+      }
+      &--description-content {
+        font-weight: normal;
+      }
+      &--add-btn {
+      background-color: vars.$thirdColor;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: none;
+      color: vars.$fourthColor;
+      }
+      &--avatar {
+        position: relative;
+      }
+      &--edit-photo {
+        background-color: transparent;
+        border: none;
+        position: absolute;
+        left: 70%;
+        top: 0%;
+      }
+      &--edit-age, &--edit-city, &--edit-email, &--edit-name, &--edit-description, &--edit-instruments, &--edit-styles {
+        background-color: transparent;
+        border: none;
+      }
+      &--edit-input {
+        background-color: vars.$seventhColor;
+        color: vars.$thirdColor;
+        border: none;
+        border: 1px solid vars.$thirdColor;
+        padding: 1rem;
+        margin-top: 1rem;
+        border-radius: vars.$borderRadius;
+      }
+      &--edit-submit-btn {
+        background-color: vars.$thirdColor;
+        padding: .5rem;
+        border-radius: vars.$borderRadius;
+        border: none;
+        color: vars.$fourthColor;
+      }
+      &--close-edit-btn {
+        background-color: transparent;
+        border: none;
+      }
+      &--sounds {
+        color: vars.$fourthColor;
+        font-weight: 700;
+      }
+    }
+    &__instrument {
+      color: vars.$fourthColor;
+      &--description {
+        margin: 1rem auto;
+        font-weight: bold;
+      }
+      &--list {
+        margin-bottom: 3rem;
+      &__tag {
+        background-color: vars.$thirdColor;
+        display: inline-block;
+        padding: 0.3rem;
+        // margin: 0.3rem 0.3rem 0.3rem 0;
+        border-radius: vars.$borderRadius;
+        &--name {
+          padding-right: 0.3rem;
+          font-size: 1.2rem;
+        }
+        &--level {
+          background-color: vars.$fourthColor;
+          color: vars.$thirdColor;
+          font-size: 0.8rem;
+          padding: 0.2rem;
+          border-radius: vars.$borderRadius;
+        }
+      }
+     }
+    }
+    &__style {
+      color: vars.$fourthColor;
+      margin-bottom: 2rem;
+      &--description {
+        margin: 1rem 0;
+        font-weight: bold;
+      }
+      &__tag {
+        background-color: vars.$thirdColor;
+        display: inline-block;
+        padding: 0.3rem;
+        margin: 0.3rem 0.3rem 0.3rem 0;
+        border-radius: vars.$borderRadius;
+      }
+    }
+    &__friend {
+      background-color: vars.$firstColor;
+      color: vars.$fourthColor;
+      margin: 2rem 1rem;
+      padding: .5em 1em;
+      border-radius: vars.$borderRadius;
+      border: 1px solid vars.$secondColor;
+
+      &--description {
+        margin: 1rem 0;
+        font-weight: bold;
+        color: vars.$fourthColor;
+        text-align: center;
+      }
+      &--picture {
+        width:75px;
+        height: 75px;
+        border-radius: 50%;
+        margin-bottom: 1rem;
+      }
+    }
+    }
+    .user__hobbies {
+      width: 90%;
+      margin: 4rem 0rem 2rem 0rem;
+    }
+}
+
+.edit {
+  &__password {
+    &--btn {
+      background-color: vars.$thirdColor;
+      border: none;
+      border-radius: vars.$borderRadius;
+      color: vars.$fourthColor;
+      padding: 1rem;
+      margin: 1rem;
+    }
+    &__form {
+      width: 100%;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      &__button{
+        width: 80%;
+        background-color: vars.$thirdColor;
+        border: none;
+        border-radius: vars.$borderRadius;
+        color: vars.$fourthColor;
+        padding: 1rem;
+
+      }
+    }
+  }
+
+}
+
+.profile-menu{
+  &__icone{
+    transform: rotate(0deg);
+    transition: 0.5s ease-in-out;
+    color: vars.$secondColor;
+    width: 100%;
+    &--is-open{
+      transform: rotate(-90deg);
+    }
+  }
+  &__container{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    overflow-x: clip; // to fix width bug
+  }
+  &__toggler{
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: 1px solid vars.$secondColor;
+    background: vars.$seventhColor;
+  }
+  &__menu{
+    width: 40%;
+    height: auto;
+    min-width: 400px;
+    border: 1px solid vars.$secondColor;
+    background: vars.$seventhColor;
+    border-radius: vars.$borderRadius;
+    transition: 0.3s ease-in-out;
+    position: absolute;
+    right:-150%;
+    opacity: 0;
+    top: 30px;
+    &--is-open{
+      right: 0px;
+      opacity: 1;
+    }
+  }
+  &__button-container{
+    width: 100%;
+  }
+  &__button{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    border: none;
+    color: white;
+    background: none;
+    padding: 1rem;
+    border:1px solid vars.$secondColor;
+    font-weight: none;
+    box-shadow: none;
+    transition: 0.3s ease-in-out;
+    font-family: 'Poppins', sans-serif;
+    &--password{
+      border-radius:vars.$borderRadius vars.$borderRadius 0 0;
+      &:hover{
+        background-color: vars.$thirdColor;
+      }
+    }
+    &--edit-profile{
+      &:hover{
+        background-color: vars.$thirdColor;
+      }
+    }
+    &--delete-profile{
+      border-radius:0 0 vars.$borderRadius vars.$borderRadius;
+      &:hover{
+        background-color: vars.$fifthColor;
+      }
+    }
+    &--input-sound{
+      position: absolute;
+      width: 0;
+      top: 0;
+      left: 0;
+      opacity: 0;
+    }
+    &--send-sound{
+      width: 100%;
+      border: 1px solid vars.$secondColor;
+      border-radius: vars.$borderRadius;
+      background-color: vars.$seventhColor;
+      
+      &:hover{
+        background-color: vars.$sixthColor;
+      }
+    }
+  }
+  &__label{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0.7rem;
+    border:1px solid vars.$secondColor;
+    color: vars.$fourthColor;
+    text-align: center;
+    transition: 0.3s ease-in-out;
+    &:hover{
+      background-color: vars.$thirdColor;
+    }
+    & p{
+      font-size: 0.8rem;
+      padding: 0.5rem;
+      color: vars.$fourthColor;
+    }
+    
+    &--sound-file{
+      width: 80%;
+      display: block;
+      width: 100%;
+      text-align: center;
+    }
+  }
+}
+
+.edit-profile{
+  &__avatar-container{
+    display: flex;
+    flex-direction: column;
+  }
+}
+.fa-pen, .fa-times-circle {
+  color: #1DA1F2;
+  background-color: transparent;
+  padding: .5rem;
+  border-radius: 50%;
+}
+.delete--association {
+  color: vars.$fourthColor;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  &:disabled{
+    color: #1DA1F2;
+    cursor: not-allowed;
+  }
+}
+
+// MOBILE LAYOUT FOR BURGER MENU EDIT
+@media screen and (max-width: 700px) {
+
+.profile-menu{
+  &__icone{
+    transform: rotate(0deg);
+    transition: 0.5s ease-in-out;
+    color: vars.$secondColor;
+    width: 100%;
+    &--is-open{
+      transform: rotate(-90deg);
+    }
+  }
+  &__container{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    overflow-x: clip; // to fix width bug
+  }
+  &__toggler{
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: 1px solid vars.$secondColor;
+    background: vars.$seventhColor;
+  }
+  &__menu{
+    width: 40%;
+    height: auto;
+    min-width: 250px;
+    border: 1px solid vars.$secondColor;
+    background: vars.$seventhColor;
+    border-radius: vars.$borderRadius;
+    transition: 0.3s ease-in-out;
+    position: absolute;
+    right:-150%;
+    opacity: 0;
+    top: 30px;
+    &--is-open{
+      right: 0px;
+      opacity: 1;
+    }
+  }
+  &__button-container{
+    width: 100%;
+  }
+  &__button{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    border: none;
+    color: white;
+    background: none;
+    padding: 1rem;
+    border:1px solid vars.$secondColor;
+    font-weight: none;
+    box-shadow: none;
+    transition: 0.3s ease-in-out;
+    font-family: 'Poppins', sans-serif;
+    &--password{
+      border-radius:vars.$borderRadius vars.$borderRadius 0 0;
+      &:hover{
+        background-color: vars.$thirdColor;
+      }
+    }
+    &--edit-profile{
+      &:hover{
+        background-color: vars.$thirdColor;
+      }
+    }
+    &--delete-profile{
+      border-radius:0 0 vars.$borderRadius vars.$borderRadius;
+      &:hover{
+        background-color: vars.$fifthColor;
+      }
+    }
+    &--input-sound{
+      position: absolute;
+      width: 0;
+      top: 0;
+      left: 0;
+      opacity: 0;
+    }
+    &--send-sound{
+      width: 100%;
+      border: 1px solid vars.$secondColor;
+      border-radius: vars.$borderRadius;
+      background-color: vars.$seventhColor;
+      
+      &:hover{
+        background-color: vars.$sixthColor;
+      }
+    }
+  }
+  &__label{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0.7rem;
+    border:1px solid vars.$secondColor;
+    color: vars.$fourthColor;
+    text-align: center;
+    transition: 0.3s ease-in-out;
+    &:hover{
+      background-color: vars.$thirdColor;
+    }
+    & p{
+      font-size: 0.8rem;
+      padding: 0.5rem;
+      color: vars.$fourthColor;
+    }
+    
+    &--sound-file{
+      width: 80%;
+      display: block;
+      width: 100%;
+      text-align: center;
+    }
+  }
+}
+}

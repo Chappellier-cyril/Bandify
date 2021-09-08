@@ -1,0 +1,271 @@
+@use 'src/styles/vars';
+
+@media screen and (max-width: 700px) {
+  .header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 .5em;
+    background-color: vars.$firstColor;
+    border-bottom: 1px solid vars.$thirdColor;
+    z-index: 5;
+
+    &__menu-buttons {
+      display: flex;
+      justify-content: flex-end;
+      width: 50%;
+    }
+
+    &__menu-buttons-btn--menu, 
+    &__menu-buttons-btn--chat,
+    &__menu-buttons-btn--notifs {
+      display: inline-block;
+      border: none;
+      cursor: pointer;
+      background: none;
+      appearance: none;
+      color: vars.$fourthColor;
+      background-color: vars.$thirdColor;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      margin-left: .5rem;
+      
+      &__new {
+        background-color: vars.$fourthColor;
+
+        .fas.fa-bell {
+          width: 100%;
+          height: 100%;
+          padding-top: .7em;
+
+          &__new {
+            color: vars.$thirdColor;
+            animation: bounce 0.5s infinite ease alternate;
+
+            &:hover {
+              -webkit-animation-play-state: paused;
+              animation-play-state: paused;
+            }
+          }
+        }
+      }
+
+      }
+
+      &__bandify {
+        display: flex;
+        width: 50%;
+        &--logo {
+          // width: 100px;
+          // margin-top: 1rem;
+          height: 50px;
+          margin: 0 1rem;
+        }
+        &--title {
+          font-size: 1.5rem;
+          margin: auto 0;
+          font-weight: bold;
+          color: vars.$thirdColor;
+        }
+      }
+    }
+
+
+    
+  }
+
+@media screen and (min-width: 700px) {
+  
+  .header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 75px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    font-size: vars.$appFontSize;
+    background-color: vars.$firstColor;
+    border-bottom: 1px solid vars.$thirdColor;
+    z-index: 5;
+    padding: 0 2rem;
+
+    &__menu-buttons {
+      display: flex;
+      // justify-content: space-around;
+      width: 20%;
+    }
+
+    &__menu-buttons-btn--chat,
+    &__menu-buttons-btn--notifs {
+      display: inline-block;
+      border: none;
+      cursor: pointer;
+      background: none;
+      appearance: none;
+      color: vars.$fourthColor;
+      background-color: vars.$thirdColor;
+      width: 50px;
+      height: 50px;
+      margin-right: 10px;
+      border-radius: 50%;
+      &:hover {
+        background-color: rgba(29, 161, 242, .8);
+      }
+
+      &__new {
+        background-color: vars.$fourthColor;
+
+        .fas.fa-bell {
+          width: 100%;
+          height: 100%;
+          padding-top: .7em;
+
+          &__new {
+            color: vars.$thirdColor;
+            animation: bounce 0.5s infinite ease alternate;
+
+            &:hover {
+              -webkit-animation-play-state: paused;
+              animation-play-state: paused;
+            }
+          }
+        }
+      }
+    }
+
+    &__menu-buttons-btn--menu {
+      display: none;
+    }
+
+    &__bandify {
+      display: flex;
+      align-items: center;
+      margin: 0;
+
+      &--logo {
+        height: 60px;
+        margin-right: 1rem;
+      }
+
+      &--title {
+        font-size: 2rem;
+        letter-spacing: 1.5px;
+        color: vars.$thirdColor;
+      }
+    }
+  
+  }
+  
+}
+
+@media screen and (min-width: 1024px) {
+  
+  .header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 75px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    font-size: vars.$appFontSize;
+    background-color: vars.$firstColor;
+    border-bottom: 1px solid vars.$thirdColor;
+    z-index: 5;
+
+    &__menu-buttons {
+      display: flex;
+      // justify-content: space-around;
+      width: 16%;
+    }
+
+    &__menu-buttons-btn--chat,
+    &__menu-buttons-btn--notifs {
+      display: inline-block;
+      border: none;
+      cursor: pointer;
+      background: none;
+      appearance: none;
+      color: vars.$fourthColor;
+      background-color: vars.$thirdColor;
+      width: 50px;
+      height: 50px;
+      margin-right: 10px;
+      border-radius: 50%;
+      &:hover {
+        background-color: rgba(29, 161, 242, .8);
+      }
+
+      &__new {
+        background-color: vars.$fourthColor;
+
+        .fas.fa-bell {
+          width: 100%;
+          height: 100%;
+          padding-top: .7em;
+
+          &__new {
+            color: vars.$thirdColor;
+            animation: bounce 0.5s infinite ease alternate;
+
+            &:hover {
+              -webkit-animation-play-state: paused;
+              animation-play-state: paused;
+            }
+          }
+        }
+      }
+    }
+
+    &__menu-buttons-btn--menu {
+      display: none;
+    }
+
+    &__bandify {
+      display: flex;
+      align-items: center;
+      margin: 0;
+
+      &--logo {
+        height: 60px;
+        margin-right: 1rem;
+      }
+
+      &--title {
+        font-size: 2rem;
+        letter-spacing: 1.5px;
+        color: vars.$thirdColor;
+      }
+    }
+  
+  }
+  
+}
+
+
+// bouncing bell when new notification to alert user
+@-webkit-keyframes bounce {
+  0% { 
+      transform: translateY(0); 
+  }
+  100% { 
+      transform: translateY(-10px); 
+  } 
+}
+@keyframes bounce {
+  0% { 
+      transform: translateY(0); 
+  }
+  100% { 
+      transform: translateY(-10px); 
+  } 
+}

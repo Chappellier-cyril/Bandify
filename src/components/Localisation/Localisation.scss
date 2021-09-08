@@ -1,0 +1,35 @@
+@use 'src/styles/vars';
+
+.autocompletion-city{
+    width: 80%;
+    cursor: pointer;
+    position: relative;
+    margin: 0 auto;
+    &__hidden-parts{
+        display: none;
+        visibility: hidden;
+    }
+    &__input{
+        width: 100%;
+        border-radius: none;
+        padding: 1rem;
+        margin:  1rem;
+    }
+    &__ul{
+        width: 100%;
+        background-color: vars.$seventhColor;
+        color: vars.$thirdColor;
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        &__li{
+            border-bottom: solid 1px vars.$thirdColor;
+            padding: 10px;
+        }
+    }
+}
+.signup__localisation{
+    display: flex;
+    width: 100%;
+}

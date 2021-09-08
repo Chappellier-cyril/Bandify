@@ -1,0 +1,161 @@
+@use 'src/styles/vars';
+
+
+.isTyping{
+  color: transparent;
+  transition: color 0.4s ease-in-out;
+  margin-left: 1rem;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: baseline;
+  font-size: 0.8rem;
+  align-items: baseline;
+  &--hiden{
+    color: transparent;
+  }
+  &--visible{
+    color: vars.$fourthColor;
+  }
+  &__anim{
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: vars.$fourthColor;
+    transition: color 0.2s ease-in-out;
+    padding: 0.1rem;
+    margin: 0.2rem;
+    &--hiden{
+      background-color: transparent;
+    }
+    &--first{
+      animation: typing 1s infinite;
+    }
+    &--second{
+      animation: typing 2s infinite;
+    }
+    &--third{
+      animation: typing 3s infinite;
+    }
+  }
+}
+
+@keyframes typing {
+  0% { 
+    background-color: transparent; 
+  }
+  50%{
+    background-color: vars.$fourthColor; 
+  }
+  100% { 
+    background-color: transparent; 
+  } 
+}
+
+// MOBILE
+@media screen and (max-width: 700px) {
+  .messages {
+    height: 85%;
+    padding-bottom: 2rem;
+    overflow: auto;
+    background-color: vars.$seventhColor;
+
+    &__author {
+      width: 100%;
+      height: 10%;
+      background-color: vars.$firstColor;
+      color: vars.$fourthColor;
+      font-size: vars.$appFontSize;
+      font-weight: bold;
+      position: sticky;
+      top: 0;
+      margin-bottom: 1rem;
+      padding: 1rem 3rem;
+      
+    }
+  }
+  
+  .message {
+    width: 100%;
+    margin-bottom: 2rem;
+    padding: 0 2rem;
+    font-size: 1.2em;
+    text-align: left;
+
+    &__content--his {
+      width: fit-content;
+      max-width: 150px;
+      word-wrap: break-word;
+      padding: 1rem;
+      background-color: vars.$fourthColor;
+      border-radius: 1rem;
+      color: vars.$thirdColor;   
+    }
+
+    &__content--mine {
+      width: fit-content;
+      max-width: 150px;
+      word-wrap: break-word;
+      padding: 1rem;
+      margin-left: 60%;
+      background-color: vars.$thirdColor;
+      color: vars.$fourthColor;
+      border-radius: 1rem;
+      
+    }
+  }
+}
+
+// DESKTOP
+@media screen and (min-width: 700px) {
+  .messages {
+    height: 85%;
+    padding-bottom: 2rem;
+    overflow: auto;
+
+    &__author {
+      width: 100%;
+      height: 10%;
+      background-color: vars.$firstColor;
+      color: vars.$fourthColor;
+      font-size: vars.$appFontSize;
+      font-weight: bold;
+      position: sticky;
+      top: 0;
+      margin-bottom: 1rem;
+      padding: 1rem 3rem;
+      
+    }
+  }
+  
+  .message {
+    margin-bottom: 2rem;
+    padding: 0 2rem;
+    font-size: 1.2em;
+    width: 100%;
+    text-align: left;
+
+    &__content--his {
+      width: fit-content;
+      max-width: 150px;
+      word-wrap: break-word;
+      padding: 1.2rem;
+      margin-bottom: 1.2em;
+      background-color: vars.$fourthColor;
+      border-radius: 1rem;
+      color: vars.$thirdColor;
+      
+    }
+
+    &__content--mine {
+      width: fit-content;
+      max-width: 150px;
+      word-wrap: break-word;
+      padding: 1.2rem;
+      margin-left: 70%; 
+      background-color: vars.$thirdColor;
+      color: vars.$fourthColor;
+      border-radius: 1rem;
+      
+    }
+  }
+}

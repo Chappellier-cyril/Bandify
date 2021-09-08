@@ -1,0 +1,32 @@
+@use 'reset';
+@use 'vars';
+
+body, html, #root {
+  font-family: 'Poppins', sans-serif;
+  background-color: vars.$firstColor;
+  ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: vars.$thirdColor;
+    font-family: 'Poppins', sans-serif;
+    opacity: 1; /* Firefox */
+  }
+  
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: vars.$thirdColor;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  ::-ms-input-placeholder { /* Microsoft Edge */
+    color: vars.$thirdColor;
+    font-family: 'Poppins', sans-serif;
+  }
+}
+
+body {
+  min-height: 100vh;
+}
+
+// fontawesome icons (menu burger, cross to close menu)
+.fas {
+  font-size: 1.3rem;
+  font-weight: 300;
+}

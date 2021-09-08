@@ -1,0 +1,229 @@
+@use 'src/styles/vars';
+
+// MOBILE
+@media screen and (max-width: 700px) {
+  .search {
+    width: 90%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    padding: .5rem .5rem;
+    background-color: vars.$seventhColor;
+    border-radius: vars.$borderRadius;
+    border: 1px solid vars.$secondColor;
+  
+    &__header {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      width: 100%;
+      margin-top: 1rem;
+  
+      &--title {
+        font-size: 1.5rem;
+        color: vars.$fourthColor;
+      }
+    }
+  
+    &__launch {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+  
+    &__form {
+      width: 100%;
+      position: relative;
+      margin: 1rem 0;
+  
+      &__search-input {
+        width: 100%;
+        padding: 1em 1.5em;
+        margin: 1rem 0;
+      }
+
+      // search icon
+      .fas.fa-search {
+        position: absolute;
+        right: 5%;
+        top: 30px;
+        color: vars.$thirdColor;
+      }
+  
+      &-filters {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 auto;
+  
+        &__select {
+          width: 100%;
+          padding: 0 1em;
+          margin: 1rem 0;
+        }
+      }
+    }
+    
+    &__button {
+      padding: 0 1em;
+      margin: 0 1rem;
+      border: none;
+      width: 50%;
+      &__container {
+        display: flex;
+        justify-content: space-around;
+      }
+      &--launch {
+        background-color: vars.$thirdColor;
+        color: vars.$fourthColor;
+        height: 40px;
+        font-size: 1.2rem;
+        border-radius: vars.$borderRadius;
+        padding: 0 1em;
+        border: none;
+        margin: 1rem auto;
+      }
+    }
+  }
+  
+  .search__form__search-input, 
+  .search__form-filters__select,
+  .search__button {
+    height: 45px;
+    font-size: 1.2rem;
+    border-radius: vars.$borderRadius;
+    background-color: vars.$seventhColor;
+    border: solid 1px vars.$thirdColor;
+    color: vars.$thirdColor;
+  }
+}
+
+
+// DESKTOP
+@media screen and (min-width: 700px) {
+  .search {
+    width: 60%;
+    margin: 2rem auto 0 auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: vars.$seventhColor;
+    border-radius: vars.$borderRadius;
+    border: 1px solid vars.$secondColor;
+  
+    &__header {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      width: 100%;
+      margin-top: 1rem;
+  
+      &--title {
+        font-size: 1.5rem;
+        color: vars.$fourthColor;
+        font-weight: bold;
+      }
+    }
+  
+    &__launch {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+  
+    &__form {
+      width: 100%;
+      margin: 1rem 0;
+      position: relative;
+  
+      &__search-input {
+        width: 80%;
+        padding: 1em 1.5em;
+        margin: 1rem 15% 1rem 10%;
+      }
+      // search icon
+      .fas.fa-search {
+        position: absolute;
+        right: 15%;
+        top: 30px;
+        color: vars.$thirdColor;
+      }
+  
+      &-filters {
+        width: 80%;
+        height: auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 auto;
+
+        .signup__localisation {
+          width: 40%;
+          .autocompletion-city {
+            width: 100%;
+            margin: 0;
+            .autocompletion-city__input {
+              width: 100%;
+            }
+          } 
+        }
+  
+        &__select {
+          width: 40%;
+          padding: 0 1em;
+          margin: 1rem 0;
+        }
+      }
+    }
+    
+    &__button {
+      padding: 0 1em;
+      margin: 0 1rem;
+      width: 20%;
+      transition: background-color 100ms ease-out;
+      &:hover {
+        background-color: vars.$fourthColor;
+        border: none !important;
+      }
+      &__container {
+        display: flex;
+        justify-content: space-around;
+        margin: 2rem auto;
+      }
+      &--launch {
+        background-color: vars.$thirdColor;
+        color: vars.$fourthColor;
+        height: 40px;
+        font-size: 1.2rem;
+        border-radius: vars.$borderRadius;
+        padding: 0 1em;
+        border: none;
+        margin: 1rem auto;
+        transition: background-color 100ms ease-out;
+        &:hover {
+          background-color: rgba(29, 161, 242, .8);
+        }
+      }
+    }
+  }
+  
+  .search__form__search-input, 
+  .search__form-filters__select,
+  .search__button {
+    height: 45px;
+    font-size: 1rem;
+    border-radius: vars.$borderRadius;
+    background-color: vars.$seventhColor;
+    border: solid 1px vars.$thirdColor;
+    color: vars.$thirdColor;
+  }
+}
+
+
