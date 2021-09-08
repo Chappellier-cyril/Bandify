@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import './style.scss';
-
+//
 export default function Footer() {
   return (
     <footer className="footer">
