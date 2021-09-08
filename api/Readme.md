@@ -1,4 +1,4 @@
-<img src="./api/upload/Logo-Bandify-PNG.png" align="left"
+<img src="./upload/Logo-Bandify-PNG.png" align="left"
      alt="Bandify" width="40" height="70">
 
 
