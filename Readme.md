@@ -13,6 +13,7 @@ You just have to indicate your favorite instruments, your favorite music styles,
 And bandify will then propose profiles adapted to your search. 🎹
 
 This project was realized during **"L'Apothéose"** at [O'Clock](https://oclock.io/). In total, we are 5 developers actively working on the project. <br><br>
+  Go check our web site [www.bandify.fr](https://www.bandify.fr)
 
 ## 🚀 &nbsp;Project features
   <br>
