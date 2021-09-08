@@ -14,6 +14,42 @@ And bandify will then propose profiles adapted to your search. 🎹
 
 This project was realized during **"L'Apothéose"** at [O'Clock](https://oclock.io/). In total, we are 5 developers actively working on the project. <br><br>
 
+## 🚀 &nbsp;Project features
+  <br>
+
+  - Handmade instant messaging system
+  - Implementation of a friend and notification system
+  - Search filtres by region, cities and department
+  - Search filtres by instrument and music styles
+  - Possibility to post our music
+  
+ <br>
+
+ ## 💻 &nbsp;Team behind the project 
+<br>
+<div> Having all followed the <strong>Fullstack</strong> JS training with the O'Clock school, the whole team was able to contribute to all aspects of the project.</div>
+<br>
+<h3 align="center"> You can find the team 's github links here :</h3>
+
+<br>
+<div align='center'>
+<a href="https://github.com/ChewwyAllStars" target="_blank">
+<img src="https://img.shields.io/badge/Jeremy Marques-100000?style=for-the-badge&logo=github&logoColor=whit" />
+</a>
+<a href="https://github.com/amaury-delaroque" target="_blank">
+<img src="https://img.shields.io/badge/Amaury Delaroque-100000?style=for-the-badge&logo=github&logoColor=whit" />
+</a>
+<a href="https://github.com/baptaste" target="_blank">
+<img src="https://img.shields.io/badge/Baptiste Champbenoit-100000?style=for-the-badge&logo=github&logoColor=whit" />
+</a>
+<a href="https://github.com/Arnaud-Ferreira" target="_blank">
+<img src="https://img.shields.io/badge/Arnaud Ferreira-100000?style=for-the-badge&logo=github&logoColor=whit" />
+</a>
+<a href="https://github.com/Chappellier-cyril" target="_blank">
+<img src="https://img.shields.io/badge/Cyril Chappellier-100000?style=for-the-badge&logo=github&logoColor=whit" />
+</a>
+</div>
+<br><br>
 
 ## 🔧 &nbsp;Frameworks and tools
 
@@ -55,42 +91,7 @@ Design  &nbsp; 🖍📐
 </div>
 <br><br>
 
-## 💻 &nbsp;Team behind the project 
-<br>
-<div> Having all followed the <strong>Fullstack</strong> JS training with the O'Clock school, the whole team was able to contribute to all aspects of the project.</div>
-<br>
-<h3 align="center"> You can find the team 's github links here :</h3>
 
-<br>
-<div align='center'>
-<a href="https://github.com/ChewwyAllStars" target="_blank">
-<img src="https://img.shields.io/badge/Jeremy Marques-100000?style=for-the-badge&logo=github&logoColor=whit" />
-</a>
-<a href="https://github.com/amaury-delaroque" target="_blank">
-<img src="https://img.shields.io/badge/Amaury Delaroque-100000?style=for-the-badge&logo=github&logoColor=whit" />
-</a>
-<a href="https://github.com/baptaste" target="_blank">
-<img src="https://img.shields.io/badge/Baptiste Champbenoit-100000?style=for-the-badge&logo=github&logoColor=whit" />
-</a>
-<a href="https://github.com/Arnaud-Ferreira" target="_blank">
-<img src="https://img.shields.io/badge/Arnaud Ferreira-100000?style=for-the-badge&logo=github&logoColor=whit" />
-</a>
-<a href="https://github.com/Chappellier-cyril" target="_blank">
-<img src="https://img.shields.io/badge/Cyril Chappellier-100000?style=for-the-badge&logo=github&logoColor=whit" />
-</a>
-</div>
-<br><br>
-
-## 🚀 &nbsp;Project features
-  <br>
-
-  - Handmade instant messaging system
-  - Implementation of a friend and notification system
-  - Search filtres by region, cities and department
-  - Search filtres by instrument and music styles
-  - Possibility to post our music
-  
-  <br>
 
 ## 📖 API Documentation 
 <br>
