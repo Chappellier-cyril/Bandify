@@ -5,7 +5,8 @@
 
 # Bandify
 
-<h4>Welcome to the Bandify App 🎶</h1>
+### Welcome to the Bandify App 🎶
+<br>
 
 **Bandify** is a social network that allows you to meet musicians in a given geographical area.
 You just have to indicate your favorite instruments, your favorite music styles, and the musicians you are looking for.
@@ -15,7 +16,7 @@ This project was realized during **"L'Apothéose"** at [O'Clock](https://oclock.
 
 
 ## 🔧 &nbsp;Frameworks and tools
-<br>
+
 <h3 align="center">
  Front-end
 </h3>
