@@ -1,9 +1,9 @@
-<img src="./upload/Logo-Bandify-PNG.png" align="right"
-     alt="Bandify" width="70" height="120">
+<img src="./upload/Logo-Bandify-PNG.png" align="left"
+     alt="Bandify" width="40" height="70">
 
 
 
-# 🎸 Bandify
+# Bandify
 
 <h4>Welcome to the Bandify App 🎶</h1>
 
