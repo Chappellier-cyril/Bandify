@@ -8,7 +8,7 @@
 ### Welcome to the Bandify App 🎶
 <br>
 
-**Bandify** is a social network that allows you to meet musicians in a given geographical area.
+**Bandify** is a social network that allows you to meet musicians in a given geographical area&nbsp; 🌏<br>
 You just have to indicate your favorite instruments, your favorite music styles, and the musicians you are looking for.
 And bandify will then propose profiles adapted to your search. 🎹
 
@@ -64,6 +64,7 @@ This project was realized during **"L'Apothéose"** at [O'Clock](https://oclock.
         <img src="https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white" />
         <img src="https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white" />
         <img src="https://img.shields.io/badge/Font_Awesome-339AF0?style=for-the-badge&logo=fontawesome&logoColor=white" />
+        <img src="https://img.shields.io/badge/Socket.io-010101?&style=for-the-badge&logo=Socket.io&logoColor=white" />
 </div>
 <br>
 <h3 align="center">
